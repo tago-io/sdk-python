@@ -16,9 +16,7 @@ jobs:
         architecture: x64
 
     - name: Install Poetry
-      run: |
-        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-        source $HOME/.poetry/env
+      run: pipx install poetry
 
     - name: Install dependencies
       run: poetry install
