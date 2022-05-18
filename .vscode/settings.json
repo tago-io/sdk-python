@@ -1,11 +1,7 @@
 {
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.formatting.provider": "black",
-  "editor.formatOnSave": true,
-  "cSpell.words": [
-    "dateutil",
-    "ignoretz",
-    "pytest"
-  ]
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "cSpell.words": ["dateutil", "ignoretz", "pytest"]
 }
