@@ -1,0 +1,67 @@
+name: Publish to PyPI
+
+on: push
+
+# on:
+#   release:
+#     types: [published]
+
+jobs:
+#   build:
+#     name: "Build and Deploy"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Use Python 3.9
+#         uses: actions/setup-python@v3
+#         with:
+#           python-version: '3.9'
+#           architecture: x64
+
+  docs:
+    name: "Build Docs and Deploy"
+    runs-on: ubuntu-latest
+    # needs: [build]
+    steps:
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Use Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          architecture: x64
+
+      - name: Install Poetry
+        run: pip install --user poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Create local changes
+        run: |
+          cd docs
+          make html
+          cd ..
+          rm -rf tests src .github *.md *.MD *.rst *.lock *.toml LICENSE .flake8 dist .vscode
+          rm -rf .editorconfig
+          mv docs/build/html/* .
+          rm -rf docs/
+          touch .nojekyll
+        #   echo "js.sdk.tago.io" > CNAME
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "generated documentation"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true

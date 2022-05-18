@@ -41,7 +41,8 @@ class Analysis(TagoIOModule):
 
         self._analysis(context, data)
 
-    def __runLocal(self, environment, data, analysis_id, token):
+    # TODO: Fix any
+    def __runLocal(self, environment: any, data: any, analysis_id: any, token: any):
         def log(*args: any):
             print(*args)
             # Services(token).console.log(str(args)[1:][:-2])
@@ -61,7 +62,7 @@ class Analysis(TagoIOModule):
         sio = tagoSocket.sio
 
         async def connectSocket():
-            def ready(analysisObj):
+            def ready(analysisObj: any):  # TODO: Fix any
                 print(
                     "Analysis [{AnalysisName}] Started.\n".format(
                         AnalysisName=analysisObj["name"]
