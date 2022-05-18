@@ -1,3 +1,8 @@
+<br/>
+<p align="center">
+  <img src="https://assets.tago.io/tagoio/sdk.png" width="250px" alt="TODO"></img>
+</p>
+
 # TagoIO - Python SDK
 
 Official Python SDK for TagoIO
