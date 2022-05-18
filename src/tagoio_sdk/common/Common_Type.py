@@ -2,6 +2,10 @@ from typing import Literal, TypedDict, Union
 from datetime import date
 
 
+GenericID = str
+"""ID used on TagoIO, string with 24 character"""
+
+
 class LocationGeoJSON(TypedDict):
     type: Literal["Point"]
     coordinates: list[str]
