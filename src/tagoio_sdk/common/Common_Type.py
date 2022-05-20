@@ -1,9 +1,11 @@
-from typing import Literal, TypedDict, Union
 from datetime import date
-
+from typing import Literal, TypedDict, Union
 
 GenericID = str
 """ID used on TagoIO, string with 24 character"""
+
+
+Base64 = str
 
 
 class LocationGeoJSON(TypedDict):

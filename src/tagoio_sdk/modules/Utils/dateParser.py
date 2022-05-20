@@ -1,7 +1,7 @@
 from contextlib import suppress
-import dateutil.parser
 from typing import TypeVar
 
+import dateutil.parser
 
 T = TypeVar("T")
 

@@ -1,20 +1,19 @@
-.. TagoIO SDK documentation master file, created by
-   sphinx-quickstart on Sun May 15 00:00:53 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+TagoIO - Python SDK
+===================
+------------------------------
+Official Python SDK for TagoIO
+------------------------------
+    Development Commands
 
-.. include:: ../../README.md
-    :parser: myst_parser.sphinx_
+    ``bash``
+    ``poetry install``
+    ``poetry run pytest tests/``
+    ``poetry run flake8 src``
+
+    License
+
+    TagoIO SDK for Python is released under the `[Apache-2.0 License] <https://github.com/tago-io/sdk-python/blob/master/LICENSE>`_
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Class/index

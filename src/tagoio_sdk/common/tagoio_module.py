@@ -1,4 +1,5 @@
 from typing import TypedDict
+
 from tagoio_sdk.infrastructure.api_request import RequestParams, apiRequest
 from tagoio_sdk.regions import Regions, getConnectionURI
 
