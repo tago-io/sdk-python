@@ -22,9 +22,9 @@ class Attachment(TagoIOModule):
                 "path": "/analysis/services/attachment/upload",
                 "method": "POST",
                 "body": {
-                    "archive": archive.content,
-                    "filename": archive.name,
-                    "type": archive.type,
+                    "archive": archive["content"],
+                    "filename": archive["name"],
+                    "type": archive["type"],
                 },
             }
         )

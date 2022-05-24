@@ -120,7 +120,7 @@ class Email(TagoIOModule):
     def send(
         self, email: Union[Any, EmailWithRawText, EmailWithHTML, EmailWithTemplate]
     ) -> str:
-        if email.html and email.message:
+        if email["html"] and email["message"]:
             warnings.warn("HTML field will overwrite message field")
 
         result = self.doRequest(

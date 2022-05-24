@@ -206,6 +206,3 @@ class Device(TagoIOModule):
         )
 
         return result
-
-
-d = Device()

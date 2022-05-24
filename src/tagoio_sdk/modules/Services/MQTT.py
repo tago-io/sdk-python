@@ -24,10 +24,10 @@ class MQTT(TagoIOModule):
                 "path": "/analysis/services/mqtt/publish",
                 "method": "POST",
                 "body": {
-                    "topic": mqtt.topic,
-                    "message": mqtt.message,
-                    "bucket": mqtt.bucket,
-                    "options": mqtt.options,
+                    "topic": mqtt["topic"],
+                    "message": mqtt["message"],
+                    "bucket": mqtt["bucket"],
+                    "options": mqtt["options"],
                 },
             }
         )
