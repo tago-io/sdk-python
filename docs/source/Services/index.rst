@@ -1,6 +1,26 @@
 Services
 =========
 
+================
+**Constructors**
+================
+
+    **Parameters:**
+
+        | **token**: str
+        | Analysis Token
+
+        | *Optional* **region**: Regions
+        | region is optional parameter, the type is Regions = Literal["usa-1", "env"]
+
+.. code-block::
+    :caption: **Example:**
+
+        from tagoio_sdk.modules.Services.Services import Services
+
+        myServices = Services({"token": "my_analysis_token", "region": "usa-1})
+
+
 ==============
 **Attachment**
 ==============
@@ -16,7 +36,8 @@ Send Attachment
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            Attachment = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).Attachment
+
+            Attachment = Services({"token": "my_analysis_token"}).Attachment
 
             Attachment.upload(
                 {
@@ -44,7 +65,8 @@ Log message in analysis console
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            console = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).console
+
+            console = Services({"token": "my_analysis_token"}).console
             console.log(
                 {
                     "message": "Test",
@@ -66,7 +88,8 @@ Send Email
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            email = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).email
+
+            email = Services({"token": "my_analysis_token"}).email
             email.send(
                 {
                     "to": "myclien@tago.io",
@@ -90,12 +113,13 @@ Publish to a MQTT Device
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            mqtt = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).MQTT
+
+            mqtt = Services({"token": "my_analysis_token"}).MQTT
 
             mqtt.publish(
                 {
-                    "bucket": "62756963c5b6db0013f1fc83",
-                    "message": "hi",
+                    "bucket": "my_device_id",
+                    "message": "Test",
                     "topic": "teste/TEMPERATURE",
                     "options": {"qos": 0, "retain": False},
                 }
@@ -120,11 +144,13 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            notification = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).Notification
+
+            notification = Services({"token": "my_analysis_token"}).Notification
 
             notification.send(
                 {
-
+                    title: "Example",
+                    message: "Message Test",
                 }
             )
 
@@ -143,11 +169,12 @@ Generate a PDF from html, url or base64
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            pdf = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).PDF
 
-            pdf.publish(
+            pdf = Services({"token": "my_analysis_token"}).PDF
+
+            pdf.generate(
                 {
-
+                    base64: "base64"
                 }
             )
 
@@ -166,7 +193,8 @@ Send SMS to phone number
     :caption: **Example:**
 
             from tagoio_sdk.modules.Services.Services import Services
-            sms = Services({"token": "cd48a6ea-1a36-4908-93e3-81be397b4989111"}).sms
+
+            sms = Services({"token": "my_analysis_token"}).sms
 
             sms.send(
                 {
