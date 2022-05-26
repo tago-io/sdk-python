@@ -1,7 +1,0 @@
-Class
-=========
-
-.. toctree::
-
-   Device/index
-

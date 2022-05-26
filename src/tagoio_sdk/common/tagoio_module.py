@@ -15,6 +15,7 @@ class GenericModuleParams(TypedDict):
 
 class TagoIOModule(object):
     def __init__(self, params: GenericModuleParams) -> None:
+        print(params)
         self.token = params.get("token")
         self.region = params.get("region")
         self.validateParams()

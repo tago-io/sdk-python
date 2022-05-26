@@ -1,4 +1,4 @@
-from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.common.tagoio_module import GenericModuleParams, TagoIOModule
 from tagoio_sdk.modules.Services.Attachment import Attachment
 from tagoio_sdk.modules.Services.Console import ConsoleService
 from tagoio_sdk.modules.Services.Email import Email
@@ -9,17 +9,12 @@ from tagoio_sdk.modules.Services.SMS import SMS
 
 
 class Services(TagoIOModule):
+    def __init__(self, params: GenericModuleParams):
 
-    console = ConsoleService()
-
-    sms = SMS()
-
-    email = Email()
-
-    MQTT = MQTT()
-
-    Notification = Notification()
-
-    Attachment = Attachment()
-
-    PDF = PDFService()
+        self.sms = SMS(params)
+        self.console = ConsoleService(params)
+        self.email = Email(params)
+        self.MQTT = MQTT(params)
+        self.Notification = Notification(params)
+        self.Attachment = Attachment(params)
+        self.PDF = PDFService(params)

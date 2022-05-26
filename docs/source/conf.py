@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
-project = "SDK"
+project = ""
 copyright = "2022, Tago LLC"
 author = "Tago LLC"
 
@@ -39,7 +39,7 @@ extensions = [
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "logo.png"
+html_logo = "https://assets.tago.io/tagoio/sdk.png"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -53,7 +53,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
