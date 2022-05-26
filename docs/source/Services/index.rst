@@ -16,7 +16,7 @@ Services
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Services.Services import Services
+        from tagoio_sdk import Services
 
         myServices = Services({"token": "my_analysis_token", "region": "usa-1})
 
@@ -35,7 +35,7 @@ Send Attachment
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             Attachment = Services({"token": "my_analysis_token"}).Attachment
 
@@ -64,7 +64,7 @@ Log message in analysis console
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             console = Services({"token": "my_analysis_token"}).console
             console.log(
@@ -87,7 +87,7 @@ Send Email
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             email = Services({"token": "my_analysis_token"}).email
             email.send(
@@ -112,7 +112,7 @@ Publish to a MQTT Device
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             mqtt = Services({"token": "my_analysis_token"}).MQTT
 
@@ -143,7 +143,7 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             notification = Services({"token": "my_analysis_token"}).Notification
 
@@ -168,7 +168,7 @@ Generate a PDF from html, url or base64
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             pdf = Services({"token": "my_analysis_token"}).PDF
 
@@ -192,7 +192,7 @@ Send SMS to phone number
 .. code-block::
     :caption: **Example:**
 
-            from tagoio_sdk.modules.Services.Services import Services
+            from tagoio_sdk import Services
 
             sms = Services({"token": "my_analysis_token"}).sms
 

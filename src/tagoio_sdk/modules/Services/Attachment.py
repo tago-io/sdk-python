@@ -28,5 +28,4 @@ class Attachment(TagoIOModule):
                 },
             }
         )
-
         return result

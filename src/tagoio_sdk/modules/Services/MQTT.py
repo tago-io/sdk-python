@@ -10,7 +10,6 @@ class options(TypedDict):
 
 
 class MQTTData(TypedDict):
-
     topic: str
     message: str
     bucket: GenericID

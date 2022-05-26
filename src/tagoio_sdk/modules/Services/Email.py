@@ -5,7 +5,6 @@ from tagoio_sdk.common.tagoio_module import TagoIOModule
 
 
 class AttachmentOptions(TypedDict):
-
     archive: str
     """
     Archive itself
@@ -17,14 +16,12 @@ class AttachmentOptions(TypedDict):
 
 
 class TemplateOptions(TypedDict):
-
     name: str
     """
     Template name
 
     You can create an e-mail template on TagoRUN options at https://admin.tago.io/run
     """
-
     params: dict[str, Union[int, float]]
     """
     Parameters to parse on Template
@@ -38,28 +35,24 @@ class TemplateOptions(TypedDict):
 
 
 class EmailBase(TypedDict):
-
     to: str
     """
     E-mail address to be sent
 
     :example: "myclien@tago.io"
     """
-
     from_name: str
     """
     Name of origin
 
     :example: "My Run"
     """
-
     subject: str
     """
     Subject of the e-mail
 
     only allow with message or html
     """
-
     attachment: AttachmentOptions
     """
     Attachment for the e-mail
@@ -67,7 +60,6 @@ class EmailBase(TypedDict):
 
 
 class EmailRawText(TypedDict):
-
     message: str
     """
     Message in raw text for email body
@@ -75,7 +67,6 @@ class EmailRawText(TypedDict):
 
 
 class EmailHTML(TypedDict):
-
     html: str
     """
     HTML email body
@@ -83,26 +74,22 @@ class EmailHTML(TypedDict):
 
 
 class EmailWithTemplate(TypedDict):
-
     to: str
     """
     E-mail address to be sent
 
     :example: "myclien@tago.io"
     """
-
     from_name: str
     """
     Name of origin
 
     :example: "My Run"
     """
-
     attachment: AttachmentOptions
     """
     Attachment for the e-mail
     """
-
     template: TemplateOptions
     """
     Use TagoRUN E-Mail Template

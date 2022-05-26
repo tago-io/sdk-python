@@ -10,7 +10,6 @@ from tagoio_sdk.modules.Services.SMS import SMS
 
 class Services(TagoIOModule):
     def __init__(self, params: GenericModuleParams):
-
         self.sms = SMS(params)
         self.console = ConsoleService(params)
         self.email = Email(params)

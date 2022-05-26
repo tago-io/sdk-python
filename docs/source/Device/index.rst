@@ -18,7 +18,7 @@ In order to modify, add, delete or do anything else with the data inside buckets
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({"token": "my_device_token", "region": "usa-1})
 
@@ -33,7 +33,7 @@ Get information about the current device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.info()
@@ -52,7 +52,7 @@ Send data to device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.sendData({
@@ -77,7 +77,7 @@ Get data from TagoIO Device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.getData({
@@ -99,7 +99,7 @@ Edit data in a Mutable-type device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({"token": "my_device_token"})
         result = myDevice.editData(
@@ -125,7 +125,7 @@ Delete data from device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" });
         result = await myDevice.deleteData({
@@ -148,7 +148,7 @@ Get parameters from device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.getParameters()
@@ -167,7 +167,7 @@ Mark parameter as read.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.setParameterAsRead("parameter_id")

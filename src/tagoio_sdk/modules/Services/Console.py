@@ -13,7 +13,6 @@ class ConsoleService(TagoIOModule):
 
     def log(self, message: str, time: datetime) -> str:
         timestamp = datetime(time)
-
         result = self.doRequest(
             {
                 "path": "/analysis/services/console/send",

@@ -4,12 +4,10 @@ from tagoio_sdk.common.tagoio_module import TagoIOModule
 
 
 class SMSData(TypedDict):
-
     to: str
     """
     Number to send SMS, Example: +5599999999999
     """
-
     message: str
     """
     Message to be send
@@ -30,5 +28,4 @@ class SMS(TagoIOModule):
                 "body": sms,
             }
         )
-
         return result

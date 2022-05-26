@@ -5,10 +5,7 @@ TagoIO - Python SDK
 
 .. code-block::
 
-        bash
-        poetry install
-        poetry run pytest tests/
-        poetry run flake8 src
+       pip install tagoio-sdk
 
 **Quick Example**
 
@@ -16,7 +13,8 @@ Insert Device Data
 
 .. code-block::
 
-        from tagoio_sdk.modules.Device.Device import Device
+        from tagoio_sdk import Device
+
         myDevice = Device({ "token": "00000000-2ec4-11e6-a77d-991b8f63b767" })
         result = myDevice.sendData({
             "variable": "temperature",

@@ -204,5 +204,4 @@ class Device(TagoIOModule):
                 "method": "PUT",
             }
         )
-
         return result
