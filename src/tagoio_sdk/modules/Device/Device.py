@@ -194,7 +194,7 @@ class Device(TagoIOModule):
 
             myDevice = Device({ "token": "my_device_token" })
 
-            result = myDevice.setParameterAsRead("parameter_id")
+            result = myDevice.setParameterAsRead({"parameterID": "parameter_id"})
 
         :rtype: str
         """

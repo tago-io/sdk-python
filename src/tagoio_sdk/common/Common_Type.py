@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from typing import Literal, TypedDict, Union
 
 GenericID = str
@@ -36,5 +36,5 @@ class Data(TypedDict):
     unit: str
     location: LocationGeoJSON
     metadata: any
-    time: date
-    created_at: date
+    time: datetime
+    created_at: datetime

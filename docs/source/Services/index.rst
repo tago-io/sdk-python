@@ -1,17 +1,17 @@
-Services
-=========
+**Services**
+============
 
-================
-**Constructors**
-================
+========
+Instance
+========
 
     **Parameters:**
 
         | **token**: str
         | Analysis Token
 
-        | *Optional* **region**: Regions
-        | region is optional parameter, the type is Regions = Literal["usa-1", "env"]
+        | *Optional* **region**: Regions: "usa-1" or "env"
+        | Region is a optional parameter
 
 .. code-block::
     :caption: **Example:**
@@ -21,15 +21,15 @@ Services
         myServices = Services({"token": "my_analysis_token", "region": "usa-1})
 
 
-==============
-**Attachment**
-==============
+==========
+Attachment
+==========
 
 Send Attachment
 
     **Parameters:**
 
-        | **archive**: ArchiveFile
+        | **archive**: :ref:`ArchiveFile`
         | Archive JSON Object
 
 .. code-block::
@@ -47,9 +47,9 @@ Send Attachment
                 }
             )
 
-==================
-**ConsoleService**
-==================
+==============
+ConsoleService
+==============
 
 Log message in analysis console
 
@@ -73,15 +73,15 @@ Log message in analysis console
                 }
             )
 
-=========
-**Email**
-=========
+=====
+Email
+=====
 
 Send Email
 
     **Parameters:**
 
-        | **email**: Union[Any, EmailWithRawText, EmailWithHTML, EmailWithTemplate]
+        | **email**: Any or :ref:`EmailWithRawText` or :ref:`EmailWithHTML` or :ref:`EmailWithTemplate`
         | Email objects
 
 .. code-block::
@@ -97,15 +97,15 @@ Send Email
                 }
             )
 
-========
-**MQTT**
-========
+====
+MQTT
+====
 
 Publish to a MQTT Device
 
     **Parameters:**
 
-        | **mqtt**: MQTTData
+        | **mqtt**: :ref:`MQTTData`
         | MQTT object, contains topic, bucket, message and options(retain and qos)
 
 
@@ -125,9 +125,9 @@ Publish to a MQTT Device
                 }
             )
 
-================
-**Notification**
-================
+============
+Notification
+============
 
 Send Notification
 
@@ -136,7 +136,7 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
 
     **Parameters:**
 
-        | **notification**: NotificationCreate
+        | **notification**: :ref:`NotificationCreate`
         | Notification Object
 
 
@@ -154,15 +154,15 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
                 }
             )
 
-=======
-**PDF**
-=======
+===
+PDF
+===
 
 Generate a PDF from html, url or base64
 
     **Parameters:**
 
-        | **params**: PDFParams
+        | **params**: :ref:`PDFParams`
         | Parameters used to generate the pdf
 
 .. code-block::
@@ -178,15 +178,15 @@ Generate a PDF from html, url or base64
                 }
             )
 
-=======
-**SMS**
-=======
+===
+SMS
+===
 
 Send SMS to phone number
 
     **Parameters:**
 
-        | **sms**: SMSData
+        | **sms**: :ref:`SMSData`
         | Data that sms will be send, number and message
 
 .. code-block::

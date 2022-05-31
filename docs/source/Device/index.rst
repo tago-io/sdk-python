@@ -1,32 +1,32 @@
-Device
-======
+**Device**
+==========
 
 In order to modify, add, delete or do anything else with the data inside buckets, it is necessary to use the device function.
 
-================
-**Constructors**
-================
+========
+Instance
+========
 
     **Parameters:**
 
         | **token**: str
         | Device Token
 
-        | *Optional* **region**: Regions
-        | region is optional parameter, the type is Regions = Literal["usa-1", "env"]
+        | *Optional* **region**: Regions: "usa-1" or "env"
+        | Region is a optional parameter
 
 .. code-block::
     :caption: **Example:**
 
         from tagoio_sdk import Device
 
-        myDevice = Device({"token": "my_device_token", "region": "usa-1})
+        myDevice = Device({"token": "my_device_token", "region": "usa-1"})
 
 
 
-========
-**info**
-========
+====
+info
+====
 
 Get information about the current device.
 
@@ -38,15 +38,15 @@ Get information about the current device.
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.info()
 
-============
-**sendData**
-============
+========
+sendData
+========
 
 Send data to device.
 
     **Parameters:**
 
-        | **data**: Union[Data, List[Data]]
+        | **data**: :ref:`Data` or list[:ref:`Data`]
         | An array or one object with data to be send to TagoIO using device token
 
 .. code-block::
@@ -63,15 +63,15 @@ Send data to device.
             "location": { "lat": 42.2974279, "lng": -85.628292 },
         })
 
-===========
-**getData**
-===========
+=======
+getData
+=======
 
 Get data from TagoIO Device.
 
     **Parameters:**
 
-        | **queryParams**: DataQuery
+        | **queryParams**: :ref:`DataQuery`
         | Object with query params
 
 .. code-block::
@@ -85,15 +85,15 @@ Get data from TagoIO Device.
             "variable": "humidity",
         })
 
-============
-**editData**
-============
+========
+editData
+========
 
 Edit data in a Mutable-type device.
 
     **Parameters:**
 
-        | **data**: Union[Data, list[Data]]
+        | **data**: :ref:`Data` or list[:ref:`Data`]
         | Array or object with the data to be edited, each object with the data's ID.
 
 .. code-block::
@@ -111,15 +111,15 @@ Edit data in a Mutable-type device.
             }
         )
 
-==============
-**deleteData**
-==============
+==========
+deleteData
+==========
 
 Delete data from device.
 
     **Parameters:**
 
-        | **queryParams**: DataQuery
+        | **queryParams**: :ref:`DataQuery`
         | Object with query params
 
 .. code-block::
@@ -134,9 +134,9 @@ Delete data from device.
             "value": 10
         });
 
-=================
-**getParameters**
-=================
+=============
+getParameters
+=============
 
 Get parameters from device.
 
@@ -153,15 +153,15 @@ Get parameters from device.
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.getParameters()
 
-======================
-**setParameterAsRead**
-======================
+==================
+setParameterAsRead
+==================
 
 Mark parameter as read.
 
     **Parameters:**
 
-        | **onlyUnRead**: GenericID
+        | **parameterID**: GenericID: str
         | Parameter identification
 
 .. code-block::
@@ -170,7 +170,7 @@ Mark parameter as read.
         from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
-        result = myDevice.setParameterAsRead("parameter_id")
+        result = myDevice.setParameterAsRead({"parameterID": "parameter_id"})
 
 
 
