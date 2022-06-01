@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
 
-project = "TagoIO SDK"
+project = ""
 copyright = "2022, Tago LLC"
 author = "Tago LLC"
 
@@ -37,6 +37,10 @@ extensions = [
     "myst_parser",
 ]
 
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+html_logo = "https://assets.tago.io/tagoio/sdk.png"
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
@@ -45,9 +49,7 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-
 # -- Options for HTML output -------------------------------------------------
-
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #

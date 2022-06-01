@@ -3,7 +3,9 @@ import os
 import platform
 import time
 from typing import Literal, Optional, TypedDict
+
 import requests
+
 from tagoio_sdk import __version__, config
 
 

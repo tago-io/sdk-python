@@ -1,13 +1,15 @@
-from tagoio_sdk.common.tagoio_module import TagoIOModule
-import os
 import json
+import os
 from typing import Callable
+
+from tagoio_sdk.common.tagoio_module import TagoIOModule
 
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
 
 if T_ANALYSIS_CONTEXT is None:
-    from tagoio_sdk.infrastructure.api_socket import APISocket
     import asyncio
+
+    from tagoio_sdk.infrastructure.api_socket import APISocket
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)

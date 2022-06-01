@@ -1,4 +1,5 @@
 import socketio
+
 from tagoio_sdk import config
 from tagoio_sdk.common.tagoio_module import GenericModuleParams
 from tagoio_sdk.regions import getConnectionURI
