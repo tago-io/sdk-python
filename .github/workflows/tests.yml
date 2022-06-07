@@ -1,28 +1,31 @@
 name: Units Tests
 
+env:
+    pythonVersion: "3.9"
+
 on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+        steps:
+            - uses: actions/checkout@v2
 
-    - name: Use Python 3.9
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.9'
-        architecture: x64
+            - name: Use Python ${{ env.pythonVersion }}
+              uses: actions/setup-python@v3
+              with:
+                  python-version: ${{ env.pythonVersion }}
+                  architecture: x64
 
-    - name: Install Poetry
-      run: pip install --user poetry
+            - name: Install Poetry
+              run: pip install --user poetry
 
-    - name: Install dependencies
-      run: poetry install
+            - name: Install dependencies
+              run: poetry install
 
-    - name: Run Tests
-      run: poetry run pytest tests/
+            - name: Run Tests
+              run: poetry run pytest tests/
 
-    - name: Run Linter
-      run: poetry run flake8 src/
+            - name: Run Linter
+              run: poetry run flake8 src/

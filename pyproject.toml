@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tagoio_sdk"
+name = "tagoio-sdk"
 version = "4.0.0"
 description = "Official Python SDK for TagoIO"
 authors = ["Tago LLC <contact@tago.io>"]
@@ -7,7 +7,7 @@ license = "Apache License"
 readme = "README.md"
 homepage = "https:/tago.io/"
 repository = "https://github.com/tago-io/sdk-python/"
-documentation = "https://github.com/tago-io/sdk-python/blob/main/README.md/"
+documentation = "https://py.sdk.tago.io/"
 keywords = ["tagoio", "iot", "analysis", "tago", "sensor", "device"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
