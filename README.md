@@ -1,21 +1,31 @@
 <br/>
 <p align="center">
-  <img src="https://assets.tago.io/tagoio/sdk.png" width="250px" alt="TODO"></img>
+  <img src="https://assets.tago.io/tagoio/sdk.png" width="250px" alt="TagoIO"></img>
 </p>
+
+# TagoIO - Python SDK
 
 Official Python SDK for TagoIO
 
+## Development Commands
+
+```bash
+poetry install
+poetry run pytest tests/
+poetry run flake8 src
+```
+
 ## Installation
 
-```
+```bash
 pip install tagoio-sdk
 ```
 
 ## Quick Example
 
-# **Insert Device Data**
+### **Insert Device Data**
 
-```
+```python
 from tagoio_sdk import Device
 
 myDevice = Device({ "token": "my_device_token" })
@@ -28,9 +38,9 @@ result = myDevice.sendData({
 })
 ```
 
-## **Edit Device Data**
+### **Edit Device Data**
 
-```
+```python
 from tagoio_sdk import Device
 
 myDevice = Device({"token": "my_device_token"})
