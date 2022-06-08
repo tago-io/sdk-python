@@ -54,5 +54,7 @@ TagoIO SDK for Python is released under the `[Apache-2.0 License] <https://githu
 
 .. toctree::
 
+    Account/index
     Device/index
     Services/index
+

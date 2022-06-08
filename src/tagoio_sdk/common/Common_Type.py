@@ -38,3 +38,8 @@ class Data(TypedDict):
     metadata: any
     time: datetime
     created_at: datetime
+
+
+class TagsObj(TypedDict):
+    key: str
+    value: str
