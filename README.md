@@ -7,14 +7,6 @@
 
 Official Python SDK for TagoIO
 
-## Development Commands
-
-```bash
-poetry install
-poetry run pytest tests/
-poetry run flake8 src
-```
-
 ## Installation
 
 ```bash
@@ -52,6 +44,14 @@ result = myDevice.editData(
         "location": {"lat": 42.2974279, "lng": -85.628292},
     }
 )
+```
+
+## Development Commands
+
+```bash
+poetry install
+poetry run pytest tests/
+poetry run flake8 src
 ```
 
 If you have any questions, feel free to check our [Help Center](https://help.tago.io/portal/en/home)
