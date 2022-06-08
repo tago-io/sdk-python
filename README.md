@@ -15,6 +15,8 @@ pip install tagoio-sdk
 
 ## Quick Example
 
+If you have any questions, feel free to check our [Help Center](https://help.tago.io/portal/en/home)
+
 ### **Insert Device Data**
 
 ```python
@@ -53,8 +55,6 @@ poetry install
 poetry run pytest tests/
 poetry run flake8 src
 ```
-
-If you have any questions, feel free to check our [Help Center](https://help.tago.io/portal/en/home)
 
 ## License
 
