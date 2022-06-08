@@ -39,6 +39,10 @@ extensions = [
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "https://assets.tago.io/tagoio/sdk.png"
+html_favicon = "https://assets.tago.io/tagoio/favicon.ico"
+html_title = "TagoIO SDK for Python"
+html_show_sphinx = False
+html_search_language = "en"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
