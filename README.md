@@ -17,7 +17,7 @@ pip install tagoio-sdk
 
 If you have any questions, feel free to check our [Help Center](https://help.tago.io/portal/en/home)
 
-### **Insert Device Data**
+### Insert Device Data
 
 ```python
 from tagoio_sdk import Device
@@ -32,7 +32,7 @@ result = myDevice.sendData({
 })
 ```
 
-### **Edit Device Data**
+### Edit Device Data
 
 ```python
 from tagoio_sdk import Device
