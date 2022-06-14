@@ -1,9 +1,10 @@
 from functools import reduce
+from typing import Any
 
 from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisEnvironment
 
 
-def reduceFunction(pv, cv):
+def reduceFunction(pv: Any, cv: Any) -> Any:
     pv[cv.key] = cv.value
     return pv
 
