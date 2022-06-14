@@ -27,4 +27,5 @@ Instance
 
     Billing/index
     Buckets/index
+    Devices/index
     Profile/index

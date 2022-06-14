@@ -19,7 +19,7 @@ Gets information about the bucket
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Buckets
+        myAccount = Account({ "token": "my_account_token" }).buckets
         result = myAccount.info("Bucket ID")
 
 ======
@@ -38,5 +38,5 @@ Get Amount of data on the Bucket
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Buckets
+        myAccount = Account({ "token": "my_account_token" }).buckets
         result = myAccount.amount("Bucket ID")

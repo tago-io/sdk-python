@@ -7,6 +7,24 @@ GenericID = str
 
 Base64 = str
 
+GenericToken = str
+"""Token used on TagoIO, string with 36 characters"""
+
+ExpireTimeOption = "never" or datetime
+
+PermissionOption = Literal["write", "read", "full", "deny"]
+
+
+class TokenCreateResponse(TypedDict):
+    token: GenericToken
+    expire_date: ExpireTimeOption
+    permission: PermissionOption
+
+
+class TagsObj(TypedDict):
+    key: str
+    value: str
+
 
 class LocationGeoJSON(TypedDict):
     type: Literal["Point"]
@@ -38,8 +56,3 @@ class Data(TypedDict):
     metadata: any
     time: datetime
     created_at: datetime
-
-
-class TagsObj(TypedDict):
-    key: str
-    value: str

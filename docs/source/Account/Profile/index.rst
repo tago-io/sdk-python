@@ -19,7 +19,7 @@ Gets information about the bucket
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Profile
+        myAccount = Account({ "token": "my_account_token" }).profile
         result = myAccount.info("Profile ID")
 
 ====
@@ -33,7 +33,7 @@ Lists all the profiles in your account
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Profile
+        myAccount = Account({ "token": "my_account_token" }).profile
         result = myAccount.list()
 
 

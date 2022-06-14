@@ -14,7 +14,7 @@ Get pricing for plans, services and add-ons.
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Billing
+        myAccount = Account({ "token": "my_account_token" }).billing
         result = myAccount.getPrices()
 
 ===============
@@ -28,7 +28,7 @@ Get the account subscription information.
 
         from tagoio_sdk import Account
 
-        myAccount = Account({ "token": "my_account_token" }).Billing
+        myAccount = Account({ "token": "my_account_token" }).billing
         result = myAccount.getSubscription()
 
 ================
