@@ -31,7 +31,7 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
         },
     )
 
-    if tokens is None or tokens[0] is None:
+    if tokens is None or len(tokens) == 0:
         return None
 
     if names is None:
