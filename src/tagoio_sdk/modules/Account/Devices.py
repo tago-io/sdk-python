@@ -274,9 +274,9 @@ class Devices(TagoIOModule):
 
         :example:
 
-            myDevice = Device({ "token": "my_device_token" })
+            myDevice = Account({ "token": "my_device_token" })
 
-            result = myDevice.getData({
+            result = myDevice.devices.getDeviceData({
                 "deviceId": "device id"
                 "query": "last_item",
                 "variable": "humidity",

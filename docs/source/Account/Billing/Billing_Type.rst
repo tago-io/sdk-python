@@ -30,7 +30,7 @@ BillingService
         "email" or
         "run_users" or
         "push_notification" or
-        "file_storage" or
+        "file_storage"
 
 
 .. _BillingServicePrice:

@@ -72,8 +72,8 @@ Get data from all variables in the device.
 
         from tagoio_sdk import Account
 
-        myDevice = Account({ "token": "my_account_token" }).devices
-        myDevice.getVariablesData("myDeviceId");
+        myDevice = Account({ "token": "my_account_token" })
+        myDevice.devices.getVariablesData("myDeviceId");
 
 =====
 info

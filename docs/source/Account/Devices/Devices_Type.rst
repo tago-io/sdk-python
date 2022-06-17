@@ -112,7 +112,7 @@ DeviceQuery
                 "updated_at" or
                 "created_at" or
                 "inspected_at" or
-                "last_retention" or
+                "last_retention"
             ]
         | Array of field names.
 
@@ -128,7 +128,7 @@ DeviceQuery
                 "created_at" or
                 "updated_at" or
                 "asc" or
-                "desc" or
+                "desc"
             ]
         | Tuple with a field and an order
 
@@ -464,7 +464,7 @@ ListDeviceTokenQuery
                 "permission" or
                 "serie_number" or
                 "last_authorization" or
-                "expire_time" or
+                "expire_time"
             ]
         | Array of field names.
 
@@ -479,8 +479,7 @@ ListDeviceTokenQuery
                 "last_authorization" or
                 "created_at" or
                 "asc" or
-                "desc" or
-            ]
-        ]
+                "desc"
+            ]]
         | Tuple with a field and an order
 

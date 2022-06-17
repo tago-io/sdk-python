@@ -39,11 +39,14 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
 
     names = names if isinstance(names, list) else [names]
 
-    for x in tokens:
-        if x["name"] == namesArray[0]:
-            token = x
+    if len(names) == 0:
+        raise ValueError("names is empty")
+
+    for token in tokens:
+        if token["name"] == names[0]:
+            token = token
 
     if token is None or "token" not in token:
-        raise ValueError(f"Can't find Token for {deviceID} in {namesArray}")
+        raise ValueError(f"Can't find Token for {deviceID} in {names}")
 
     return token["token"]

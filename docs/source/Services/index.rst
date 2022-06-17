@@ -37,9 +37,8 @@ Send Attachment
 
             from tagoio_sdk import Services
 
-            Attachment = Services({"token": "my_analysis_token"}).Attachment
-
-            Attachment.upload(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.Attachment.upload(
                 {
                     "name": "Test",
                     "content": "base64",
@@ -66,8 +65,8 @@ Log message in analysis console
 
             from tagoio_sdk import Services
 
-            console = Services({"token": "my_analysis_token"}).console
-            console.log(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.console.log(
                 {
                     "message": "Test",
                 }
@@ -89,8 +88,8 @@ Send Email
 
             from tagoio_sdk import Services
 
-            email = Services({"token": "my_analysis_token"}).email
-            email.send(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.email.send(
                 {
                     "to": "myclien@tago.io",
                     "subject": "Test Subject",
@@ -114,9 +113,8 @@ Publish to a MQTT Device
 
             from tagoio_sdk import Services
 
-            mqtt = Services({"token": "my_analysis_token"}).MQTT
-
-            mqtt.publish(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.MQTT.publish(
                 {
                     "bucket": "my_device_id",
                     "message": "Test",
@@ -145,9 +143,8 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
 
             from tagoio_sdk import Services
 
-            notification = Services({"token": "my_analysis_token"}).Notification
-
-            notification.send(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.Notification.send(
                 {
                     title: "Example",
                     message: "Message Test",
@@ -170,9 +167,8 @@ Generate a PDF from html, url or base64
 
             from tagoio_sdk import Services
 
-            pdf = Services({"token": "my_analysis_token"}).PDF
-
-            pdf.generate(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.PDF.generate(
                 {
                     base64: "base64"
                 }
@@ -194,9 +190,8 @@ Send SMS to phone number
 
             from tagoio_sdk import Services
 
-            sms = Services({"token": "my_analysis_token"}).sms
-
-            sms.send(
+            myServices = Services({"token": "my_analysis_token"})
+            myServices.sms.send(
                 {
                     "to": "434434434434",
                     "message": "Test",
