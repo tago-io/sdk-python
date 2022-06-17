@@ -37,10 +37,7 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
     if names is None:
         return tokens[0].token
 
-    if isinstance(names, list) is True:
-        namesArray = names
-    if isinstance(names, list) is False:
-        namesArray = [names]
+    names = names if isinstance(names, list) else [names]
 
     for x in tokens:
         if x["name"] == namesArray[0]:
