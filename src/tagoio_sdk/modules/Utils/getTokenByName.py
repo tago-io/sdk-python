@@ -43,7 +43,7 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
         if x["name"] == namesArray[0]:
             token = x
 
-    if token is None:
+    if token is None or "token" not in token:
         raise ValueError(f"Can't find Token for {deviceID} in {namesArray}")
 
     return token["token"]
