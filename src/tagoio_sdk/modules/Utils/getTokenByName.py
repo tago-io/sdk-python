@@ -40,7 +40,7 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
     names = names if isinstance(names, list) else [names]
 
     if len(names) == 0:
-        raise ValueError("names is empty")
+        return tokens[0].token
 
     for token in tokens:
         if token["name"] == names[0]:
