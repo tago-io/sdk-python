@@ -3,6 +3,8 @@
   <img src="https://assets.tago.io/tagoio/sdk.png" width="250px" alt="TagoIO"></img>
 </p>
 
+> NOTE: *This version (4.x.x) is still in development. You can access the current (3.x.x) version in [tago-io/tago-sdk-python](https://github.com/tago-io/tago-sdk-python).*
+
 # TagoIO - Python SDK
 
 Official Python SDK for TagoIO

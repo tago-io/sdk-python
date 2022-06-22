@@ -3,6 +3,7 @@ import os
 from typing import Callable
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.modules.Services import Services
 
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
 
@@ -47,7 +48,7 @@ class Analysis(TagoIOModule):
     def __runLocal(self, environment: any, data: any, analysis_id: any, token: any):
         def log(*args: any):
             print(*args)
-            # Services(token).console.log(str(args)[1:][:-2])
+            Services.Services({"token": token}).console.log(str(args)[1:][:-2])
 
         def context():
             pass
