@@ -1,27 +1,32 @@
-from typing import TypedDict, Union
+from typing import Optional, TypedDict, Union
 
 import requests
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 
 
+class PDFResult(TypedDict):
+    status: bool
+    result: str
+
+
 class margin(TypedDict):
-    top: Union[str, int, float]
+    top: Optional[Union[str, int, float]]
     """
     Top margin, accepts values labeled with units. Defaults to `0`.
     """
 
-    right: Union[str, int, float]
+    right: Optional[Union[str, int, float]]
     """
     Right margin, accepts values labeled with units. Defaults to `0`.
     """
 
-    bottom: Union[str, int, float]
+    bottom: Optional[Union[str, int, float]]
     """
     Bottom margin, accepts values labeled with units. Defaults to `0`.
     """
 
-    left: Union[str, int, float]
+    left: Optional[Union[str, int, float]]
     """
     Left margin, accepts values labeled with units. Defaults to `0`.
     """
@@ -32,19 +37,19 @@ class options(TypedDict):
     PDF Custom Options
     """
 
-    displayHeaderFooter: bool
+    displayHeaderFooter: Optional[bool]
     """
     Display header and footer. Defaults to `false`.
     """
-    footerTemplate: str
+    footerTemplate: Optional[str]
     """
     HTML template for the print footer. Should use the same format as the `headerTemplate`.
     """
-    format: str
+    format: Optional[str]
     """
     Paper format. If set, takes priority over `width` or `height` options. Defaults to 'Letter'.
     """
-    headerTemplate: str
+    headerTemplate: Optional[str]
     """
     HTML template for the print header. Should be valid HTML markup with following classes used
     to inject printing values
@@ -56,70 +61,70 @@ class options(TypedDict):
     - `'pageNumber'` current page number
     - `'totalPages'` total pages in the document
     """
-    height: Union[str, int, float]
+    height: Optional[Union[str, int, float]]
     """
     Paper height, accepts values labeled with units.
     """
-    landscape: bool
+    landscape: Optional[bool]
     """
     Paper orientation. Defaults to `false`.
     """
-    margin: margin
+    margin: Optional[margin]
     """
     Paper margins, defaults to none.
     """
-    pageRanges: str
+    pageRanges: Optional[str]
     """
     Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print
     all pages.
     """
-    preferCSSPageSize: bool
+    preferCSSPageSize: Optional[bool]
     """
     Give any CSS `@page` size declared in the page priority over what is
     declared in `width` and `height` or `format`options.
     Defaults to `false`, which will scale the content to fit the paper size.
     """
-    printBackground: bool
+    printBackground: Optional[bool]
     """
     Print background graphics. Defaults to `false`.
     """
-    scale: Union[int, float]
+    scale: Optional[Union[int, float]]
     """
     Scale of the webpage rendering. Defaults to `1`. Scale amount must be between 0.1 and 2.
     """
-    width: Union[str, int, float]
+    width: Optional[Union[str, int, float]]
     """
     Paper width, accepts values labeled with units.
     """
 
 
 class PDFParams(TypedDict):
-    html: str
+    html: Optional[str]
     """
     HTML as string
     """
-    base64: str
+    base64: Optional[str]
     """
     HTML on base64 format
     """
-    fileName: str
+    fileName: Optional[str]
     """
     File name of pdf
     Without filename, it will generate base64 response
     With filename it will generate pdf binary
     """
-    url: str
+    url: Optional[str]
     """
     Generate pdf from URL
     """
-    options: options
+    options: Optional[options]
     """
     PDF Custom Options
     """
 
 
 class PDFService(TagoIOModule):
-    def generate(self, params: PDFParams) -> str:
+    def generate(self, params: PDFParams) -> PDFResult:
         """
         Generate a PDF from html, url or base64
         """
