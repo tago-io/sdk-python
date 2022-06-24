@@ -8,9 +8,9 @@ options
 
     **Attributes:**
 
-        **retain**: bool
+        **retain**: Optional[bool]
 
-        **qos**: int or float
+        **qos**: Optional[int or float]
 
 
 .. _MQTTData:
@@ -26,4 +26,4 @@ MQTTData
 
         **bucket**: GenericID: str
 
-        **options**: :ref:`options`
+        **options**: Optional[:ref:`options`]

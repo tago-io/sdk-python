@@ -1,19 +1,19 @@
-from typing import TypedDict, Union
+from typing import Optional, TypedDict, Union
 
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 
 
 class options(TypedDict):
-    retain: bool
-    qos: Union[int, float]
+    retain: Optional[bool]
+    qos: Optional[Union[int, float]]
 
 
 class MQTTData(TypedDict):
     topic: str
     message: str
     bucket: GenericID
-    options: options
+    options: Optional[options]
 
 
 class MQTT(TagoIOModule):
