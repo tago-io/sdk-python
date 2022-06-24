@@ -1,4 +1,4 @@
-from typing import Any, Literal, TypedDict, Union
+from typing import Any, Literal, Optional, TypedDict, Union
 
 from tagoio_sdk.common.Common_Type import GenericID
 
@@ -22,7 +22,7 @@ class NotificationTriggerProfile(TypedDict):
 class NotificationButton(TypedDict):
     id: str
     label: str
-    color: str
+    color: Optional[str]
     triggers: Union[
         NotificationTriggerAnalysis,
         NotificationTriggerHTTP,
@@ -32,21 +32,21 @@ class NotificationButton(TypedDict):
 
 class NotificationIconImage(TypedDict):
     image_url: str
-    bg_color: HexColor
-    fit: Literal["fill", "contain", "cover"]
+    bg_color: Optional[HexColor]
+    fit: Optional[Literal["fill", "contain", "cover"]]
 
 
 class NotificationIconSVG(TypedDict):
     svg_url: str
-    svg_color: HexColor
-    bg_color: HexColor
+    svg_color: Optional[HexColor]
+    bg_color: Optional[HexColor]
 
 
 class NotificationCreate(TypedDict):
     title: str
     message: str
-    read: bool
-    icon: Union[NotificationIconSVG, NotificationIconImage]
-    buttons: list[NotificationButton]
-    buttons_enabled: bool
-    buttons_autodisable: bool
+    read: Optional[bool]
+    icon: Optional[Union[NotificationIconSVG, NotificationIconImage]]
+    buttons: Optional[list[NotificationButton]]
+    buttons_enabled: Optional[bool]
+    buttons_autodisable: Optional[bool]
