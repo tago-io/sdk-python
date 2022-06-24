@@ -94,7 +94,7 @@ Retrieves a list with all devices from the account
 
     **Parameters:**
 
-        | **queryObj**: :ref:`DeviceQuery`
+        | *Optional* **queryObj**: :ref:`DeviceQuery`
         | Search query params
 
 .. code-block::

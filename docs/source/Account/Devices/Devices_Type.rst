@@ -132,6 +132,8 @@ DeviceQuery
             ]
         | Tuple with a field and an order
 
+        | **resolveBucketName**: Optional[bool]
+
 
 .. _DeviceListItem:
 
@@ -154,7 +156,7 @@ ConfigurationParams
 
         **value**: str
 
-        **id**: str
+        **id**: Optional[str]
 
 
 .. _DeviceCreateResponse:
@@ -187,33 +189,33 @@ DeviceCreateInfoBasic
         | **network**:  :ref:`GenericID`
         | Network ID.
 
-        | **type**: :ref:`DataStorageType`
-        | Device's data storage (bucket) type.
+        | **type**: Optional[:ref:`DataStorageType`]
+        | [Optional] Device's data storage (bucket) type.
         | :default: "legacy"
 
-        | **description**: str or None
-        | Description of the device.
+        | **description**: Optional[str or None]
+        | [Optional] Description of the device.
 
-        | **active**: bool
-        | Set if the device will be active.
+        | **active**: Optional[bool]
+        | [Optional] Set if the device will be active.
 
-        | **visible**: bool
-        | Set if the device will be visible.
+        | **visible**: Optional[bool]
+        | [Optional] Set if the device will be visible.
 
-        | **configuration_params**: list[:ref:`ConfigurationParams`]
-        | An array of configuration params
+        | **configuration_params**: Optional[list[ConfigurationParams]]
+        | [Optional] An array of configuration params
 
-        | **tags**: list[:ref:`TagsObj`]
-        | An array of tags
+        | **tags**: Optional[list[TagsObj]]
+        | [Optional] An array of tags
 
-        | **serie_number**: str
-        | Device serial number.
+        | **serie_number**: Optional[str]
+        | [Optional] Device serial number.
 
-        | **connector_parse**: bool
-        | If device will use connector parser
+        | **connector_parse**: Optional[bool]
+        | [Optional] If device will use connector parser
 
-        | **parse_function**: str
-        | Javascript code for use as payload parser
+        | **parse_function**: Optional[str]
+        | [Optional] Javascript code for use as payload parser
 
 
 
@@ -481,5 +483,5 @@ ListDeviceTokenQuery
                 "asc" or
                 "desc"
             ]]
-        | Tuple with a field and an order
+        | [Optional] Tuple with a field and an order
 

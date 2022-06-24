@@ -1,4 +1,3 @@
-from typing import Optional
 from tagoio_sdk.common.Common_Type import (
     Data,
     GenericID,
@@ -22,7 +21,7 @@ from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Devices(TagoIOModule):
-    def listDevice(self, queryObj: DeviceQuery) -> list[DeviceListItem]:
+    def listDevice(self, queryObj: DeviceQuery = {}) -> list[DeviceListItem]:
         """
         Retrieves a list with all devices from the account
 
@@ -39,23 +38,24 @@ class Devices(TagoIOModule):
 
         :param DeviceQuery queryObj: Search query params
         """
-        if queryObj["orderBy"]:
+        if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             seccondArgument = queryObj["orderBy"][1]
             orderBy = f"{firstArgument},{seccondArgument}"
         else:
             orderBy = "name,asc"
+
         result = self.doRequest(
             {
                 "path": "/device",
                 "method": "GET",
                 "params": {
-                    "page": queryObj["page"] or 1,
-                    "fields": queryObj["fields"] or ["id", "name"],
-                    "filter": queryObj["filter"] or {},
-                    "amount": queryObj["amount"] or 20,
+                    "page": queryObj.get("page") or 1,
+                    "fields": queryObj.get("fields") or ["id", "name"],
+                    "filter": queryObj.get("filter") or {},
+                    "amount": queryObj.get("amount") or 20,
                     "orderBy": orderBy,
-                    "resolveBucketName": queryObj["resolveBucketName"] or False,
+                    "resolveBucketName": queryObj.get("resolveBucketName") or False,
                 },
             }
         )
@@ -146,7 +146,7 @@ class Devices(TagoIOModule):
         return result
 
     def paramList(
-        self, deviceID: GenericID, sentStatus: Optional[bool]
+        self, deviceID: GenericID, sentStatus: bool = None
     ) -> list[ConfigurationParams]:
         """
         List Params for the Device
@@ -181,7 +181,9 @@ class Devices(TagoIOModule):
         return result
 
     def tokenList(
-        self, deviceID: GenericID, queryObj: ListDeviceTokenQuery
+        self,
+        deviceID: GenericID,
+        queryObj: ListDeviceTokenQuery = {},
     ) -> list[DeviceTokenDataList]:
         """
         Retrieves a list of all tokens
@@ -200,6 +202,7 @@ class Devices(TagoIOModule):
 
         :param ListDeviceTokenQuery queryObj: Search query params
         """
+
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             seccondArgument = queryObj["orderBy"][1]
@@ -212,10 +215,10 @@ class Devices(TagoIOModule):
                 "path": f"/device/token/{deviceID}",
                 "method": "GET",
                 "params": {
-                    "page": queryObj["page"] or 1,
-                    "fields": queryObj["fields"] or ["name", "token", "permission"],
-                    "filter": queryObj["filter"] or {},
-                    "amount": queryObj["amount"] or 20,
+                    "page": queryObj.get("page") or 1,
+                    "fields": queryObj.get("fields") or ["name", "token", "permission"],
+                    "filter": queryObj.get("filter") or {},
+                    "amount": queryObj.get("amount") or 20,
                     "orderBy": orderBy,
                 },
             }
@@ -261,7 +264,7 @@ class Devices(TagoIOModule):
         return result
 
     def getDeviceData(
-        self, deviceId: GenericID, queryParams: Optional[DataQuery]
+        self, deviceId: GenericID, queryParams: DataQuery = {}
     ) -> list[Data]:
         """
         Get data from all variables in the device.
@@ -276,11 +279,9 @@ class Devices(TagoIOModule):
 
             myDevice = Account({ "token": "my_device_token" })
 
-            result = myDevice.devices.getDeviceData({
-                "deviceId": "device id"
-                "query": "last_item",
-                "variable": "humidity",
-            })
+            result = myAccount.devices.getDeviceData(
+                "Device Id", {"variables": "location"}
+            )
         """
         result = self.doRequest(
             {
