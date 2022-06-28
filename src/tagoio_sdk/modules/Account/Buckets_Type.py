@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal, TypedDict, Union
+from typing import Literal, Optional, TypedDict, Union
 
 from tagoio_sdk.common.Common_Type import TagsObj
 
@@ -7,8 +7,8 @@ DataStorageType = Literal["immutable", "mutable", "legacy"]
 
 
 class ExportBucketOption(TypedDict):
-    start_date: datetime
-    end_date: datetime
+    start_date: Optional[datetime]
+    end_date: Optional[datetime]
 
 
 class BucketCreateInfo(TypedDict):
@@ -16,15 +16,15 @@ class BucketCreateInfo(TypedDict):
     """
     A name for the bucket.
     """
-    description: Union[str, None]
+    description: Optional[Union[str, None]]
     """
     Set if the bucket will be visible or not. Default True.
     """
-    visible: bool
+    visible: Optional[bool]
     """
     Set if the bucket will be visible or not. Default True.
     """
-    tags: list[TagsObj]
+    tags: Optional[list[TagsObj]]
     """
     An array of tags.
     """
