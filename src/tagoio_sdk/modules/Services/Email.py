@@ -1,5 +1,5 @@
 import warnings
-from typing import Any, TypedDict, Union
+from typing import Any, Optional, TypedDict, Union
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 
@@ -22,7 +22,7 @@ class TemplateOptions(TypedDict):
 
     You can create an e-mail template on TagoRUN options at https://admin.tago.io/run
     """
-    params: dict[str, Union[int, float]]
+    params: Optional[dict[str, Union[int, float]]]
     """
     Parameters to parse on Template
 
@@ -41,7 +41,7 @@ class EmailBase(TypedDict):
 
     :example: "myclien@tago.io"
     """
-    from_name: str
+    from_name: Optional[str]
     """
     Name of origin
 
@@ -53,7 +53,7 @@ class EmailBase(TypedDict):
 
     only allow with message or html
     """
-    attachment: AttachmentOptions
+    attachment: Optional[AttachmentOptions]
     """
     Attachment for the e-mail
     """
@@ -80,17 +80,17 @@ class EmailWithTemplate(TypedDict):
 
     :example: "myclien@tago.io"
     """
-    from_name: str
+    from_name: Optional[str]
     """
     Name of origin
 
     :example: "My Run"
     """
-    attachment: AttachmentOptions
+    attachment: Optional[AttachmentOptions]
     """
     Attachment for the e-mail
     """
-    template: TemplateOptions
+    template: Optional[TemplateOptions]
     """
     Use TagoRUN E-Mail Template
 

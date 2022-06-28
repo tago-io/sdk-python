@@ -26,8 +26,8 @@ TemplateOptions
         | Template name
         | You can create an e-mail template on TagoRUN options at https://admin.tago.io/run
 
-        | **params**: dict[str, Union[int, float]]
-        | Parameters to parse on Template
+        | **params**: Optional[dict[str, Union[int, float]]]
+        | [Optional] Parameters to parse on Template
         | You can use that parameter as local variable using $PARAMETER_KEY$  example params = { name: 'John' } will be $name$ on template document
 
 .. _EmailBase:
@@ -41,15 +41,15 @@ EmailBase
         | E-mail address to be sent
         | example: "myclien@tago.io"
 
-        | **from_name**: str
-        | Name of origin
+        | **from_name**: Optional[str]
+        | [Optional] Name of origin
         | example: "My Run"
 
         | **subject**: str
         | Subject of the e-mail only allow with message or html
 
-        | **attachment**: :ref:`AttachmentOptions`
-        | Attachment for the e-mail
+        | **attachment**: Optional[:ref:`AttachmentOptions`]
+        | [Optional] Attachment for the e-mail
 
 
 
@@ -87,15 +87,15 @@ EmailWithTemplate
         | E-mail address to be sent
         | example: "myclien@tago.io"
 
-        | **from_name**: str
-        | Name of origin
+        | **from_name**: Optional[str]
+        | [Optional] Name of origin
         | example: "My Run"
 
-        | **attachment**: :ref:`AttachmentOptions`
-        | Attachment for the e-mail
+        | **attachment**: Optional[:ref:`AttachmentOptions`]
+        | [Optional] Attachment for the e-mail
 
-        | **template**: :ref:`TemplateOptions`
-        | Use TagoRUN E-Mail Template
+        | **template**: Optional[:ref:`TemplateOptions`]
+        | [Optional] Use TagoRUN E-Mail Template
         | If you use template together with attachment the back-end will generate a parameter called 'URL'
 
 
