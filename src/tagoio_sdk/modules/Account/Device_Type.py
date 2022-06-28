@@ -144,6 +144,7 @@ class DeviceQuery(TypedDict):
     """
     Tuple with a field and an order
     """
+    resolveBucketName: Optional[bool]
 
 
 DeviceListItem = DeviceInfoList
@@ -153,7 +154,7 @@ class ConfigurationParams(TypedDict):
     sent: bool
     key: str
     value: str
-    id: str
+    id: Optional[str]
 
 
 class DeviceCreateResponse(TypedDict):
@@ -175,41 +176,41 @@ class DeviceCreateInfoBasic(TypedDict):
     """
     Network ID.
     """
-    type: DataStorageType
+    type: Optional[DataStorageType]
     """
     Device's data storage (bucket) type.
 
     :default: "legacy"
     """
-    description: str or None
+    description: Optional[str or None]
     """
     Description of the device.
     """
-    active: bool
+    active: Optional[bool]
     """
     Set if the device will be active.
     """
-    visible: bool
+    visible: Optional[bool]
     """
     Set if the device will be visible.
     """
-    configuration_params: list[ConfigurationParams]
+    configuration_params: Optional[list[ConfigurationParams]]
     """
     An array of configuration params
     """
-    tags: list[TagsObj]
+    tags: Optional[list[TagsObj]]
     """
     An array of tags
     """
-    serie_number: str
+    serie_number: Optional[str]
     """
     Device serial number.
     """
-    connector_parse: bool
+    connector_parse: Optional[bool]
     """
     If device will use connector parser
     """
-    parse_function: str
+    parse_function: Optional[str]
     """
     Javascript code for use as payload parser
     """
