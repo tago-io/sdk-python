@@ -46,7 +46,7 @@ NotificationButton
 
         **label**: str
 
-        **color**: str
+        **color**: Optional[str]
 
         **triggers**: :ref:`NotificationTriggerAnalysis` or :ref:`NotificationTriggerHTTP`or list[:ref:`NotificationTriggerProfile`],
 
@@ -61,9 +61,9 @@ NotificationIconImage
 
         **image_url**: str
 
-        **bg_color**: HexColor: str
+        **bg_color**: Optional[HexColor: str]
 
-        **fit**: "fill" or "contain" or "cover"
+        **fit**: Optional["fill" or "contain" or "cover"]
 
 
 .. _NotificationIconSVG:
@@ -75,9 +75,9 @@ NotificationIconSVG
 
         **svg_url**: str
 
-        **svg_color**: HexColor: str
+        **svg_color**: Optional[HexColor: str]
 
-        **bg_color**: HexColor: str
+        **bg_color**: Optional[HexColor: str]
 
 
 .. _NotificationCreate:
@@ -91,12 +91,12 @@ NotificationCreate
 
         **message**: str
 
-        **read**: bool
+        **read**: Optional[bool]
 
-        **icon**: :ref:`NotificationIconSVG` or :ref:`NotificationIconImage`
+        **icon**: Optional[:ref:`NotificationIconSVG` or :ref:`NotificationIconImage`]
 
-        **buttons**: list[:ref:`NotificationButton`]
+        **buttons**: Optional[list[:ref:`NotificationButton`]]
 
-        **buttons_enabled**: bool
+        **buttons_enabled**: Optional[bool]
 
-        **buttons_autodisable**: bool
+        **buttons_autodisable**: Optional[bool]
