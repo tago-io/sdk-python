@@ -145,6 +145,35 @@ class Devices(TagoIOModule):
         )
         return result
 
+    def paramSet(
+        self,
+        deviceID: GenericID,
+        configObj: ConfigurationParams,
+        paramID: GenericID = "",
+    ) -> list[ConfigurationParams]:
+        """
+        Create or edit param for the Device
+
+        :param deviceID Device ID
+
+        :param configObj Configuration Data
+
+        :param paramID Parameter ID
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/params",
+                "method": "POST",
+                "body": {
+                    "id": paramID,
+                    "key": configObj["key"],
+                    "sent": configObj["sent"],
+                    "value": configObj["value"],
+                },
+            }
+        )
+        return result
+
     def paramList(
         self, deviceID: GenericID, sentStatus: bool = None
     ) -> list[ConfigurationParams]:
