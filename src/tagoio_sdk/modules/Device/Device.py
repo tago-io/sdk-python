@@ -28,7 +28,7 @@ class Device(TagoIOModule):
         :rtype: DeviceInfo
         """
         result = self.doRequest({"path": "/info", "method": "get"})
-        return DeviceInfo(**result["result"])
+        return result
 
     def sendData(self, data: Union[Data, list[Data]]) -> str:
         """
