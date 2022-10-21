@@ -22,7 +22,7 @@ Arrangement
         **tab**: Optional[str]
 
 
-.. _DashboardCreateInfo
+.. _DashboardCreateInfo:
 
 DashboardCreateInfo
 --------------------
@@ -37,7 +37,7 @@ DashboardCreateInfo
 
         **visible**: bool
 
-.. _icon
+.. _icon:
 
 icon
 -----
@@ -48,9 +48,10 @@ icon
 
         color: Optional[str]
 
-.._conditions
+.. _conditions:
 
 conditions
+-----------
 
     **Attributes:**
 
@@ -58,10 +59,10 @@ conditions
 
         value: str
 
-.._filter_conditions
+.. _filter_conditions:
 
 filter_conditions
-
+------------------
     **Attributes:**
 
         blueprint_device: str
@@ -71,9 +72,10 @@ filter_conditions
         type: str
 
 
-.._shared
+.. _shared:
 
 shared
+--------
 
     **Attributes:**
 
@@ -91,9 +93,10 @@ shared
 
         allow_share: bool
 
-.._blueprint_devices
+.. _blueprint_devices:
 
 blueprint_devices
+-------------------
 
     **Attributes:**
 
@@ -111,9 +114,10 @@ blueprint_devices
 
         setup: any
 
-.._DashboardInfo
+.. _DashboardInfo:
 
 DashboardInfo
+---------------
 
     **Attributes:**
 
@@ -147,9 +151,10 @@ DashboardInfo
 
         shared: shared
 
-.._WidgetData
+.. _WidgetData:
 
 WidgetData
+------------
 
     **Attributes:**
 
@@ -171,15 +176,16 @@ WidgetData
 
         overwrite: Optional[bool]
 
-.._WidgetResource
+.. _WidgetResource:
 
 WidgetResource
+-----------------
 
     **Attributes:**
 
         filter: list[TagsObj]
 
-.._DeviceResourceView
+.. _DeviceResourceView:
 
 DeviceResourceView
 -------------------
@@ -187,9 +193,10 @@ DeviceResourceView
     DeviceResourceView = f"tags.{str}" or f"param.{str}" or "name" or "id" or "bucket_name" or "network_name" or "connector_name" or "connector" or "network" or "bucket" or "last_input" or "created_at" or "active"
 
 
-.._WidgetDeviceResource
+.. _WidgetDeviceResource:
 
 WidgetDeviceResource
+-----------------------
 
     **Attributes:**
 
@@ -199,9 +206,10 @@ WidgetDeviceResource
 
         editable: "name" or f"tags.{str}" or f"param.{str}"
 
-.._EditDeviceResource
+.. _EditDeviceResource:
 
 EditDeviceResource
+--------------------
 
     **Attributes:**
 
@@ -213,17 +221,19 @@ EditDeviceResource
 
         edit: dict[str, Union[str, bool]]
 
-.._EditResourceOptions
+.. _EditResourceOptions:
 
 EditResourceOptions
+---------------------
 
     **Attributes:**
 
         identifier: Optional[str]
 
-.._WidgetInfo
+.. _WidgetInfo:
 
 WidgetInfo
+-------------
 
     **Attributes:**
 
@@ -245,17 +255,19 @@ WidgetInfo
 
         type: str
 
-.._DevicesRelated
+.. _DevicesRelated:
 
 DevicesRelated
+---------------
 
     **Attributes:**
 
         bucket: GenericID
 
-.._AnalysisRelated
+.. _AnalysisRelated:
 
 AnalysisRelated
+---------------
 
     **Attributes:**
 
@@ -263,9 +275,10 @@ AnalysisRelated
 
         name: str
 
-.._PostDataModel
+.. _PostDataModel:
 
 PostDataModel
+--------------
 
     **Attributes:**
 
@@ -273,9 +286,10 @@ PostDataModel
 
         variable: str
 
-.._blueprint_devices
+.. _blueprint_devices:
 
 blueprint_devices
+-------------------
 
     **Attributes:**
 
@@ -285,9 +299,10 @@ blueprint_devices
 
         bucket: Optional[GenericID]
 
-.._widgetOverwrite
+.. _widgetOverwrite:
 
 widgetOverwrite
+----------------
 
     **Attributes:**
 
@@ -297,9 +312,10 @@ widgetOverwrite
 
         timezone: Optional[any]
 
-.._GetDataModel
+.. _GetDataModel:
 
 GetDataModel
+-------------
 
     **Attributes:**
 
@@ -311,9 +327,10 @@ GetDataModel
 
         amount: Optional[Union[int, float]]
 
-.._PublicKeyResponse
+.. _PublicKeyResponse:
 
 PublicKeyResponse
+-------------------
 
     **Attributes:**
 
@@ -321,14 +338,14 @@ PublicKeyResponse
 
         expire_time: ExpireTimeOption
 
-.._EditDataModel
+.. _EditDataModel:
 
 EditDataModel
 --------------
 
     EditDataModel = PostDataModel and {id: GenericID}
 
-.._DashboardQuery
+.. _DashboardQuery:
 
 DashboardQuery
 ---------------
@@ -336,7 +353,7 @@ DashboardQuery
     DashboardQuery = DashboardInfo and "name" or "label" or "active" or "created_at" or "updated_at"
 
 
-.._PublicKeyResponse
+.. _PublicKeyResponse:
 
 PublicKeyResponse
 ------------------
@@ -344,7 +361,7 @@ PublicKeyResponse
     PublicKeyResponse = PublicKeyResponse
 
 
-.._widgetOverwriteOptions
+.. _widgetOverwriteOptions:
 
 widgetOverwriteOptions
 -----------------------
