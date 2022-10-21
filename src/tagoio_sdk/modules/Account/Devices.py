@@ -1,3 +1,4 @@
+from typing import Optional
 from tagoio_sdk.common.Common_Type import (
     Data,
     GenericID,
@@ -149,7 +150,7 @@ class Devices(TagoIOModule):
         self,
         deviceID: GenericID,
         configObj: ConfigurationParams,
-        paramID: GenericID = "",
+        paramID: Optional[GenericID] = None,
     ) -> list[ConfigurationParams]:
         """
         Create or edit param for the Device

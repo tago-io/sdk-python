@@ -86,6 +86,7 @@ Get Info of the Device
         | **deviceID**: GenericID: str
         | Device ID
 
+
 ==========
 listDevice
 ==========
@@ -108,6 +109,23 @@ Retrieves a list with all devices from the account
             "orderBy": "name,asc",
             "resolveBucketName": false
         }
+
+=========
+paramSet
+=========
+
+Create or edit param for the Device
+
+    **Parameters:**
+
+        | **deviceID**: GenericID: str
+        | Device ID
+
+        | **configObj**: :ref:`ConfigurationParams`
+        | Configuration Data
+
+        | **paramID**: Optional[GenericID: str]
+        | Parameter ID
 
 
 ==========
