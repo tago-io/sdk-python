@@ -29,3 +29,4 @@ Instance
     Buckets/index
     Devices/index
     Profile/index
+    Run/index

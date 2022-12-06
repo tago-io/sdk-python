@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Any, Literal, Optional, TypedDict, Union
 
 from tagoio_sdk.common.Common_Type import GenericID
@@ -50,3 +51,15 @@ class NotificationCreate(TypedDict):
     buttons: Optional[list[NotificationButton]]
     buttons_enabled: Optional[bool]
     buttons_autodisable: Optional[bool]
+
+
+class NotificationInfoBasic(TypedDict):
+    id: GenericID
+    created_at: datetime
+
+
+class NotificationcreateReturn(TypedDict):
+    id: GenericID
+
+
+NotificationInfo = NotificationInfoBasic and NotificationCreate
