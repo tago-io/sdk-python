@@ -22,6 +22,12 @@ from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
 
 class Run(TagoIOModule):
+    """
+    Manage services in account
+    Be sure to use an account token with “write” permissions when using
+    functions like create, edit and delete.
+    """
+
     def info(self) -> RunInfo:
         result = self.doRequest
         (
@@ -207,6 +213,7 @@ class Run(TagoIOModule):
         """
         Get the SAML Single Sign-On information for the account's RUN.
         """
+
         result = self.doRequest
         (
             {
@@ -220,9 +227,9 @@ class Run(TagoIOModule):
     def ssoSAMLEdit(self, data: RunSAMLEditInfo) -> str:
         """
         Edit the SAML Single Sign-On metadata and mappings for the account's RUN.
-
-        :param data Updated data for a RUN's SAML Single Sign-On configuration.
+        :param: data Updated data for a RUN's SAML Single Sign-On configuration.
         """
+
         result = self.doRequest
         (
             {
@@ -239,10 +246,9 @@ class Run(TagoIOModule):
     ) -> str:
         """
         Create a TagoRUN custom domain for the profile.
-
         :param: profile_id ID of the profile
         :param: customDomainData query params
-        :returns Success message.
+        :returns: Success message.
         """
 
         result = self.doRequest
@@ -259,10 +265,8 @@ class Run(TagoIOModule):
     def getCustomDomain(self, profile_id: str) -> CustomDomainInfo:
         """
         set details of TagoRun custom domain for the profile.
-
         :param: profile_id ID of the profile
-
-        :returns Data for the profile's custom DNS configuration.
+        :returns: Data for the profile's custom DNS configuration.
         """
 
         result = self.doRequest
@@ -280,11 +284,10 @@ class Run(TagoIOModule):
     def deleteCustomDomain(self, profile_id: str) -> str:
         """
         delete a TagoRUN custom domain for the profile.
-
         :param: profile_id ID of the profile
-
-        :returns Success message.
+        :returns: Success message.
         """
+
         result = self.doRequest
         (
             {
@@ -297,11 +300,10 @@ class Run(TagoIOModule):
     def regenerateCustomDomain(self, profile_id: str) -> str:
         """
         Regenerate a TagoRUN custom domain for the profile.
-
         :param: profile_id ID of the profile
-
-        :returns Success message.
+        :returns: Success message.
         """
+
         result = self.doRequest
         (
             {

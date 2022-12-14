@@ -9,10 +9,15 @@ from tagoio_sdk.modules.Utils.dateParser import dateParser
 
 
 class Profile(TagoIOModule):
+    """
+    Manage profiles in account be sure to use an
+    account token with “write” permissions when
+    using functions like create, edit and delete.
+    """
     def info(self, profileID: GenericID) -> list[ProfileInfo]:
         """
         Get Profile info
-        @param profileID Profile identification
+        :param: profileID Profile identification
         """
         result = self.doRequest(
             {
@@ -40,6 +45,7 @@ class Profile(TagoIOModule):
     def summary(self, profileID: GenericID) -> ProfileSummary:
         """
         Gets profile summary
+        :param: profileID Profile identification
         """
         result = self.doRequest(
             {
