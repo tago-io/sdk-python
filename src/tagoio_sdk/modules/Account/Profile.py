@@ -14,6 +14,7 @@ class Profile(TagoIOModule):
     account token with “write” permissions when
     using functions like create, edit and delete.
     """
+
     def info(self, profileID: GenericID) -> list[ProfileInfo]:
         """
         Get Profile info
