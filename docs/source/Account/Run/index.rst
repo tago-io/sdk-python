@@ -1,11 +1,9 @@
-.. _Run:
 
 **Run**
 ========
 
 Manage services in account, be sure to use an account token with “write” permissions when using functions like create, edit and delete.
 
-.. _ssoSAMLInfo:
 
 ============
 ssoSAMLInfo
@@ -13,7 +11,6 @@ ssoSAMLInfo
 
 Get the SAML Single Sign-On information for the account's RUN.
 
-.. _ssoSAMLEdit:
 
 ============
 ssoSAMLEdit
@@ -26,7 +23,6 @@ Edit the SAML Single Sign-On metadata and mappings for the account's RUN.
         | **data**: :ref:`RunSAMLEditInfo`
         | Updated data for a RUN's SAML Single Sign-On configuration.
 
-.. _createCustomDomain: 
 
 ===================
 createCustomDomain
@@ -42,7 +38,6 @@ Create a TagoRUN custom domain for the profile.
         | **customDomainData**: :ref:`CustomDomainCreate`
         | query params
 
-.. _getCustomDomain:
 
 ================
 getCustomDomain
@@ -55,7 +50,6 @@ Set details of TagoRun custom domain for the profile.
             | **profile_id**: str
             | ID of the profile
 
-.. _deleteCustomDomain:
 
 ===================
 deleteCustomDomain
@@ -68,7 +62,6 @@ Delete a TagoRUN custom domain for the profile.
             | **profile_id**: str
             | ID of the profile
 
-.. _regenerateCustomDomain:
 
 =======================
 regenerateCustomDomain
