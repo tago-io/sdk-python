@@ -141,13 +141,11 @@ class Device(TagoIOModule):
 
         :rtype: str
         """
+        if queryParams is None:
+            queryParams = {"query": "last_item"}
 
         result = self.doRequest(
-            {
-                "path": "/data",
-                "method": "DELETE",
-                "params": {"query": "last_item"} if not queryParams else queryParams,
-            }
+            {"path": "/data", "method": "DELETE", "params": queryParams}
         )
         return result
 
@@ -165,13 +163,13 @@ class Device(TagoIOModule):
 
         :rtype: list[ConfigurationParams]
         """
+        params = {}
+
+        if onlyUnRead is True:
+            params["sent_status"] = "true"
 
         result = self.doRequest(
-            {
-                "path": "/device/params",
-                "method": "GET",
-                "params": {"sent_status": "true"} if onlyUnRead else {},
-            }
+            {"path": "/device/params", "method": "GET", "params": params}
         )
         return result
 
