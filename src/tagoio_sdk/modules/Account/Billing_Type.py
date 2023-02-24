@@ -94,7 +94,6 @@ BillingSubscriptionAddOns = dict[BillingAddOn, list[GenericID]]
 
 
 class BillingPaymentError(TypedDict):
-
     message: Union[str, None]
     """
     Payment error message.
