@@ -1,38 +1,34 @@
 import pytest
 
-from faker.generator import Generator
 from src.tagoio_sdk.common.Common_Type import Data
 from src.tagoio_sdk.modules.Device.Device_Type import DeviceInfo
 from src.tagoio_sdk.modules.Account.Device_Type import ConfigurationParams
 
 
 @pytest.fixture
-def mockDeviceInfo(faker: Generator) -> DeviceInfo:
+def mockDeviceInfo() -> DeviceInfo:
     """
     Mock to return the object DeviceInfo.
-
-    :param faker are a plugin of pytest to generate fake data.
-    https://faker.readthedocs.io/en/master/index.html
     """
 
     return {
         "status": True,
         "result": {
             "active": True,
-            "bucket": {"id": faker.pystr(), "name": "Device #1"},
+            "bucket": {"id": "63f50a69fd802b000ac1aa76", "name": "Device #1"},
             "connector": "5f5a8f3351d4db99c40dece5",
-            "created_at": faker.date_time().isoformat(),
+            "created_at": "2023-02-21T18:16:09.817Z",
             "description": (
                 "Connect any device using HTTPS protocol directly to send/get data "
             ),
-            "id": faker.pystr(),
-            "last_input": faker.date_time().isoformat(),
+            "id": "63f50a69fd802b000ac1aa76",
+            "last_input": "2023-02-24T11:18:54.116Z",
             "name": "Device #1",
-            "network": faker.pystr(),
+            "network": "5bbd0d144051a50034cd19fb",
             "payload_decoder": None,
-            "profile": faker.pystr(),
+            "profile": "63f4e08fb26aff0009ab99c0",
             "tags": [],
-            "updated_at": faker.date_time().isoformat(),
+            "updated_at": "2023-02-21T18:16:09.817Z",
             "visible": True,
             "type": "mutable",
             "data_retention": "forever",
@@ -41,46 +37,37 @@ def mockDeviceInfo(faker: Generator) -> DeviceInfo:
 
 
 @pytest.fixture
-def mockBodyCreateDevice(faker: Generator) -> Data:
+def mockBodyCreateDevice() -> Data:
     """
     Mock to return the object Data.
-
-    :param faker are a plugin of pytest to generate fake data.
-    https://faker.readthedocs.io/en/master/index.html
     """
 
     return {
         "variable": "temperature",
         "unit": "F",
-        "value": faker.random_int(min=30, max=80),
-        "time": faker.date_time().now().isoformat(),
+        "value": "80",
+        "time": "2021-01-01T00:00:00.000Z",
         "location": {"lat": 42.2974279, "lng": -85.628292},
     }
 
 
 @pytest.fixture
-def mockConfigurationParams(faker: Generator) -> ConfigurationParams:
+def mockConfigurationParams() -> ConfigurationParams:
     """
     Mock to return the object ConfigurationParams.
-
-    :param faker are a plugin of pytest to generate fake data.
-    https://faker.readthedocs.io/en/master/index.html
     """
     return {
-        "id": faker.pystr(),
+        "id": "fake_id",
         "key": "phone",
-        "value": faker.phone_number(),
+        "value": "fake_value",
         "sent": True,
     }
 
 
 @pytest.fixture
-def mockReturnGetData(faker: Generator) -> list[Data]:
+def mockReturnGetData() -> list[Data]:
     """
     Mock to return ten objects of the ConfigurationParams.
-
-    :param faker are a plugin of pytest to generate fake data.
-    https://faker.readthedocs.io/en/master/index.html
     """
 
     datas = []
@@ -91,8 +78,8 @@ def mockReturnGetData(faker: Generator) -> list[Data]:
                 "id": _,
                 "variable": "temperature",
                 "unit": "F",
-                "value": faker.random_int(min=30, max=80),
-                "time": faker.date_time().now().isoformat(),
+                "value": "80",
+                "time": "2021-01-01T00:00:00.000Z",
                 "location": {"lat": 42.2974279, "lng": -85.628292},
             }
         )

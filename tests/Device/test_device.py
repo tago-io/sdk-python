@@ -1,4 +1,3 @@
-from faker.generator import Generator
 from requests_mock.mocker import Mocker
 from tests.conftest import (
     mockBodyCreateDevice,
@@ -9,11 +8,8 @@ from tests.conftest import (
 from src.tagoio_sdk.modules.Device.Device import Device
 
 
-def testDeviceMethodInfo(
-    faker: Generator, requests_mock: Mocker, mockDeviceInfo: mockDeviceInfo
-):
+def testDeviceMethodInfo(requests_mock: Mocker, mockDeviceInfo: mockDeviceInfo):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     :param mockDeviceInfo is a fixture to return the object DeviceInfo.
     """
@@ -22,7 +18,7 @@ def testDeviceMethodInfo(
         "https://api.tago.io/info", json={"status": True, "result": mockDeviceInfo}
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).info()
 
     assert response == mockDeviceInfo
@@ -30,10 +26,9 @@ def testDeviceMethodInfo(
 
 
 def testDeviceMethodSendData(
-    faker: Generator, requests_mock: Mocker, mockBodyCreateDevice: mockBodyCreateDevice
+    requests_mock: Mocker, mockBodyCreateDevice: mockBodyCreateDevice
 ):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     :param mockBodyCreateDevice is a fixture to return the object Data.
     """
@@ -42,7 +37,7 @@ def testDeviceMethodSendData(
         "https://api.tago.io/data", json={"status": True, "result": "1 Data Added"}
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).sendData(data=mockBodyCreateDevice)
 
     assert response == "1 Data Added"
@@ -50,10 +45,9 @@ def testDeviceMethodSendData(
 
 
 def testDeviceMethodGetData(
-    faker: Generator, requests_mock: Mocker, mockReturnGetData: mockReturnGetData
+    requests_mock: Mocker, mockReturnGetData: mockReturnGetData
 ):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     :param mockReturnGetData is a fixture to return the object Data.
     """
@@ -62,7 +56,7 @@ def testDeviceMethodGetData(
         "https://api.tago.io/data", json={"status": True, "result": mockReturnGetData}
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).getData()
 
     assert len(response) == 10
@@ -70,9 +64,8 @@ def testDeviceMethodGetData(
     assert isinstance(response[0], dict)
 
 
-def testDeviceMethodEditData(faker: Generator, requests_mock: Mocker):
+def testDeviceMethodEditData(requests_mock: Mocker):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     """
 
@@ -80,18 +73,15 @@ def testDeviceMethodEditData(faker: Generator, requests_mock: Mocker):
         "https://api.tago.io/data", json={"status": True, "result": "1 item(s) updated"}
     )
 
-    tokenFake = {"token": faker.pystr()}
-    response = Device(params=tokenFake).editData(
-        data=[{"id": faker.pystr(), "value": 66}]
-    )
+    tokenFake = {"token": "fake_token"}
+    response = Device(params=tokenFake).editData(data=[{"id": "fake_id", "value": 66}])
 
     assert response == "1 item(s) updated"
     assert isinstance(response, str)
 
 
-def testDeviceMethodDeleteData(faker: Generator, requests_mock: Mocker):
+def testDeviceMethodDeleteData(requests_mock: Mocker):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     """
 
@@ -99,7 +89,7 @@ def testDeviceMethodDeleteData(faker: Generator, requests_mock: Mocker):
         "https://api.tago.io/data", json={"status": True, "result": "1 Data Removed"}
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).deleteData(queryParams=None)
 
     assert response == "1 Data Removed"
@@ -107,12 +97,10 @@ def testDeviceMethodDeleteData(faker: Generator, requests_mock: Mocker):
 
 
 def testDeviceMethodGetParameters(
-    faker: Generator,
     requests_mock: Mocker,
     mockConfigurationParams: mockConfigurationParams,
 ):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     :param mockConfigurationParams is a fixture to return the object ConfigurationParams.
     """
@@ -122,7 +110,7 @@ def testDeviceMethodGetParameters(
         json={"status": True, "result": [mockConfigurationParams]},
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).getParameters()
 
     assert response[0] == mockConfigurationParams
@@ -130,9 +118,8 @@ def testDeviceMethodGetParameters(
     assert isinstance(response[0], dict)
 
 
-def testDeviceMethodSetParameterAsRead(faker: Generator, requests_mock: Mocker):
+def testDeviceMethodSetParameterAsRead(requests_mock: Mocker):
     """
-    :param faker are a plugin of pytest to generate fake data.
     :param requests_mock are a plugin of pytest to mock the requests.
     """
 
@@ -141,7 +128,7 @@ def testDeviceMethodSetParameterAsRead(faker: Generator, requests_mock: Mocker):
         json={"status": True, "result": "Params Successfully Updated"},
     )
 
-    tokenFake = {"token": faker.pystr()}
+    tokenFake = {"token": "fake_token"}
     response = Device(params=tokenFake).setParameterAsRead(
         parameterID="63f66cf4b26aff0009cd2a2e"
     )
