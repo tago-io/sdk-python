@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Union
+from typing import Optional, Union
 
 from tagoio_sdk.common.Common_Type import Data, GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
@@ -123,7 +123,7 @@ class Device(TagoIOModule):
         )
         return result
 
-    def deleteData(self, queryParams: DataQuery) -> str:
+    def deleteData(self, queryParams: Optional[DataQuery] = None) -> str:
         """
         Delete data from device
 
@@ -133,7 +133,7 @@ class Device(TagoIOModule):
 
             myDevice = Device({ "token": "my_device_token" });
 
-            result = await myDevice.deleteData({
+            result = myDevice.deleteData({
                 "query": "last_item",
                 "variable": "humidity",
                 "value": 10
@@ -141,22 +141,17 @@ class Device(TagoIOModule):
 
         :rtype: str
         """
-        if queryParams is None:
-            queryParams = {"query": "last_item"}
-
-        if queryParams.query == "default":
-            del queryParams.query
 
         result = self.doRequest(
             {
                 "path": "/data",
                 "method": "DELETE",
-                "params": queryParams,
+                "params": {"query": "last_item"} if not queryParams else queryParams,
             }
         )
         return result
 
-    def getParameters(self, onlyUnRead: bool) -> list[ConfigurationParams]:
+    def getParameters(self, onlyUnRead: bool = False) -> list[ConfigurationParams]:
         """
         Get parameters from device
 
@@ -170,16 +165,12 @@ class Device(TagoIOModule):
 
         :rtype: list[ConfigurationParams]
         """
-        params = {}
-
-        if onlyUnRead is True:
-            params.sentStatus = True
 
         result = self.doRequest(
             {
                 "path": "/device/params",
                 "method": "GET",
-                "params": params,
+                "params": {"sent_status": "true"} if onlyUnRead else {},
             }
         )
         return result
@@ -194,7 +185,7 @@ class Device(TagoIOModule):
 
             myDevice = Device({ "token": "my_device_token" })
 
-            result = myDevice.setParameterAsRead({"parameterID": "parameter_id"})
+            result = myDevice.setParameterAsRead(parameterID="parameter_id")
 
         :rtype: str
         """

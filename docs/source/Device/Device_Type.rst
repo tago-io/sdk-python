@@ -56,7 +56,7 @@ DataQueryDefault
 ----------------
     **Attributes:**
 
-        **query**: "default"
+        **query**: Enum[:ref:`_DataQueryFirstLast`]
 
         **qty**: int
 
@@ -72,7 +72,7 @@ DataQueryFirstLast
 ------------------
     **Attributes:**
 
-        **query**: "last_item" or "last_value" or "last_location" or "last_insert" or "first_item" or "first_value" or "first_location" or "first_insert"
+        **query**: "last_item", "last_value", "last_location", "last_insert", "first_item", "first_value", "first_location", "first_insert"
 
 
 .. _DataQuery:
