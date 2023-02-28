@@ -46,7 +46,7 @@ getCustomDomain
 Set details of TagoRun custom domain for the profile.
 
         **Parameters**
-        
+
             | **profile_id**: str
             | ID of the profile
 

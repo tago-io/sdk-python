@@ -317,10 +317,10 @@ LoginAsUserOptions
     **example:**
         | "3 months", "1 year", "20 hours"
         | :default: "8 hours"
-    
 
 
-.. _SAMLAttributeMappings: 
+
+.. _SAMLAttributeMappings:
 
 SAMLAttributeMappings
 ---------------------
@@ -415,7 +415,7 @@ CustomDomainDnsRecord
 
         | When `status` is `true`, the value here will be the same as the one in `value`.
         | When `status` is `false`, the value here can is either stale or there was an error
-        | opying the provided `value` in the DNS provider's record.
+        | copying the provided `value` in the DNS provider's record.
 
 
 .. _CustomDomainResponse:
