@@ -1,7 +1,7 @@
 name: Units Tests
 
 env:
-    pythonVersion: "3.9"
+    pythonVersion: "3.11"
 
 on: push
 
@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Use Python ${{ env.pythonVersion }}
               uses: actions/setup-python@v3
