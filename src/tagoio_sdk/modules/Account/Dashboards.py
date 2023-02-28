@@ -67,7 +67,7 @@ class Dashboards(TagoIOModule):
             {
                 "path": "/dashboard",
                 "method": "POST",
-                "body": {dashboardObj},
+                "body": dashboardObj,
             }
         )
 
@@ -132,7 +132,7 @@ class Dashboards(TagoIOModule):
         new_label: Optional[str]
 
     def duplicate(
-        self, dashboardID: GenericID, dashboardObj: dashboardObj = {}
+        self, dashboardID: GenericID, dashboardObj: Optional[dashboardObj] = None
     ) -> duplicate:
         """
         Duplicate the dashboard to your own account
@@ -144,7 +144,7 @@ class Dashboards(TagoIOModule):
             {
                 "path": f"/dashboard/${dashboardID}/duplicate",
                 "method": "POST",
-                "body": dashboardObj or {},
+                "body": dashboardObj,
             }
         )
 
@@ -222,9 +222,7 @@ class Dashboards(TagoIOModule):
             {
                 "path": f"/analysis/{analysisID}/run/{dashboardID}/{widgetID}",
                 "method": "POST",
-                "body": {
-                    scope,
-                },
+                "body": scope,
             }
         )
 
