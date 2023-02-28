@@ -1,3 +1,4 @@
+from typing import Optional
 from tagoio_sdk.common.Common_Type import (
     Data,
     GenericID,
@@ -142,6 +143,35 @@ class Devices(TagoIOModule):
                 "inspected_at",
                 "last_retention",
             ],
+        )
+        return result
+
+    def paramSet(
+        self,
+        deviceID: GenericID,
+        configObj: ConfigurationParams,
+        paramID: Optional[GenericID] = None,
+    ) -> list[ConfigurationParams]:
+        """
+        Create or edit param for the Device
+
+        :param deviceID Device ID
+
+        :param configObj Configuration Data
+
+        :param paramID Parameter ID
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/params",
+                "method": "POST",
+                "body": {
+                    "id": paramID,
+                    "key": configObj["key"],
+                    "sent": configObj["sent"],
+                    "value": configObj["value"],
+                },
+            }
         )
         return result
 
