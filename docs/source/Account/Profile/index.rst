@@ -1,7 +1,7 @@
 **Profile**
 ============
 
-Manage profiles in account Be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage profiles in account be sure to use an account token with “write” permissions when using functions like create, edit and delete.
 
 ====
 info

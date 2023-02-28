@@ -30,3 +30,4 @@ Instance
     Dashboards/index
     Devices/index
     Profile/index
+    Run/index
