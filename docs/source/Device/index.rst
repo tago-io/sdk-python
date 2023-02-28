@@ -121,6 +121,7 @@ Delete data from device.
 
         | **queryParams**: :ref:`DataQuery`
         | Object with query params
+        | If not pass any query param, it will delete the last item
 
 .. code-block::
     :caption: **Example:**
@@ -128,7 +129,7 @@ Delete data from device.
         from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" });
-        result = await myDevice.deleteData({
+        result = myDevice.deleteData({
             "query": "last_item",
             "variable": "humidity",
             "value": 10
@@ -170,7 +171,7 @@ Mark parameter as read.
         from tagoio_sdk import Device
 
         myDevice = Device({ "token": "my_device_token" })
-        result = myDevice.setParameterAsRead({"parameterID": "parameter_id"})
+        result = myDevice.setParameterAsRead(parameterID="parameter_id")
 
 
 
