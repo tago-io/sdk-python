@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal, Optional, TypedDict, Union
 
-from tagoio_sdk.common.Common_Type import TagsObj
+from tagoio_sdk.common.Common_Type import GenericID, TagsObj
 
 DataStorageType = Literal["immutable", "mutable", "legacy"]
 
@@ -9,6 +9,11 @@ DataStorageType = Literal["immutable", "mutable", "legacy"]
 class ExportBucketOption(TypedDict):
     start_date: Optional[datetime]
     end_date: Optional[datetime]
+
+
+class BucketDeviceInfo(TypedDict):
+    id: GenericID
+    name: str
 
 
 class BucketCreateInfo(TypedDict):
