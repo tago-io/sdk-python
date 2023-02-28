@@ -91,7 +91,7 @@ jobs:
                   mv docs/build/html/* .
                   rm -rf docs/
                   touch .nojekyll
-              #   echo "py.sdk.tago.io" > CNAME
+                  echo "py.sdk.tago.io" > CNAME
 
             - name: Commit files
               run: |
