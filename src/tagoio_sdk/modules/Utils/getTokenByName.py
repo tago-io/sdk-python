@@ -1,7 +1,10 @@
+from typing import Optional
 from tagoio_sdk.modules.Account.Account import Account
 
 
-def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> str:
+def getTokenByName(
+    account: Account, deviceID: str, names: Optional[list[str] or str] = None
+) -> str:
     """
     :param Account account: Account instance
 
@@ -35,12 +38,12 @@ def getTokenByName(account: Account, deviceID: str, names: list[str] or str) -> 
         return None
 
     if names is None:
-        return tokens[0].token
+        return tokens[0]["token"]
 
     names = names if isinstance(names, list) else [names]
 
     if len(names) == 0:
-        return tokens[0].token
+        return tokens[0]["token"]
 
     for token in tokens:
         if token["name"] == names[0]:
