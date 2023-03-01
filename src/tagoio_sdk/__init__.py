@@ -1,8 +1,4 @@
-import toml
-
-with open("pyproject.toml") as f:
-    pyproject = toml.load(f)
-    __version__ = pyproject["tool"]["poetry"]["version"]
+__version__ = "4.0.10"
 
 from .modules.Account.Account import Account
 from .modules.Analysis.Analysis import Analysis
