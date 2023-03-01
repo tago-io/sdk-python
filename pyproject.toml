@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tagoio-sdk"
-version = "4.0.6"
+version = "4.0.7"
 description = "Official Python SDK for TagoIO"
 authors = ["Tago LLC <contact@tago.io>"]
 license = "Apache License"
@@ -19,14 +19,15 @@ packages = [
     { include = "tagoio_sdk", from = "src" }
 ]
 include = [
-    { path = "tests", format = "sdist" }
+    { path = "poetry.lock", format = "sdist" }
+    # { path = "tests", format = "sdist" }
 ]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-requests = "^2.27.1"
+requests = "^2.28.2"
 python-dateutil = "^2.8.2"
-python-socketio = {extras = ["asyncio_client"], version = "^5.6.0"}
+python-socketio = {extras = ["asyncio_client"], version = "^5.7.2"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
@@ -56,5 +57,5 @@ force-exclude = '''
 '''
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
