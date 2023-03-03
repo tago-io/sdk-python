@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal, TypedDict, Union
+from typing import Literal, TypedDict, Union, Optional
 
 GenericID = str
 """ID used on TagoIO, string with 24 character"""
@@ -56,3 +56,20 @@ class Data(TypedDict):
     metadata: any
     time: datetime
     created_at: datetime
+
+
+class TokenData(TypedDict):
+    name: str
+    expire_time: Optional[ExpireTimeOption]
+    permission: PermissionOption
+    serie_number: Optional[str]
+    verification_code: Optional[str]
+    middleware: Optional[str]
+
+
+class Query(TypedDict):
+    page: Optional[int]
+    amount: Optional[int]
+    fields: Optional[str]
+    filter: Optional[any]
+    orderBy: Optional[list[Literal["asc", "desc"]]]
