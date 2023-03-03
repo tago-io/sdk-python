@@ -142,7 +142,7 @@ class Dashboards(TagoIOModule):
         """
         result = self.doRequest(
             {
-                "path": f"/dashboard/${dashboardID}/duplicate",
+                "path": f"/dashboard/{dashboardID}/duplicate",
                 "method": "POST",
                 "body": dashboardObj,
             }
