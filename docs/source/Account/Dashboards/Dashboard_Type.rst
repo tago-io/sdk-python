@@ -345,13 +345,6 @@ EditDataModel
 
     EditDataModel = PostDataModel and {id: GenericID}
 
-.. _DashboardQuery:
-
-DashboardQuery
----------------
-
-    DashboardQuery = DashboardInfo and "name" or "label" or "active" or "created_at" or "updated_at"
-
 
 .. _PublicKeyResponse:
 

@@ -1,5 +1,5 @@
 from typing import Optional, TypedDict
-from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericID, Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Account.Notification_Type import (
     NotificationCreate,
@@ -16,7 +16,6 @@ from tagoio_sdk.modules.Account.Run_Type import (
     RunSAMLInfo,
     UserCreateInfo,
     UserInfo,
-    UserQuery,
 )
 from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
@@ -51,11 +50,11 @@ class Run(TagoIOModule):
 
         return result
 
-    def listUsers(self, query: UserQuery) -> list[UserInfo]:
+    def listUsers(self, query: Query) -> list[UserInfo]:
         if "orderBy" in query:
             firstArgument = query["orderBy"][0]
-            seccondArgument = query["orderBy"][1]
-            orderBy = f"{firstArgument},{seccondArgument}"
+            secondArgument = query["orderBy"][1]
+            orderBy = f"{firstArgument},{secondArgument}"
         else:
             orderBy = "name,asc"
 

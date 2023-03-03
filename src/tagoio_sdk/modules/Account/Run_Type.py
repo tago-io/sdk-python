@@ -504,8 +504,3 @@ class CustomDomainCreate(TypedDict):
     If the desired custom domain is `portal.mycompany.com`, this can be either
     `"portal.mycompany.com"` or `"mycompany.com"`.
     """
-
-
-UserQuery = (
-    UserInfo and "name" or "active" or "last_login" or "created_at" or "updated_at"
-)

@@ -1,6 +1,6 @@
 from datetime import datetime
-from typing import Optional, TypedDict, Literal, Union
-from tagoio_sdk.common.Common_Type import TokenData, GenericID, Query
+from typing import Optional, TypedDict, Literal
+from tagoio_sdk.common.Common_Type import TokenData, GenericID
 
 
 class serial_number(TypedDict):
@@ -58,24 +58,3 @@ class NetworkTokenInfo(TokenData):
     updated_at: datetime
     Network: GenericID
     type: Literal["type", "Network"]
-
-
-NetworkQuery = Union[
-    Query,
-    Literal[
-        "name",
-        "description",
-        "logo_url",
-        "icon_url",
-        "banner_url",
-        "device_parameters",
-        "middleware_endpoint",
-        "payload_encoder",
-        "payload_decoder",
-        "serial_number",
-        "documentation_url",
-        "public",
-        "created_at",
-        "updated_at",
-    ],
-]

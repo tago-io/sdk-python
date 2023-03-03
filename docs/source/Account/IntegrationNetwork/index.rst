@@ -10,7 +10,7 @@ Get list of networks
 
     **Parameters:**
 
-        | **queryObj**: :ref:`NetworkQuery`
+        | **queryObj**: :ref:`Query`
         | Network Query
 
 

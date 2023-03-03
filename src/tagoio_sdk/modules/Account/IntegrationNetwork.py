@@ -1,10 +1,10 @@
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.common.Common_Type import GenericID
-from tagoio_sdk.modules.Account.IntegrationNetworkType import NetworkInfo, NetworkQuery
+from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.modules.Account.IntegrationNetworkType import NetworkInfo
 
 
 class Networks(TagoIOModule):
-    def listNetwork(self, queryObj: NetworkQuery = {}) -> list[NetworkInfo]:
+    def listNetwork(self, queryObj: Query = {}) -> list[NetworkInfo]:
         """
         Retrieves a list with all networks from the account
 

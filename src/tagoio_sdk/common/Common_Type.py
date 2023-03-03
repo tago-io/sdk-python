@@ -68,8 +68,33 @@ class TokenData(TypedDict):
 
 
 class Query(TypedDict):
+    """Query object for pagination
+
+    Args:
+        page (Optional[int]): 1
+
+        amount (Optional[int]): ["id", "name"]
+
+        fields (Optional[list[str]]): {"name": "test"}
+
+        filter (Optional[any]): 20
+
+        orderBy (Optional[list[Literal["asc", "desc"]]]): ["name": "asc"]
+
+    Example:
+    ```python
+        {
+            "page": 1,
+            "fields": ["id", "name"],
+            "filter": {"name": "test"},
+            "amount": 20,
+            "orderBy": ["name": "asc"]
+        }
+    ```
+    """
+
     page: Optional[int]
     amount: Optional[int]
-    fields: Optional[str]
+    fields: Optional[list[str]]
     filter: Optional[any]
     orderBy: Optional[list[Literal["asc", "desc"]]]

@@ -85,27 +85,40 @@ NetworkTokenInfo
         | **type**: "type" or "Network"
 
 
-.. _NetworkQuery:
+.. _TokenData:
 
-NetworkQuery
----------------
+TokenData
+-----------------
+    **Attributes:**
 
-    NetworkQuery = Union[
-        Query and
-        Literal[
-            "name" or
-            "description" or
-            "logo_url" or
-            "icon_url" or
-            "banner_url" or
-            "device_parameters" or
-            "middleware_endpoint" or
-            "payload_encoder" or
-            "payload_decoder" or
-            "serial_number" or
-            "documentation_url" or
-            "public" or
-            "created_at" or
-            "updated_at"
-        ]
-    ]
+        | **name**: str
+        | **expire_time**: Optional[ExpireTimeOption]
+        | **permission**: PermissionOption
+        | **serie_number**: Optional[str]
+        | **verification_code**: Optional[str]
+        | **middleware**: Optional[str]
+
+
+.. _Query:
+
+Query
+-----------------
+    **Attributes:**
+
+        | **page**: Optional[int]
+        | **amount**: Optional[int]
+        | **fields**: Optional[list[str]]
+        | **filter**: Optional[any]
+        | **orderBy**: Optional[list["asc" or "desc"]]
+
+    .. code-block::
+        :caption: **Example:**
+
+            orderBy = {
+                "page": 1,
+                "fields": ["id", "name"],
+                "filter": {"name": "test"},
+                "amount": 20,
+                "orderBy": ["name": "asc"]
+            }
+
