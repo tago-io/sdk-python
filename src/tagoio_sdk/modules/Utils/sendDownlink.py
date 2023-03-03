@@ -23,12 +23,19 @@ def getDeviceToken(account: Account, device_id: str) -> DeviceTokenDataList:
     )
 
     if not device_tokens:
-        raise TypeError(
-            "Can't perform the downlink. Wait for at least 1 uplink from the NS to use"
-            " this operation."
-        )
+        raise TypeError("Device doesn't have any token.")
 
-    return device_tokens[0]
+    for token in device_tokens:
+        if (
+            token["serie_number"] is not None
+            and token["last_authorization"] is not None
+        ):
+            return token
+
+    raise TypeError(
+        "Can't perform the downlink. Wait for at least 1 uplink from the NS to use"
+        " this operation."
+    )
 
 
 def getNetworkId(account: Account, device_id: str) -> str:

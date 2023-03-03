@@ -22,8 +22,13 @@ def mockDeviceToken() -> list[DeviceTokenDataList]:
             {
                 "name": "Default",
                 "serie_number": "0000000000000000",
+                "last_authorization": "2023-03-02T17:51:31.361Z",
+            },
+            {
+                "name": "Test",
+                "serie_number": None,
                 "last_authorization": None,
-            }
+            },
         ],
     }
 
@@ -65,7 +70,8 @@ def testMethodGetDeviceTokenSuccessfully(requests_mock: Mocker):
     my_account = Account({"token": "fake_token"})
     response = getDeviceToken(account=my_account, device_id=deviceID)
 
-    assert response == mockDeviceToken()["result"][0]
+    assert response["name"] == mockDeviceToken()["result"][0]["name"]
+    assert response["serie_number"] == mockDeviceToken()["result"][0]["serie_number"]
     assert isinstance(response, dict)
 
 
