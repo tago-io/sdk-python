@@ -18,7 +18,7 @@ from tagoio_sdk.modules.Account.Device_Type import (
     TokenData,
 )
 from tagoio_sdk.modules.Device.Device_Type import DataQuery, DeviceInfo
-from tagoio_sdk.modules.Utils.dateParser import dateParserList
+from tagoio_sdk.modules.Utils.dateParser import dateParserList, dateParser
 
 
 class Devices(TagoIOModule):
@@ -133,7 +133,7 @@ class Devices(TagoIOModule):
             }
         )
 
-        result = dateParserList(
+        result = dateParser(
             result,
             [
                 "last_input",
@@ -235,8 +235,8 @@ class Devices(TagoIOModule):
 
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
-            seccondArgument = queryObj["orderBy"][1]
-            orderBy = f"{firstArgument},{seccondArgument}"
+            secondArgument = queryObj["orderBy"][1]
+            orderBy = f"{firstArgument},{secondArgument}"
         else:
             orderBy = "created_at,desc"
 
