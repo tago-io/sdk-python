@@ -29,5 +29,6 @@ Instance
     Buckets/index
     Dashboards/index
     Devices/index
+    IntegrationNetwork/index
     Profile/index
     Run/index
