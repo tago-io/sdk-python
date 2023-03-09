@@ -72,17 +72,16 @@ NetworkInfo
         | **serial_number**: Optional[serial_number]
 
 
-.. _NetworkTokenInfo:
+.. _DeviceNetworkToken:
 
-NetworkTokenInfo
+DeviceNetworkToken
 -----------------
     **Attributes:**
 
-        | **id**: GenericID
+        | **token**: uuid
+        | **network**: GenericID
+        | **name**: str
         | **created_at**: datetime
-        | **updated_at**: datetime
-        | **Network**: GenericID
-        | **type**: "type" or "Network"
 
 
 .. _TokenData:

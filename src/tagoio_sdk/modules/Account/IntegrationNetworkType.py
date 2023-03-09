@@ -1,6 +1,7 @@
+import uuid
 from datetime import datetime
 from typing import Optional, TypedDict, Literal
-from tagoio_sdk.common.Common_Type import TokenData, GenericID
+from tagoio_sdk.common.Common_Type import GenericID
 
 
 class serial_number(TypedDict):
@@ -53,8 +54,8 @@ class NetworkInfo(NetworkCreateInfo):
     serial_number: Optional[serial_number]
 
 
-class NetworkTokenInfo(TokenData):
-    created_at: datetime
-    updated_at: datetime
-    Network: GenericID
-    type: Literal["type", "Network"]
+class DeviceNetworkToken(TypedDict):
+    token: uuid.UUID
+    network: GenericID
+    name: str
+    crated_at: datetime
