@@ -55,3 +55,25 @@ Gets profile summary
 
         myAccount = Account({ "token": "my_account_token" })
         result = myAccount.profile.summary("Profile ID")
+
+
+========
+tokenList
+========
+
+Gets profile tokenList
+
+    **Parameters:**
+
+        | **profileID**: GenericID: str
+        | Profile identification
+        | **queryObj**: Optional[:ref:`Query`]
+        | Token Query
+
+.. code-block::
+    :caption: **Example:**
+
+        from tagoio_sdk import Account
+
+        myAccount = Account({ "token": "my_account_token" })
+        result = myAccount.profile.tokenList("Profile ID")
