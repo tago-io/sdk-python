@@ -103,10 +103,10 @@ def mockReturnGetData() -> list[Data]:
     Mock to return ten objects of the ConfigurationParams.
     """
 
-    datas = []
+    data = []
 
     for _ in range(10):
-        datas.append(
+        data.append(
             {
                 "id": _,
                 "variable": "temperature",
@@ -117,4 +117,4 @@ def mockReturnGetData() -> list[Data]:
             }
         )
 
-    return datas
+    return data
