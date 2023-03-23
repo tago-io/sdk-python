@@ -130,7 +130,7 @@ class PDFService(TagoIOModule):
         """
         result = requests.post(
             "https://pdf.middleware.tago.io",
-            data=params,
-            headers={"token": self.params.token},
+            json=params,
+            headers={"token": self.token},
         )
         return result
