@@ -1,1 +1,1 @@
-AnalysisEnvironment = dict(str, str)
+AnalysisEnvironment = dict[str, str]

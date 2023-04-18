@@ -5,7 +5,7 @@ from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisEnvironment
 
 
 def reduceFunction(pv: Any, cv: Any) -> Any:
-    pv[cv.key] = cv.value
+    pv[cv["key"]] = cv["value"]
     return pv
 
 
