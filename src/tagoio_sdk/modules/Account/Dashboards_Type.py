@@ -184,10 +184,6 @@ class PublicKeyResponse(TypedDict):
 
 EditDataModel = PostDataModel and {id: GenericID}
 
-DashboardQuery = (
-    DashboardInfo and Literal["name", "label", "active", "created_at", "updated_at"]
-)
-
 PublicKeyResponse = PublicKeyResponse
 
 widgetOverwriteOptions = Literal["start_date", "end_date", "timezone"]

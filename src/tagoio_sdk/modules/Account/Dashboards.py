@@ -1,11 +1,10 @@
 from typing import Optional, TypedDict
-from tagoio_sdk.common.Common_Type import ExpireTimeOption, GenericID
+from tagoio_sdk.common.Common_Type import ExpireTimeOption, GenericID, Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Account.Dashboards_Type import (
     AnalysisRelated,
     DashboardCreateInfo,
     DashboardInfo,
-    DashboardQuery,
     DevicesRelated,
     PublicKeyResponse,
 )
@@ -13,7 +12,7 @@ from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
 
 class Dashboards(TagoIOModule):
-    def listDashboard(self, queryObj: DashboardQuery = {}) -> list[DashboardInfo]:
+    def listDashboard(self, queryObj: Query = {}) -> list[DashboardInfo]:
         """
         Retrieves a list with all dashboards from the account
 
@@ -32,8 +31,8 @@ class Dashboards(TagoIOModule):
 
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
-            seccondArgument = queryObj["orderBy"][1]
-            orderBy = f"{firstArgument},{seccondArgument}"
+            secondArgument = queryObj["orderBy"][1]
+            orderBy = f"{firstArgument},{secondArgument}"
         else:
             orderBy = "label,asc"
 
@@ -142,7 +141,7 @@ class Dashboards(TagoIOModule):
         """
         result = self.doRequest(
             {
-                "path": f"/dashboard/${dashboardID}/duplicate",
+                "path": f"/dashboard/{dashboardID}/duplicate",
                 "method": "POST",
                 "body": dashboardObj,
             }

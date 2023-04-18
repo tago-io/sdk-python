@@ -3,6 +3,39 @@ import pytest
 from src.tagoio_sdk.common.Common_Type import Data
 from src.tagoio_sdk.modules.Device.Device_Type import DeviceInfo
 from src.tagoio_sdk.modules.Account.Device_Type import ConfigurationParams
+from src.tagoio_sdk.modules.Account.IntegrationNetworkType import NetworkInfo
+
+
+@pytest.fixture
+def mockNetworkInfo() -> NetworkInfo:
+    """
+    Mock to return the object NetworkInfo.
+    """
+
+    return {
+        "status": True,
+        "result": {
+            "id": "5ede22a7427104001c248b08",
+            "name": "LoRaWAN Activity",
+            "profile": "5bbcb03b667d7a002e56664b",
+            "middleware_endpoint": "https://lorawan.tago.io",
+        },
+    }
+
+
+@pytest.fixture
+def mockListNetwork() -> list[NetworkInfo]:
+    """
+    Mock to return the list of NetworkInfo.
+    """
+
+    return {
+        "status": True,
+        "result": [
+            {"id": "60af66df0ae39d0012b0bbe9", "name": "AWS IoT"},
+            {"id": "5d48632019b67f001c874a6b", "name": "BeWhere"},
+        ],
+    }
 
 
 @pytest.fixture

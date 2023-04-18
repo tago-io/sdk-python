@@ -542,13 +542,3 @@ Type for the data required to configure a profile's RUN Custom Domain.
             | **email**: str
             | Mailing address for the RUN with custom domain.
             | If the desired custom domain is `portal.mycompany.com`, this can be either `"portal.mycompany.com"` or `"mycompany.com"`.
-
-
-.. _UserQuery:
-
-UserQuery
----------
-
-UserQuery = (
-    UserInfo and "name" or "active" or "last_login" or "created_at" or "updated_at"
-    )
