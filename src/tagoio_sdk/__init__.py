@@ -1,4 +1,4 @@
-__version__ = "4.0.10"
+__version__ = "4.1.1"
 
 from .modules.Account.Account import Account
 from .modules.Analysis.Analysis import Analysis
