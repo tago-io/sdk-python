@@ -96,28 +96,3 @@ TokenData
         | **serie_number**: Optional[str]
         | **verification_code**: Optional[str]
         | **middleware**: Optional[str]
-
-
-.. _Query:
-
-Query
------------------
-    **Attributes:**
-
-        | **page**: Optional[int]
-        | **amount**: Optional[int]
-        | **fields**: Optional[list[str]]
-        | **filter**: Optional[any]
-        | **orderBy**: Optional[list["asc" or "desc"]]
-
-    .. code-block::
-        :caption: **Example:**
-
-            orderBy = {
-                "page": 1,
-                "fields": ["id", "name"],
-                "filter": {"name": "test"},
-                "amount": 20,
-                "orderBy": ["name": "asc"]
-            }
-

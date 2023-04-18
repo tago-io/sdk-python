@@ -58,6 +58,20 @@ class Data(TypedDict):
     created_at: datetime
 
 
+class TokenDataList(TypedDict):
+    token: GenericToken
+    name: str
+    type: str
+    permission: PermissionOption
+    serie_number: Optional[str]
+    last_authorization: Optional[datetime]
+    verification_code: Optional[str]
+    expire_time: ExpireTimeOption
+    ref_id: str
+    created_at: datetime
+    created_by: Optional[str]
+
+
 class TokenData(TypedDict):
     name: str
     expire_time: Optional[ExpireTimeOption]

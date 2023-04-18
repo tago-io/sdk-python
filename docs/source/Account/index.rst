@@ -25,6 +25,7 @@ Instance
 
 .. toctree::
 
+    Account/index
     Billing/index
     Buckets/index
     Dashboards/index
