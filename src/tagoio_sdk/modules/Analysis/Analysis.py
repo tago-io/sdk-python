@@ -102,8 +102,8 @@ class Analysis(TagoIOModule):
         except RuntimeError:
             pass
 
-    def use(self, analysis: Callable, params: Optional[str] = {"token": "unknown"}):
+    @staticmethod
+    def use(analysis: Callable, params: Optional[str] = {"token": "unknown"}):
         if not os.environ.get("T_ANALYSIS_TOKEN"):
-            os.environ["T_ANALYSIS_TOKEN"] = self.token
-            params = {"token": self.token}
+            os.environ["T_ANALYSIS_TOKEN"] = params.get("token")
         Analysis(params).init(analysis)
