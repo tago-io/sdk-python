@@ -1,3 +1,4 @@
+import os
 from tagoio_sdk.common.tagoio_module import GenericModuleParams, TagoIOModule
 from tagoio_sdk.modules.Services.Attachment import Attachment
 from tagoio_sdk.modules.Services.Console import ConsoleService
@@ -10,6 +11,7 @@ from tagoio_sdk.modules.Services.SMS import SMS
 
 class Services(TagoIOModule):
     def __init__(self, params: GenericModuleParams):
+        super().__init__({"token": os.environ.get("T_ANALYSIS_TOKEN"), **params})
         self.sms = SMS(params)
         self.console = ConsoleService(params)
         self.email = Email(params)
