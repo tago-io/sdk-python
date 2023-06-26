@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Callable
+from typing import Callable, Optional
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Services import Services
@@ -102,6 +102,8 @@ class Analysis(TagoIOModule):
         except RuntimeError:
             pass
 
-    @staticmethod
-    def use(analysis: Callable, token: str = "unknown"):
-        Analysis(token).init(analysis)
+    def use(self, analysis: Callable, params: Optional[str] = {"token": "unknown"}):
+        if not os.environ.get("T_ANALYSIS_TOKEN"):
+            os.environ["T_ANALYSIS_TOKEN"] = self.token
+            params = {"token": self.token}
+        Analysis(params).init(analysis)
