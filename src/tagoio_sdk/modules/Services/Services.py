@@ -1,5 +1,6 @@
 import os
 from typing import Optional
+
 from tagoio_sdk.common.tagoio_module import GenericModuleParams, TagoIOModule
 from tagoio_sdk.modules.Services.Attachment import Attachment
 from tagoio_sdk.modules.Services.Console import ConsoleService

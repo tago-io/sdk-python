@@ -106,4 +106,6 @@ class Analysis(TagoIOModule):
     def use(analysis: Callable, params: Optional[str] = {"token": "unknown"}):
         if not os.environ.get("T_ANALYSIS_TOKEN"):
             os.environ["T_ANALYSIS_TOKEN"] = params.get("token")
-        Analysis(params).init(analysis)
+            Analysis(params).init(analysis)
+        else:
+            Analysis({"token": os.environ["T_ANALYSIS_TOKEN"]}).init(analysis)
