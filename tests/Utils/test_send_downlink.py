@@ -69,7 +69,7 @@ def testMethodGetDeviceTokenSuccessfully(requests_mock: Mocker):
     )
 
     my_account = Account({"token": "fake_token"})
-    response = getDeviceToken(resource=my_account, device_id=deviceID)
+    response = getDeviceToken(account=my_account, device_id=deviceID)
 
     assert response["name"] == mockDeviceToken()["result"][0]["name"]
     assert response["serie_number"] == mockDeviceToken()["result"][0]["serie_number"]
@@ -91,7 +91,7 @@ def testMethodGetDeviceTokenFail(requests_mock: Mocker):
 
     my_account = Account({"token": "fake_token"})
     with pytest.raises(TypeError):
-        getDeviceToken(resource=my_account, device_id=deviceID)
+        getDeviceToken(account=my_account, device_id=deviceID)
 
 
 def testMethodGetNetworkIdSuccessfully(requests_mock: Mocker):
@@ -105,7 +105,7 @@ def testMethodGetNetworkIdSuccessfully(requests_mock: Mocker):
     )
 
     my_account = Account({"token": "fake_token"})
-    response = getNetworkId(resource=my_account, device_id=deviceID)
+    response = getNetworkId(account=my_account, device_id=deviceID)
 
     assert response == "fake_network_id"
     assert isinstance(response, str)
@@ -123,7 +123,7 @@ def testMethodGetNetworkIdFail(requests_mock: Mocker):
 
     my_account = Account({"token": "fake_token"})
     with pytest.raises(ValueError):
-        getNetworkId(resource=my_account, device_id=deviceID)
+        getNetworkId(account=my_account, device_id=deviceID)
 
 
 def testMethodGetMiddlewareEndpointSuccessfully(requests_mock: Mocker):
@@ -137,7 +137,7 @@ def testMethodGetMiddlewareEndpointSuccessfully(requests_mock: Mocker):
     )
 
     my_account = Account({"token": "fake_token"})
-    response = getMiddlewareEndpoint(resource=my_account, network_id=networkID)
+    response = getMiddlewareEndpoint(account=my_account, network_id=networkID)
 
     assert response == "fake_endpoint"
     assert isinstance(response, str)
@@ -155,7 +155,7 @@ def testMethodGetMiddlewareEndpointFail(requests_mock: Mocker):
 
     my_account = Account({"token": "fake_token"})
     with pytest.raises(TypeError):
-        getMiddlewareEndpoint(resource=my_account, network_id=networkID)
+        getMiddlewareEndpoint(account=my_account, network_id=networkID)
 
 
 def testMethodGetDownlinkParamsSuccessfully(requests_mock: Mocker):
@@ -169,7 +169,7 @@ def testMethodGetDownlinkParamsSuccessfully(requests_mock: Mocker):
     )
 
     my_account = Account({"token": "fake_token"})
-    response = getDownlinkParams(resource=my_account, device_id=deviceID)
+    response = getDownlinkParams(account=my_account, device_id=deviceID)
 
     assert response[0] == mockConfigurationParams()["result"][1]
     assert isinstance(response, list)
@@ -187,7 +187,7 @@ def testMethodGetDownlinkParamsEmptyList(requests_mock: Mocker):
     )
 
     my_account = Account({"token": "fake_token"})
-    response = getDownlinkParams(resource=my_account, device_id=deviceID)
+    response = getDownlinkParams(account=my_account, device_id=deviceID)
 
     assert response == []
 
@@ -226,7 +226,7 @@ def testMethodSendDownlinkSuccessfully(requests_mock: Mocker):
 
     my_account = Account({"token": "fake_token"})
     response = sendDownlink(
-        resource=my_account,
+        account=my_account,
         device_id=deviceID,
         dn_options={"payload": "test", "port": 123},
     )
@@ -270,7 +270,7 @@ def testMethodSendDownlinkFail(requests_mock: Mocker):
     my_account = Account({"token": "fake_token"})
     with pytest.raises(TypeError):
         sendDownlink(
-            resource=my_account,
+            account=my_account,
             device_id=deviceID,
             dn_options={"payload": "test", "port": 123},
         )
@@ -281,7 +281,7 @@ def testMethodSendDownlinkFailWrongInstanceOfAccount():
     deviceID = "fake_device_id"
     with pytest.raises(TypeError):
         sendDownlink(
-            resource=my_account,
+            account=my_account,
             device_id=deviceID,
             dn_options={"payload": "test", "port": 123},
         )
