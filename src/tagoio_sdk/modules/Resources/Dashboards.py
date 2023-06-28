@@ -1,13 +1,12 @@
 from typing import Optional, TypedDict
+
 from tagoio_sdk.common.Common_Type import ExpireTimeOption, GenericID, Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Account.Dashboards_Type import (
-    AnalysisRelated,
-    DashboardCreateInfo,
-    DashboardInfo,
-    DevicesRelated,
-    PublicKeyResponse,
-)
+from tagoio_sdk.modules.Resources.Dashboards_Type import (AnalysisRelated,
+                                                          DashboardCreateInfo,
+                                                          DashboardInfo,
+                                                          DevicesRelated,
+                                                          PublicKeyResponse)
 from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
 

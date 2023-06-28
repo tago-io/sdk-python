@@ -1,6 +1,6 @@
-from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.common.Common_Type import GenericID, Query
-from tagoio_sdk.modules.Account.IntegrationNetworkType import NetworkInfo
+from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.modules.Resources.IntegrationNetworkType import NetworkInfo
 
 
 class Networks(TagoIOModule):

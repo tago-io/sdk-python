@@ -1,5 +1,5 @@
 from tagoio_sdk.common.tagoio_module import GenericModuleParams, TagoIOModule
-from tagoio_sdk.modules.Account.IntegrationNetwork import Networks
+from tagoio_sdk.modules.Resources.IntegrationNetwork import Networks
 
 
 class Integration(TagoIOModule):
