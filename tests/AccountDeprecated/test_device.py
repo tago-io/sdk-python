@@ -1,11 +1,8 @@
 from requests_mock.mocker import Mocker
-from tests.conftest import (
-    mockBodyCreateDevice,
-    mockConfigurationParams,
-    mockDeviceInfo,
-    mockReturnGetData,
-)
+
 from src.tagoio_sdk.modules.Device.Device import Device
+from tests.conftest import (mockBodyCreateDevice, mockConfigurationParams,
+                            mockDeviceInfo, mockReturnGetData)
 
 
 def testDeviceMethodInfo(requests_mock: Mocker, mockDeviceInfo: mockDeviceInfo):

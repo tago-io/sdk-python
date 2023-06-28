@@ -1,7 +1,9 @@
 from requests_mock.mocker import Mocker
-from tagoio_sdk.modules.Account.Profile import Profile
-from tagoio_sdk.modules.Account.Profile_Type import ProfileInfo, ProfileSummary
+
 from tagoio_sdk.common.Common_Type import TokenDataList
+from tagoio_sdk.modules.Resources.Profile import Profile
+from tagoio_sdk.modules.Resources.Profile_Type import (ProfileInfo,
+                                                       ProfileSummary)
 
 
 def mockProfileInfo() -> ProfileInfo:

@@ -1,6 +1,7 @@
 from requests_mock.mocker import Mocker
-from tagoio_sdk.modules.Account.Account import Account
-from tagoio_sdk.modules.Account.Account_Types import AccountInfo
+
+from tagoio_sdk.modules.Resources.Account import Account
+from tagoio_sdk.modules.Resources.Account_Types import AccountInfo
 
 
 def mockAccountInfo() -> list[AccountInfo]:

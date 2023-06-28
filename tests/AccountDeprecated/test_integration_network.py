@@ -1,6 +1,7 @@
 from requests_mock.mocker import Mocker
-from tests.conftest import mockNetworkInfo, mockListNetwork
-from src.tagoio_sdk.modules.Account.IntegrationNetwork import Networks
+
+from src.tagoio_sdk.modules.Resources.IntegrationNetwork import Networks
+from tests.conftest import mockListNetwork, mockNetworkInfo
 
 
 def testNetworksMethodListNetworks(
