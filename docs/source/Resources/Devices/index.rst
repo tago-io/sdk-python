@@ -1,7 +1,7 @@
 **Devices**
 ============
 
-Manage devices in account Be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage devices in account.
 
 =======
 create
@@ -70,10 +70,10 @@ Get data from all variables in the device.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myDevice = Account({ "token": "my_account_token" })
-        myDevice.devices.getVariablesData("myDeviceId");
+        resources = Resources()
+        resources.devices.getDeviceData("myDeviceId");
 
 =====
 info

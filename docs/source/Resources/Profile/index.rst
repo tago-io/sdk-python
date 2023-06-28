@@ -1,7 +1,7 @@
 **Profile**
 ============
 
-Manage profiles in account be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage profiles in account.
 
 ====
 info
@@ -17,10 +17,10 @@ Gets information about the bucket
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.profile.info("Profile ID")
+        resources = Resources()
+        result = resources.profile.info("Profile ID")
 
 ====
 list
@@ -31,10 +31,10 @@ Lists all the profiles in your account
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.profile.list()
+        resources = Resources()
+        result = resources.profile.list()
 
 
 ========
@@ -51,10 +51,10 @@ Gets profile summary
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.profile.summary("Profile ID")
+        resources = Resources()
+        result = resources.profile.summary("Profile ID")
 
 
 ========
@@ -73,7 +73,7 @@ Gets profile tokenList
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.profile.tokenList("Profile ID")
+        resources = Resources()
+        result = resources.profile.tokenList("Profile ID")

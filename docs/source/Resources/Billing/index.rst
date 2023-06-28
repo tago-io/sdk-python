@@ -1,7 +1,7 @@
 **Billing**
 ==========
 
-Manage Billing for the account. Be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage Billing for the account.
 
 =========
 getPrices
@@ -12,10 +12,10 @@ Get pricing for plans, services and add-ons.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.billing.getPrices()
+        resources = Resources()
+        result = resources.billing.getPrices()
 
 ===============
 getSubscription
@@ -26,10 +26,10 @@ Get the account subscription information.
 .. code-block::
     :caption: **Example:**
 
-        from tagoio_sdk import Account
+        from tagoio_sdk import Resources
 
-        myAccount = Account({ "token": "my_account_token" })
-        result = myAccount.billing.getSubscription()
+        resources = Resources()
+        result = resources.billing.getSubscription()
 
 ================
 editSubscription
