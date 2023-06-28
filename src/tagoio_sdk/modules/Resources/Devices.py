@@ -1,18 +1,24 @@
 from typing import Optional
 
-from tagoio_sdk.common.Common_Type import (Data, GenericID, GenericToken,
-                                           TokenCreateResponse)
+from tagoio_sdk.common.Common_Type import (
+    Data,
+    GenericID,
+    GenericToken,
+    TokenCreateResponse,
+)
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Device.Device_Type import DataQuery, DeviceInfo
-from tagoio_sdk.modules.Resources.Device_Type import (ConfigurationParams,
-                                                      DeviceCreateInfo,
-                                                      DeviceCreateResponse,
-                                                      DeviceEditInfo,
-                                                      DeviceListItem,
-                                                      DeviceQuery,
-                                                      DeviceTokenDataList,
-                                                      ListDeviceTokenQuery,
-                                                      TokenData)
+from tagoio_sdk.modules.Resources.Device_Type import (
+    ConfigurationParams,
+    DeviceCreateInfo,
+    DeviceCreateResponse,
+    DeviceEditInfo,
+    DeviceListItem,
+    DeviceQuery,
+    DeviceTokenDataList,
+    ListDeviceTokenQuery,
+    TokenData,
+)
 from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
 

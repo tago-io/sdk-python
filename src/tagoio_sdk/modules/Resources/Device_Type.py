@@ -1,9 +1,13 @@
 from datetime import datetime
 from typing import Literal, Optional, TypedDict, Union
 
-from tagoio_sdk.common.Common_Type import (ExpireTimeOption, GenericID,
-                                           GenericToken, PermissionOption,
-                                           TagsObj)
+from tagoio_sdk.common.Common_Type import (
+    ExpireTimeOption,
+    GenericID,
+    GenericToken,
+    PermissionOption,
+    TagsObj,
+)
 from tagoio_sdk.modules.Resources.Buckets_Type import DataStorageType
 
 

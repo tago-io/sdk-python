@@ -3,14 +3,21 @@ from typing import Optional, TypedDict
 from tagoio_sdk.common.Common_Type import GenericID, Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Resources.Notification_Type import (
-    NotificationCreate, NotificationcreateReturn, NotificationInfo)
-from tagoio_sdk.modules.Resources.Run_Type import (CustomDomainCreate,
-                                                   CustomDomainInfo,
-                                                   LoginAsUserOptions,
-                                                   LoginResponse, RunInfo,
-                                                   RunSAMLEditInfo,
-                                                   RunSAMLInfo, UserCreateInfo,
-                                                   UserInfo)
+    NotificationCreate,
+    NotificationcreateReturn,
+    NotificationInfo,
+)
+from tagoio_sdk.modules.Resources.Run_Type import (
+    CustomDomainCreate,
+    CustomDomainInfo,
+    LoginAsUserOptions,
+    LoginResponse,
+    RunInfo,
+    RunSAMLEditInfo,
+    RunSAMLInfo,
+    UserCreateInfo,
+    UserInfo,
+)
 from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
 
 

@@ -1,8 +1,12 @@
 from datetime import datetime
 from typing import Dict, Literal, Optional, TypedDict, Union
 
-from tagoio_sdk.common.Common_Type import (ExpireTimeOption, GenericID,
-                                           GenericToken, TagsObj)
+from tagoio_sdk.common.Common_Type import (
+    ExpireTimeOption,
+    GenericID,
+    GenericToken,
+    TagsObj,
+)
 
 ThemeOption = Literal[
     "actionSchedule",
