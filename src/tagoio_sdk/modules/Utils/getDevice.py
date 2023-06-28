@@ -1,11 +1,12 @@
 from tagoio_sdk.modules.Device.Device import Device
-from tagoio_sdk.modules.Account.Account import Account
+from tagoio_sdk.modules.Resources.AccountDeprecated import AccountDeprecated as Account
 from tagoio_sdk.modules.Utils.getTokenByName import getTokenByName
 
 
 def getDevice(account: Account, device_id: str) -> Device:
     """
     Get the TagoIO Device instanced class from a device id
+    @deprecated Use the Resources.devices methods instead
     """
     if (isinstance(account, Account)) is False:
         raise ValueError(

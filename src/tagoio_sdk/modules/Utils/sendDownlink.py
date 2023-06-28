@@ -1,6 +1,7 @@
 import requests
-from tagoio_sdk.modules.Account.Account import Account
-from tagoio_sdk.modules.Account.Device_Type import (
+
+from tagoio_sdk.modules.Resources.AccountDeprecated import AccountDeprecated as Account
+from tagoio_sdk.modules.Resources.Device_Type import (
     ConfigurationParams,
     DeviceTokenDataList,
 )
