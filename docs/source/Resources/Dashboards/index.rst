@@ -1,7 +1,7 @@
 **Dashboards**
 ==============
 
-Manage dashboards in account Be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage dashboards in account.
 
 =======
 create

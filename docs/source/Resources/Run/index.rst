@@ -2,7 +2,7 @@
 **Run**
 ========
 
-Manage services in account, be sure to use an account token with “write” permissions when using functions like create, edit and delete.
+Manage services in account.
 
 
 ============

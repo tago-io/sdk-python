@@ -7,10 +7,10 @@ Instance
 
     **Parameters:**
 
-        | **token**: str
-        | Analysis Token
+        | *Optional* **token**: str
+        | Token is a optional parameter (Analysis Token).
 
-        | *Optional* **region**: Regions: "usa-1" or "env"
+        | *Optional* **region**: str "usa-1" or "env"
         | Region is a optional parameter
 
 .. code-block::
@@ -18,7 +18,7 @@ Instance
 
         from tagoio_sdk import Services
 
-        myServices = Services({"token": "my_analysis_token", "region": "usa-1})
+        services = Services()
 
 
 ==========
@@ -37,8 +37,8 @@ Send Attachment
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.Attachment.upload(
+            services = Services()
+            services.Attachment.upload(
                 {
                     "name": "Test",
                     "content": "base64",
@@ -65,8 +65,8 @@ Log message in analysis console
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.console.log(
+            services = Services()
+            services.console.log(
                 {
                     "message": "Test",
                 }
@@ -88,8 +88,8 @@ Send Email
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.email.send(
+            services = Services()
+            services.email.send(
                 {
                     "to": "myclien@tago.io",
                     "subject": "Test Subject",
@@ -113,8 +113,8 @@ Publish to a MQTT Device
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.MQTT.publish(
+            services = Services()
+            services.MQTT.publish(
                 {
                     "bucket": "my_device_id",
                     "message": "Test",
@@ -143,8 +143,8 @@ Dashboard Any account with share of the dashboard/bucket will receive too.
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.Notification.send(
+            services = Services()
+            services.Notification.send(
                 {
                     title: "Example",
                     message: "Message Test",
@@ -167,8 +167,8 @@ Generate a PDF from html, url or base64
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.PDF.generate(
+            services = Services()
+            services.PDF.generate(
                 {
                     base64: "base64"
                 }
@@ -190,8 +190,8 @@ Send SMS to phone number
 
             from tagoio_sdk import Services
 
-            myServices = Services({"token": "my_analysis_token"})
-            myServices.sms.send(
+            services = Services()
+            services.sms.send(
                 {
                     "to": "434434434434",
                     "message": "Test",
