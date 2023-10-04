@@ -28,8 +28,7 @@ class Run(TagoIOModule):
     """
 
     def info(self) -> RunInfo:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run",
                 "method": "GET",
@@ -39,8 +38,7 @@ class Run(TagoIOModule):
         return result
 
     def edit(self, data: RunInfo) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run",
                 "method": "PUT",
@@ -58,8 +56,7 @@ class Run(TagoIOModule):
         else:
             orderBy = "name,asc"
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run/users",
                 "method": "GET",
@@ -77,8 +74,7 @@ class Run(TagoIOModule):
         return result
 
     def userInfo(self, userID: GenericID) -> UserInfo:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/users/{userID}",
                 "method": "GET",
@@ -90,8 +86,7 @@ class Run(TagoIOModule):
         return result
 
     def userCreate(self, data: UserCreateInfo) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run/users",
                 "method": "POST",
@@ -102,8 +97,7 @@ class Run(TagoIOModule):
         return result
 
     def userEdit(self, userID: GenericID, data: UserInfo) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/users/{userID}",
                 "method": "PUT",
@@ -114,8 +108,7 @@ class Run(TagoIOModule):
         return result
 
     def userDelete(self, userID: GenericID) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/users/{userID}",
                 "method": "DELETE",
@@ -127,8 +120,7 @@ class Run(TagoIOModule):
     def loginAsUser(
         self, userID: GenericID, options: Optional[LoginAsUserOptions]
     ) -> LoginResponse:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/users/{userID}/login",
                 "params": options,
@@ -156,8 +148,7 @@ class Run(TagoIOModule):
         return result
 
     def notificationList(self, userID: GenericID) -> list[NotificationInfo]:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/notification/{userID}",
                 "method": "GET",
@@ -169,8 +160,7 @@ class Run(TagoIOModule):
     def notificationCreate(
         self, userID: GenericID, data: NotificationCreate
     ) -> NotificationcreateReturn:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run/notification/",
                 "method": "POST",
@@ -186,8 +176,7 @@ class Run(TagoIOModule):
     def notificationEdit(
         self, notificationID: GenericID, data: NotificationCreate
     ) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/notification/{notificationID}",
                 "method": "PUT",
@@ -198,8 +187,7 @@ class Run(TagoIOModule):
         return result
 
     def notificationDelete(self, notificationID: GenericID) -> str:
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/notification/{notificationID}",
                 "method": "DELETE",
@@ -213,8 +201,7 @@ class Run(TagoIOModule):
         Get the SAML Single Sign-On information for the account's RUN.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run/sso/saml",
                 "method": "GET",
@@ -229,8 +216,7 @@ class Run(TagoIOModule):
         :param: data Updated data for a RUN's SAML Single Sign-On configuration.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": "/run/sso/saml",
                 "method": "PUT",
@@ -250,8 +236,7 @@ class Run(TagoIOModule):
         :returns: Success message.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/customdomain/{profile_id}",
                 "body": customDomainData,
@@ -268,8 +253,7 @@ class Run(TagoIOModule):
         :returns: Data for the profile's custom DNS configuration.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/customdomain/{profile_id}",
                 "method": "GET",
@@ -287,8 +271,7 @@ class Run(TagoIOModule):
         :returns: Success message.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/customdomain/{profile_id}",
                 "method": "DELETE",
@@ -303,8 +286,7 @@ class Run(TagoIOModule):
         :returns: Success message.
         """
 
-        result = self.doRequest
-        (
+        result = self.doRequest(
             {
                 "path": f"/run/customdomain/regenerate/{profile_id}",
                 "method": "PUT",
