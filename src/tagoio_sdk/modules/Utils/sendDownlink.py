@@ -1,19 +1,24 @@
 import requests
-from tagoio_sdk.modules.Account.Account import Account
-from tagoio_sdk.modules.Account.Device_Type import (
+from typing import Union
+
+from tagoio_sdk.modules.Resources.AccountDeprecated import AccountDeprecated as Account
+from tagoio_sdk.modules.Resources.Resources import Resources
+from tagoio_sdk.modules.Resources.Device_Type import (
     ConfigurationParams,
     DeviceTokenDataList,
 )
 from tagoio_sdk.modules.Utils.utilsType import DownlinkOptions
 
 
-def getDeviceToken(account: Account, device_id: str) -> DeviceTokenDataList:
+def getDeviceToken(
+    resource: Union[Account, Resources], device_id: str
+) -> DeviceTokenDataList:
     """Get the token of a device.
 
     Returns:
         str: token of the device
     """
-    device_tokens = account.devices.tokenList(
+    device_tokens = resource.devices.tokenList(
         device_id,
         {
             "page": 1,
@@ -38,26 +43,26 @@ def getDeviceToken(account: Account, device_id: str) -> DeviceTokenDataList:
     )
 
 
-def getNetworkId(account: Account, device_id: str) -> str:
+def getNetworkId(resource: Union[Account, Resources], device_id: str) -> str:
     """Get the network id of a device.
 
     Returns:
         str: network id of the device
     """
-    device = account.devices.info(device_id)
+    device = resource.devices.info(device_id)
     if not device.get("network"):
         raise ValueError("Device is not using a network.")
 
     return device["network"]
 
 
-def getMiddlewareEndpoint(account: Account, network_id: str) -> str:
+def getMiddlewareEndpoint(resource: Union[Account, Resources], network_id: str) -> str:
     """Get the middleware endpoint of a device.
 
     Returns:
         str: middleware endpoint of the device
     """
-    network = account.integration.networks.info(
+    network = resource.integration.networks.info(
         network_id, ["id", "middleware_endpoint", "name"]
     )
     if not network.get("middleware_endpoint"):
@@ -67,51 +72,55 @@ def getMiddlewareEndpoint(account: Account, network_id: str) -> str:
 
 
 def getDownlinkParams(
-    account: Account, device_id: str
+    resource: Union[Account, Resources], device_id: str
 ) -> list[ConfigurationParams] | list[None]:
     """Get the downlink parameters of a device.
 
     Returns:
         str: downlink parameters of the device
     """
-    params = account.devices.paramList(deviceID=device_id)
+    params = resource.devices.paramList(deviceID=device_id)
     downlink_param = list(filter(lambda param: param["key"] == "downlink", params))
 
     return downlink_param
 
 
 def putParamInDevice(
-    account: Account, device_id: str, param_obj: ConfigurationParams
+    resource: Union[Account, Resources], device_id: str, param_obj: ConfigurationParams
 ) -> None:
     """Put the downlink parameter in the device."""
 
-    account.devices.paramSet(deviceID=device_id, configObj=param_obj)
+    resource.devices.paramSet(deviceID=device_id, configObj=param_obj)
 
 
-def sendDownlink(account: Account, device_id: str, dn_options: DownlinkOptions) -> str:
+def sendDownlink(
+    resource: Union[Account, Resources], device_id: str, dn_options: DownlinkOptions
+) -> str:
     """Perform downlink to a device using official TagoIO support.
 
     Args:
-        account (Account): account TagoIO SDK Account instanced class
+        resource (Account or Resources): resource TagoIO SDK Account or Resources instanced class
         device_id (str): device_id id of your device
         dn_options (DownlinkOptions): dn_options downlink parameter options.
     """
-    if not isinstance(account, Account):
+    if not isinstance(resource, Account) and not isinstance(resource, Resources):
         raise TypeError(
-            "The parameter 'account' must be an instance of a TagoIO Account."
+            "The parameter 'account' must be an instance of a TagoIO Resources."
         )
 
-    token = getDeviceToken(account=account, device_id=device_id)
-    network_id = getNetworkId(account=account, device_id=device_id)
-    middleware_endpoint = getMiddlewareEndpoint(account=account, network_id=network_id)
-    downlink_param = getDownlinkParams(account=account, device_id=device_id)
+    token = getDeviceToken(resource=resource, device_id=device_id)
+    network_id = getNetworkId(resource=resource, device_id=device_id)
+    middleware_endpoint = getMiddlewareEndpoint(
+        resource=resource, network_id=network_id
+    )
+    downlink_param = getDownlinkParams(resource=resource, device_id=device_id)
     param_obj = {
         "id": downlink_param[0]["id"] if downlink_param else None,
         "key": "downlink",
         "value": str(dn_options["payload"]),
         "sent": False,
     }
-    putParamInDevice(account=account, device_id=device_id, param_obj=param_obj)
+    putParamInDevice(resource=resource, device_id=device_id, param_obj=param_obj)
 
     data = {
         "device": token["serie_number"],

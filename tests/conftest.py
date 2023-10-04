@@ -2,8 +2,8 @@ import pytest
 
 from src.tagoio_sdk.common.Common_Type import Data
 from src.tagoio_sdk.modules.Device.Device_Type import DeviceInfo
-from src.tagoio_sdk.modules.Account.Device_Type import ConfigurationParams
-from src.tagoio_sdk.modules.Account.IntegrationNetworkType import NetworkInfo
+from src.tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
+from src.tagoio_sdk.modules.Resources.IntegrationNetworkType import NetworkInfo
 
 
 @pytest.fixture

@@ -1,5 +1,6 @@
 from typing import Optional
-from tagoio_sdk.modules.Account.Account import Account
+
+from tagoio_sdk.modules.Resources.AccountDeprecated import AccountDeprecated as Account
 
 
 def getTokenByName(
@@ -12,6 +13,7 @@ def getTokenByName(
 
     :param list[str] or str names: Array of names of the token, if null will return the first token
     found
+    @deprecated Use the Resources.devices.tokenList method instead
     """
     if (isinstance(account, Account)) is False:
         raise ValueError(

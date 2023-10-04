@@ -1,5 +1,5 @@
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Account.Notification_Type import NotificationCreate
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationCreate
 
 
 class Notification(TagoIOModule):

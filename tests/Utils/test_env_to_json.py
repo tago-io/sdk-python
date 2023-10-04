@@ -1,6 +1,5 @@
 from tagoio_sdk.modules.Utils.envToJson import envToJson
 
-
 CONTEXT_ENVIRONMENT = [
     {"key": "account_token", "value": "test_token"},
     {"key": "device_token", "value": "test_token"},
