@@ -4,7 +4,7 @@ from tagoio_sdk.common.Common_Type import GenericID, Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Resources.Notification_Type import (
     NotificationCreate,
-    NotificationcreateReturn,
+    NotificationCreateReturn,
     NotificationInfo,
 )
 from tagoio_sdk.modules.Resources.Run_Type import (
@@ -160,14 +160,14 @@ class Run(TagoIOModule):
 
     def notificationCreate(
         self, userID: GenericID, data: NotificationCreate
-    ) -> NotificationcreateReturn:
+    ) -> NotificationCreateReturn:
         result = self.doRequest(
             {
                 "path": "/run/notification/",
                 "method": "POST",
                 "body": {
                     "run_user": userID,
-                    "data": data,
+                    **data,
                 },
             }
         )
