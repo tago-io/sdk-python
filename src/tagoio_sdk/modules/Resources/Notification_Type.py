@@ -58,7 +58,7 @@ class NotificationInfoBasic(TypedDict):
     created_at: datetime
 
 
-class NotificationcreateReturn(TypedDict):
+class NotificationCreateReturn(TypedDict):
     id: GenericID
 
 
