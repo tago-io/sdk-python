@@ -26,6 +26,12 @@ class TagoIOModule(object):
         pass
 
     def _converter_dict_param_filter(self, params: dict) -> None:
+        """
+        Convert filter params to API format
+
+        Args:
+            params (dict): params to be converted
+        """
         if params is None or not params.get("filter"):
             return
         filter_params = params["filter"]
