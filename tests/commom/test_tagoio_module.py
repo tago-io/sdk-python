@@ -37,3 +37,34 @@ def test_converter_dict_param_filter_multiple_key_value():
     TagoIOModule(params=tokenFake)._converter_dict_param_filter(params) == expected_result
 
     assert params == expected_result
+
+
+def test_converter_dict_param_filter_nested_dict():
+    """
+    Test case 3: nested dictionary
+    """
+    params = {"filter": {"tags": [{"key": "org_id", "value": "123"}]},
+              "sort": {"field": "created_at", "order": "asc"}}
+    expected_result = {
+        "filter[tags][0][key]": "org_id",
+        "filter[tags][0][value]": "123",
+        "sort": {"field": "created_at", "order": "asc"}
+    }
+
+    tokenFake = {"token": "fake_token"}
+    TagoIOModule(params=tokenFake)._converter_dict_param_filter(params) == expected_result
+
+    assert params == expected_result
+
+
+def test_converter_dict_param_filter_empty_dict():
+    """
+    Test case 4: empty dictionary
+    """
+    params = {}
+    expected_result = {}
+
+    tokenFake = {"token": "fake_token"}
+    TagoIOModule(params=tokenFake)._converter_dict_param_filter(params) == expected_result
+
+    assert params == expected_result
