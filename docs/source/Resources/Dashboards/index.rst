@@ -4,6 +4,22 @@
 Manage dashboards in account.
 
 =======
+listDashboard
+=======
+
+Retrieves a list with all dashboards from the account.
+
+    **Parameters:**
+
+        | **queryObj**: :ref:`Query`
+        | Default query parameters for retrieving the list of dashboards.
+
+    **Returns:**
+
+        | **result**: list[:ref:`DashboardInfo`]
+        | List of dashboard information.
+
+=======
 create
 =======
 
