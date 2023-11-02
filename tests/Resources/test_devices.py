@@ -313,25 +313,6 @@ def testGetDeviceDataMethod(requests_mock: Mocker) -> None:
     assert isinstance(response[0], dict)
 
 
-def mockEmptyDeviceData() -> str:
-    return "Device data emptied successfully"
-
-
-def testEmptyDeviceDataMethod(requests_mock: Mocker) -> None:
-    """
-    :param requests_mock are a plugin of pytest to mock the requests.
-    """
-
-    deviceID = "device1"
-    requests_mock.post(f"https://api.tago.io/device/{deviceID}/empty", text=mockEmptyDeviceData())
-
-    tokenFake = {"token": "fake_token"}
-    response = Devices(params=tokenFake).emptyDeviceData(deviceID)
-
-    assert response == mockEmptyDeviceData()
-    assert isinstance(response, str)
-
-
 def testEmptyDeviceDataMethod(requests_mock: Mocker) -> None:
     """
     :param requests_mock are a plugin of pytest to mock the requests.
