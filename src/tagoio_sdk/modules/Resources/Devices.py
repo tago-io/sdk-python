@@ -347,7 +347,7 @@ class Devices(TagoIOModule):
 
         :param GenericID deviceID: Device ID.
 
-        :param Data data: An array or one object with data to be send to TagoIO.
+        :param DataCreate data: An array or one object with data to be send to TagoIO.
 
         :rtype: Success message.
 
@@ -380,7 +380,7 @@ class Devices(TagoIOModule):
 
         :param GenericID deviceID: Device ID.
 
-        :param Data data: A single or an array of updated data records.
+        :param DataEdit data: A single or an array of updated data records.
 
         :rtype: Success message.
 
