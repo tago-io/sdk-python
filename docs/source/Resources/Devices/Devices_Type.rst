@@ -205,7 +205,7 @@ DeviceCreateInfoBasic
         | **configuration_params**: Optional[list[ConfigurationParams]]
         | [Optional] An array of configuration params
 
-        | **tags**: Optional[list[TagsObj]]
+        | **tags**: Optional[list[:ref:`TagsObj`]]
         | [Optional] An array of tags
 
         | **serie_number**: Optional[str]

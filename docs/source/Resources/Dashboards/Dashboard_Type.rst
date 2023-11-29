@@ -33,7 +33,7 @@ DashboardCreateInfo
 
         **arrangement**: list[Arrangement]
 
-        **tags**: list[TagsObj]
+        **tags**: list[:ref:`TagsObj`]
 
         **visible**: bool
 
@@ -183,7 +183,7 @@ WidgetResource
 
     **Attributes:**
 
-        filter: list[TagsObj]
+        filter: list[:ref:`TagsObj`]
 
 .. _DeviceResourceView:
 

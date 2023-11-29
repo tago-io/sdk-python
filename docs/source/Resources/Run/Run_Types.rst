@@ -266,7 +266,7 @@ UserCreateInfo
         | **company**: Optional[str]
         | **phone**: Optional[str]
         | **language**: Optional[str]
-        | **tags**: Optional[list[TagsObj]]
+        | **tags**: Optional[list[:ref:`TagsObj`]]
         | **active**: Optional[bool]
 
 .. _UserInfo:
@@ -282,7 +282,7 @@ UserInfo
         | **company**: Optional[str]
         | **phone**: Optional[str]
         | **language**: Optional[str]
-        | **tags**: Optional[list[TagsObj]]
+        | **tags**: Optional[list[:ref:`TagsObj`]]
         | **active**: Optional[bool]
         | **id**: GenericID
         | **profile**: GenericID
@@ -292,7 +292,7 @@ UserInfo
         | **created_at**: datetime
         | **updated_at**: datetime
         | **options**: object
-        | **tags**: list[TagsObj]
+        | **tags**: list[:ref:`TagsObj`]
 
 .. _LoginResponse:
 

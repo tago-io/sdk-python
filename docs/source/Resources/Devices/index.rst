@@ -206,3 +206,77 @@ Retrieves a list of all tokens
             "amount": 20,
             "orderBy": "created_at,desc",
         }
+
+==========
+sendDeviceData
+==========
+
+Send data to a device.
+
+    **Parameters:**
+
+        | **deviceID**: GenericID: str
+        | Device ID
+
+        | **data**: Union[:ref:`DataCreate`, list[:ref:`DataCreate`]]
+        | An array or one object with data to be send to TagoIO.
+
+.. code-block::
+    :caption: **Example:**
+
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        resource.devices.sendDeviceData("myDeviceID", {
+            "variable": "temperature",
+            "unit": "F",
+            "value": 55,
+            "time": "2015-11-03 13:44:33",
+            "location": { "lat": 42.2974279, "lng": -85.628292 },
+        })
+
+==========
+editDeviceData
+==========
+
+Edit data in a device.
+
+    **Parameters:**
+
+        | **deviceID**: GenericID: str
+        | Device ID
+
+        | **updatedData**: Union[:ref:`DataEdit`, list[:ref:`DataEdit`]]
+        | An array or one object with data to be send to TagoIO.
+
+.. code-block::
+    :caption: **Example:**
+
+    resources = Resource()
+    resource.devices.editDeviceData("myDeviceID", {
+        "id": "idOfTheRecord",
+        "value": "new value",
+        "unit": "new unit"
+    })
+
+==========
+deleteDeviceData
+==========
+
+Delete data from a device.
+
+    **Parameters:**
+
+        | **deviceID**: GenericID: str
+        | Device ID
+
+        | *Optional* **queryParams**: :ref:`DataQuery`
+        | Query parameters to filter the results.
+
+.. code-block::
+    :caption: **Example:**
+
+    resources = Resource()
+    resource.devices.deleteDeviceData("myDeviceID", {
+        "ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]
+    })
