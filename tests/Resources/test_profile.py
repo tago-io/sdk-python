@@ -1,9 +1,12 @@
+import os
 from requests_mock.mocker import Mocker
 
 from tagoio_sdk.common.Common_Type import TokenDataList
-from tagoio_sdk.modules.Resources.Profile import Profile
-from tagoio_sdk.modules.Resources.Profile_Type import (ProfileInfo,
-                                                       ProfileSummary)
+from tagoio_sdk.modules.Resources.Profile_Type import ProfileInfo, ProfileSummary
+from tagoio_sdk.modules.Resources.Resources import Resources
+
+
+os.environ["T_ANALYSIS_TOKEN"] = "your_token_value"
 
 
 def mockProfileInfo() -> ProfileInfo:
@@ -131,8 +134,8 @@ def testProfileMethodInfo(requests_mock: Mocker) -> None:
 
     requests_mock.get("https://api.tago.io/profile/profile_id", json=mockProfileInfo())
 
-    tokenFake = {"token": "fake_token"}
-    response = Profile(params=tokenFake).info(profileID="profile_id")
+    resources = Resources()
+    response = resources.profile.info(profileID="profile_id")
 
     assert response["allocation"] == mockProfileInfo()["result"]["allocation"]
     assert isinstance(response, dict)
@@ -145,8 +148,8 @@ def testProfileMethodList(requests_mock: Mocker) -> None:
 
     requests_mock.get("https://api.tago.io/profile", json=mockListProfileInfo())
 
-    tokenFake = {"token": "fake_token"}
-    response = Profile(params=tokenFake).list()
+    resources = Resources()
+    response = resources.profile.list()
 
     assert response == mockListProfileInfo()["result"]
     assert isinstance(response, list)
@@ -162,8 +165,8 @@ def testProfileMethodSummary(requests_mock: Mocker) -> None:
         "https://api.tago.io/profile/profile_id/summary", json=mockProfileSummary()
     )
 
-    tokenFake = {"token": "fake_token"}
-    response = Profile(params=tokenFake).summary(profileID="profile_id")
+    resources = Resources()
+    response = resources.profile.summary(profileID="profile_id")
 
     assert response == mockProfileSummary()["result"]
     assert isinstance(response, dict)
@@ -178,8 +181,8 @@ def testProfileMethodTokenList(requests_mock: Mocker) -> None:
         "https://api.tago.io/profile/profile_id/token", json=mockTokenDataList()
     )
 
-    tokenFake = {"token": "fake_token"}
-    response = Profile(params=tokenFake).tokenList(profileID="profile_id")
+    resources = Resources()
+    response = resources.profile.tokenList(profileID="profile_id")
 
     assert response[1]["token"] == mockTokenDataList()["result"][1]["token"]
     assert isinstance(response, list)
