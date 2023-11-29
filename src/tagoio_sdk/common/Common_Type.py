@@ -26,9 +26,44 @@ class TagsObj(TypedDict):
     value: str
 
 
+class File(TypedDict, total=False):
+    url: str
+    md5: str
+    path: str
+
+
+class FixedPositionValue(TypedDict):
+    color: str
+    icon: str
+    value: str
+    x: str
+    y: str
+
+
+class SentValue(TypedDict, total=False):
+    label: str
+    value: Union[str, int, float, bool]
+
+
+class Metadata(TypedDict, total=False):
+    color: Optional[str]
+    x: Optional[Union[str, int, float]]
+    y: Optional[Union[str, int, float]]
+    label: Optional[str]
+    file: Optional[File]
+    icon: Optional[str]
+    fixed_position: Optional[dict[str, FixedPositionValue]]
+    sentValues: Optional[list[SentValue]]
+    old_value: Optional[Union[str, int, float, bool]]
+
+
+Latitude = float
+Longitude = float
+
+
 class LocationGeoJSON(TypedDict):
     type: Literal["Point"]
-    coordinates: list[str]
+    coordinates: list[Union[Longitude, Latitude]]
 
 
 class LocationLatLng(TypedDict):
@@ -56,6 +91,26 @@ class Data(TypedDict):
     metadata: any
     time: datetime
     created_at: datetime
+
+
+class DataCreate(TypedDict, total=False):
+    variable: str
+    value: Optional[Union[str, int, float, bool]]
+    group: Optional[str]
+    unit: Optional[str]
+    metadata: Optional[Metadata]
+    time: Optional[Union[str, datetime]]
+    location: Optional[Union[LocationGeoJSON, LocationLatLng, None]]
+
+
+class DataEdit(TypedDict, total=False):
+    id: str
+    value: Optional[Union[str, int, float, bool]]
+    group: Optional[str]
+    unit: Optional[str]
+    metadata: Optional[Metadata]
+    time: Optional[Union[str, datetime]]
+    location: Optional[Union[LocationGeoJSON, LocationLatLng, None]]
 
 
 class TokenDataList(TypedDict):
