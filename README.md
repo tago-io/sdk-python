@@ -20,32 +20,29 @@ If you have any questions, feel free to check our [Help Center](https://help.tag
 ### Insert Device Data
 
 ```python
-from tagoio_sdk import Device
+from tagoio_sdk import Resources
 
-myDevice = Device({ "token": "my_device_token" })
-result = myDevice.sendData({
+resources = Resources()
+resource.devices.sendDeviceData("myDeviceID", {
     "variable": "temperature",
     "unit": "F",
     "value": 55,
     "time": "2015-11-03 13:44:33",
-    "location": { "lat": 42.2974279, "lng": -85.628292 },
+    "location": {"lat": 42.2974279, "lng": -85.628292},
 })
 ```
 
 ### Edit Device Data
 
 ```python
-from tagoio_sdk import Device
+from tagoio_sdk import Resources
 
-myDevice = Device({"token": "my_device_token"})
-result = myDevice.editData(
-    {
-        "id": "id_of_the_data_item",
-        "value": "123",
-        "time": "2022-04-01 12:34:56",
-        "location": {"lat": 42.2974279, "lng": -85.628292},
-    }
-)
+resources = Resource()
+resource.devices.editDeviceData("myDeviceID", {
+    "id": "idOfTheRecord",
+    "value": "new value",
+    "unit": "new unit"
+})
 ```
 
 ## Development Commands
