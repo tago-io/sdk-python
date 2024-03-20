@@ -8,7 +8,7 @@ class RegionDefinition(TypedDict):
     realtime: str
 
 
-noRegionWarning = False
+# noRegionWarning = False
 
 regionsDefinition = {
     "usa-1": {"api": "https://api.tago.io", "realtime": "wss://realtime.tago.io"},
@@ -40,7 +40,7 @@ def getConnectionURI(region: Regions) -> RegionDefinition:
     except:
         global noRegionWarning
         if noRegionWarning is False:
-            print("> TagoIO-SDK: No region or env defined, using fallback as usa-1.")
+            # print("> TagoIO-SDK: No region or env defined, using fallback as usa-1.")
             noRegionWarning = True
 
         return regionsDefinition["usa-1"]
