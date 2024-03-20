@@ -38,9 +38,9 @@ def getConnectionURI(region: Regions) -> RegionDefinition:
 
         return {"api": api, "realtime": realtime}
     except:
-        global noRegionWarning
-        if noRegionWarning is False:
-            # print("> TagoIO-SDK: No region or env defined, using fallback as usa-1.")
-            noRegionWarning = True
+        # global noRegionWarning
+        # if noRegionWarning is False:
+        #     print("> TagoIO-SDK: No region or env defined, using fallback as usa-1.")
+        #     noRegionWarning = True
 
         return regionsDefinition["usa-1"]
