@@ -24,10 +24,13 @@ DashboardCreateInfo
 
     **Attributes:**
 
-        | **label**: str
-        | **arrangement**: list[Arrangement]
-        | **tags**: list[TagsObj]
-        | **visible**: bool
+        **label**: str
+
+        **arrangement**: list[Arrangement]
+
+        **tags**: list[:ref:`TagsObj`]
+
+        **visible**: bool
 
 .. _icon:
 
@@ -137,7 +140,7 @@ WidgetResource
 
     **Attributes:**
 
-        | **filter**: list[TagsObj]
+        filter: list[:ref:`TagsObj`]
 
 .. _DeviceResourceView:
 

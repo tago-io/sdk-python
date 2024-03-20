@@ -2,6 +2,8 @@ from typing import Optional, Union
 
 from tagoio_sdk.common.Common_Type import (
     Data,
+    DataCreate,
+    DataEdit,
     GenericID,
     GenericToken,
     TokenCreateResponse,
@@ -298,12 +300,12 @@ class Devices(TagoIOModule):
         return result
 
     def getDeviceData(
-        self, deviceId: GenericID, queryParams: DataQuery = {}
+        self, deviceID: GenericID, queryParams: DataQuery = {}
     ) -> list[Data]:
         """
         Get data from all variables in the device.
 
-        :param deviceId: Device ID.
+        :param deviceID: Device ID.
 
         :param queryParams: Query parameters to filter the results.
 
@@ -319,25 +321,125 @@ class Devices(TagoIOModule):
         """
         result = self.doRequest(
             {
-                "path": f"/device/{deviceId}/data",
+                "path": f"/device/{deviceID}/data",
                 "method": "GET",
                 "params": queryParams,
             }
         )
         return dateParserList(result, ["time", "created_at"])
 
-    def emptyDeviceData(self, deviceId: GenericID) -> str:
+    def emptyDeviceData(self, deviceID: GenericID) -> str:
         """
         Empty all data in a device.
 
-        :param GenericID deviceId: Device ID.
+        :param GenericID deviceID: Device ID.
 
         :rtype: Success message.
         """
         result = self.doRequest(
             {
-                "path": f"/device/{deviceId}/empty",
+                "path": f"/device/{deviceID}/empty",
                 "method": "POST",
+            }
+        )
+        return result
+
+    def sendDeviceData(self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]) -> str:
+        """
+        Send data to a device.
+
+        :param GenericID deviceID: Device ID.
+
+        :param DataCreate data: An array or one object with data to be send to TagoIO.
+
+        :rtype: Success message.
+
+        Example::
+        ```python
+        # Example of using the function
+        resources = Resource()
+        resource.devices.sendDeviceData("myDeviceID", {
+            "variable": "temperature",
+            "unit": "F",
+            "value": 55,
+            "time": "2015-11-03 13:44:33",
+            "location": { "lat": 42.2974279, "lng": -85.628292 },
+        })
+        ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/data",
+                "method": "POST",
+                "body": data,
+            }
+        )
+
+        return result
+
+    def editDeviceData(self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]) -> str:
+        """
+        Edit data in a device.
+
+        :param GenericID deviceID: Device ID.
+
+        :param DataEdit data: A single or an array of updated data records.
+
+        :rtype: Success message.
+
+        Example::
+        ```python
+        # Example of using the function
+        resources = Resource()
+        resource.devices.editDeviceData("myDeviceID", {"id": "idOfTheRecord", "value": "new value", "unit": "new unit"})
+        ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/data",
+                "method": "PUT",
+                "body": updatedData,
+            }
+        )
+
+        return result
+
+    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = {}) -> str:
+        """
+        Delete data from a device.
+
+        :param GenericID deviceID: Device ID.
+
+        :param DataQuery queryParam: Parameters to specify what should be deleted on the device's data.
+
+        :rtype: Success message.
+
+        Example::
+        ```python
+        # Example of using the function
+        resources = Resource()
+        resource.devices.deleteDeviceData("myDeviceID", {"ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]})
+        ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/data",
+                "method": "DELETE",
+                "params": queryParam,
+            }
+        )
+
+        return result
+
+    def amount(self, deviceID: GenericID) -> Union[int, float]:
+        """
+        Get Amount of data stored in the Device
+        :param deviceID: Device ID
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/data_amount",
+                "method": "GET",
             }
         )
         return result
