@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Notification Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="notification-type">
+<h1><strong>Notification Type</strong><a class="headerlink" href="#notification-type" title="Permalink to this headline">¶</a></h1>
+<section id="notificationtriggeranalysis">
+<span id="id1"></span><h2>NotificationTriggerAnalysis<a class="headerlink" href="#notificationtriggeranalysis" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>analysis_id</strong>: GenericID: str</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationtriggerhttp">
+<span id="id2"></span><h2>NotificationTriggerHTTP<a class="headerlink" href="#notificationtriggerhttp" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>url</strong>: str</p>
+<p><strong>method</strong>: “POST” or “GET” or “PUT” or “DELETE” or “REDIRECT”</p>
+<p><strong>body</strong>: dict[str, Any]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationtriggerprofile">
+<span id="id3"></span><h2>NotificationTriggerProfile<a class="headerlink" href="#notificationtriggerprofile" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>share_profile</strong>: “accept” or “refuse”</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationbutton">
+<span id="id4"></span><h2>NotificationButton<a class="headerlink" href="#notificationbutton" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>id</strong>: str</p>
+<p><strong>label</strong>: str</p>
+<p><strong>color</strong>: Optional[str]</p>
+<p><strong>triggers</strong>: <a class="reference internal" href="#notificationtriggeranalysis"><span class="std std-ref">NotificationTriggerAnalysis</span></a> or <span class="xref std std-ref">NotificationTriggerHTTP`or list[:ref:`NotificationTriggerProfile</span>],</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationiconimage">
+<span id="id5"></span><h2>NotificationIconImage<a class="headerlink" href="#notificationiconimage" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>image_url</strong>: str</p>
+<p><strong>bg_color</strong>: Optional[HexColor: str]</p>
+<p><strong>fit</strong>: Optional[“fill” or “contain” or “cover”]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationiconsvg">
+<span id="id6"></span><h2>NotificationIconSVG<a class="headerlink" href="#notificationiconsvg" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>svg_url</strong>: str</p>
+<p><strong>svg_color</strong>: Optional[HexColor: str]</p>
+<p><strong>bg_color</strong>: Optional[HexColor: str]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationcreate">
+<span id="id7"></span><h2>NotificationCreate<a class="headerlink" href="#notificationcreate" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>title</strong>: str</p>
+<p><strong>message</strong>: str</p>
+<p><strong>read</strong>: Optional[bool]</p>
+<p><strong>icon</strong>: Optional[<a class="reference internal" href="#notificationiconsvg"><span class="std std-ref">NotificationIconSVG</span></a> or <a class="reference internal" href="#notificationiconimage"><span class="std std-ref">NotificationIconImage</span></a>]</p>
+<p><strong>buttons</strong>: Optional[list[<a class="reference internal" href="#notificationbutton"><span class="std std-ref">NotificationButton</span></a>]]</p>
+<p><strong>buttons_enabled</strong>: Optional[bool]</p>
+<p><strong>buttons_autodisable</strong>: Optional[bool]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html"><strong>Resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Utils/index.html"><strong>Utils</strong></a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/tago-io/sdk-python">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/tagoio-sdk/">PyPI</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Tago LLC.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/Services/Notification_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

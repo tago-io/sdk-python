@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Run &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Device" href="../../Device/index.html" />
+    <link rel="prev" title="Profile" href="../Profile/index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="run">
+<h1><strong>Run</strong><a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h1>
+<p>Manage services in account.</p>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<p>Get information about the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Returns</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <a class="reference internal" href="Run_Types.html#runinfo"><span class="std std-ref">RunInfo</span></a></div>
+<div class="line">Information about the TagoRUN service.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h2>
+<p>Edit the TagoRUN service information.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#runinfo"><span class="std std-ref">RunInfo</span></a></div>
+<div class="line">Updated information for the TagoRUN service.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listusers">
+<h2>listUsers<a class="headerlink" href="#listusers" title="Permalink to this headline">¶</a></h2>
+<p>List users in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>query</strong>: <a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a></div>
+<div class="line">Query parameters for filtering and sorting the user list.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: list[<a class="reference internal" href="Run_Types.html#userinfo"><span class="std std-ref">UserInfo</span></a>]</div>
+<div class="line">List of user information.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="userinfo">
+<h2>userInfo<a class="headerlink" href="#userinfo" title="Permalink to this headline">¶</a></h2>
+<p>Get information about a specific user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <a class="reference internal" href="Run_Types.html#userinfo"><span class="std std-ref">UserInfo</span></a></div>
+<div class="line">Information about the user.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="usercreate">
+<h2>userCreate<a class="headerlink" href="#usercreate" title="Permalink to this headline">¶</a></h2>
+<p>Create a new user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#usercreateinfo"><span class="std std-ref">UserCreateInfo</span></a></div>
+<div class="line">Information for creating the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="id1">
+<h2>userCreate<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Create a new user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#usercreateinfo"><span class="std std-ref">UserCreateInfo</span></a></div>
+<div class="line">Information for creating the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="useredit">
+<h2>userEdit<a class="headerlink" href="#useredit" title="Permalink to this headline">¶</a></h2>
+<p>Edit information about a specific user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#userinfo"><span class="std std-ref">UserInfo</span></a></div>
+<div class="line">Updated information for the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="userdelete">
+<h2>userDelete<a class="headerlink" href="#userdelete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a specific user from the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="loginasuser">
+<h2>loginAsUser<a class="headerlink" href="#loginasuser" title="Permalink to this headline">¶</a></h2>
+<p>Log in as a specific user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>options</strong>: Optional[<a class="reference internal" href="Run_Types.html#loginasuseroptions"><span class="std std-ref">LoginAsUserOptions</span></a>]</div>
+<div class="line">Additional options for the login.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <a class="reference internal" href="Run_Types.html#loginresponse"><span class="std std-ref">LoginResponse</span></a></div>
+<div class="line">Login response.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="emailtest">
+<h2>emailTest<a class="headerlink" href="#emailtest" title="Permalink to this headline">¶</a></h2>
+<p>Send a test email from the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <span class="xref std std-ref">emailData</span></div>
+<div class="line">Email data including subject and body.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationlist">
+<h2>notificationList<a class="headerlink" href="#notificationlist" title="Permalink to this headline">¶</a></h2>
+<p>List notifications for a specific user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: list[<span class="xref std std-ref">NotificationInfo</span>]</div>
+<div class="line">List of notification information.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationcreate">
+<h2>notificationCreate<a class="headerlink" href="#notificationcreate" title="Permalink to this headline">¶</a></h2>
+<p>Create a new notification for a specific user in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the user.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="../../Services/Notification_Type.html#notificationcreate"><span class="std std-ref">NotificationCreate</span></a></div>
+<div class="line">Information for creating the notification.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <span class="xref std std-ref">NotificationCreateReturn</span></div>
+<div class="line">Information about the created notification.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationedit">
+<h2>notificationEdit<a class="headerlink" href="#notificationedit" title="Permalink to this headline">¶</a></h2>
+<p>Edit information about a specific notification in the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the notification.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="../../Services/Notification_Type.html#notificationcreate"><span class="std std-ref">NotificationCreate</span></a></div>
+<div class="line">Updated information for the notification.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationdelete">
+<h2>notificationDelete<a class="headerlink" href="#notificationdelete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a specific notification from the TagoRUN service.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the notification.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: str</div>
+<div class="line">Success message.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="ssosamlinfo">
+<h2>ssoSAMLInfo<a class="headerlink" href="#ssosamlinfo" title="Permalink to this headline">¶</a></h2>
+<p>Get the SAML Single Sign-On information for the account’s RUN.</p>
+</section>
+<section id="ssosamledit">
+<h2>ssoSAMLEdit<a class="headerlink" href="#ssosamledit" title="Permalink to this headline">¶</a></h2>
+<p>Edit the SAML Single Sign-On metadata and mappings for the account’s RUN.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#runsamleditinfo"><span class="std std-ref">RunSAMLEditInfo</span></a></div>
+<div class="line">Updated data for a RUN’s SAML Single Sign-On configuration.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="createcustomdomain">
+<h2>createCustomDomain<a class="headerlink" href="#createcustomdomain" title="Permalink to this headline">¶</a></h2>
+<p>Create a TagoRUN custom domain for the profile.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">ID of the profile</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>customDomainData</strong>: <a class="reference internal" href="Run_Types.html#customdomaincreate"><span class="std std-ref">CustomDomainCreate</span></a></div>
+<div class="line">query params</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="getcustomdomain">
+<h2>getCustomDomain<a class="headerlink" href="#getcustomdomain" title="Permalink to this headline">¶</a></h2>
+<p>Set details of TagoRun custom domain for the profile.</p>
+<blockquote>
+<div><p><strong>Parameters</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">ID of the profile</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="deletecustomdomain">
+<h2>deleteCustomDomain<a class="headerlink" href="#deletecustomdomain" title="Permalink to this headline">¶</a></h2>
+<p>Delete a TagoRUN custom domain for the profile.</p>
+<blockquote>
+<div><p><strong>Parameters</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">ID of the profile</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="regeneratecustomdomain">
+<h2>regenerateCustomDomain<a class="headerlink" href="#regeneratecustomdomain" title="Permalink to this headline">¶</a></h2>
+<p>Regenerate a TagoRUN custom domain for the profile.</p>
+<blockquote>
+<div><p><strong>Parameters</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">ID of the profile</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Account/index.html"><strong>Account</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Billing/index.html"><strong>Billing</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Buckets/index.html"><strong>Buckets</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Dashboards/index.html"><strong>Dashboards</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Devices/index.html"><strong>Devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../IntegrationNetwork/index.html"><strong>Integration Network</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Profile/index.html"><strong>Profile</strong></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><strong>Run</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit">edit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listusers">listUsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#userinfo">userInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usercreate">userCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">userCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useredit">userEdit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#userdelete">userDelete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loginasuser">loginAsUser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emailtest">emailTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notificationlist">notificationList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notificationcreate">notificationCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notificationedit">notificationEdit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notificationdelete">notificationDelete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssosamlinfo">ssoSAMLInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssosamledit">ssoSAMLEdit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcustomdomain">createCustomDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getcustomdomain">getCustomDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deletecustomdomain">deleteCustomDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regeneratecustomdomain">regenerateCustomDomain</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/tago-io/sdk-python">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/tagoio-sdk/">PyPI</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Profile/index.html" title="previous chapter"><strong>Profile</strong></a></li>
+      <li>Next: <a href="../../Device/index.html" title="next chapter"><strong>Device</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Tago LLC.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/Resources/Run/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

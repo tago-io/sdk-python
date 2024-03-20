@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Devices &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Network" href="../IntegrationNetwork/index.html" />
+    <link rel="prev" title="Dashboards" href="../Dashboards/index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="devices">
+<h1><strong>Devices</strong><a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h1>
+<p>Manage devices in account.</p>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
+<p>Generates and retrieves a new action from the Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceObj</strong>: <a class="reference internal" href="Devices_Type.html#devicecreateinfo"><span class="std std-ref">DeviceCreateInfo</span></a></div>
+<div class="line">Object data to create new device</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Deletes an device from the account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h2>
+<p>Modify any property of the device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>deviceObj</strong>: <a class="reference internal" href="Devices_Type.html#deviceeditinfo"><span class="std std-ref">DeviceEditInfo</span></a></div>
+<div class="line">Device object with fields to replace</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="emptydevicedata">
+<h2>emptyDeviceData<a class="headerlink" href="#emptydevicedata" title="Permalink to this headline">¶</a></h2>
+<p>Empty all data in a device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="getdevicedata">
+<h2>getDeviceData<a class="headerlink" href="#getdevicedata" title="Permalink to this headline">¶</a></h2>
+<p>Get data from all variables in the device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryParams</strong>: <a class="reference internal" href="../../Device/Device_Type.html#dataquery"><span class="std std-ref">DataQuery</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">tagoio_sdk</span> <span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">getDeviceData</span><span class="p">(</span><span class="s2">&quot;myDeviceId&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<p>Get Info of the Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listdevice">
+<h2>listDevice<a class="headerlink" href="#listdevice" title="Permalink to this headline">¶</a></h2>
+<p>Retrieves a list with all devices from the account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="Devices_Type.html#devicequery"><span class="std std-ref">DeviceQuery</span></a></div>
+<div class="line">Search query params</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">queryObj</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="s2">&quot;name,asc&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;resolveBucketName&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="paramset">
+<h2>paramSet<a class="headerlink" href="#paramset" title="Permalink to this headline">¶</a></h2>
+<p>Create or edit param for the Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>configObj</strong>: <a class="reference internal" href="Devices_Type.html#configurationparams"><span class="std std-ref">ConfigurationParams</span></a> or list[<a class="reference internal" href="Devices_Type.html#configurationparams"><span class="std std-ref">ConfigurationParams</span></a>]</div>
+<div class="line">Configuration Data</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>paramID</strong>: Optional[GenericID: str]</div>
+<div class="line">Parameter ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="paramlist">
+<h2>paramList<a class="headerlink" href="#paramlist" title="Permalink to this headline">¶</a></h2>
+<p>List Params for the Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>sentStatus</strong>: bool</div>
+<div class="line">True return only sent=true, False return only sent=false</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="paramremove">
+<h2>paramRemove<a class="headerlink" href="#paramremove" title="Permalink to this headline">¶</a></h2>
+<p>Remove param for the Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>paramID</strong>: GenericID: str</div>
+<div class="line">Parameter ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="tokencreate">
+<h2>tokenCreate<a class="headerlink" href="#tokencreate" title="Permalink to this headline">¶</a></h2>
+<p>Generates and retrieves a new token</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tokenParams</strong>: <a class="reference internal" href="../../common/Common_Type.html#tokendata"><span class="std std-ref">TokenData</span></a></div>
+<div class="line">Params for new token</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="tokendelete">
+<h2>tokenDelete<a class="headerlink" href="#tokendelete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a token</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: GenericToken: str</div>
+<div class="line">Device ID</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="tokenlist">
+<h2>tokenList<a class="headerlink" href="#tokenlist" title="Permalink to this headline">¶</a></h2>
+<p>Retrieves a list of all tokens</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: GenericToken: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="Devices_Type.html#listdevicetokenquery"><span class="std std-ref">ListDeviceTokenQuery</span></a></div>
+<div class="line">Search query params</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">queryObj</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;permission&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="s2">&quot;created_at,desc&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="senddevicedata">
+<h2>sendDeviceData<a class="headerlink" href="#senddevicedata" title="Permalink to this headline">¶</a></h2>
+<p>Send data to a device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: Union[<a class="reference internal" href="../../common/Common_Type.html#datacreate"><span class="std std-ref">DataCreate</span></a>, list[<a class="reference internal" href="../../common/Common_Type.html#datacreate"><span class="std std-ref">DataCreate</span></a>]]</div>
+<div class="line">An array or one object with data to be send to TagoIO.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">tagoio_sdk</span> <span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resource</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">sendDeviceData</span><span class="p">(</span><span class="s2">&quot;myDeviceID&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-11-03 13:44:33&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">42.2974279</span><span class="p">,</span> <span class="s2">&quot;lng&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">85.628292</span> <span class="p">},</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="editdevicedata">
+<h2>editDeviceData<a class="headerlink" href="#editdevicedata" title="Permalink to this headline">¶</a></h2>
+<p>Edit data in a device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updatedData</strong>: Union[<a class="reference internal" href="../../common/Common_Type.html#dataedit"><span class="std std-ref">DataEdit</span></a>, list[<a class="reference internal" href="../../common/Common_Type.html#dataedit"><span class="std std-ref">DataEdit</span></a>]]</div>
+<div class="line">An array or one object with data to be send to TagoIO.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resources</span> <span class="o">=</span> <span class="n">Resource</span><span class="p">()</span>
+<span class="n">resource</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">editDeviceData</span><span class="p">(</span><span class="s2">&quot;myDeviceID&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;idOfTheRecord&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;new value&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;new unit&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="deletedevicedata">
+<h2>deleteDeviceData<a class="headerlink" href="#deletedevicedata" title="Permalink to this headline">¶</a></h2>
+<p>Delete data from a device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: GenericID: str</div>
+<div class="line">Device ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryParams</strong>: <a class="reference internal" href="../../Device/Device_Type.html#dataquery"><span class="std std-ref">DataQuery</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resources</span> <span class="o">=</span> <span class="n">Resource</span><span class="p">()</span>
+<span class="n">resource</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">deleteDeviceData</span><span class="p">(</span><span class="s2">&quot;myDeviceID&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;recordIdToDelete&quot;</span><span class="p">,</span> <span class="s2">&quot;anotherRecordIdToDelete&quot;</span> <span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Account/index.html"><strong>Account</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Billing/index.html"><strong>Billing</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Buckets/index.html"><strong>Buckets</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Dashboards/index.html"><strong>Dashboards</strong></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><strong>Devices</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create">create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit">edit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emptydevicedata">emptyDeviceData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getdevicedata">getDeviceData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listdevice">listDevice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paramset">paramSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paramlist">paramList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paramremove">paramRemove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tokencreate">tokenCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tokendelete">tokenDelete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tokenlist">tokenList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#senddevicedata">sendDeviceData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editdevicedata">editDeviceData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deletedevicedata">deleteDeviceData</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../IntegrationNetwork/index.html"><strong>Integration Network</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Profile/index.html"><strong>Profile</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Run/index.html"><strong>Run</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/tago-io/sdk-python">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/tagoio-sdk/">PyPI</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Dashboards/index.html" title="previous chapter"><strong>Dashboards</strong></a></li>
+      <li>Next: <a href="../IntegrationNetwork/index.html" title="next chapter"><strong>Integration Network</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Tago LLC.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/Resources/Devices/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

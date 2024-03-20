@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Dashboards &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Devices" href="../Devices/index.html" />
+    <link rel="prev" title="Buckets" href="../Buckets/index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dashboards">
+<h1><strong>Dashboards</strong><a class="headerlink" href="#dashboards" title="Permalink to this headline">¶</a></h1>
+<p>Manage dashboards in account.</p>
+<section id="listdashboard">
+<h2>listDashboard<a class="headerlink" href="#listdashboard" title="Permalink to this headline">¶</a></h2>
+<p>Retrieves a list with all dashboards from the account.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>queryObj</strong>: <a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a></div>
+<div class="line">Default query parameters for retrieving the list of dashboards.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: list[<a class="reference internal" href="Dashboard_Type.html#dashboardinfo"><span class="std std-ref">DashboardInfo</span></a>]</div>
+<div class="line">List of dashboard information.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
+<p>Gets information about the dashboard</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardObj</strong>: <a class="reference internal" href="Dashboard_Type.html#dashboardcreateinfo"><span class="std std-ref">DashboardCreateInfo</span></a></div>
+<div class="line">Dashboard object</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h2>
+<p>Modify any property of the dashboards</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+<div class="line-block">
+<div class="line">dashboardObj: <a class="reference internal" href="Dashboard_Type.html#dashboardcreateinfo"><span class="std std-ref">DashboardCreateInfo</span></a></div>
+<div class="line">Dashboard Object with data to be replaced</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Deletes an dashboard from the account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
+<p>Gets information about the dashboard</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="duplicate">
+<h2>duplicate<a class="headerlink" href="#duplicate" title="Permalink to this headline">¶</a></h2>
+<p>Duplicate the dashboard to your own account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+<div class="line-block">
+<div class="line">dashboardObj: { “setup”: Optional[any], “new_label”: Optional[str] }</div>
+<div class="line">Dashboard Object with data of the duplicate dashboard</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="getpublickey">
+<h2>getPublicKey<a class="headerlink" href="#getpublickey" title="Permalink to this headline">¶</a></h2>
+<p>Generate a new public token for the dashboard</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+<div class="line-block">
+<div class="line">expireTime: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a> = “never”</div>
+<div class="line">Time when token will expire</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listdevicesrelated">
+<h2>listDevicesRelated<a class="headerlink" href="#listdevicesrelated" title="Permalink to this headline">¶</a></h2>
+<p>Get list of devices related with dashboard</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listanalysisrelated">
+<h2>listAnalysisRelated<a class="headerlink" href="#listanalysisrelated" title="Permalink to this headline">¶</a></h2>
+<p>Get list of analysis related with a dashboard</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="runwidgetheaderbuttonanalysis">
+<h2>runWidgetHeaderButtonAnalysis<a class="headerlink" href="#runwidgetheaderbuttonanalysis" title="Permalink to this headline">¶</a></h2>
+<p>Runs an analysis located in a widget’s header button</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">The id of the analysis to run</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboardID</strong>: GenericID: str</div>
+<div class="line">Dashboard identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: GenericID: str</div>
+<div class="line">The id of the widget that contains the header button</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>scope</strong>: Optional[any]</div>
+<div class="line">Data to send to the analysis</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Account/index.html"><strong>Account</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Billing/index.html"><strong>Billing</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Buckets/index.html"><strong>Buckets</strong></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><strong>Dashboards</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#listdashboard">listDashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create">create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit">edit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duplicate">duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getpublickey">getPublicKey</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listdevicesrelated">listDevicesRelated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listanalysisrelated">listAnalysisRelated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runwidgetheaderbuttonanalysis">runWidgetHeaderButtonAnalysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Devices/index.html"><strong>Devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../IntegrationNetwork/index.html"><strong>Integration Network</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Profile/index.html"><strong>Profile</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Run/index.html"><strong>Run</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/tago-io/sdk-python">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/tagoio-sdk/">PyPI</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Buckets/index.html" title="previous chapter"><strong>Buckets</strong></a></li>
+      <li>Next: <a href="../Devices/index.html" title="next chapter"><strong>Devices</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Tago LLC.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/Resources/Dashboards/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
