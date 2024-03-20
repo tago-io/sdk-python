@@ -65,5 +65,6 @@ TagoIO SDK for Python is released under the `Apache-2.0 License <https://github.
     Resources/index
     Device/index
     Services/index
+    Utils/index
     Github Repository <https://github.com/tago-io/sdk-python>
     PyPI <https://pypi.org/project/tagoio-sdk/>

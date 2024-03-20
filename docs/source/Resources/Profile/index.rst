@@ -14,6 +14,10 @@ Gets information about the bucket
         | **profileID**: GenericID: str
         | Profile identification
 
+    **Returns:**
+
+        | **result**: :ref:`ProfileInfo`
+
 .. code-block::
     :caption: **Example:**
 
@@ -27,6 +31,10 @@ list
 ====
 
 Lists all the profiles in your account
+
+    **Returns:**
+
+        | **result**: list[:ref:`ProfileListInfo`]
 
 .. code-block::
     :caption: **Example:**
@@ -47,6 +55,10 @@ Gets profile summary
 
         | **profileID**: GenericID: str
         | Profile identification
+
+    **Returns:**
+
+        | **result**: :ref:`ProfileSummary`
 
 .. code-block::
     :caption: **Example:**
@@ -69,6 +81,10 @@ Gets profile tokenList
         | Profile identification
         | **queryObj**: Optional[:ref:`Query`]
         | Token Query
+
+    **Returns:**
+
+        | **result**: list[:ref:`TokenDataList`]
 
 .. code-block::
     :caption: **Example:**

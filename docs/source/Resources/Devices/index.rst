@@ -121,7 +121,7 @@ Create or edit param for the Device
         | **deviceID**: GenericID: str
         | Device ID
 
-        | **configObj**: :ref:`ConfigurationParams`
+        | **configObj**: :ref:`ConfigurationParams` or list[:ref:`ConfigurationParams`]
         | Configuration Data
 
         | **paramID**: Optional[GenericID: str]
