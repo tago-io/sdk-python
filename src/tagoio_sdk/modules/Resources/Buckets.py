@@ -2,7 +2,6 @@ from typing import Union
 
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Devices import Devices
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 
 
