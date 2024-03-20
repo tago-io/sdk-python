@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "tagoio-sdk"
-version = "4.2.1"
+version = "4.3.0"
 description = "Official Python SDK for TagoIO"
-authors = ["Tago LLC <contact@tago.io>"]
+authors = ["TagoIO Inc. <contact@tago.io>"]
 license = "Apache License"
 readme = "README.md"
 homepage = "https://tago.io/"
