@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from tagoio_sdk.common.Common_Type import (
     Data,
@@ -150,9 +150,9 @@ class Devices(TagoIOModule):
     def paramSet(
         self,
         deviceID: GenericID,
-        configObj: ConfigurationParams,
+        configObj: Union[ConfigurationParams, list[ConfigurationParams]],
         paramID: Optional[GenericID] = None,
-    ) -> list[ConfigurationParams]:
+    ) -> str:
         """
         Create or edit param for the Device
 
@@ -162,18 +162,21 @@ class Devices(TagoIOModule):
 
         :param paramID Parameter ID
         """
+        body = configObj
+        if paramID and not isinstance(configObj, list):
+            body = {
+                "id": paramID,
+                **configObj,
+            }
+
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/params",
                 "method": "POST",
-                "body": {
-                    "id": paramID,
-                    "key": configObj["key"],
-                    "sent": configObj["sent"],
-                    "value": configObj["value"],
-                },
+                "body": body,
             }
         )
+
         return result
 
     def paramList(
@@ -277,7 +280,7 @@ class Devices(TagoIOModule):
                 "body": {"device": deviceID, "tokenParams": tokenParams},
             }
         )
-        result = dateParserList(result, ["expire_date"])
+        result = dateParser(result, ["expire_date"])
         return result
 
     def tokenDelete(self, token: GenericToken) -> str:
