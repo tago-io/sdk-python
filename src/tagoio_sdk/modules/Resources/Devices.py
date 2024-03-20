@@ -430,3 +430,16 @@ class Devices(TagoIOModule):
         )
 
         return result
+
+    def amount(self, deviceID: GenericID) -> Union[int, float]:
+        """
+        Get Amount of data stored in the Device
+        :param deviceID: Device ID
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/data_amount",
+                "method": "GET",
+            }
+        )
+        return result
