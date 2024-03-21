@@ -6,6 +6,7 @@ from typing import Literal, TypedDict
 class RegionDefinition(TypedDict):
     api: str
     realtime: str
+    sse: str
 
 
 # noRegionWarning = False
@@ -13,6 +14,7 @@ class RegionDefinition(TypedDict):
 regionsDefinition = {
     "usa-1": {"api": "https://api.tago.io", "realtime": "wss://realtime.tago.io"},
     "env": None,  # ? process object should be on trycatch.
+    "sse": "http://localhost:8080/events"
 }
 
 Regions = Literal["usa-1", "env"]
@@ -32,11 +34,12 @@ def getConnectionURI(region: Regions) -> RegionDefinition:
     try:
         api = os.environ.get("TAGOIO_API") or ""
         realtime = os.environ.get("TAGOIO_REALTIME") or ""
+        sse = os.environ.get("TAGOIO_SSE") or ""
 
         if api == "" and region != "env":
             raise Exception("Invalid Env")
 
-        return {"api": api, "realtime": realtime}
+        return {"api": api, "realtime": realtime, "sse": sse}
     except:
         # global noRegionWarning
         # if noRegionWarning is False:
