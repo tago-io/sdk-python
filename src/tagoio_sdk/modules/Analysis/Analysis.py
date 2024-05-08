@@ -1,19 +1,13 @@
 import json
 import os
-from typing import Callable, Optional
+from typing import Any, Callable, Optional
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.infrastructure.api_sse import openSSEListening
+from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisEnvironment
 from tagoio_sdk.modules.Services import Services
 
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
-
-if T_ANALYSIS_CONTEXT is None:
-    import asyncio
-
-    from tagoio_sdk.infrastructure.api_socket import APISocket
-
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
 
 
 class Analysis(TagoIOModule):
@@ -44,8 +38,8 @@ class Analysis(TagoIOModule):
 
         self._analysis(context, data)
 
-    # TODO: Fix any
-    def __runLocal(self, environment: any, data: any, analysis_id: any, token: any):
+    def __runLocal(self, environment: list[AnalysisEnvironment], data: list[Any], analysis_id: str, token: str):
+        """ Run Analysis @internal"""
         def log(*args: any):
             print(*args)
             Services.Services({"token": token}).console.log(str(args)[1:][:-2])
@@ -61,46 +55,46 @@ class Analysis(TagoIOModule):
         self._analysis(context, data or [])
 
     def __localRuntime(self):
-        tagoSocket = APISocket({"region": self.region, "token": self.token})
-        sio = tagoSocket.sio
+        analysis = self.doRequest({"path": "/info", "method": "GET"})
 
-        async def connectSocket():
-            def ready(analysisObj: any):  # TODO: Fix any
-                print(
-                    "Analysis [{AnalysisName}] Started.\n".format(
-                        AnalysisName=analysisObj["name"]
-                    )
-                )
+        if not analysis:
+            print("¬ Error :: Analysis not found or not active.")
+            return
 
-            def connect():
-                print("Connected to TagoIO, Getting analysis information...")
+        if analysis.get("run_on") != "external":
+            print("¬ Warning :: Analysis is not set to run on external")
 
-            def disconnect():
-                print("\nDisconnected from TagoIO.\n\n")
-
-            def error(e: any):
-                print("Connection error", e)
-
-            def analysisTrigger(scope: any):
-                self.__runLocal(
-                    scope["environment"],
-                    scope["data"],
-                    scope["analysis_id"],
-                    scope["token"],
-                )
-
-            sio.on("ready", ready)
-            sio.on("error", error)
-            sio.on("connect", connect)
-            sio.on("disconnect", disconnect)
-            sio.on("analysis::trigger", analysisTrigger)
-
-            await tagoSocket.connect()
+        tokenEnd = self.token[-5:]
 
         try:
-            loop.run_until_complete(connectSocket())
-        except RuntimeError:
-            pass
+            sse = openSSEListening({
+                "token": self.token,
+                "region": self.region,
+                "channel": "analysis_trigger"
+            })
+            print(f"\n¬ Connected to TagoIO :: Analysis [{analysis['name']}]({tokenEnd}) is ready.")
+            print("¬ Waiting for analysis trigger...\n")
+        except Exception as e:
+            print("¬ Connection was closed, trying to reconnect...")
+            print(f"Error: {e}")
+            return
+
+        for event in sse.events():
+            try:
+                data = json.loads(event.data).get("payload")
+
+                if not data:
+                    continue
+
+                self.__runLocal(
+                    data["environment"],
+                    data["data"],
+                    data["analysis_id"],
+                    self.token,
+                )
+            except RuntimeError:
+                print("¬ Connection was closed, trying to reconnect...")
+                pass
 
     @staticmethod
     def use(analysis: Callable, params: Optional[str] = {"token": "unknown"}):
