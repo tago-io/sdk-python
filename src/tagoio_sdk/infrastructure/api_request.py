@@ -84,7 +84,6 @@ def apiRequest(requestParams: RequestParams) -> dict[str, any]:
                 data=dataBody,
                 params=requestParams.get("params"),
                 timeout=config.tagoSDKconfig["requestTimeout"],
-                stream=True,
             )
         )
 
