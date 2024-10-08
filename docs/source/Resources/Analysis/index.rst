@@ -35,7 +35,7 @@ Retrieves a list with all analyses from the account
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.list();
+            resources.analysis.list()
 
 
 =======
@@ -60,11 +60,10 @@ Create a new analysis
 
             resources = Resources()
             resources.analysis.create({
-                "label": "My Analysis",
-                "arrangement": [],
-                "tags": [],
-                "visible": True,
-            });
+                "name": "My Analysis",
+                "runtime": "python",
+                "active": True,
+            })
 
 
 =======
@@ -91,12 +90,7 @@ Modify any property of the analyze
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.edit("analysisID", {
-                "label": "My Analysis",
-                "arrangement": [],
-                "tags": [],
-                "visible": True,
-            });
+            resources.analysis.edit("analysisID", { "name": "My Analysis Edited" })
 
 
 =======
@@ -120,7 +114,7 @@ Deletes an analysis from the account
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.delete("analysisID");
+            resources.analysis.delete("analysisID")
 
 
 =======
@@ -144,7 +138,7 @@ Gets information about an analysis
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.info("analysisID");
+            resources.analysis.info("analysisID")
 
 
 =======
@@ -168,7 +162,7 @@ Run an analysis
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.run("analysisID");
+            resources.analysis.run("analysisID")
 
 
 =======
@@ -192,7 +186,7 @@ Generate a new token for the analysis
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.tokenGenerate("analysisID");
+            resources.analysis.tokenGenerate("analysisID")
 
 
 =======
@@ -219,15 +213,15 @@ Upload a file (base64) to Analysis. Automatically erase the old one
             from tagoio_sdk import Resources
             import base64
 
-            data = "print(Hello, World!);"
-            encoded_bytes = base64.b64encode(data.encode('utf-8'))
+            data = "print(Hello, World!)"
+            encoded_bytes = base64.b64encode(data.encode('utf-8')).decode('utf-8')
 
             resources = Resources()
             resources.analysis.uploadScript("analysisID", {
                 "name": "My Script",
                 "content": encoded_bytes,
                 "language": "python",
-            });
+            })
 
 
 =======
@@ -254,4 +248,4 @@ Get a url to download the analysis. If `version` is specified in `options`, down
             from tagoio_sdk import Resources
 
             resources = Resources()
-            resources.analysis.downloadScript("analysisID");
+            resources.analysis.downloadScript("analysisID")

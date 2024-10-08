@@ -158,7 +158,7 @@ class Analyses(TagoIOModule):
         )
         return result
 
-    def downloadScript(self, analysisID: GenericID, options: Optional[Dict[Literal["version"], int]] = None) -> Dict[str, Any]:
+    def downloadScript(self, analysisID: GenericID, options: Optional[Dict[Literal["version"], int]] = None) -> Dict:
         """
         Get a url to download the analysis. If `version` is specified in `options`, downloads a specific version.
 
