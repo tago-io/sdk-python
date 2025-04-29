@@ -279,7 +279,7 @@ class Devices(TagoIOModule):
             {
                 "path": "/device/token",
                 "method": "POST",
-                "body": {"device": deviceID, "tokenParams": tokenParams},
+                "body": {"device": deviceID, **tokenParams},
             }
         )
         result = dateParser(result, ["expire_date"])
