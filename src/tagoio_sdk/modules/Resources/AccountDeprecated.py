@@ -1,5 +1,6 @@
 from tagoio_sdk.common.tagoio_module import GenericModuleParams
 
+from .Access import Access
 from .Account import Account
 from .Analyses import Analyses
 from .Billing import Billing
@@ -20,6 +21,8 @@ class AccountDeprecated(Account):
     """
 
     def __init__(self, params: GenericModuleParams):
+        self.access = Access(params)
+        """@deprecated moved to Resources().access"""
         self.analysis = Analyses(params)
         """@deprecated moved to Resources().analysis"""
         self.buckets = Buckets(params)

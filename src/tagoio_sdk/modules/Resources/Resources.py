@@ -2,6 +2,7 @@ import os
 from typing import Optional
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule, GenericModuleParams
+from .Access import Access
 from .Analyses import Analyses
 from .Billing import Billing
 from .Buckets import Buckets
@@ -18,6 +19,7 @@ class Resources(TagoIOModule):
         if params is None:
             params = {"token": os.environ.get("T_ANALYSIS_TOKEN")}
         super().__init__(params)
+        self.access = Access(params)
         self.analysis = Analyses(params)
         self.billing = Billing(params)
         self.buckets = Buckets(params)
