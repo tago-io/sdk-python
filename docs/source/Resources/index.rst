@@ -26,6 +26,7 @@ Instance
 .. toctree::
 
     Access/index
+    Actions/index
     Account/index
     Analysis/index
     Billing/index
