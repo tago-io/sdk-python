@@ -170,7 +170,7 @@ ActionTriggerConditionType
 
         | variable: str
 
-        | is_: :ref:`Conditionals`
+        | is: :ref:`Conditionals`
 
         | value: str
 
@@ -206,12 +206,28 @@ ActionTriggerGeofenceType
 
         | variable: str
 
-        | is_: "IN" or "OUT"
+        | is: "IN" or "OUT"
 
         | value: :ref:`TriggerGeofenceValueType`
 
         | unlock: Optional[bool]
 
+
+.. _ActionTriggerType:
+
+ActionTriggerType
+--------------
+
+    **Attributes:**
+
+        ActionTriggerType is a Union of:
+
+            | :ref:`ActionTriggerResourceType`
+            | :ref:`ActionTriggerIntervalType`
+            | :ref:`ActionTriggerCronType`
+            | :ref:`ActionTriggerConditionType`
+            | :ref:`ActionTriggerUsageType`
+            | :ref:`ActionTriggerGeofenceType`
 
 .. _ActionCreateInfo:
 
