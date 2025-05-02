@@ -14,6 +14,8 @@ ExpireTimeOption = Union[Literal["never"], datetime]
 
 PermissionOption = Literal["write", "read", "full", "deny"]
 
+Conditionals = Literal["<", ">", "=", "!", "><", "*"]
+
 
 class TokenCreateResponse(TypedDict):
     token: GenericToken
