@@ -1,5 +1,5 @@
 import time
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional
 
 from tagoio_sdk.common.Hash_Generator import generateRequestID
 
