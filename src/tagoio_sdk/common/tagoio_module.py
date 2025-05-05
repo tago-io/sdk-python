@@ -47,7 +47,7 @@ class TagoIOModule(object):
                     converted_key = f"filter[{key}][{sub_key}]"
                     params[converted_key] = sub_value
             else:
-                params[key] = value
+                params[f"filter[{key}]"] = value
 
     def doRequest(self, params: DoRequestParams) -> dict[str, any]:
         url = getConnectionURI(self.region)["api"]
