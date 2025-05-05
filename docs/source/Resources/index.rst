@@ -32,6 +32,7 @@ Instance
     Billing/index
     Buckets/index
     Dashboards/index
+    Dictionaries/index
     Devices/index
     IntegrationNetwork/index
     Profile/index
