@@ -7,6 +7,7 @@ from .Analyses import Analyses
 from .Billing import Billing
 from .Buckets import Buckets
 from .Dashboards import Dashboards
+from .Dictionaries import Dictionaries
 from .Devices import Devices
 from .Integration import Integration
 from .Profile import Profile
@@ -32,6 +33,8 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().buckets"""
         self.dashboards = Dashboards(params)
         """@deprecated moved to Resources().dashboards"""
+        self.dictionaries = Dictionaries(params)
+        """@deprecated moved to Resources().dictionaries"""
         self.devices = Devices(params)
         """@deprecated moved to Resources().devices"""
         self.billing = Billing(params)

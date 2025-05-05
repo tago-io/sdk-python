@@ -8,6 +8,7 @@ from .Analyses import Analyses
 from .Billing import Billing
 from .Buckets import Buckets
 from .Dashboards import Dashboards
+from .Dictionaries import Dictionaries
 from .Devices import Devices
 from .Profile import Profile
 from .Run import Run
@@ -26,6 +27,7 @@ class Resources(TagoIOModule):
         self.billing = Billing(params)
         self.buckets = Buckets(params)
         self.dashboards = Dashboards(params)
+        self.dictionaries = Dictionaries(params)
         self.devices = Devices(params)
         self.profile = Profile(params)
         self.run = Run(params)
