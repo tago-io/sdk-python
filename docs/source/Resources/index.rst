@@ -34,6 +34,7 @@ Instance
     Dashboards/index
     Dictionaries/index
     Devices/index
+    Files/index
     IntegrationNetwork/index
     Profile/index
     Run/index
