@@ -364,21 +364,19 @@ class Files(TagoIOModule):
 
         path = f"/data/files/{dashboard}/{widget}" if dashboard and widget else "/files"
 
+        import io
+
         # Prepare the multipart form data
-        form_data = {
+        fields = {
             "filename": filename,
             "upload_id": upload_id,
             "part": str(part_number),
-            "file": (filename, io.BytesIO(blob), "application/octet-stream"),
             "multipart_action": "upload",
+            "file": (filename, io.BytesIO(blob), "application/octet-stream"),
         }
 
         if field_id:
-            form_data["field_id"] = field_id
-
-        import io
-
-        files = {"file": (filename, io.BytesIO(blob), "application/octet-stream")}
+            fields["field_id"] = field_id
 
         headers = {"Content-Type": "multipart/form-data"}
 
@@ -386,9 +384,7 @@ class Files(TagoIOModule):
             {
                 "path": path,
                 "method": "POST",
-                "body": form_data,
-                "files": files,
-                "maxContentLength": float("infinity"),
+                "body": fields,
                 "headers": headers,
             }
         )
@@ -524,7 +520,7 @@ class Files(TagoIOModule):
         self._is_canceled(cancelled)
 
         # Function to process chunks and update progress
-        def process_chunk(offset_start, offset_end, part_number):
+        def process_chunk(offset_start: int, offset_end: int, part_number: int) -> Dict[str, Any] | None:
             try:
                 sliced = file[offset_start:offset_end]
                 part_data = self._addToQueue(filename, upload_id, part_number, sliced, options)

@@ -1,7 +1,5 @@
 from datetime import datetime
-from typing import List, Dict, Literal, Optional, TypedDict, Union, Callable, Any
-
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from typing import List, Optional, TypedDict, Callable, Any
 
 
 class FileQuery(TypedDict, total=False):
@@ -52,7 +50,11 @@ class FilesPermission(TypedDict):
 
 class UploadOptions(TypedDict, total=False):
     maxTriesForEachChunk: int
-    """the maximum amount of tries to upload each chunk to TagoIO. After this many unsuccessful tries of a single chunk, the upload is aborted"""
+    """
+    The maximum amount of tries to upload each chunk to TagoIO.
+
+    After this many unsuccessful tries of a single chunk, the upload is aborted
+    """
     timeoutForEachFailedChunk: int
     """timeout before trying to upload the same chunk if the request failed"""
     contentType: str
