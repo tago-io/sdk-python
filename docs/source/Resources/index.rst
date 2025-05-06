@@ -36,5 +36,6 @@ Instance
     Devices/index
     Files/index
     IntegrationNetwork/index
+    IntegrationConnector/index
     Profile/index
     Run/index
