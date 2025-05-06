@@ -9,6 +9,7 @@ from .Buckets import Buckets
 from .Dashboards import Dashboards
 from .Dictionaries import Dictionaries
 from .Devices import Devices
+from .Files import Files
 from .Integration import Integration
 from .Profile import Profile
 from .Run import Run
@@ -37,6 +38,8 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().dictionaries"""
         self.devices = Devices(params)
         """@deprecated moved to Resources().devices"""
+        self.files = Files(params)
+        """@deprecated moved to Resources().files"""
         self.billing = Billing(params)
         """@deprecated moved to Resources().billing"""
         self.integration = Integration(params)
