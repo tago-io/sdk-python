@@ -10,6 +10,7 @@ from .Dashboards import Dashboards
 from .Dictionaries import Dictionaries
 from .Devices import Devices
 from .Files import Files
+from .Notifications import Notifications
 from .Integration import Integration
 from .Profile import Profile
 from .Run import Run
@@ -40,6 +41,8 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().devices"""
         self.files = Files(params)
         """@deprecated moved to Resources().files"""
+        self.notifications = Notifications(params)
+        """@deprecated moved to Resources().notifications"""
         self.billing = Billing(params)
         """@deprecated moved to Resources().billing"""
         self.integration = Integration(params)
