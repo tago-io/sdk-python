@@ -1,7 +1,6 @@
 import time
 from typing import Dict, List, Optional, Any
 
-from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 from tagoio_sdk.modules.Resources.Files_Types import (
@@ -13,6 +12,7 @@ from tagoio_sdk.modules.Resources.Files_Types import (
     MoveFiles,
     UploadOptions,
 )
+from tagoio_sdk.regions import getConnectionURI
 
 
 class Files(TagoIOModule):
@@ -328,7 +328,8 @@ class Files(TagoIOModule):
 
         return result
 
-    def _createMultipartUpload(self, filename: str, options: Optional[UploadOptions] = None) -> Dict[str, Any]:
+    def _createMultipartUpload(self, filename: str, options: Optional[UploadOptions] = None) -> str:
+        """Creates a multipart upload instance."""
         options = options or {}
         dashboard = options.get("dashboard")
         widget = options.get("widget")
@@ -357,6 +358,7 @@ class Files(TagoIOModule):
     def _uploadPart(
         self, filename: str, upload_id: str, part_number: int, blob: bytes, options: Optional[UploadOptions] = None
     ) -> Dict[str, Any]:
+        """Uploads a single part to TagoIO."""
         options = options or {}
         field_id = options.get("fieldId")
         dashboard = options.get("dashboard")
@@ -365,43 +367,57 @@ class Files(TagoIOModule):
         path = f"/data/files/{dashboard}/{widget}" if dashboard and widget else "/files"
 
         import io
+        import requests
+        from requests_toolbelt.multipart.encoder import MultipartEncoder
 
-        # Prepare the multipart form data
-        fields = {
-            "filename": filename,
-            "upload_id": upload_id,
-            "part": str(part_number),
-            "multipart_action": "upload",
+        # Create multipart form data with proper content type
+        form_data = {
+            "filename": (None, filename),
+            "upload_id": (None, upload_id),
+            "part": (None, str(part_number)),
+            "multipart_action": (None, "upload"),
+            # Use actual filename here and correct content type
             "file": (filename, io.BytesIO(blob), "application/octet-stream"),
         }
 
         if field_id:
-            fields["field_id"] = field_id
+            form_data["field_id"] = (None, field_id)
 
-        headers = {"Content-Type": "multipart/form-data"}
+        multipart = MultipartEncoder(fields=form_data)
+        headers = {"Content-Type": multipart.content_type, "token": self.token}
 
-        result = self.doRequest(
-            {
-                "path": path,
-                "method": "POST",
-                "body": fields,
-                "headers": headers,
-            }
-        )
+        # Need to directly use requests here for proper multipart handling
+        api_url = getConnectionURI(self.region)["api"]
+        url = f"{api_url}{path}"
 
-        return {
-            "ETag": result["ETag"],
-            "PartNumber": part_number,
-        }
+        response = requests.post(url=url, data=multipart, headers=headers)
+
+        if response.status_code >= 200 and response.status_code < 300:
+            result = response.json().get("result", {})
+            return {"ETag": result.get("ETag"), "PartNumber": part_number}
+        else:
+            error_message = response.text
+            try:
+                error_data = response.json()
+                if "message" in error_data:
+                    error_message = error_data["message"]
+            except:
+                pass
+            raise ValueError(f"Error in part upload: {error_message}")
 
     def _addToQueue(
         self,
         filename: str,
-        upload_id: GenericID,
+        upload_id: str,
         part_number: int,
         blob: bytes,
-        options: Optional[UploadOptions],
+        options: Optional[UploadOptions] = None,
     ) -> Dict[str, Any]:
+        """
+        Adds an upload to the queue.
+        It will try to upload for 'opts.maxTriesForEachChunk' and fail
+        if it couldn't upload after those many tries.
+        """
         options = options or {}
         max_tries = options.get("maxTriesForEachChunk", 5)
         timeout = options.get("timeoutForEachFailedChunk", 2000)
@@ -428,6 +444,7 @@ class Files(TagoIOModule):
     def _completeMultipartUpload(
         self, filename: str, upload_id: str, parts: List[Dict[str, Any]], options: Optional[UploadOptions] = None
     ) -> Dict[str, str]:
+        """Finishes a multipart upload instance."""
         options = options or {}
         field_id = options.get("fieldId")
         dashboard = options.get("dashboard")
@@ -438,24 +455,17 @@ class Files(TagoIOModule):
         # Sort parts by part number
         parts_ordered = sorted(parts, key=lambda x: x["PartNumber"])
 
-        headers = {"Content-Type": "multipart/form-data"}
-
-        body = {
-            "multipart_action": "end",
-            "upload_id": upload_id,
-            "filename": filename,
-            "parts": parts_ordered,
-            "headers": headers,
-        }
-
-        if field_id:
-            body["field_id"] = field_id
-
         result = self.doRequest(
             {
                 "path": path,
                 "method": "POST",
-                "body": body,
+                "body": {
+                    "multipart_action": "end",
+                    "upload_id": upload_id,
+                    "filename": filename,
+                    "parts": parts_ordered,
+                    **({"field_id": field_id} if field_id else {}),
+                },
             }
         )
 
@@ -478,8 +488,8 @@ class Files(TagoIOModule):
             with open('myfile.txt', 'rb') as f:
                 file_data = f.read()
             result = resources.files.uploadFile(file_data, "/uploads/myfile.txt", {
-              "chunkSize": 5 * 1024 * 1024,  # 5MB chunks
-              "onProgress": lambda progress: print(f"Upload progress: {progress}%")
+            "chunkSize": 5 * 1024 * 1024,  # 5MB chunks
+            "onProgress": lambda progress: print(f"Upload progress: {progress}%")
             })
             print(result["file"])  # https://api.tago.io/file/.../uploads/myfile.txt
             ```
@@ -490,7 +500,7 @@ class Files(TagoIOModule):
         # Setup cancellation if provided
         cancelled = False
         if options.get("onCancelToken"):
-            options["onCancelToken"](lambda: setattr(locals(), "cancelled", True))
+            options["onCancelToken"](lambda: globals().update(cancelled=True))
 
         self._is_canceled(cancelled)
 
@@ -500,7 +510,7 @@ class Files(TagoIOModule):
         # Calculate chunk sizes
         bytes_per_chunk = options.get("chunkSize", 7 * MB)
         file_size = len(file)
-        chunk_amount = (file_size // bytes_per_chunk) + 1
+        chunk_amount = (file_size // bytes_per_chunk) + (1 if file_size % bytes_per_chunk > 0 else 0)
         parts_per_time = 3
 
         # Check minimum chunk size for multipart uploads
@@ -513,54 +523,68 @@ class Files(TagoIOModule):
         part_number = 1
         error = None
         parts = []
-        promises = []
 
         import threading
+        import queue
 
         self._is_canceled(cancelled)
 
-        # Function to process chunks and update progress
-        def process_chunk(offset_start: int, offset_end: int, part_number: int) -> Dict[str, Any] | None:
+        # Queue to collect results from threads
+        result_queue = queue.Queue()
+
+        # Function to process chunks
+        def process_chunk(start: int, end: int, p_num: int) -> None:
             try:
-                sliced = file[offset_start:offset_end]
-                part_data = self._addToQueue(filename, upload_id, part_number, sliced, options)
-                parts.append(part_data)
-
-                # Update progress if callback provided
-                if options.get("onProgress"):
-                    percentage = (len(parts) * 100) / chunk_amount
-                    limited_percentage = min(percentage, 100)
-                    rounded_percentage = round(limited_percentage, 2)
-                    options["onProgress"](rounded_percentage)
-
-                return part_data
+                sliced = file[start:end]
+                part_data = self._addToQueue(filename, upload_id, p_num, sliced, options)
+                result_queue.put(("success", part_data, p_num))
             except Exception as e:
-                nonlocal error
-                error = e
-                return None
+                result_queue.put(("error", str(e), p_num))
+
+        active_threads = set()
 
         # Upload each chunk
         while offset_start < file_size:
             # Check if we're at the maximum parallel uploads
-            while len(promises) >= parts_per_time:
+            while len(active_threads) >= parts_per_time:
                 self._is_canceled(cancelled)
+
+                # Check for completed threads and process results
+                still_active = set()
+                for thread in active_threads:
+                    if thread.is_alive():
+                        still_active.add(thread)
+
+                # Update active threads
+                active_threads = still_active
+
+                # Process any results
+                while not result_queue.empty():
+                    status, data, p_num = result_queue.get()
+                    if status == "success":
+                        parts.append(data)
+                        if options.get("onProgress"):
+                            percentage = (len(parts) * 100) / chunk_amount
+                            limited_percentage = min(percentage, 100)
+                            rounded_percentage = round(limited_percentage, 2)
+                            options["onProgress"](rounded_percentage)
+                    else:
+                        error = ValueError(f"Error uploading part {p_num}: {data}")
 
                 if error:
                     raise error
 
-                time.sleep(1)
-
-                # Check if any threads have completed
-                promises = [p for p in promises if p.is_alive()]
+                time.sleep(0.2)
 
             # Start a new upload thread
-            thread = threading.Thread(target=process_chunk, args=(offset_start, offset_end, part_number))
+            thread = threading.Thread(
+                target=process_chunk, args=(offset_start, min(offset_end, file_size), part_number)
+            )
             thread.start()
-            promises.append(thread)
+            active_threads.add(thread)
 
             self._is_canceled(cancelled)
-
-            time.sleep(0.5)
+            time.sleep(0.1)
 
             # Move to the next chunk
             offset_start = offset_end
@@ -568,18 +592,48 @@ class Files(TagoIOModule):
             part_number += 1
 
         # Wait for all uploads to complete
-        while promises:
+        while active_threads:
             self._is_canceled(cancelled)
+
+            # Check for completed threads
+            still_active = set()
+            for thread in active_threads:
+                if thread.is_alive():
+                    still_active.add(thread)
+
+            # Update active threads
+            active_threads = still_active
+
+            # Process any results
+            while not result_queue.empty():
+                status, data, p_num = result_queue.get()
+                if status == "success":
+                    parts.append(data)
+                    if options.get("onProgress"):
+                        percentage = (len(parts) * 100) / chunk_amount
+                        limited_percentage = min(percentage, 100)
+                        rounded_percentage = round(limited_percentage, 2)
+                        options["onProgress"](rounded_percentage)
+                else:
+                    error = ValueError(f"Error uploading part {p_num}: {data}")
 
             if error:
                 raise error
 
-            time.sleep(1)
+            time.sleep(0.2)
 
-            # Update the list of active threads
-            promises = [p for p in promises if p.is_alive()]
+        # One final check for results
+        while not result_queue.empty():
+            status, data, p_num = result_queue.get()
+            if status == "success":
+                parts.append(data)
+            else:
+                raise ValueError(f"Error uploading part {p_num}: {data}")
 
         self._is_canceled(cancelled)
+
+        if len(parts) != chunk_amount:
+            raise ValueError(f"Expected {chunk_amount} parts but got {len(parts)}")
 
         # Complete the multipart upload with retries
         for i in range(3):
