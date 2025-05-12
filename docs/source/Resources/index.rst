@@ -40,3 +40,4 @@ Instance
     IntegrationConnector/index
     Profile/index
     Run/index
+    Secrets/index
