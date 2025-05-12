@@ -14,6 +14,7 @@ from .Files import Files
 from .Notifications import Notifications
 from .Profile import Profile
 from .Run import Run
+from .Secrets import Secrets
 from .Integration import Integration
 from .Account import Account
 
@@ -35,5 +36,6 @@ class Resources(TagoIOModule):
         self.notifications = Notifications(params)
         self.profile = Profile(params)
         self.run = Run(params)
+        self.secrets = Secrets(params)
         self.integration = Integration(params)
         self.account = Account(params)
