@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from tagoio_sdk.common.Common_Type import TokenDataList, TokenData
 from tagoio_sdk.common.tagoio_module import TagoIOModule
