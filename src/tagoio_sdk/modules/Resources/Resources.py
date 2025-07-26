@@ -15,6 +15,7 @@ from .Notifications import Notifications
 from .Profile import Profile
 from .Run import Run
 from .Secrets import Secrets
+from .Service_Authorization import ServiceAuthorization
 from .Integration import Integration
 from .Account import Account
 
@@ -37,5 +38,6 @@ class Resources(TagoIOModule):
         self.profile = Profile(params)
         self.run = Run(params)
         self.secrets = Secrets(params)
+        self.serviceAuthorization = ServiceAuthorization(params)
         self.integration = Integration(params)
         self.account = Account(params)

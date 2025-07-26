@@ -41,3 +41,4 @@ Instance
     Profile/index
     Run/index
     Secrets/index
+    ServiceAuthorization/index
