@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import Optional, TypedDict
 
 from tagoio_sdk.infrastructure.api_request import RequestParams, apiRequest
 from tagoio_sdk.regions import Regions, getConnectionURI
@@ -6,6 +6,7 @@ from tagoio_sdk.regions import Regions, getConnectionURI
 
 class DoRequestParams(RequestParams):
     url: None
+    maxContentLength: Optional[float]
 
 
 class GenericModuleParams(TypedDict):

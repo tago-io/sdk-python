@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Any, Literal, Optional, TypedDict, Union
+from typing import Any, Dict, List, Literal, Optional, TypedDict, Union
 
-from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericID, Query
 
 HexColor = str
 
@@ -53,6 +53,17 @@ class NotificationCreate(TypedDict):
     buttons_autodisable: Optional[bool]
 
 
+# TODO: FIX: The filter condition read is not working.
+class NotificationQuery(Query):
+    fields: Optional[List[Literal["created_at"]]]
+    filter: Optional[Dict[Literal["read"], bool]]
+
+
+class NotificationInfo(NotificationCreate):
+    id: GenericID
+    created_at: datetime
+
+
 class NotificationInfoBasic(TypedDict):
     id: GenericID
     created_at: datetime
@@ -60,6 +71,3 @@ class NotificationInfoBasic(TypedDict):
 
 class NotificationCreateReturn(TypedDict):
     id: GenericID
-
-
-NotificationInfo = NotificationInfoBasic and NotificationCreate
