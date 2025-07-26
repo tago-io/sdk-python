@@ -40,9 +40,7 @@ class Networks(TagoIOModule):
 
         return result
 
-    def info(
-        self, networkID: GenericID, fields: NetworkInfo = None
-    ) -> NetworkInfo:
+    def info(self, networkID: GenericID, fields: NetworkInfo = None) -> NetworkInfo:
         """
         Retrieves the information of the network.
 
