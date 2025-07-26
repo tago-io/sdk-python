@@ -189,7 +189,7 @@ DeviceCreateInfoBasic
         | **network**:  :ref:`GenericID`
         | Network ID.
 
-        | **type**: Optional[:ref:`DataStorageType`]
+        | **type**: Optional[str]
         | [Optional] Device's data storage (bucket) type.
         | :default: "legacy"
 

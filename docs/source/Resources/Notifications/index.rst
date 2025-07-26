@@ -1,5 +1,5 @@
 **Notifications**
-==========
+=================
 
 Manage notifications in your application.
 
@@ -87,9 +87,9 @@ See: `Notification <https://help.tago.io/portal/en/kb/articles/11-notification>`
         resources.notifications.markAsUnread(["id-1", "id-2"])
 
 
-============
+=============
 markAllAsRead
-============
+=============
 
 Marks all notifications in the application as read.
 
@@ -112,9 +112,9 @@ See: `Notification <https://help.tago.io/portal/en/kb/articles/11-notification>`
         print(result)  # All TagoIO Notification Run Successfully Updated
 
 
-=================
+==================
 notificationButton
-=================
+==================
 
 Records when a notification button is pressed by the user.
 
@@ -191,3 +191,10 @@ See: `Notification <https://help.tago.io/portal/en/kb/articles/11-notification>`
         resources = Resources()
         result = resources.notifications.remove("notification-123")
         print(result)  # Successfully Removed
+
+.. toctree::
+
+
+.. toctree::
+
+    Notification_Type

@@ -1,5 +1,5 @@
 **Secrets**
-==========
+===========
 
 Manage secrets in your application.
 
@@ -160,3 +160,10 @@ See: `Secrets <https://help.tago.io/portal/en/kb/articles/secrets>`_
         resources = Resources()
         result = resources.secrets.delete("secret-id-123")
         print(result)  # Successfully Removed
+
+.. toctree::
+
+
+.. toctree::
+
+    Secrets_Type

@@ -1,11 +1,11 @@
-**Notification Type**
-===================
+**Notifications Type**
+======================
 
 
 .. _NotificationTriggerAnalysis:
 
 NotificationTriggerAnalysis
---------------------------
+---------------------------
 
     **Attributes:**
 
@@ -16,7 +16,7 @@ NotificationTriggerAnalysis
 .. _NotificationTriggerHTTP:
 
 NotificationTriggerHTTP
-----------------------
+-----------------------
 
     **Attributes:**
 
@@ -33,7 +33,7 @@ NotificationTriggerHTTP
 .. _NotificationTriggerProfile:
 
 NotificationTriggerProfile
-------------------------
+--------------------------
 
     **Attributes:**
 
@@ -44,7 +44,7 @@ NotificationTriggerProfile
 .. _NotificationButton:
 
 NotificationButton
-----------------
+------------------
 
     **Attributes:**
 
@@ -64,7 +64,7 @@ NotificationButton
 .. _NotificationIconImage:
 
 NotificationIconImage
--------------------
+---------------------
 
     **Attributes:**
 
@@ -81,7 +81,7 @@ NotificationIconImage
 .. _NotificationIconSVG:
 
 NotificationIconSVG
------------------
+-------------------
 
     **Attributes:**
 
@@ -98,7 +98,7 @@ NotificationIconSVG
 .. _NotificationCreate:
 
 NotificationCreate
-----------------
+------------------
 
     **Attributes:**
 
@@ -127,7 +127,7 @@ NotificationCreate
 .. _NotificationQuery:
 
 NotificationQuery(:ref:`Query`)
--------------
+-------------------------------
 
     **Attributes:**
 
@@ -141,7 +141,7 @@ NotificationQuery(:ref:`Query`)
 .. _NotificationInfo:
 
 NotificationInfo(:ref:`NotificationCreate`)
-------------
+--------------------------------------------
 
     **Attributes:**
 
@@ -155,7 +155,7 @@ NotificationInfo(:ref:`NotificationCreate`)
 .. _NotificationInfoBasic:
 
 NotificationInfoBasic
-------------------
+---------------------
 
     **Attributes:**
 
@@ -169,7 +169,7 @@ NotificationInfoBasic
 .. _NotificationCreateReturn:
 
 NotificationCreateReturn
----------------------
+------------------------
 
     **Attributes:**
 

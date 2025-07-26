@@ -166,7 +166,7 @@ Send a test email from the TagoRUN service.
 
     **Parameters:**
 
-        | **data**: :ref:`emailData`
+        | **data**: :ref:`EmailBase`
         | Email data including subject and body.
 
     **Returns:**

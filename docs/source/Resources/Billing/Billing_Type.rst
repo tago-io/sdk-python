@@ -13,7 +13,7 @@ BillingPlan
 BillingAddOn
 -------------
 
-    **BillingAddOn**= "mobile" or "custom_dns"
+    **BillingAddOn** = "mobile" or "custom_dns"
 
 
 .. _BillingService:
@@ -47,7 +47,7 @@ BillingServicePrice
         | Price for the service tier.
 
 
-.. _ BillingAllServicePrices:
+.. _BillingAllServicePrices:
 
 BillingAllServicePrices
 ------------------------
@@ -166,10 +166,10 @@ BillingPaymentError
     **Attributes:**
 
         | **message**: str or None
-        Payment error message.
+        | Payment error message.
 
         | **details**: str or None
-        More details on the payment error.
+        | More details on the payment error.
 
 
 .. _BillingPaymentPastDue:

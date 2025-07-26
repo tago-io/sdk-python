@@ -1,5 +1,5 @@
 **Actions Type**
-===============
+================
 
 
 .. _TriggerGeofenceValueType:
@@ -21,7 +21,7 @@ TriggerGeofenceValueType
 .. _ActionTypeScriptParams:
 
 ActionTypeScriptParams
----------------------
+----------------------
 
     **Attributes:**
 
@@ -33,7 +33,7 @@ ActionTypeScriptParams
 .. _ActionTypeNotificationParams:
 
 ActionTypeNotificationParams
---------------------------
+----------------------------
 
     **Attributes:**
 
@@ -47,7 +47,7 @@ ActionTypeNotificationParams
 .. _ActionTypeNotificationRunParams:
 
 ActionTypeNotificationRunParams
------------------------------
+-------------------------------
 
     **Attributes:**
 
@@ -63,7 +63,7 @@ ActionTypeNotificationRunParams
 .. _ActionTypeEmailParams:
 
 ActionTypeEmailParams
-------------------
+---------------------
 
     **Attributes:**
 
@@ -79,7 +79,7 @@ ActionTypeEmailParams
 .. _ActionTypeSMSParams:
 
 ActionTypeSMSParams
-----------------
+-------------------
 
     **Attributes:**
 
@@ -93,7 +93,7 @@ ActionTypeSMSParams
 .. _ActionTypeMQTTParams:
 
 ActionTypeMQTTParams
------------------
+--------------------
 
     **Attributes:**
 
@@ -109,7 +109,7 @@ ActionTypeMQTTParams
 .. _ActionTypePostParams:
 
 ActionTypePostParams
-----------------
+--------------------
 
     **Attributes:**
 
@@ -123,7 +123,7 @@ ActionTypePostParams
 .. _ActionTriggerResourceType:
 
 ActionTriggerResourceType
------------------------
+-------------------------
 
     **Attributes:**
 
@@ -139,7 +139,7 @@ ActionTriggerResourceType
 .. _ActionTriggerIntervalType:
 
 ActionTriggerIntervalType
------------------------
+-------------------------
 
     **Attributes:**
 
@@ -149,7 +149,7 @@ ActionTriggerIntervalType
 .. _ActionTriggerCronType:
 
 ActionTriggerCronType
-------------------
+---------------------
 
     **Attributes:**
 
@@ -162,7 +162,7 @@ ActionTriggerCronType
 .. _ActionTriggerConditionType:
 
 ActionTriggerConditionType
-------------------------
+--------------------------
 
     **Attributes:**
 
@@ -184,7 +184,7 @@ ActionTriggerConditionType
 .. _ActionTriggerUsageType:
 
 ActionTriggerUsageType
--------------------
+----------------------
 
     **Attributes:**
 
@@ -198,7 +198,7 @@ ActionTriggerUsageType
 .. _ActionTriggerGeofenceType:
 
 ActionTriggerGeofenceType
-----------------------
+-------------------------
 
     **Attributes:**
 
@@ -216,7 +216,7 @@ ActionTriggerGeofenceType
 .. _ActionTriggerType:
 
 ActionTriggerType
---------------
+-----------------
 
     **Attributes:**
 
@@ -232,7 +232,7 @@ ActionTriggerType
 .. _ActionCreateInfo:
 
 ActionCreateInfo
---------------
+----------------
 
     **Attributes:**
 
@@ -253,13 +253,13 @@ ActionCreateInfo
 
         | lock: Optional[bool]
 
-        | type: Optional[:ref:`ActionType`]
+        | type: Optional[str]
         | Type of action
 
         | trigger: Optional[List[:ref:`ActionTriggerType`]]
         | Array of trigger configuration according to type
 
-        | action: :ref:`ActionTypeParams`
+        | action: Dict
         | Action configuration
 
         | trigger_when_unlock: Optional[bool]
@@ -269,7 +269,7 @@ ActionCreateInfo
 .. _ActionInfo:
 
 ActionInfo(:ref:`ActionCreateInfo`)
-----------
+-----------------------------------
 
     **Attributes:**
 
@@ -285,7 +285,7 @@ ActionInfo(:ref:`ActionCreateInfo`)
 .. _MQTTResourceAction:
 
 MQTTResourceAction
----------------
+------------------
 
     **Attributes:**
 
@@ -299,7 +299,7 @@ MQTTResourceAction
 .. _ActionQuery:
 
 ActionQuery(:ref:`Query`)
-----------
+-------------------------
 
     **Attributes:**
 

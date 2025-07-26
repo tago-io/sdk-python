@@ -5,7 +5,7 @@
 .. _GenericTokenAuthorization:
 
 GenericToken
------------
+------------
 
     | **GenericToken**: str
     | Token used on TagoIO, string with 34 characters
@@ -14,7 +14,7 @@ GenericToken
 .. _TokenCreateResponseAuthorization:
 
 TokenCreateResponse
------------------
+-------------------
 
     **Attributes:**
 
@@ -34,7 +34,7 @@ TokenCreateResponse
 .. _ServiceAuthorizationFilter:
 
 ServiceAuthorizationFilter
-------------------------
+--------------------------
 
     **Attributes:**
 
@@ -48,7 +48,7 @@ ServiceAuthorizationFilter
 .. _ServiceAuthorizationQuery:
 
 ServiceAuthorizationQuery(:ref:`Query`)
--------------------
+---------------------------------------
 
     **Attributes:**
 

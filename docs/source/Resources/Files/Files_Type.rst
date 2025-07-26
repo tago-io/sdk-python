@@ -39,7 +39,7 @@ FileInfo
 .. _FileListInfo:
 
 FileListInfo
------------
+------------
 
     **Attributes:**
 
@@ -53,7 +53,7 @@ FileListInfo
 .. _Base64File:
 
 Base64File
----------
+----------
 
     **Attributes:**
 
@@ -71,7 +71,7 @@ Base64File
 .. _CopyFiles:
 
 CopyFiles
---------
+---------
 
     **Attributes:**
 
@@ -85,7 +85,7 @@ CopyFiles
 .. _MoveFiles:
 
 MoveFiles
---------
+---------
 
     **Attributes:**
 
@@ -99,7 +99,7 @@ MoveFiles
 .. _FilesPermission:
 
 FilesPermission
--------------
+---------------
 
     **Attributes:**
 
@@ -113,7 +113,7 @@ FilesPermission
 .. _UploadOptions:
 
 UploadOptions
------------
+-------------
 
     **Attributes:**
 

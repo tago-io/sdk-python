@@ -1,5 +1,5 @@
 **Actions**
-==========
+===========
 
 Manage actions in your application.
 
@@ -167,3 +167,7 @@ See: `Actions <https://help.tago.io/portal/en/kb/tagoio/actions>`_
         resources = Resources()
         action_info = resources.actions.info("action-id-123")
         print(action_info)  # {'id': 'action-id-123', 'name': 'My Action', ...}
+
+.. toctree::
+
+    Actions_Type

@@ -178,3 +178,7 @@ See: `Access Management <https://help.tago.io/portal/en/kb/articles/183-access-m
         resources = Resources()
         access_info = resources.access.info("access-id-123")
         print(access_info)  # {'id': 'access-id-123', 'name': '[Analysis] - Test', ...}
+
+.. toctree::
+
+    Access_Type

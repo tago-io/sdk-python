@@ -1,7 +1,7 @@
 **Notification Type**
-====================
+=====================
 
-.. _NotificationTriggerAnalysis:
+.. _ServiceNotificationTriggerAnalysis:
 
 NotificationTriggerAnalysis
 ---------------------------
@@ -11,7 +11,7 @@ NotificationTriggerAnalysis
         **analysis_id**: GenericID: str
 
 
-.. _NotificationTriggerHTTP:
+.. _ServiceNotificationTriggerHTTP:
 
 NotificationTriggerHTTP
 ------------------------
@@ -25,7 +25,7 @@ NotificationTriggerHTTP
         **body**: dict[str, Any]
 
 
-.. _NotificationTriggerProfile:
+.. _ServiceNotificationTriggerProfile:
 
 NotificationTriggerProfile
 --------------------------
@@ -35,7 +35,7 @@ NotificationTriggerProfile
         **share_profile**: "accept" or "refuse"
 
 
-.. _NotificationButton:
+.. _ServiceNotificationButton:
 
 NotificationButton
 ------------------
@@ -48,11 +48,11 @@ NotificationButton
 
         **color**: Optional[str]
 
-        **triggers**: :ref:`NotificationTriggerAnalysis` or :ref:`NotificationTriggerHTTP`or list[:ref:`NotificationTriggerProfile`],
+        **triggers**: :ref:`ServiceNotificationTriggerAnalysis` or :ref:`ServiceNotificationTriggerHTTP` or List[:ref:`ServiceNotificationTriggerProfile`]
 
 
 
-.. _NotificationIconImage:
+.. _ServiceNotificationIconImage:
 
 NotificationIconImage
 ---------------------
@@ -66,7 +66,7 @@ NotificationIconImage
         **fit**: Optional["fill" or "contain" or "cover"]
 
 
-.. _NotificationIconSVG:
+.. _ServiceNotificationIconSVG:
 
 NotificationIconSVG
 --------------------
@@ -80,7 +80,7 @@ NotificationIconSVG
         **bg_color**: Optional[HexColor: str]
 
 
-.. _NotificationCreate:
+.. _ServiceNotificationCreate:
 
 NotificationCreate
 --------------------

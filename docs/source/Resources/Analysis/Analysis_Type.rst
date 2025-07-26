@@ -49,7 +49,7 @@ AnalysisCreateInfo
 .. _AnalysisInfo:
 
 AnalysisInfo(:ref:`AnalysisCreateInfo`)
-------------
+---------------------------------------
 
     **Attributes:**
 
@@ -71,7 +71,7 @@ AnalysisInfo(:ref:`AnalysisCreateInfo`)
 .. _AnalysisQuery:
 
 AnalysisQuery(:ref:`Query`)
--------------
+---------------------------
 
     **Attributes:**
 

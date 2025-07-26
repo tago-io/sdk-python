@@ -1,5 +1,5 @@
 **Service Authorization**
-=======================
+=========================
 
 Manage service authorization tokens.
 
@@ -55,7 +55,7 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
 
     **Parameters:**
 
-        | **tokenParams**: :ref:`TokenData`
+        | **tokenParams**: :ref:`TokenCreateResponseAuthorization`
         | Parameters for the new token
 
     **Returns:**
@@ -130,3 +130,10 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
         resources = Resources()
         result = resources.serviceAuthorization.tokenEdit("token-xyz-123", "verification-code")
         print(result)  # Authorization Code Successfully Updated
+
+.. toctree::
+
+
+.. toctree::
+
+    Service_Authorization_Types

@@ -5,7 +5,7 @@
 .. _DictionaryCreateInfo:
 
 DictionaryCreateInfo
--------------------
+--------------------
 
     **Attributes:**
 
@@ -22,7 +22,7 @@ DictionaryCreateInfo
 .. _DictionaryLanguage:
 
 DictionaryLanguage
------------------
+------------------
 
     **Attributes:**
 
@@ -36,7 +36,7 @@ DictionaryLanguage
 .. _DictionaryInfo:
 
 DictionaryInfo(:ref:`DictionaryCreateInfo`)
--------------
+--------------------------------------------
 
     **Attributes:**
 
@@ -56,7 +56,7 @@ DictionaryInfo(:ref:`DictionaryCreateInfo`)
 .. _LanguageData:
 
 LanguageData
------------
+------------
 
     **Attributes:**
 
@@ -67,7 +67,7 @@ LanguageData
 .. _LanguageEditData:
 
 LanguageEditData
---------------
+----------------
 
     **Attributes:**
 
@@ -81,7 +81,7 @@ LanguageEditData
 .. _LanguageInfoQuery:
 
 LanguageInfoQuery
----------------
+-----------------
 
     **Attributes:**
 
@@ -92,7 +92,7 @@ LanguageInfoQuery
 .. _DictionaryQuery:
 
 DictionaryQuery(:ref:`Query`)
---------------
+-----------------------------
 
     **Attributes:**
 

@@ -1,5 +1,5 @@
 **Dictionaries**
-==========
+================
 
 Manage dictionaries in your application.
 
@@ -157,9 +157,9 @@ See: `Dictionaries <https://help.tago.io/portal/en/kb/articles/487-dictionaries>
         print(result)  # {'id': 'dictionary-id-123', 'name': 'My Dictionary', 'slug': 'DICT', 'languages': ['en-US'], ...}
 
 
-===========
+============
 languageEdit
-===========
+============
 
 Edits a language's content in a dictionary.
 
@@ -192,9 +192,9 @@ See: `Using Dictionaries (Multi-Language) <https://help.tago.io/portal/en/kb/art
         print(result)  # Dictionary language Successfully Updated
 
 
-===========
+==============
 languageDelete
-===========
+==============
 
 Removes a language from a dictionary.
 
@@ -221,9 +221,9 @@ See: `Using Dictionaries (Multi-Language) <https://help.tago.io/portal/en/kb/art
         print(result)
 
 
-===========
+============
 languageInfo
-===========
+============
 
 Retrieves language-specific content from a dictionary by ID.
 
@@ -255,9 +255,9 @@ See: `Dictionaries <https://help.tago.io/portal/en/kb/articles/487-dictionaries>
         print(result)  # {'ACCEPT': 'Accept', 'ACCEPTED': 'Accepted', ...}
 
 
-=================
+==================
 languageInfoBySlug
-=================
+==================
 
 Retrieves language-specific content from a dictionary by its slug.
 
@@ -287,3 +287,10 @@ See: `Dictionaries <https://help.tago.io/portal/en/kb/articles/487-dictionaries>
             "fallback": True
         })
         print(result)
+
+.. toctree::
+
+
+.. toctree::
+
+    Dictionaries_Type

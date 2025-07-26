@@ -300,3 +300,10 @@ See: `Files <https://help.tago.io/portal/en/kb/articles/127-files>`_ | `Uploadin
           "onProgress": lambda progress: print(f"Upload progress: {progress}%")
         })
         print(result["file"])  # https://api.tago.io/file/.../uploads/myfile.txt
+
+.. toctree::
+
+
+.. toctree::
+
+    Files_Type

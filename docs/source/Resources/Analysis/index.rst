@@ -1,5 +1,5 @@
 **Analysis**
-========
+============
 
 Manage analysis in account.
 
@@ -165,9 +165,9 @@ Run an analysis
             resources.analysis.run("analysisID")
 
 
-=======
+=============
 tokenGenerate
-=======
+=============
 
 Generate a new token for the analysis
 
@@ -189,9 +189,9 @@ Generate a new token for the analysis
             resources.analysis.tokenGenerate("analysisID")
 
 
-=======
+============
 uploadScript
-=======
+============
 
 Upload a file (base64) to Analysis. Automatically erase the old one
 
@@ -224,9 +224,9 @@ Upload a file (base64) to Analysis. Automatically erase the old one
             })
 
 
-=======
+==============
 downloadScript
-=======
+==============
 
 Get a url to download the analysis. If `version` is specified in `options`, downloads a specific version.
 
@@ -249,3 +249,7 @@ Get a url to download the analysis. If `version` is specified in `options`, down
 
             resources = Resources()
             resources.analysis.downloadScript("analysisID")
+
+.. toctree::
+
+    Analysis_Type

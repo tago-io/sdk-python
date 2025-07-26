@@ -4,12 +4,12 @@ This document provides comprehensive information about the TagoIO Python SDK pro
 
 ## Project Overview
 
-**Project Name:** TagoIO Python SDK  
-**Version:** 4.3.0  
-**Description:** Official Python SDK for TagoIO IoT platform  
-**Language:** Python  
-**Minimum Python Version:** 3.11  
-**License:** Apache-2.0  
+**Project Name:** TagoIO Python SDK
+**Version:** 4.3.0
+**Description:** Official Python SDK for TagoIO IoT platform
+**Language:** Python
+**Minimum Python Version:** 3.11
+**License:** Apache-2.0
 
 ## Project Structure
 
@@ -57,7 +57,7 @@ docs/                          # Documentation
 ```toml
 dependencies = [
     "requests>=2.32.0,<3.0.0",    # HTTP client
-    "python-dateutil>=2.9.0",     # Date parsing utilities  
+    "python-dateutil>=2.9.0",     # Date parsing utilities
     "sseclient-py>=1.8.0",        # Server-Sent Events client
 ]
 ```
@@ -75,15 +75,6 @@ dev = [
 ## Development Setup
 
 ### Installation
-```bash
-# Install the package in development mode
-pip install -e .
-
-# Install with development dependencies
-pip install -e ".[dev]"
-```
-
-### Using uv (recommended)
 ```bash
 # Sync dependencies
 uv sync --dev
@@ -123,7 +114,7 @@ See `pyproject.toml` for complete Ruff configuration including:
 ```
 tests/
 ├── Device/                    # Device module tests
-├── Resources/                 # Resources module tests  
+├── Resources/                 # Resources module tests
 ├── Utils/                     # Utility tests
 ├── commom/                    # Common functionality tests
 └── conftest.py               # Pytest configuration
@@ -263,7 +254,7 @@ except TagoIORequestError as e:
 
 Analysis context automatically reads from environment:
 - `T_ANALYSIS_TOKEN` - Analysis token
-- `T_ANALYSIS_ID` - Analysis ID  
+- `T_ANALYSIS_ID` - Analysis ID
 - `T_ANALYSIS_ENV` - Environment variables (JSON)
 - `T_ANALYSIS_DATA` - Input data (JSON)
 

@@ -1,5 +1,5 @@
 **Secrets Type**
-===============
+================
 
 
 .. _SecretsInfo:
@@ -48,7 +48,7 @@ SecretsCreate
 .. _SecretsEdit:
 
 SecretsEdit
-----------
+-----------
 
     **Attributes:**
 
@@ -62,7 +62,7 @@ SecretsEdit
 .. _SecretsFilter:
 
 SecretsFilter
-------------
+-------------
 
     **Attributes:**
 
@@ -76,7 +76,7 @@ SecretsFilter
 .. _SecretsQuery:
 
 SecretsQuery(:ref:`Query`)
-------------
+--------------------------
 
     **Attributes:**
 

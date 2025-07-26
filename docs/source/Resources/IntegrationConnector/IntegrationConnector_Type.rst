@@ -2,10 +2,10 @@
 ==============================
 
 
-.. _IDeviceParameters:
+.. _ConnectorIDeviceParameters:
 
 IDeviceParameters
-----------------
+-----------------
 
     **Attributes:**
 
@@ -31,7 +31,7 @@ IDeviceParameters
 .. _ConnectorCreateInfo:
 
 ConnectorCreateInfo
-------------------
+-------------------
 
     **Attributes:**
 
@@ -44,7 +44,7 @@ ConnectorCreateInfo
         | **logo_url**: Optional[str]
         | URL for the connector's logo image.
 
-        | **device_parameters**: Optional[List[:ref:`IDeviceParameters`]]
+        | **device_parameters**: Optional[List[:ref:`ConnectorIDeviceParameters`]]
         | List of device parameters for the connector.
 
         | **networks**: Optional[List[:ref:`GenericID`]]
@@ -69,7 +69,7 @@ ConnectorCreateInfo
 .. _ConnectorInfo:
 
 ConnectorInfo(:ref:`ConnectorCreateInfo`)
-------------
+-----------------------------------------
 
     **Attributes:**
 
@@ -91,7 +91,7 @@ ConnectorInfo(:ref:`ConnectorCreateInfo`)
         | **updated_at**: datetime
         | Date and time when the connector was last updated.
 
-        | **device_parameters**: Optional[List[:ref:`IDeviceParameters`]]
+        | **device_parameters**: Optional[List[:ref:`ConnectorIDeviceParameters`]]
         | List of device parameters for the connector.
 
         | **networks**: Optional[List[:ref:`GenericID`]]
@@ -110,7 +110,7 @@ ConnectorInfo(:ref:`ConnectorCreateInfo`)
 .. _ConnectorQuery:
 
 ConnectorQuery(:ref:`Query`)
--------------
+----------------------------
 
     **Attributes:**
 

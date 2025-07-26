@@ -39,7 +39,7 @@ PermissionOption
 .. _Conditionals:
 
 Conditionals
-------
+------------
 
     | **Conditionals**: Literal["<", ">", "=", "!", "><", "*"]
 

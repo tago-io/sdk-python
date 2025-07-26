@@ -16,7 +16,7 @@ serial_number
         | **required**: bool
 
 
-.. _IDeviceParameters:
+.. _NetworkIDeviceParameters:
 
 IDeviceParameters
 -----------------

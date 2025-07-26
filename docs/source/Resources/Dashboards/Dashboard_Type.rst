@@ -277,7 +277,7 @@ PublicKeyResponse
 EditDataModel
 --------------
 
-    | **EditDataModel** = :ref:`PostDataModel` and {id: :ref:`GenericID``}
+    | **EditDataModel** = :ref:`PostDataModel` and {id: :ref:`GenericID`}
 
 
 .. _PublicKeyResponseType:

@@ -1,5 +1,5 @@
 **Integration Connector**
-==========
+=========================
 
 Manage connectors in your application.
 
@@ -147,3 +147,10 @@ See: `Connector Overview <https://help.tago.io/portal/en/kb/articles/466-connect
         resources = Resources()
         result = resources.integration.connectors.delete("connector-id-123")
         print(result)  # Connector Successfully Deleted
+
+.. toctree::
+
+
+.. toctree::
+
+    IntegrationConnector_Type
