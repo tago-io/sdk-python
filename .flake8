@@ -5,17 +5,10 @@ ban-relative-imports = true
 extend-ignore =
     # E203: Whitespace before ':' (pycqa/pycodestyle#373)
     E203,
-    # ANN101: Missing type annotation for self in method
-    ANN101,
-    # ANN102: Missing type annotation for cls in classmethod
-    ANN102,
     E722,
 per-file-ignores =
     # F401: Module imported by unused (non-implicit modules)
     __init__.py:F401,
-    # ANN201: Missing return type annotation for public function
-    tests/test_*:ANN201
-    tests/**/test_*:ANN201
 extend-exclude =
     # Frozen and not subject to change in this repo:
     get-poetry.py,

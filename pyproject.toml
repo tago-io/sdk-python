@@ -36,7 +36,6 @@ pytest = "^6.2.5"
 flake8 = "^6.0.0"
 isort = "^5.10.1"
 black = "^23.0.0"
-flake8-annotations = "^3.0.0"
 Sphinx = "^4.5.0"
 requests_mock = "^1.9.3"
 
