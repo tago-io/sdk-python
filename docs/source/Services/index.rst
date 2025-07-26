@@ -199,4 +199,14 @@ Send SMS to phone number
             )
 
 
+.. toctree::
+
+    Attachment_Type
+    Email_Type
+    MQTT_Type
+    Notification_Type
+    Pdf_Type
+    SMS_Type
+
+
 

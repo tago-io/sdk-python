@@ -25,14 +25,14 @@ GenericToken
 .. _ExpireTimeOption:
 
 ExpireTimeOption
-------
+----------------
 
     | **ExpireTimeOption**: "never" or datetime
 
 .. _PermissionOption:
 
 PermissionOption
-------
+----------------
 
     | **PermissionOption**: Literal["write", "read", "full", "deny"]
 
@@ -108,7 +108,7 @@ Metadata
         | **sentValues**: Optional[list[:ref:`SentValue`]]
         | **old_value**: Optional[Union[str, int, float, bool]]
 
-.. _LocationGeoJSON:
+.. _CommonLocationGeoJSON:
 
 LocationGeoJSON
 ---------------
@@ -128,7 +128,7 @@ LocationLatLng
         | **lat**: float
         | **lng**: float
 
-.. _Data:
+.. _CommonData:
 
 Data
 ----
@@ -141,45 +141,13 @@ Data
         | **value**: Union[str, float, int, bool]
         | **group**: str
         | **unit**: str
-        | **location**: :ref:`LocationGeoJSON`
-        | **metadata**: any
-        | **time**: datetime
-        | **created_at**: datetime
-
-.. _DataCreate:
-
-DataCreate
-----------
-
-    **Attributes:**
-
-        | **variable**: str
-        | **value**: Optional[Union[str, int, float, bool]]
-        | **group**: Optional[str]
-        | **unit**: Optional[str]
-        | **metadata**: Optional[:ref:`Metadata`]
         | **time**: Optional[Union[str, datetime]]
-        | **location**: Optional[Union[:ref:`LocationGeoJSON`, :ref:`LocationLatLng`, None]]
-
-.. _DataEdit:
-
-DataEdit
---------
-
-    **Attributes:**
-
-        | **id**: str
-        | **value**: Optional[Union[str, int, float, bool]]
-        | **group**: Optional[str]
-        | **unit**: Optional[str]
-        | **metadata**: Optional[:ref:`Metadata`]
-        | **time**: Optional[Union[str, datetime]]
-        | **location**: Optional[Union[:ref:`LocationGeoJSON`, :ref:`LocationLatLng`, None]]
+        | **location**: Optional[Union[:ref:`CommonLocationGeoJSON`, :ref:`LocationLatLng`, None]]
 
 .. _TokenDataList:
 
 TokenDataList
----------
+-------------
 
     **Attributes:**
 
@@ -195,7 +163,7 @@ TokenDataList
         | **created_at**: datetime
         | **created_by**: Optional[str]
 
-.. _TokenData:
+.. _CommonTokenData:
 
 TokenData
 ---------

@@ -5,7 +5,7 @@
 .. _AccountOptions:
 
 AccountOptions
-------
+--------------
     **Attributes:**
 
         | **user_view_welcome**: bool

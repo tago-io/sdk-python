@@ -3,9 +3,9 @@
 
 Manage dashboards in account.
 
-=======
+=============
 listDashboard
-=======
+=============
 
 Retrieves a list with all dashboards from the account.
 
@@ -142,3 +142,7 @@ Runs an analysis located in a widget's header button
 
         | **scope**: Optional[any]
         | Data to send to the analysis
+
+.. toctree::
+
+    Dashboard_Type

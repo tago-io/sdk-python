@@ -78,7 +78,7 @@ shared
         | **expire_time**: str
         | **allow_share**: bool
 
-.. _blueprint_devices:
+.. _blueprint_devices_conditions:
 
 blueprint_devices
 -------------------
@@ -228,7 +228,7 @@ PostDataModel
         | **origin**: GenericID
         | **variable**: str
 
-.. _blueprint_devices:
+.. _blueprint_devices_origin:
 
 blueprint_devices
 -------------------
@@ -280,7 +280,7 @@ EditDataModel
     | **EditDataModel** = :ref:`PostDataModel` and {id: :ref:`GenericID``}
 
 
-.. _PublicKeyResponse:
+.. _PublicKeyResponseType:
 
 PublicKeyResponse
 ------------------

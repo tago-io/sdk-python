@@ -1,5 +1,5 @@
 **Notification Type**
-===============
+====================
 
 .. _NotificationTriggerAnalysis:
 

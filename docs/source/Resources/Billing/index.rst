@@ -1,5 +1,5 @@
 **Billing**
-==========
+===========
 
 Manage Billing for the account.
 
@@ -72,3 +72,6 @@ editAllocation
     :returns: Success message.
 
 
+.. toctree::
+
+    Billing_Type

@@ -1,5 +1,5 @@
 **Integration Network Type**
-=================
+============================
 
 
 .. _serial_number:
@@ -75,7 +75,7 @@ NetworkInfo
 .. _DeviceNetworkToken:
 
 DeviceNetworkToken
------------------
+------------------
     **Attributes:**
 
         | **token**: uuid
@@ -84,7 +84,7 @@ DeviceNetworkToken
         | **created_at**: datetime
 
 
-.. _TokenData:
+.. _IntegrationTokenData:
 
 TokenData
 -----------------

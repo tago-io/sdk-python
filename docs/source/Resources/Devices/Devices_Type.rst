@@ -390,7 +390,7 @@ DeviceEditInfo
 
 
 
-.. _TokenData:
+.. _DevicesTokenData:
 
 TokenData
 ----------

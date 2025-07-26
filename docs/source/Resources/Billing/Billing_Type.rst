@@ -55,7 +55,7 @@ BillingAllServicePrices
     **BillingAllServicePrices** = dict[:ref:`BillingService`, list[:ref:`BillingServicePrice`]]
 
 
-.. _BillingPlanPrices:
+.. _BillingPlanPricesItem:
 
 BillingPlanPrices
 ------------------
@@ -70,16 +70,16 @@ BillingPlanPrices
 
 
 
-.. _BillingPlanPrices:
+.. _BillingPlanPricesList:
 
 BillingPlanPrices
 ------------------
 
-    **BillingPlanPrices** = list[:ref:`BillingPlanPrices`]
+    **BillingPlanPrices** = list[:ref:`BillingPlanPricesItem`]
 
 
 
-.. _BillingAddOnPrices:
+.. _BillingAddOnPricesItem:
 
 BillingAddOnPrices
 ------------------
@@ -93,12 +93,12 @@ BillingAddOnPrices
         | Add-on price.
 
 
-.. _BillingAddOnPrices:
+.. _BillingAddOnPricesList:
 
 BillingAddOnPrices
 ------------------
 
-    **BillingAddOnPrices** = list[:ref:`BillingAddOnPrices`]
+    **BillingAddOnPrices** = list[:ref:`BillingAddOnPricesItem`]
 
 
 .. _BillingPrices:
@@ -108,10 +108,10 @@ BillingPrices
 
     **Attributes:**
 
-        | **plans**: :ref:`BillingPlanPrices`
+        | **plans**: :ref:`BillingPlanPricesList`
         | Prices for each plan.
 
-        | **addons**: :ref:`BillingAddOnPrices`
+        | **addons**: :ref:`BillingAddOnPricesList`
         | Prices for each add-on.
 
         **BillingAllServicePrices**: :ref:`BillingAllServicePrices`

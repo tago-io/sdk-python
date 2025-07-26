@@ -1,7 +1,7 @@
 **Device Type**
 ===============
 
-.. _LocationGeoJSON:
+.. _DeviceLocationGeoJSON:
 
 LocationGeoJSON
 ---------------
@@ -12,7 +12,7 @@ LocationGeoJSON
 
         **coordinates**: list[str]
 
-.. _Data:
+.. _DeviceData:
 
 Data
 ----
@@ -37,7 +37,7 @@ Data
         | **unit**: str
         | Unit for the data value.
 
-        | **location**: :ref:`LocationGeoJSON`
+        | **location**: :ref:`DeviceLocationGeoJSON`
         | Location for the data value.
 
         | **metadata**: any
@@ -56,7 +56,7 @@ DataQueryDefault
 ----------------
     **Attributes:**
 
-        **query**: Enum[:ref:`_DataQueryFirstLast`]
+        **query**: Enum[:ref:`DataQueryFirstLast`]
 
         **qty**: int
 

@@ -168,7 +168,7 @@ Generates and retrieves a new token
         | **deviceID**: GenericID: str
         | Device ID
 
-        | **tokenParams**: :ref:`TokenData`
+        | **tokenParams**: :ref:`DevicesTokenData`
         | Params for new token
 
 ============
@@ -207,9 +207,9 @@ Retrieves a list of all tokens
             "orderBy": "created_at,desc",
         }
 
-==========
+==============
 sendDeviceData
-==========
+==============
 
 Send data to a device.
 
@@ -218,7 +218,7 @@ Send data to a device.
         | **deviceID**: GenericID: str
         | Device ID
 
-        | **data**: Union[:ref:`DataCreate`, list[:ref:`DataCreate`]]
+        | **data**: Union[:ref:`CommonData`, list[:ref:`CommonData`]]
         | An array or one object with data to be send to TagoIO.
 
 .. code-block::
@@ -235,9 +235,9 @@ Send data to a device.
             "location": { "lat": 42.2974279, "lng": -85.628292 },
         })
 
-==========
+==============
 editDeviceData
-==========
+==============
 
 Edit data in a device.
 
@@ -246,7 +246,7 @@ Edit data in a device.
         | **deviceID**: GenericID: str
         | Device ID
 
-        | **updatedData**: Union[:ref:`DataEdit`, list[:ref:`DataEdit`]]
+        | **updatedData**: Union[:ref:`CommonData`, list[:ref:`CommonData`]]
         | An array or one object with data to be send to TagoIO.
 
 .. code-block::
@@ -259,9 +259,9 @@ Edit data in a device.
         "unit": "new unit"
     })
 
-==========
+================
 deleteDeviceData
-==========
+================
 
 Delete data from a device.
 
@@ -280,3 +280,7 @@ Delete data from a device.
     resource.devices.deleteDeviceData("myDeviceID", {
         "ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]
     })
+
+.. toctree::
+
+    Devices_Type

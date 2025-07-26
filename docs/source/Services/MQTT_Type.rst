@@ -1,7 +1,7 @@
 **MQTT Type**
 ===============
 
-.. _options:
+.. _mqtt_options:
 
 options
 -------
@@ -26,4 +26,4 @@ MQTTData
 
         **bucket**: GenericID: str
 
-        **options**: Optional[:ref:`options`]
+        **options**: Optional[:ref:`mqtt_options`]

@@ -1,5 +1,5 @@
-**Notification Type**
-===============
+**PDF Type**
+============
 
 .. _margin:
 
@@ -22,7 +22,7 @@ margin
         | [Optional] Left margin, accepts values labeled with units. Defaults to `0`.
 
 
-.. _options:
+.. _pdf_options:
 
 options
 -------
@@ -91,6 +91,6 @@ PDFParams
         | **url**: Optional[str]
         | [Optional] Generate pdf from URL
 
-        | **options**: Optional[:ref:`options`]
+        | **options**: Optional[:ref:`pdf_options`]
         | [Optional] PDF Custom Options
 

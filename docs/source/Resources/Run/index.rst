@@ -276,11 +276,12 @@ Create a TagoRUN custom domain for the profile.
 
     **Parameters:**
 
-        | **profile_id**: str
-        | ID of the profile
+            | **profile_id**: str
+            | ID of the profile
 
-        | **customDomainData**: :ref:`CustomDomainCreate`
-        | query params
+.. toctree::
+
+    Run_Types
 
 
 ================

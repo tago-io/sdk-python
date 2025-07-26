@@ -1,6 +1,6 @@
 
 **Resources**
-==========
+=============
 
 To set up an resource object, you need to import the ``Resources`` class from the ``tagoio_sdk`` module.
 

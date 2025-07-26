@@ -69,9 +69,9 @@ Gets profile summary
         result = resources.profile.summary("Profile ID")
 
 
-========
+=========
 tokenList
-========
+=========
 
 Gets profile tokenList
 
@@ -93,3 +93,7 @@ Gets profile tokenList
 
         resources = Resources()
         result = resources.profile.tokenList("Profile ID")
+
+.. toctree::
+
+    Profile_Types

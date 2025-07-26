@@ -46,7 +46,7 @@ Send data to device.
 
     **Parameters:**
 
-        | **data**: :ref:`Data` or list[:ref:`Data`]
+        | **data**: :ref:`DeviceData` or list[:ref:`DeviceData`]
         | An array or one object with data to be send to TagoIO using device token
 
 .. code-block::
@@ -93,7 +93,7 @@ Edit data in a Mutable-type device.
 
     **Parameters:**
 
-        | **data**: :ref:`Data` or list[:ref:`Data`]
+        | **data**: :ref:`DeviceData` or list[:ref:`DeviceData`]
         | Array or object with the data to be edited, each object with the data's ID.
 
 .. code-block::
@@ -172,6 +172,11 @@ Mark parameter as read.
 
         myDevice = Device({ "token": "my_device_token" })
         result = myDevice.setParameterAsRead(parameterID="parameter_id")
+
+
+.. toctree::
+
+    Device_Type
 
 
 

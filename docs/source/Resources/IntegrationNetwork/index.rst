@@ -1,5 +1,5 @@
 **Integration Network**
-========
+=======================
 
 Manage integration network in the account
 
@@ -24,3 +24,7 @@ Gets information about the network
 
         | **networkID**: GenericID: str
         | Network identification
+
+.. toctree::
+
+    IntegrationNetwork_Type
