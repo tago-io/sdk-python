@@ -61,13 +61,15 @@ class Profile(TagoIOModule):
         return result
 
     def tokenList(
-        self, profileID: GenericID, queryObj: Optional[Query] = {}
+        self, profileID: GenericID, queryObj: Optional[Query] = None
     ) -> List[TokenDataList]:
         """
         Lists all the tokens in your account
         :param: profileID Profile identification
         """
 
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             secondArgument = queryObj["orderBy"][1]

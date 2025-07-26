@@ -46,7 +46,7 @@ def getConnectionURI(region: Optional[Regions]) -> RegionDefinition:
             raise Exception("Invalid Env")
 
         return {"api": api, "realtime": realtime, "sse": sse}
-    except:
+    except Exception:
         # global noRegionWarning
         # if noRegionWarning is False:
         #     print("> TagoIO-SDK: No region or env defined, using fallback as usa-1.")

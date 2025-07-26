@@ -5,7 +5,7 @@ from tagoio_sdk.modules.Resources.IntegrationNetworkType import NetworkInfo
 
 
 class Networks(TagoIOModule):
-    def listNetwork(self, queryObj: Query = {}) -> list[NetworkInfo]:
+    def listNetwork(self, queryObj: Query = None) -> list[NetworkInfo]:
         """
         Retrieves a list with all networks from the account
 
@@ -15,6 +15,8 @@ class Networks(TagoIOModule):
         :param fields Fields to be returned
         """
 
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             secondArgument = queryObj["orderBy"][1]
@@ -39,7 +41,7 @@ class Networks(TagoIOModule):
         return result
 
     def info(
-        self, networkID: GenericID, fields: NetworkInfo = ["id", "name"]
+        self, networkID: GenericID, fields: NetworkInfo = None
     ) -> NetworkInfo:
         """
         Retrieves the information of the network.
@@ -51,6 +53,8 @@ class Networks(TagoIOModule):
         :param fields    Fields to be returned
         """
 
+        if fields is None:
+            fields = ["id", "name"]
         result = self.doRequest(
             {
                 "path": f"/integration/network/{networkID}",

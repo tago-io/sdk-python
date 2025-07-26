@@ -43,17 +43,17 @@ class Analysis(TagoIOModule):
         def context():
             pass
 
-        setattr(context, "log", print)
-        setattr(context, "token", os.environ["T_ANALYSIS_TOKEN"])
-        setattr(context, "analysis_id", os.environ["T_ANALYSIS_ID"])
+        context.log = print
+        context.token = os.environ["T_ANALYSIS_TOKEN"]
+        context.analysis_id = os.environ["T_ANALYSIS_ID"]
         try:
-            setattr(context, "environment", json.loads(os.environ["T_ANALYSIS_ENV"]))
-        except:
-            setattr(context, "environment", [])
+            context.environment = json.loads(os.environ["T_ANALYSIS_ENV"])
+        except (KeyError, json.JSONDecodeError):
+            context.environment = []
 
         try:
             data = json.loads(os.environ["T_ANALYSIS_DATA"])
-        except:
+        except (KeyError, json.JSONDecodeError):
             data = []
 
         self._analysis(context, data)
@@ -75,10 +75,10 @@ class Analysis(TagoIOModule):
         def context():
             pass
 
-        setattr(context, "log", log)
-        setattr(context, "token", token)
-        setattr(context, "environment", environment)
-        setattr(context, "analysis_id", analysis_id)
+        context.log = log
+        context.token = token
+        context.environment = environment
+        context.analysis_id = analysis_id
 
         self._analysis(context, data or [])
 

@@ -24,7 +24,7 @@ from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Devices(TagoIOModule):
-    def listDevice(self, queryObj: DeviceQuery = {}) -> list[DeviceListItem]:
+    def listDevice(self, queryObj: DeviceQuery = None) -> list[DeviceListItem]:
         """
         Retrieves a list with all devices from the account
 
@@ -41,6 +41,8 @@ class Devices(TagoIOModule):
 
         :param DeviceQuery queryObj: Search query params
         """
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             seccondArgument = queryObj["orderBy"][1]
@@ -218,7 +220,7 @@ class Devices(TagoIOModule):
     def tokenList(
         self,
         deviceID: GenericID,
-        queryObj: ListDeviceTokenQuery = {},
+        queryObj: ListDeviceTokenQuery = None,
     ) -> list[DeviceTokenDataList]:
         """
         Retrieves a list of all tokens
@@ -238,6 +240,8 @@ class Devices(TagoIOModule):
         :param ListDeviceTokenQuery queryObj: Search query params
         """
 
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             secondArgument = queryObj["orderBy"][1]
@@ -299,7 +303,7 @@ class Devices(TagoIOModule):
         return result
 
     def getDeviceData(
-        self, deviceID: GenericID, queryParams: DataQuery = {}
+        self, deviceID: GenericID, queryParams: DataQuery = None
     ) -> list[Data]:
         """
         Get data from all variables in the device.
@@ -318,6 +322,8 @@ class Devices(TagoIOModule):
                 "Device Id", {"variables": "location"}
             )
         """
+        if queryParams is None:
+            queryParams = {}
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/data",
@@ -407,7 +413,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = {}) -> str:
+    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = None) -> str:
         """
         Delete data from a device.
 
@@ -424,6 +430,8 @@ class Devices(TagoIOModule):
         resource.devices.deleteDeviceData("myDeviceID", {"ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]})
         ```
         """
+        if queryParam is None:
+            queryParam = {}
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/data",

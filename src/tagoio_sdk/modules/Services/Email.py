@@ -112,7 +112,7 @@ class Email(TagoIOModule):
         self, email: Union[Any, EmailWithRawText, EmailWithHTML, EmailWithTemplate]
     ) -> str:
         if email.get("html") and email.get("message"):
-            warnings.warn("HTML field will overwrite message field")
+            warnings.warn("HTML field will overwrite message field", stacklevel=2)
 
         result = self.doRequest(
             {
