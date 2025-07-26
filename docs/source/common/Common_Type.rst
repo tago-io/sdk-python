@@ -36,6 +36,13 @@ PermissionOption
 
     | **PermissionOption**: Literal["write", "read", "full", "deny"]
 
+.. _Conditionals:
+
+Conditionals
+------
+
+    | **Conditionals**: Literal["<", ">", "=", "!", "><", "*"]
+
 .. _TokenCreateResponse:
 
 TokenCreateResponse
