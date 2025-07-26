@@ -413,7 +413,9 @@ class Devices(TagoIOModule):
 
         return result
 
-    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = None) -> str:
+    def deleteDeviceData(
+        self, deviceID: GenericID, queryParam: DataQuery = None
+    ) -> str:
         """
         Delete data from a device.
 
