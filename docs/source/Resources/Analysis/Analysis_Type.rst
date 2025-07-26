@@ -57,7 +57,7 @@ AnalysisInfo(:ref:`AnalysisCreateInfo`)
 
         | token: str
 
-        | last_run: :ref:`ExpireTimeOption``
+        | last_run: :ref:`ExpireTimeOption`
 
         | created_at: datetime
 
