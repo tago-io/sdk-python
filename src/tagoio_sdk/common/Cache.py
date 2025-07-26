@@ -1,7 +1,11 @@
 import time
-from typing import Dict, Any, Optional
+
+from typing import Any
+from typing import Dict
+from typing import Optional
 
 from tagoio_sdk.common.Hash_Generator import generateRequestID
+
 
 # Cache structure: {(request_id, expire_timestamp): cached_object}
 cache_obj = {}

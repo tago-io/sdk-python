@@ -1,5 +1,7 @@
 import json
-from typing import Dict, Any
+
+from typing import Any
+from typing import Dict
 
 
 def hash_generator(obj: Any) -> int:

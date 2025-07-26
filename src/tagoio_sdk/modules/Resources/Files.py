@@ -1,17 +1,19 @@
 import time
-from typing import Dict, List, Optional, Any
+
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Optional
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.modules.Resources.Files_Types import Base64File
+from tagoio_sdk.modules.Resources.Files_Types import CopyFiles
+from tagoio_sdk.modules.Resources.Files_Types import FileListInfo
+from tagoio_sdk.modules.Resources.Files_Types import FileQuery
+from tagoio_sdk.modules.Resources.Files_Types import FilesPermission
+from tagoio_sdk.modules.Resources.Files_Types import MoveFiles
+from tagoio_sdk.modules.Resources.Files_Types import UploadOptions
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
-from tagoio_sdk.modules.Resources.Files_Types import (
-    Base64File,
-    CopyFiles,
-    FileListInfo,
-    FileQuery,
-    FilesPermission,
-    MoveFiles,
-    UploadOptions,
-)
 from tagoio_sdk.regions import getConnectionURI
 
 
@@ -367,7 +369,9 @@ class Files(TagoIOModule):
         path = f"/data/files/{dashboard}/{widget}" if dashboard and widget else "/files"
 
         import io
+
         import requests
+
         from requests_toolbelt.multipart.encoder import MultipartEncoder
 
         # Create multipart form data with proper content type
@@ -401,7 +405,7 @@ class Files(TagoIOModule):
                 error_data = response.json()
                 if "message" in error_data:
                     error_message = error_data["message"]
-            except:
+            except Exception:
                 pass
             raise ValueError(f"Error in part upload: {error_message}")
 
@@ -430,13 +434,13 @@ class Files(TagoIOModule):
                 return result
             except Exception as ex:
                 if is_limit_error(ex):
-                    raise ValueError(str(ex))
+                    raise ValueError(str(ex)) from ex
 
                 time.sleep(timeout / 1000)  # Convert ms to seconds
 
                 tries += 1
                 if tries >= max_tries:
-                    raise ValueError(f"Could not upload part number {part_number}: {str(ex)}")
+                    raise ValueError(f"Could not upload part number {part_number}: {str(ex)}") from ex
 
         # This should never be reached due to the exception above
         return {}
@@ -524,8 +528,8 @@ class Files(TagoIOModule):
         error = None
         parts = []
 
-        import threading
         import queue
+        import threading
 
         self._is_canceled(cancelled)
 
@@ -641,8 +645,7 @@ class Files(TagoIOModule):
                 return self._completeMultipartUpload(filename, upload_id, parts, options)
             except Exception as ex:
                 if is_limit_error(ex):
-                    raise ValueError(str(ex))
-
+                    raise ValueError(str(ex)) from ex
                 time.sleep(1)
                 if i == 2:  # Last attempt failed
                     raise ex

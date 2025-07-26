@@ -1,7 +1,17 @@
 from datetime import datetime
-from typing import Dict, List, Literal, Optional, TypedDict, Union
+from typing import Dict
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import GenericID, Conditionals, TagsObj, Query, ExpireTimeOption
+from tagoio_sdk.common.Common_Type import Conditionals
+from tagoio_sdk.common.Common_Type import ExpireTimeOption
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TagsObj
+
 
 ActionType = Literal["condition", "resource", "interval", "schedule", "mqtt_topic", "usage_alert", "condition_geofence"]
 

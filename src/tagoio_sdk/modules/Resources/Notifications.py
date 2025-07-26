@@ -1,8 +1,13 @@
-from typing import List, Optional, Union
+from typing import List
+from typing import Optional
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import GenericID, GenericToken
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericToken
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Notification_Type import NotificationCreate, NotificationInfo, NotificationQuery
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationCreate
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationInfo
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationQuery
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 

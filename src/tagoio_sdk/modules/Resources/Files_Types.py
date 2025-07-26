@@ -1,5 +1,9 @@
 from datetime import datetime
-from typing import List, Optional, TypedDict, Callable, Any
+from typing import Any
+from typing import Callable
+from typing import List
+from typing import Optional
+from typing import TypedDict
 
 
 class FileQuery(TypedDict, total=False):

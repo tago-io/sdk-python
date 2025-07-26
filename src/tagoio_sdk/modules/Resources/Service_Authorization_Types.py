@@ -1,6 +1,11 @@
-from typing import List, Literal, Optional, TypedDict
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+
 
 GenericToken = str
 """Token used on TagoIO, string with 34 characters"""

@@ -1,10 +1,13 @@
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
-from tagoio_sdk.modules.Resources.Access_Types import AccessCreateInfo, AccessInfo, AccessQuery
+from tagoio_sdk.modules.Resources.Access_Types import AccessCreateInfo
+from tagoio_sdk.modules.Resources.Access_Types import AccessInfo
+from tagoio_sdk.modules.Resources.Access_Types import AccessQuery
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Access(TagoIOModule):
-    def list(self, queryObj: AccessQuery = {}) -> list[AccessInfo]:
+    def list(self, queryObj: AccessQuery = None) -> list[AccessInfo]:
         """
         @description:
             Lists all access rules from the application with pagination support.
@@ -26,6 +29,8 @@ class Access(TagoIOModule):
             print(result)  # [{'id': 'access-id-123', 'name': '[Analysis] - Test'}, ...]
             ```
         """
+        if queryObj is None:
+            queryObj = {}
         result = self.doRequest(
             {
                 "path": "/am",

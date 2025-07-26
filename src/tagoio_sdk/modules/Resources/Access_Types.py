@@ -1,8 +1,13 @@
-from typing import List, Optional, Any
 from datetime import datetime
-from typing import Literal, TypedDict
+from typing import Any
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, Query, TagsObj
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TagsObj
 
 
 class Permissions(TypedDict):

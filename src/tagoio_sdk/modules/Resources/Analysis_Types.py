@@ -1,6 +1,17 @@
 from datetime import datetime
-from typing import Literal, Optional, TypedDict, Union, List, Dict, Any
-from tagoio_sdk.common.Common_Type import Base64, GenericID, TagsObj, Query, ExpireTimeOption
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
+
+from tagoio_sdk.common.Common_Type import Base64
+from tagoio_sdk.common.Common_Type import ExpireTimeOption
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TagsObj
 
 
 class ScriptFile(TypedDict):

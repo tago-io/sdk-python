@@ -1,7 +1,12 @@
 from datetime import datetime
-from typing import Dict, List, Literal, Optional, TypedDict
+from typing import Dict
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 
 
 class DictionaryCreateInfo(TypedDict):

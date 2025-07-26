@@ -1,17 +1,18 @@
-from typing import Dict, List, Optional
+from typing import Dict
+from typing import List
+from typing import Optional
 
+from tagoio_sdk.common import Cache
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
-from tagoio_sdk.modules.Resources.Dictionaries_Types import (
-    DictionaryCreateInfo,
-    DictionaryInfo,
-    DictionaryQuery,
-    LanguageData,
-    LanguageEditData,
-    LanguageInfoQuery,
-)
-from tagoio_sdk.common import Cache
+from tagoio_sdk.modules.Resources.Dictionaries_Types import DictionaryCreateInfo
+from tagoio_sdk.modules.Resources.Dictionaries_Types import DictionaryInfo
+from tagoio_sdk.modules.Resources.Dictionaries_Types import DictionaryQuery
+from tagoio_sdk.modules.Resources.Dictionaries_Types import LanguageData
+from tagoio_sdk.modules.Resources.Dictionaries_Types import LanguageEditData
+from tagoio_sdk.modules.Resources.Dictionaries_Types import LanguageInfoQuery
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Dictionaries(TagoIOModule):

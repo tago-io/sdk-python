@@ -1,4 +1,5 @@
-from typing import Optional, TypedDict
+from typing import Optional
+from typing import TypedDict
 
 from tagoio_sdk.infrastructure.api_request import RequestParams
 from tagoio_sdk.infrastructure.api_request import apiRequest

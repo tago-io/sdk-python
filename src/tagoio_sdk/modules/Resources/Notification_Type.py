@@ -7,7 +7,8 @@ from typing import Optional
 from typing import TypedDict
 from typing import Union
 
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 
 
 HexColor = str

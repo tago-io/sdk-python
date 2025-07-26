@@ -1,7 +1,12 @@
 from datetime import datetime
-from typing import Any, Literal, Optional, List, TypedDict
+from typing import Any
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 
 
 class IDeviceParameters(TypedDict, total=False):

@@ -1,7 +1,12 @@
 from datetime import datetime
-from typing import List, Optional, TypedDict, Literal
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, TagsObj, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TagsObj
 
 
 class SecretsInfo(TypedDict):

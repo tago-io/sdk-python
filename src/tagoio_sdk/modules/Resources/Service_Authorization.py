@@ -1,12 +1,14 @@
-from typing import List, Optional
+from typing import List
+from typing import Optional
 
-from tagoio_sdk.common.Common_Type import TokenDataList, TokenData
+from tagoio_sdk.common.Common_Type import TokenData
+from tagoio_sdk.common.Common_Type import TokenDataList
 from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.modules.Resources.Service_Authorization_Types import GenericToken
 from tagoio_sdk.modules.Resources.Service_Authorization_Types import (
-    TokenCreateResponse,
-    GenericToken,
     ServiceAuthorizationQuery,
 )
+from tagoio_sdk.modules.Resources.Service_Authorization_Types import TokenCreateResponse
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 

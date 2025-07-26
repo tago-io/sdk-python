@@ -26,6 +26,7 @@ dependencies = [
     "requests>=2.32.0,<3.0.0",
     "python-dateutil>=2.9.0",
     "sseclient-py>=1.8.0",
+    "requests-toolbelt>=1.0.0",
 ]
 
 [project.urls]

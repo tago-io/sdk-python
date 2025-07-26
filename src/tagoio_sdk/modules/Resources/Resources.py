@@ -12,8 +12,8 @@ from .Analyses import Analyses
 from .Billing import Billing
 from .Buckets import Buckets
 from .Dashboards import Dashboards
-from .Dictionaries import Dictionaries
 from .Devices import Devices
+from .Dictionaries import Dictionaries
 from .Files import Files
 from .Integration import Integration
 from .Notifications import Notifications

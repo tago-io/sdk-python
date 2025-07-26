@@ -1,13 +1,14 @@
-from typing import Dict, List, Optional
+from typing import Dict
+from typing import List
+from typing import Optional
 
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
-from tagoio_sdk.modules.Resources.IntegrationConnectorType import (
-    ConnectorCreateInfo,
-    ConnectorInfo,
-    ConnectorQuery,
-)
+from tagoio_sdk.modules.Resources.IntegrationConnectorType import ConnectorCreateInfo
+from tagoio_sdk.modules.Resources.IntegrationConnectorType import ConnectorInfo
+from tagoio_sdk.modules.Resources.IntegrationConnectorType import ConnectorQuery
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Connectors(TagoIOModule):

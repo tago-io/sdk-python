@@ -1,14 +1,19 @@
-from typing import Literal, Optional, List, Dict, Any
-from tagoio_sdk.common.Common_Type import GenericID, GenericToken
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Literal
+from typing import Optional
+
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericToken
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
-from tagoio_sdk.modules.Resources.Analysis_Types import (
-    AnalysisCreateInfo,
-    AnalysisInfo,
-    AnalysisListItem,
-    AnalysisQuery,
-    ScriptFile,
-)
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisCreateInfo
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisInfo
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisListItem
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisQuery
+from tagoio_sdk.modules.Resources.Analysis_Types import ScriptFile
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Analyses(TagoIOModule):
