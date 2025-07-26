@@ -63,6 +63,8 @@ jobs:
         name: "Deploy Docs"
         runs-on: ubuntu-latest
         needs: [build, publish]
+        # Only deploy docs for stable releases (not pre-releases/betas)
+        if: github.event.release.prerelease == false
         steps:
             - uses: actions/checkout@v4
               with:
