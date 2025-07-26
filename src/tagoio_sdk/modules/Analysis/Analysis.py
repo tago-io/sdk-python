@@ -1,18 +1,38 @@
 import json
 import os
-from typing import Any, Callable, Optional
+import signal
+import sys
+
+from typing import Any
+from typing import Callable
+from typing import Optional
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.infrastructure.api_sse import openSSEListening
 from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisEnvironment
 from tagoio_sdk.modules.Services import Services
 
+
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
 
 
 class Analysis(TagoIOModule):
+    def __init__(self, params):
+        super().__init__(params)
+        self._running = True
+
+    def _signal_handler(self, signum, frame):
+        """Handle Ctrl+C gracefully"""
+        print("\n¬ Analysis stopped by user. Goodbye!")
+        self._running = False
+        sys.exit(0)
+
     def init(self, analysis: Callable):
         self._analysis = analysis
+
+        # Set up signal handler for graceful shutdown
+        signal.signal(signal.SIGINT, self._signal_handler)
+        signal.signal(signal.SIGTERM, self._signal_handler)
 
         if T_ANALYSIS_CONTEXT is None:
             self.__localRuntime()
@@ -38,11 +58,19 @@ class Analysis(TagoIOModule):
 
         self._analysis(context, data)
 
-    def __runLocal(self, environment: list[AnalysisEnvironment], data: list[Any], analysis_id: str, token: str):
-        """ Run Analysis @internal"""
+    def __runLocal(
+        self,
+        environment: list[AnalysisEnvironment],
+        data: list[Any],
+        analysis_id: str,
+        token: str,
+    ):
+        """Run Analysis @internal"""
+
         def log(*args: any):
             print(*args)
-            Services.Services({"token": token}).console.log(str(args)[1:][:-2])
+            log_message = " ".join(str(arg) for arg in args)
+            Services.Services({"token": token}).console.log(log_message)
 
         def context():
             pass
@@ -67,34 +95,48 @@ class Analysis(TagoIOModule):
         tokenEnd = self.token[-5:]
 
         try:
-            sse = openSSEListening({
-                "token": self.token,
-                "region": self.region,
-                "channel": "analysis_trigger"
-            })
-            print(f"\n¬ Connected to TagoIO :: Analysis [{analysis['name']}]({tokenEnd}) is ready.")
-            print("¬ Waiting for analysis trigger...\n")
+            sse = openSSEListening(
+                {
+                    "token": self.token,
+                    "region": self.region,
+                    "channel": "analysis_trigger",
+                }
+            )
+            print(
+                f"\n¬ Connected to TagoIO :: Analysis [{analysis['name']}]({tokenEnd}) is ready."
+            )
+            print("¬ Waiting for analysis trigger... (Press Ctrl+C to stop)\n")
         except Exception as e:
             print("¬ Connection was closed, trying to reconnect...")
             print(f"Error: {e}")
             return
 
-        for event in sse.events():
-            try:
-                data = json.loads(event.data).get("payload")
+        try:
+            for event in sse.events():
+                if not self._running:
+                    break
 
-                if not data:
-                    continue
+                try:
+                    data = json.loads(event.data).get("payload")
 
-                self.__runLocal(
-                    data["environment"],
-                    data["data"],
-                    data["analysis_id"],
-                    self.token,
-                )
-            except RuntimeError:
-                print("¬ Connection was closed, trying to reconnect...")
-                pass
+                    if not data:
+                        continue
+
+                    self.__runLocal(
+                        data["environment"],
+                        data["data"],
+                        data["analysis_id"],
+                        self.token,
+                    )
+                except RuntimeError:
+                    print("¬ Connection was closed, trying to reconnect...")
+                    pass
+        except KeyboardInterrupt:
+            print("\n¬ Analysis stopped by user. Goodbye!")
+        except Exception as e:
+            print(f"\n¬ Unexpected error: {e}")
+        finally:
+            self._running = False
 
     @staticmethod
     def use(analysis: Callable, params: Optional[str] = {"token": "unknown"}):

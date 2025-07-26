@@ -1,27 +1,26 @@
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import (
-    Data,
-    DataCreate,
-    DataEdit,
-    GenericID,
-    GenericToken,
-    TokenCreateResponse,
-)
+from tagoio_sdk.common.Common_Type import Data
+from tagoio_sdk.common.Common_Type import DataCreate
+from tagoio_sdk.common.Common_Type import DataEdit
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericToken
+from tagoio_sdk.common.Common_Type import TokenCreateResponse
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Device.Device_Type import DataQuery, DeviceInfo
-from tagoio_sdk.modules.Resources.Device_Type import (
-    ConfigurationParams,
-    DeviceCreateInfo,
-    DeviceCreateResponse,
-    DeviceEditInfo,
-    DeviceListItem,
-    DeviceQuery,
-    DeviceTokenDataList,
-    ListDeviceTokenQuery,
-    TokenData,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Device.Device_Type import DataQuery
+from tagoio_sdk.modules.Device.Device_Type import DeviceInfo
+from tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
+from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateInfo
+from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateResponse
+from tagoio_sdk.modules.Resources.Device_Type import DeviceEditInfo
+from tagoio_sdk.modules.Resources.Device_Type import DeviceListItem
+from tagoio_sdk.modules.Resources.Device_Type import DeviceQuery
+from tagoio_sdk.modules.Resources.Device_Type import DeviceTokenDataList
+from tagoio_sdk.modules.Resources.Device_Type import ListDeviceTokenQuery
+from tagoio_sdk.modules.Resources.Device_Type import TokenData
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Devices(TagoIOModule):
@@ -344,7 +343,9 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def sendDeviceData(self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]) -> str:
+    def sendDeviceData(
+        self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]
+    ) -> str:
         """
         Send data to a device.
 
@@ -377,7 +378,9 @@ class Devices(TagoIOModule):
 
         return result
 
-    def editDeviceData(self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]) -> str:
+    def editDeviceData(
+        self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]
+    ) -> str:
         """
         Edit data in a device.
 

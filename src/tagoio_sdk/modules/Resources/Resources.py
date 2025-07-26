@@ -1,15 +1,18 @@
 import os
+
 from typing import Optional
 
-from tagoio_sdk.common.tagoio_module import TagoIOModule, GenericModuleParams
+from tagoio_sdk.common.tagoio_module import GenericModuleParams
+from tagoio_sdk.common.tagoio_module import TagoIOModule
+
+from .Account import Account
 from .Billing import Billing
 from .Buckets import Buckets
 from .Dashboards import Dashboards
 from .Devices import Devices
+from .Integration import Integration
 from .Profile import Profile
 from .Run import Run
-from .Integration import Integration
-from .Account import Account
 
 
 class Resources(TagoIOModule):

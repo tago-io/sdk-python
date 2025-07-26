@@ -1,13 +1,15 @@
-from typing import List, Optional
+from typing import List
+from typing import Optional
 
-from tagoio_sdk.common.Common_Type import GenericID, Query, TokenDataList
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TokenDataList
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Profile_Type import (
-    ProfileInfo,
-    ProfileListInfo,
-    ProfileSummary,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Resources.Profile_Type import ProfileInfo
+from tagoio_sdk.modules.Resources.Profile_Type import ProfileListInfo
+from tagoio_sdk.modules.Resources.Profile_Type import ProfileSummary
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Profile(TagoIOModule):

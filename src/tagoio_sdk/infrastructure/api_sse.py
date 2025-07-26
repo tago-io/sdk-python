@@ -1,9 +1,15 @@
+from typing import Literal
+from typing import Union
+from urllib.parse import urlencode
+from urllib.parse import urljoin
+
 import requests
-from typing import Union, Literal
-from urllib.parse import urlencode, urljoin
+
 from sseclient import SSEClient
+
 from tagoio_sdk.common.tagoio_module import GenericModuleParams
 from tagoio_sdk.regions import getConnectionURI
+
 
 channelsWithID = ["device_inspector", "analysis_console", "ui_dashboard"]
 channelsWithoutID = ["notification", "analysis_trigger", "ui"]
@@ -32,7 +38,9 @@ def openSSEListening(params: OpenSSEConfig) -> SSEClient:
 
     query_params = {}
     if isChannelWithID(params):
-        query_params["channel"] = f"{params.get('channel')}.{params.get('resources_id')}"
+        query_params["channel"] = (
+            f"{params.get('channel')}.{params.get('resources_id')}"
+        )
     else:
         query_params["channel"] = params.get("channel")
 

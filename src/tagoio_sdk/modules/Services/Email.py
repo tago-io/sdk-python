@@ -1,5 +1,9 @@
 import warnings
-from typing import Any, Optional, TypedDict, Union
+
+from typing import Any
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 

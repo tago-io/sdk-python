@@ -2,11 +2,15 @@ import json
 import os
 import platform
 import time
-from typing import Literal, Optional, TypedDict
+
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
 import requests
 
-from tagoio_sdk import __version__, config
+from tagoio_sdk import __version__
+from tagoio_sdk import config
 
 
 class RequestParams(TypedDict):

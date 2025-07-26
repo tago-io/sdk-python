@@ -1,12 +1,11 @@
-import requests
 from typing import Union
 
+import requests
+
 from tagoio_sdk.modules.Resources.AccountDeprecated import AccountDeprecated as Account
+from tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
+from tagoio_sdk.modules.Resources.Device_Type import DeviceTokenDataList
 from tagoio_sdk.modules.Resources.Resources import Resources
-from tagoio_sdk.modules.Resources.Device_Type import (
-    ConfigurationParams,
-    DeviceTokenDataList,
-)
 from tagoio_sdk.modules.Utils.utilsType import DownlinkOptions
 
 

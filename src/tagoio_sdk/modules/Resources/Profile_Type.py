@@ -1,5 +1,6 @@
 from datetime import datetime
-from typing import TypedDict, Union
+from typing import TypedDict
+from typing import Union
 
 from tagoio_sdk.common.Common_Type import GenericID
 

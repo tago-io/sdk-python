@@ -1,6 +1,9 @@
 import os
+
 from contextlib import suppress
-from typing import Literal, Optional, TypedDict
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
 
 class RegionDefinition(TypedDict):
@@ -15,10 +18,9 @@ regionsDefinition = {
     "usa-1": {
         "api": "https://api.tago.io",
         "realtime": "wss://realtime.tago.io",
-        "sse": "https://sse.tago.io/events"
+        "sse": "https://sse.tago.io/events",
     },
     "env": None,  # ? process object should be on trycatch.
-
 }
 
 Regions = Literal["usa-1", "env"]

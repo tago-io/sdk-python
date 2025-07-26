@@ -1,15 +1,17 @@
-from typing import Optional, TypedDict
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import ExpireTimeOption, GenericID, Query
+from tagoio_sdk.common.Common_Type import ExpireTimeOption
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Dashboards_Type import (
-    AnalysisRelated,
-    DashboardCreateInfo,
-    DashboardInfo,
-    DevicesRelated,
-    PublicKeyResponse,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Resources.Dashboards_Type import AnalysisRelated
+from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardCreateInfo
+from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
+from tagoio_sdk.modules.Resources.Dashboards_Type import DevicesRelated
+from tagoio_sdk.modules.Resources.Dashboards_Type import PublicKeyResponse
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Dashboards(TagoIOModule):

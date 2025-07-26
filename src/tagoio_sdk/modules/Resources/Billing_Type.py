@@ -1,6 +1,10 @@
-from typing import Literal, Optional, TypedDict, Union
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 from tagoio_sdk.common.Common_Type import GenericID
+
 
 BillingPlan = Literal["free", "starter", "scale"]
 
