@@ -265,6 +265,18 @@ wheels = [
 ]
 
 [[package]]
+name = "requests-toolbelt"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f3/61/d7545dafb7ac2230c70d38d31cbfe4cc64f7144dc41f6e4e4b78ecd9f5bb/requests-toolbelt-1.0.0.tar.gz", hash = "sha256:7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6", size = 206888, upload-time = "2023-05-01T04:11:33.229Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3f/51/d4db610ef29373b879047326cbf6fa98b6c1969d6f6dc423279de2b1be2c/requests_toolbelt-1.0.0-py2.py3-none-any.whl", hash = "sha256:cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06", size = 54481, upload-time = "2023-05-01T04:11:28.427Z" },
+]
+
+[[package]]
 name = "roman-numerals-py"
 version = "3.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -414,6 +426,7 @@ source = { editable = "." }
 dependencies = [
     { name = "python-dateutil" },
     { name = "requests" },
+    { name = "requests-toolbelt" },
     { name = "sseclient-py" },
 ]
 
@@ -431,6 +444,7 @@ requires-dist = [
     { name = "python-dateutil", specifier = ">=2.9.0" },
     { name = "requests", specifier = ">=2.32.0,<3.0.0" },
     { name = "requests-mock", marker = "extra == 'dev'", specifier = ">=1.12.1" },
+    { name = "requests-toolbelt", specifier = ">=1.0.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.12.5" },
     { name = "sphinx", marker = "extra == 'dev'", specifier = ">=8.2.3" },
     { name = "sseclient-py", specifier = ">=1.8.0" },

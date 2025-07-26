@@ -14,9 +14,11 @@ Base64 = str
 GenericToken = str
 """Token used on TagoIO, string with 36 characters"""
 
-ExpireTimeOption = "never" or datetime
+ExpireTimeOption = Union[Literal["never"], datetime]
 
 PermissionOption = Literal["write", "read", "full", "deny"]
+
+Conditionals = Literal["<", ">", "=", "!", "><", "*"]
 
 
 class TokenCreateResponse(TypedDict):
