@@ -1,21 +1,21 @@
 name: Units Tests
 
-env:
-    pythonVersion: "3.11"
-
 on: push
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
         steps:
             - uses: actions/checkout@v3
 
-            - name: Use Python ${{ env.pythonVersion }}
-              uses: actions/setup-python@v3
+            - name: Use Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v4
               with:
-                  python-version: ${{ env.pythonVersion }}
+                  python-version: ${{ matrix.python-version }}
                   architecture: x64
 
             - name: Install Poetry

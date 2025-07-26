@@ -73,7 +73,7 @@ def getMiddlewareEndpoint(resource: Union[Account, Resources], network_id: str) 
 
 def getDownlinkParams(
     resource: Union[Account, Resources], device_id: str
-) -> list[ConfigurationParams] | list[None]:
+) -> Union[list[ConfigurationParams], list[None]]:
     """Get the downlink parameters of a device.
 
     Returns:
