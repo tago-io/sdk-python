@@ -14,6 +14,8 @@ from .Notifications import Notifications
 from .Integration import Integration
 from .Profile import Profile
 from .Run import Run
+from .Secrets import Secrets
+from .Service_Authorization import ServiceAuthorization
 
 
 class AccountDeprecated(Account):
@@ -51,3 +53,7 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().run"""
         self.profiles = Profile(params)
         """@deprecated moved to Resources().profiles"""
+        self.secrets = Secrets(params)
+        """@deprecated moved to Resources().secrets"""
+        self.serviceAuthorization = ServiceAuthorization(params)
+        """@deprecated moved to Resources().secrets"""
