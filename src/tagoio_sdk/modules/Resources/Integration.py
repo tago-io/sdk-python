@@ -1,4 +1,5 @@
-from tagoio_sdk.common.tagoio_module import GenericModuleParams, TagoIOModule
+from tagoio_sdk.common.tagoio_module import GenericModuleParams
+from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Resources.IntegrationConnector import Connectors
 from tagoio_sdk.modules.Resources.IntegrationNetwork import Networks
 

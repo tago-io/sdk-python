@@ -1,4 +1,7 @@
-from typing import Literal, Optional, TypedDict, Union
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 
 class DeviceInfo(TypedDict):

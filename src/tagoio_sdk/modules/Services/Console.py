@@ -11,7 +11,9 @@ class ConsoleService(TagoIOModule):
     :param time: Date of message
     """
 
-    def log(self, message: str, timestamp: datetime = datetime.now()) -> str:
+    def log(self, message: str, timestamp: datetime = None) -> str:
+        if timestamp is None:
+            timestamp = datetime.now()
         result = self.doRequest(
             {
                 "path": "/analysis/services/console/send",

@@ -3,6 +3,7 @@ from typing import TypeVar
 
 import dateutil.parser
 
+
 T = TypeVar("T")
 
 
@@ -20,5 +21,5 @@ def dateParser(target: T, parameters: list[str]) -> T:
 
 
 def dateParserList(target: list[T], parameters: list[str]) -> list[T]:
-    result = list(map(lambda x: dateParser(x, parameters), target))
+    result = [dateParser(x, parameters) for x in target]
     return result

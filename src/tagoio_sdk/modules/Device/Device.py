@@ -1,9 +1,12 @@
 from datetime import datetime
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import Data, GenericID
+from tagoio_sdk.common.Common_Type import Data
+from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Device.Device_Type import DataQuery, DeviceInfo
+from tagoio_sdk.modules.Device.Device_Type import DataQuery
+from tagoio_sdk.modules.Device.Device_Type import DeviceInfo
 from tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 

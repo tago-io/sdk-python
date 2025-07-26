@@ -1,7 +1,14 @@
 from datetime import datetime
-from typing import Any, Dict, List, Literal, Optional, TypedDict, Union
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 from tagoio_sdk.common.Common_Type import GenericID, Query
+
 
 HexColor = str
 

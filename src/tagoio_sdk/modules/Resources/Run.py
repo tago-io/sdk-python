@@ -1,24 +1,23 @@
-from typing import Optional, TypedDict
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import GenericID, Query
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Notification_Type import (
-    NotificationCreate,
-    NotificationCreateReturn,
-    NotificationInfo,
-)
-from tagoio_sdk.modules.Resources.Run_Type import (
-    CustomDomainCreate,
-    CustomDomainInfo,
-    LoginAsUserOptions,
-    LoginResponse,
-    RunInfo,
-    RunSAMLEditInfo,
-    RunSAMLInfo,
-    UserCreateInfo,
-    UserInfo,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationCreate
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationCreateReturn
+from tagoio_sdk.modules.Resources.Notification_Type import NotificationInfo
+from tagoio_sdk.modules.Resources.Run_Type import CustomDomainCreate
+from tagoio_sdk.modules.Resources.Run_Type import CustomDomainInfo
+from tagoio_sdk.modules.Resources.Run_Type import LoginAsUserOptions
+from tagoio_sdk.modules.Resources.Run_Type import LoginResponse
+from tagoio_sdk.modules.Resources.Run_Type import RunInfo
+from tagoio_sdk.modules.Resources.Run_Type import RunSAMLEditInfo
+from tagoio_sdk.modules.Resources.Run_Type import RunSAMLInfo
+from tagoio_sdk.modules.Resources.Run_Type import UserCreateInfo
+from tagoio_sdk.modules.Resources.Run_Type import UserInfo
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Run(TagoIOModule):

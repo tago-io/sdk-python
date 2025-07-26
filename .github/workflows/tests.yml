@@ -1,31 +1,30 @@
 name: Units Tests
 
-env:
-    pythonVersion: "3.11"
-
 on: push
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: ["3.11", "3.12", "3.13"]
 
         steps:
             - uses: actions/checkout@v3
 
-            - name: Use Python ${{ env.pythonVersion }}
-              uses: actions/setup-python@v3
+            - name: Install uv
+              uses: astral-sh/setup-uv@v4
               with:
-                  python-version: ${{ env.pythonVersion }}
-                  architecture: x64
+                version: "latest"
 
-            - name: Install Poetry
-              run: pip install --user poetry
+            - name: Set up Python ${{ matrix.python-version }}
+              run: uv python install ${{ matrix.python-version }}
 
             - name: Install dependencies
-              run: poetry install
+              run: uv sync --extra dev
 
             - name: Run Tests
-              run: poetry run pytest tests/
+              run: uv run pytest tests/
 
             - name: Run Linter
-              run: poetry run flake8 src/
+              run: uv run ruff check src

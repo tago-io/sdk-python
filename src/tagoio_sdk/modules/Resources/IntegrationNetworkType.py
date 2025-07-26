@@ -1,6 +1,9 @@
 import uuid
+
 from datetime import datetime
-from typing import Literal, Optional, TypedDict
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
 
 from tagoio_sdk.common.Common_Type import GenericID
 

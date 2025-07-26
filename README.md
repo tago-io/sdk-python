@@ -48,9 +48,10 @@ resource.devices.editDeviceData("myDeviceID", {
 ## Development Commands
 
 ```bash
-poetry install
-poetry run pytest tests/
-poetry run flake8 src
+uv sync --dev
+uv run pytest tests/
+uv run ruff check src
+uv run ruff format src
 ```
 
 ## License

@@ -1,8 +1,12 @@
 import os
+
 from typing import Optional
 
-from tagoio_sdk.common.tagoio_module import TagoIOModule, GenericModuleParams
+from tagoio_sdk.common.tagoio_module import GenericModuleParams
+from tagoio_sdk.common.tagoio_module import TagoIOModule
+
 from .Access import Access
+from .Account import Account
 from .Actions import Actions
 from .Analyses import Analyses
 from .Billing import Billing
@@ -11,13 +15,12 @@ from .Dashboards import Dashboards
 from .Dictionaries import Dictionaries
 from .Devices import Devices
 from .Files import Files
+from .Integration import Integration
 from .Notifications import Notifications
 from .Profile import Profile
 from .Run import Run
 from .Secrets import Secrets
 from .Service_Authorization import ServiceAuthorization
-from .Integration import Integration
-from .Account import Account
 
 
 class Resources(TagoIOModule):
