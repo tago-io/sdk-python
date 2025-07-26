@@ -1,5 +1,9 @@
 import warnings
-from typing import Any, Optional, TypedDict, Union
+
+from typing import Any
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 
@@ -108,7 +112,7 @@ class Email(TagoIOModule):
         self, email: Union[Any, EmailWithRawText, EmailWithHTML, EmailWithTemplate]
     ) -> str:
         if email.get("html") and email.get("message"):
-            warnings.warn("HTML field will overwrite message field")
+            warnings.warn("HTML field will overwrite message field", stacklevel=2)
 
         result = self.doRequest(
             {

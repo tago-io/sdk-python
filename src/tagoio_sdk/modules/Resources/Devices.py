@@ -1,31 +1,30 @@
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import (
-    Data,
-    DataCreate,
-    DataEdit,
-    GenericID,
-    GenericToken,
-    TokenCreateResponse,
-)
+from tagoio_sdk.common.Common_Type import Data
+from tagoio_sdk.common.Common_Type import DataCreate
+from tagoio_sdk.common.Common_Type import DataEdit
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import GenericToken
+from tagoio_sdk.common.Common_Type import TokenCreateResponse
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Device.Device_Type import DataQuery, DeviceInfo
-from tagoio_sdk.modules.Resources.Device_Type import (
-    ConfigurationParams,
-    DeviceCreateInfo,
-    DeviceCreateResponse,
-    DeviceEditInfo,
-    DeviceListItem,
-    DeviceQuery,
-    DeviceTokenDataList,
-    ListDeviceTokenQuery,
-    TokenData,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Device.Device_Type import DataQuery
+from tagoio_sdk.modules.Device.Device_Type import DeviceInfo
+from tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
+from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateInfo
+from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateResponse
+from tagoio_sdk.modules.Resources.Device_Type import DeviceEditInfo
+from tagoio_sdk.modules.Resources.Device_Type import DeviceListItem
+from tagoio_sdk.modules.Resources.Device_Type import DeviceQuery
+from tagoio_sdk.modules.Resources.Device_Type import DeviceTokenDataList
+from tagoio_sdk.modules.Resources.Device_Type import ListDeviceTokenQuery
+from tagoio_sdk.modules.Resources.Device_Type import TokenData
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Devices(TagoIOModule):
-    def listDevice(self, queryObj: DeviceQuery = {}) -> list[DeviceListItem]:
+    def listDevice(self, queryObj: DeviceQuery = None) -> list[DeviceListItem]:
         """
         Retrieves a list with all devices from the account
 
@@ -42,6 +41,8 @@ class Devices(TagoIOModule):
 
         :param DeviceQuery queryObj: Search query params
         """
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             seccondArgument = queryObj["orderBy"][1]
@@ -219,7 +220,7 @@ class Devices(TagoIOModule):
     def tokenList(
         self,
         deviceID: GenericID,
-        queryObj: ListDeviceTokenQuery = {},
+        queryObj: ListDeviceTokenQuery = None,
     ) -> list[DeviceTokenDataList]:
         """
         Retrieves a list of all tokens
@@ -239,6 +240,8 @@ class Devices(TagoIOModule):
         :param ListDeviceTokenQuery queryObj: Search query params
         """
 
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             secondArgument = queryObj["orderBy"][1]
@@ -300,7 +303,7 @@ class Devices(TagoIOModule):
         return result
 
     def getDeviceData(
-        self, deviceID: GenericID, queryParams: DataQuery = {}
+        self, deviceID: GenericID, queryParams: DataQuery = None
     ) -> list[Data]:
         """
         Get data from all variables in the device.
@@ -319,6 +322,8 @@ class Devices(TagoIOModule):
                 "Device Id", {"variables": "location"}
             )
         """
+        if queryParams is None:
+            queryParams = {}
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/data",
@@ -344,7 +349,9 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def sendDeviceData(self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]) -> str:
+    def sendDeviceData(
+        self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]
+    ) -> str:
         """
         Send data to a device.
 
@@ -377,7 +384,9 @@ class Devices(TagoIOModule):
 
         return result
 
-    def editDeviceData(self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]) -> str:
+    def editDeviceData(
+        self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]
+    ) -> str:
         """
         Edit data in a device.
 
@@ -404,7 +413,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = {}) -> str:
+    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = None) -> str:
         """
         Delete data from a device.
 
@@ -421,6 +430,8 @@ class Devices(TagoIOModule):
         resource.devices.deleteDeviceData("myDeviceID", {"ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]})
         ```
         """
+        if queryParam is None:
+            queryParam = {}
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/data",

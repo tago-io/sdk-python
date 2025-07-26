@@ -1,7 +1,12 @@
 from datetime import datetime
-from typing import Literal, Optional, TypedDict, Union
+from typing import Literal
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
-from tagoio_sdk.common.Common_Type import GenericID, TagsObj
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import TagsObj
+
 
 DataStorageType = Literal["immutable", "mutable", "legacy"]
 

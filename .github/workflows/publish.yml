@@ -15,23 +15,22 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Use Python ${{ env.pythonVersion }}
-              uses: actions/setup-python@v3
+            - name: Install uv
+              uses: astral-sh/setup-uv@v4
               with:
-                  python-version: ${{ env.pythonVersion }}
-                  architecture: x64
+                version: "latest"
 
-            - name: Install Poetry
-              run: pip install --user poetry
+            - name: Set up Python ${{ env.pythonVersion }}
+              run: uv python install ${{ env.pythonVersion }}
 
             - name: Install dependencies
-              run: poetry install
+              run: uv sync --dev
 
             - name: Run Tests
-              run: poetry run pytest tests/
+              run: uv run pytest tests/
 
             - name: Run Linter
-              run: poetry run flake8 src/
+              run: uv run flake8 src/
 
     publish:
         name: "Deploy package to PyPI"
@@ -41,23 +40,24 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Use Python ${{ env.pythonVersion }}
-              uses: actions/setup-python@v3
+            - name: Install uv
+              uses: astral-sh/setup-uv@v4
               with:
-                  python-version: ${{ env.pythonVersion }}
-                  architecture: x64
+                version: "latest"
 
-            - name: Install Poetry
-              run: pip install --user poetry
+            - name: Set up Python ${{ env.pythonVersion }}
+              run: uv python install ${{ env.pythonVersion }}
 
             - name: Install dependencies
-              run: poetry install
+              run: uv sync --dev
+
+            - name: Build package
+              run: uv build
 
             - name: Publish to PyPI
               env:
-                  PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-                  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-              run: poetry publish --build --username $PYPI_USERNAME --password $PYPI_PASSWORD
+                  PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+              run: uv publish --token $PYPI_TOKEN
 
     docs:
         name: "Deploy Docs"
@@ -69,17 +69,16 @@ jobs:
                   persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
                   fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
-            - name: Use Python ${{ env.pythonVersion }}
-              uses: actions/setup-python@v3
+            - name: Install uv
+              uses: astral-sh/setup-uv@v4
               with:
-                  python-version: ${{ env.pythonVersion }}
-                  architecture: x64
+                version: "latest"
 
-            - name: Install Poetry
-              run: pip install --user poetry
+            - name: Set up Python ${{ env.pythonVersion }}
+              run: uv python install ${{ env.pythonVersion }}
 
             - name: Install dependencies
-              run: poetry install
+              run: uv sync --dev
 
             - name: Create local changes
               run: |

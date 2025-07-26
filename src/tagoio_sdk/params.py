@@ -1,4 +1,5 @@
 import os
+
 from typing import Optional
 
 from tagoio_sdk.common.tagoio_module import GenericModuleParams

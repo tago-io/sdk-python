@@ -1,10 +1,8 @@
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Billing_Type import (
-    BillingEditResourceAllocation,
-    BillingEditSubscription,
-    BillingPrices,
-    BillingSubscription,
-)
+from tagoio_sdk.modules.Resources.Billing_Type import BillingEditResourceAllocation
+from tagoio_sdk.modules.Resources.Billing_Type import BillingEditSubscription
+from tagoio_sdk.modules.Resources.Billing_Type import BillingPrices
+from tagoio_sdk.modules.Resources.Billing_Type import BillingSubscription
 
 
 class Billing(TagoIOModule):

@@ -1,19 +1,21 @@
-from typing import Optional, TypedDict
+from typing import Optional
+from typing import TypedDict
 
-from tagoio_sdk.common.Common_Type import ExpireTimeOption, GenericID, Query
+from tagoio_sdk.common.Common_Type import ExpireTimeOption
+from tagoio_sdk.common.Common_Type import GenericID
+from tagoio_sdk.common.Common_Type import Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
-from tagoio_sdk.modules.Resources.Dashboards_Type import (
-    AnalysisRelated,
-    DashboardCreateInfo,
-    DashboardInfo,
-    DevicesRelated,
-    PublicKeyResponse,
-)
-from tagoio_sdk.modules.Utils.dateParser import dateParser, dateParserList
+from tagoio_sdk.modules.Resources.Dashboards_Type import AnalysisRelated
+from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardCreateInfo
+from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
+from tagoio_sdk.modules.Resources.Dashboards_Type import DevicesRelated
+from tagoio_sdk.modules.Resources.Dashboards_Type import PublicKeyResponse
+from tagoio_sdk.modules.Utils.dateParser import dateParser
+from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Dashboards(TagoIOModule):
-    def listDashboard(self, queryObj: Query = {}) -> list[DashboardInfo]:
+    def listDashboard(self, queryObj: Query = None) -> list[DashboardInfo]:
         """
         Retrieves a list with all dashboards from the account
 
@@ -30,6 +32,8 @@ class Dashboards(TagoIOModule):
         :param queryObj Search query params
         """
 
+        if queryObj is None:
+            queryObj = {}
         if "orderBy" in queryObj:
             firstArgument = queryObj["orderBy"][0]
             secondArgument = queryObj["orderBy"][1]
@@ -208,7 +212,7 @@ class Dashboards(TagoIOModule):
         analysisID: GenericID,
         dashboardID: GenericID,
         widgetID: GenericID,
-        scope: Optional[any] = {},
+        scope: Optional[any] = None,
     ) -> str:
         """
         Runs an analysis located in a widget's header button
@@ -218,6 +222,8 @@ class Dashboards(TagoIOModule):
         :param widgetID The id of the widget that contains the header button
         :param scope Data to send to the analysis
         """
+        if scope is None:
+            scope = {}
         result = self.doRequest(
             {
                 "path": f"/analysis/{analysisID}/run/{dashboardID}/{widgetID}",

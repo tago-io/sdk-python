@@ -1,4 +1,6 @@
-from typing import Optional, TypedDict, Union
+from typing import Optional
+from typing import TypedDict
+from typing import Union
 
 import requests
 
