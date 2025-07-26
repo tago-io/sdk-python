@@ -35,7 +35,10 @@ Instance
     Dictionaries/index
     Devices/index
     Files/index
+    Notifications/index
     IntegrationNetwork/index
     IntegrationConnector/index
     Profile/index
     Run/index
+    Secrets/index
+    ServiceAuthorization/index

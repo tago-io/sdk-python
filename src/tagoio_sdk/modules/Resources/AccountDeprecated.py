@@ -10,9 +10,12 @@ from .Dashboards import Dashboards
 from .Dictionaries import Dictionaries
 from .Devices import Devices
 from .Files import Files
+from .Notifications import Notifications
 from .Integration import Integration
 from .Profile import Profile
 from .Run import Run
+from .Secrets import Secrets
+from .Service_Authorization import ServiceAuthorization
 
 
 class AccountDeprecated(Account):
@@ -40,6 +43,8 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().devices"""
         self.files = Files(params)
         """@deprecated moved to Resources().files"""
+        self.notifications = Notifications(params)
+        """@deprecated moved to Resources().notifications"""
         self.billing = Billing(params)
         """@deprecated moved to Resources().billing"""
         self.integration = Integration(params)
@@ -48,3 +53,7 @@ class AccountDeprecated(Account):
         """@deprecated moved to Resources().run"""
         self.profiles = Profile(params)
         """@deprecated moved to Resources().profiles"""
+        self.secrets = Secrets(params)
+        """@deprecated moved to Resources().secrets"""
+        self.serviceAuthorization = ServiceAuthorization(params)
+        """@deprecated moved to Resources().secrets"""
