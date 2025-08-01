@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Billing &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Billing Type" href="Billing_Type.html" />
+    <link rel="prev" title="Analysis Type" href="../Analysis/Analysis_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="billing">
+<h1><strong>Billing</strong><a class="headerlink" href="#billing" title="Link to this heading">¶</a></h1>
+<p>Manage Billing for the account.</p>
+<section id="getprices">
+<h2>getPrices<a class="headerlink" href="#getprices" title="Link to this heading">¶</a></h2>
+<p>Get pricing for plans, services and add-ons.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">billing</span><span class="o">.</span><span class="n">getPrices</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="getsubscription">
+<h2>getSubscription<a class="headerlink" href="#getsubscription" title="Link to this heading">¶</a></h2>
+<p>Get the account subscription information.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">billing</span><span class="o">.</span><span class="n">getSubscription</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="editsubscription">
+<h2>editSubscription<a class="headerlink" href="#editsubscription" title="Link to this heading">¶</a></h2>
+<p>Get data from TagoIO Device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>subscription</strong>: <a class="reference internal" href="Billing_Type.html#billingeditsubscription"><span class="std std-ref">BillingEditSubscription</span></a></div>
+<div class="line">Object with updates to subscription</div>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If the subscription has a pending operation.</p>
+</dd>
+<dt class="field-even">throws<span class="colon">:</span></dt>
+<dd class="field-even"><p>If updating more than one of plan, services and add-ons at the same time.</p>
+</dd>
+<dt class="field-odd">throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If purchasing add-ons or changing service limits on the Free plan.</p>
+</dd>
+<dt class="field-even">throws<span class="colon">:</span></dt>
+<dd class="field-even"><p>If using an invalid coupon.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="editallocation">
+<h2>editAllocation<a class="headerlink" href="#editallocation" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Edit the resource allocation for the profiles in an account.</p>
+<p>The resource allocation array doesn’t need to have an object for each of the account’s profiles, as long as the sum of the allocated amounts for the services doesn’t exceed the account’s service limit.</p>
+<p>The resource allocation object for a profile doesn’t need to have all the services.</p>
+<p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>allocation</strong>: <a class="reference internal" href="Billing_Type.html#billingeditresourceallocation"><span class="std std-ref">BillingEditResourceAllocation</span></a></div>
+<div class="line">Array with the resource allocation</div>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If passed an object that is not an allocation array.</p>
+</dd>
+<dt class="field-even">throws<span class="colon">:</span></dt>
+<dd class="field-even"><p>If the account only has one profile.</p>
+</dd>
+<dt class="field-odd">throws<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If one of the profile IDs in the allocation array doesn’t exist in the account.</p>
+</dd>
+<dt class="field-even">throws<span class="colon">:</span></dt>
+<dd class="field-even"><p>If the allocated amount for one of the services exceeds the available amount.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Success message.</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Billing_Type.html"><strong>Billing Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingplan">BillingPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingaddon">BillingAddOn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingservice">BillingService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingserviceprice">BillingServicePrice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingallserviceprices">BillingAllServicePrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingplanprices">BillingPlanPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingplanpriceslist">BillingPlanPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingaddonprices">BillingAddOnPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingaddonpriceslist">BillingAddOnPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingprices">BillingPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#current-cycle">current_cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingservicesubscription">BillingServiceSubscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingsubscriptionservices">BillingSubscriptionServices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingsubscriptionaddons">BillingSubscriptionAddOns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingpaymenterror">BillingPaymentError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingpaymentpastdue">BillingPaymentPastDue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingsubscription">BillingSubscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingeditsubscription">BillingEditSubscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingresourceallocationservices">BillingResourceAllocationServices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingprofileresourceallocation">BillingProfileResourceAllocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingprofileeditresourceallocation">BillingProfileEditResourceAllocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing_Type.html#billingeditresourceallocation">BillingEditResourceAllocation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Analysis/Analysis_Type.html" title="previous chapter"><strong>Analysis Type</strong></a></li>
+      <li>Next: <a href="Billing_Type.html" title="next chapter"><strong>Billing Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Billing/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
