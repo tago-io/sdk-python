@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tagoio-sdk"
-version = "5.0.0b1"
+version = "5.0.0"
 description = "Official Python SDK for TagoIO"
 authors = [{name = "TagoIO Inc.", email = "contact@tago.io"}]
 license = {text = "Apache-2.0"}
@@ -39,7 +39,7 @@ Changelog = "https://github.com/tago-io/sdk-python/releases"
 [project.optional-dependencies]
 dev = [
     "pytest>=8.4.1",
-    "ruff>=0.12.5",
+    "ruff>=0.12.7",
     "sphinx>=8.2.3",
     "requests-mock>=1.12.1",
 ]
