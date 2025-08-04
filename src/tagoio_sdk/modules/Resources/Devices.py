@@ -35,8 +35,8 @@ class Devices(TagoIOModule):
                 "fields": ["id", "name"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": "name,asc",
-                "resolveBucketName": false
+                "orderBy": ["name", "asc"],
+                "resolveBucketName": False
             }
 
         :param DeviceQuery queryObj: Search query params
@@ -232,7 +232,7 @@ class Devices(TagoIOModule):
                 "fields": ["name", "token", "permission"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": "created_at,desc",
+                "orderBy": ["created_at", "desc"],
             }
 
         :param GenericID deviceID: Device ID

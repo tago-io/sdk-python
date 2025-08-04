@@ -163,7 +163,7 @@ class Query(TypedDict):
             "fields": ["id", "name"],
             "filter": {"name": "test"},
             "amount": 20,
-            "orderBy": ["name": "asc"]
+            "orderBy": ["name", "asc"]
         }
     ```
     """
