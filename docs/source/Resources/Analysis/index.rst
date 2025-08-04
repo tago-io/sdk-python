@@ -22,7 +22,7 @@ Retrieves a list with all analyses from the account
                 "fields": ["id", "name"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": "name,asc",
+                "orderBy": ["name","asc"],
             }
 
     **Returns:**

@@ -28,7 +28,7 @@ class Analyses(TagoIOModule):
                 "fields": ["id", "name"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": "name,asc",
+                "orderBy": ["name", "asc"],
             }
 
         :param AnalysisQuery queryObj: Search query params

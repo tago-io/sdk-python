@@ -26,7 +26,7 @@ class Dashboards(TagoIOModule):
                 "fields": ["id", "name"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": "label,asc",
+                "orderBy": ["label", "asc"],
             }
 
         :param queryObj Search query params

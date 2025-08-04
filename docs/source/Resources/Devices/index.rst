@@ -106,8 +106,8 @@ Retrieves a list with all devices from the account
             "fields": ["id", "name"],
             "filter": {},
             "amount": 20,
-            "orderBy": "name,asc",
-            "resolveBucketName": false
+            "orderBy": ["name", "asc"],
+            "resolveBucketName": False
         }
 
 =========
@@ -204,7 +204,7 @@ Retrieves a list of all tokens
             "fields": ["name", "token", "permission"],
             "filter": {},
             "amount": 20,
-            "orderBy": "created_at,desc",
+            "orderBy": ["created_at", "desc"],
         }
 
 ==============
