@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Profile &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Profile Type" href="Profile_Types.html" />
+    <link rel="prev" title="Integration Connector Type" href="../IntegrationConnector/IntegrationConnector_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="profile">
+<h1><strong>Profile</strong><a class="headerlink" href="#profile" title="Link to this heading">¶</a></h1>
+<p>Manage profiles in account.</p>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Gets information about the bucket</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: GenericID: str</div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <a class="reference internal" href="Profile_Types.html#profileinfo"><span class="std std-ref">ProfileInfo</span></a></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Profile ID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Lists all the profiles in your account</p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: list[<a class="reference internal" href="Profile_Types.html#profilelistinfo"><span class="std std-ref">ProfileListInfo</span></a>]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="summary">
+<h2>summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h2>
+<p>Gets profile summary</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: GenericID: str</div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: <a class="reference internal" href="Profile_Types.html#profilesummary"><span class="std std-ref">ProfileSummary</span></a></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Profile ID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="tokenlist">
+<h2>tokenList<a class="headerlink" href="#tokenlist" title="Link to this heading">¶</a></h2>
+<p>Gets profile tokenList</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: GenericID: str</div>
+<div class="line">Profile identification</div>
+<div class="line"><strong>queryObj</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a>]</div>
+<div class="line">Token Query</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>result</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tokendatalist"><span class="std std-ref">TokenDataList</span></a>]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">tokenList</span><span class="p">(</span><span class="s2">&quot;Profile ID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Profile_Types.html"><strong>Profile Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilelistinfo">ProfileListInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilelimit">ProfileLimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profileaddons">ProfileAddOns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profileinfo">ProfileInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#amount">amount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#limit-used">limit_used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilesummary">ProfileSummary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../IntegrationConnector/IntegrationConnector_Type.html" title="previous chapter"><strong>Integration Connector Type</strong></a></li>
+      <li>Next: <a href="Profile_Types.html" title="next chapter"><strong>Profile Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Profile/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

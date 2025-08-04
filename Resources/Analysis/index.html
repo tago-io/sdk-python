@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analysis &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Analysis Type" href="Analysis_Type.html" />
+    <link rel="prev" title="Account Type" href="../Account/Account_type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="analysis">
+<h1><strong>Analysis</strong><a class="headerlink" href="#analysis" title="Link to this heading">¶</a></h1>
+<p>Manage analysis in account.</p>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list with all analyses from the account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="Analysis_Type.html#analysisquery"><span class="std std-ref">AnalysisQuery(Query)</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;asc&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Analysis_Type.html#analysislistitem"><span class="std std-ref">AnalysisListItem</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Create a new analysis</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisInfo</strong>: <a class="reference internal" href="Analysis_Type.html#analysiscreateinfo"><span class="std std-ref">AnalysisCreateInfo</span></a></div>
+<div class="line">Analysis information</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, GenericID | GenericToken]</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Analysis&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;runtime&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Modify any property of the analyze</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>analysisInfo</strong>: <a class="reference internal" href="Analysis_Type.html#analysiscreateinfo"><span class="std std-ref">AnalysisCreateInfo</span></a></div>
+<div class="line">Analysis information</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Analysis Edited&quot;</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Deletes an analysis from the account</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Gets information about an analysis</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Analysis_Type.html#analysisinfo"><span class="std std-ref">AnalysisInfo(AnalysisCreateInfo)</span></a></div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="run">
+<h2>run<a class="headerlink" href="#run" title="Link to this heading">¶</a></h2>
+<p>Run an analysis</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, GenericToken]</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokengenerate">
+<h2>tokenGenerate<a class="headerlink" href="#tokengenerate" title="Link to this heading">¶</a></h2>
+<p>Generate a new token for the analysis</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, str]</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">tokenGenerate</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="uploadscript">
+<h2>uploadScript<a class="headerlink" href="#uploadscript" title="Link to this heading">¶</a></h2>
+<p>Upload a file (base64) to Analysis. Automatically erase the old one</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file</strong>: <a class="reference internal" href="Analysis_Type.html#scriptfile"><span class="std std-ref">ScriptFile</span></a></div>
+<div class="line">File information</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;print(Hello, World!)&quot;</span>
+    <span class="n">encoded_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">uploadScript</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Script&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">encoded_bytes</span><span class="p">,</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</section>
+<section id="downloadscript">
+<h2>downloadScript<a class="headerlink" href="#downloadscript" title="Link to this heading">¶</a></h2>
+<p>Get a url to download the analysis. If <cite>version</cite> is specified in <cite>options</cite>, downloads a specific version.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: GenericID: str</div>
+<div class="line">Analysis ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>options</strong>: Dict[“version”, int]</div>
+<div class="line">Options</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, Any]</div>
+</div>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">downloadScript</span><span class="p">(</span><span class="s2">&quot;analysisID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_Type.html"><strong>Analysis Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Analysis_Type.html#scriptfile">ScriptFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis_Type.html#analysiscreateinfo">AnalysisCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis_Type.html#analysisinfo-analysiscreateinfo">AnalysisInfo(<span class="xref std std-ref">AnalysisCreateInfo</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis_Type.html#analysisquery-query">AnalysisQuery(<span class="xref std std-ref">Query</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis_Type.html#analysislistitem">AnalysisListItem</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Account/Account_type.html" title="previous chapter"><strong>Account Type</strong></a></li>
+      <li>Next: <a href="Analysis_Type.html" title="next chapter"><strong>Analysis Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Analysis/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
