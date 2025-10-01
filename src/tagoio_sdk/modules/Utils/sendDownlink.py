@@ -1,3 +1,5 @@
+import json
+
 from typing import Union
 
 import requests
@@ -104,7 +106,7 @@ def sendDownlink(
     """
     if not isinstance(resource, Account) and not isinstance(resource, Resources):
         raise TypeError(
-            "The parameter 'account' must be an instance of a TagoIO Resources."
+            "The parameter 'resource' must be an instance of a TagoIO Resources."
         )
 
     token = getDeviceToken(resource=resource, device_id=device_id)
@@ -128,7 +130,14 @@ def sendDownlink(
         "port": dn_options["port"],
     }
 
-    result = requests.post(f"https://{middleware_endpoint}/downlink", data)
+    if dn_options.get("confirmed") is not None:
+        data.update({"confirmed": dn_options["confirmed"]})
+
+    result = requests.post(
+        url=f"https://{middleware_endpoint}/downlink",
+        data=json.dumps(data),
+        headers={"Content-Type": "application/json"},
+    )
 
     if result.status_code in range(400, 500):
         raise TypeError(
