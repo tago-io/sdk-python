@@ -263,7 +263,7 @@ class Devices(TagoIOModule):
             }
         )
         result = dateParserList(
-            result, ["created_at", "last_authorization", "expire_time"]
+            result, ["created_at", "expire_time"]
         )
 
         return result
