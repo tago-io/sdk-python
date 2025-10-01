@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Billing Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Buckets" href="../Buckets/index.html" />
+    <link rel="prev" title="Billing" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="billing-type">
+<h1><strong>Billing Type</strong><a class="headerlink" href="#billing-type" title="Link to this heading">¶</a></h1>
+<section id="billingplan">
+<span id="id1"></span><h2>BillingPlan<a class="headerlink" href="#billingplan" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingPlan</strong> = “free” or “starter” or “scale”</p>
+</div></blockquote>
+</section>
+<section id="billingaddon">
+<span id="id2"></span><h2>BillingAddOn<a class="headerlink" href="#billingaddon" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingAddOn</strong> = “mobile” or “custom_dns”</p>
+</div></blockquote>
+</section>
+<section id="billingservice">
+<span id="id3"></span><h2>BillingService<a class="headerlink" href="#billingservice" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>BillingService</strong> =</dt><dd><p>“input” or
+“output”or
+“analysis”or
+“data_records” or
+“sms” or
+“email” or
+“run_users” or
+“push_notification” or
+“file_storage”</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="billingserviceprice">
+<span id="id4"></span><h2>BillingServicePrice<a class="headerlink" href="#billingserviceprice" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>amount</strong>: int or float</div>
+<div class="line">Amount available in the service tier.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>price</strong>: int or float</div>
+<div class="line">Price for the service tier.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingallserviceprices">
+<span id="id5"></span><h2>BillingAllServicePrices<a class="headerlink" href="#billingallserviceprices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingAllServicePrices</strong> = dict[<a class="reference internal" href="#billingservice"><span class="std std-ref">BillingService</span></a>, list[<a class="reference internal" href="#billingserviceprice"><span class="std std-ref">BillingServicePrice</span></a>]]</p>
+</div></blockquote>
+</section>
+<section id="billingplanprices">
+<span id="billingplanpricesitem"></span><h2>BillingPlanPrices<a class="headerlink" href="#billingplanprices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: <a class="reference internal" href="#billingplan"><span class="std std-ref">BillingPlan</span></a></div>
+<div class="line">Plan name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>price</strong>: int or float</div>
+<div class="line">Plan price.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingplanpriceslist">
+<span id="id6"></span><h2>BillingPlanPrices<a class="headerlink" href="#billingplanpriceslist" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingPlanPrices</strong> = list[<a class="reference internal" href="#billingplanpricesitem"><span class="std std-ref">BillingPlanPrices</span></a>]</p>
+</div></blockquote>
+</section>
+<section id="billingaddonprices">
+<span id="billingaddonpricesitem"></span><h2>BillingAddOnPrices<a class="headerlink" href="#billingaddonprices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: <a class="reference internal" href="#billingaddon"><span class="std std-ref">BillingAddOn</span></a></div>
+<div class="line">Add-on name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>price</strong>: int or float</div>
+<div class="line">Add-on price.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingaddonpriceslist">
+<span id="id7"></span><h2>BillingAddOnPrices<a class="headerlink" href="#billingaddonpriceslist" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingAddOnPrices</strong> = list[<a class="reference internal" href="#billingaddonpricesitem"><span class="std std-ref">BillingAddOnPrices</span></a>]</p>
+</div></blockquote>
+</section>
+<section id="billingprices">
+<span id="id8"></span><h2>BillingPrices<a class="headerlink" href="#billingprices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>plans</strong>: <a class="reference internal" href="#billingplanpriceslist"><span class="std std-ref">BillingPlanPrices</span></a></div>
+<div class="line">Prices for each plan.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>addons</strong>: <a class="reference internal" href="#billingaddonpriceslist"><span class="std std-ref">BillingAddOnPrices</span></a></div>
+<div class="line">Prices for each add-on.</div>
+</div>
+<p><strong>BillingAllServicePrices</strong>: <a class="reference internal" href="#billingallserviceprices"><span class="std std-ref">BillingAllServicePrices</span></a></p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="current-cycle">
+<span id="id9"></span><h2>current_cycle<a class="headerlink" href="#current-cycle" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>start</strong>: str</div>
+<div class="line">Date when the current cycle started.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>end</strong>: str</div>
+<div class="line">Date when the current cycle ends.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingservicesubscription">
+<span id="id10"></span><h2>BillingServiceSubscription<a class="headerlink" href="#billingservicesubscription" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p>limit: int or float</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingsubscriptionservices">
+<span id="id11"></span><h2>BillingSubscriptionServices<a class="headerlink" href="#billingsubscriptionservices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingSubscriptionServices</strong> = dict[BillingService, BillingServiceSubscription]</p>
+</div></blockquote>
+</section>
+<section id="billingsubscriptionaddons">
+<span id="id12"></span><h2>BillingSubscriptionAddOns<a class="headerlink" href="#billingsubscriptionaddons" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingSubscriptionAddOns</strong> = dict[BillingAddOn, list[GenericID]]</p>
+</div></blockquote>
+</section>
+<section id="billingpaymenterror">
+<span id="id13"></span><h2>BillingPaymentError<a class="headerlink" href="#billingpaymenterror" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>message</strong>: str or None</div>
+<div class="line">Payment error message.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>details</strong>: str or None</div>
+<div class="line">More details on the payment error.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingpaymentpastdue">
+<span id="id14"></span><h2>BillingPaymentPastDue<a class="headerlink" href="#billingpaymentpastdue" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>amount_due</strong>: int or float</div>
+<div class="line">Amount due that was not paid in a recurring payment.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>attempt_count</strong>: int or float</div>
+<div class="line">Amount of attempts for the retried recurring payment.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>invoice_url</strong>: str</div>
+<div class="line">URL for the invoice related to the failed recurring payment.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingsubscription">
+<span id="id15"></span><h2>BillingSubscription<a class="headerlink" href="#billingsubscription" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>account</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Account ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>plan</strong>: <a class="reference internal" href="#billingplan"><span class="std std-ref">BillingPlan</span></a></div>
+<div class="line">Account plan.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>services</strong>: <a class="reference internal" href="#billingsubscriptionservices"><span class="std std-ref">BillingSubscriptionServices</span></a></div>
+<div class="line">Limits for each service in the account’s subscription.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>addons</strong>: <a class="reference internal" href="#billingsubscriptionaddons"><span class="std std-ref">BillingSubscriptionAddOns</span></a></div>
+<div class="line">Add-ons in the account’s subscription.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>current_cycle</strong>: <a class="reference internal" href="#current-cycle"><span class="std std-ref">current_cycle</span></a></div>
+<div class="line">Current cycle for the account’s subscription.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>processing</strong>: bool</div>
+<div class="line">Whether changes are still being processed and awaiting response from Stripe.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>payment_error</strong>: Optional[<a class="reference internal" href="#billingpaymenterror"><span class="std std-ref">BillingPaymentError</span></a>]</div>
+<div class="line">Payment errors in the account’s subscription.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>past_due</strong>: Optional[<a class="reference internal" href="#billingpaymentpastdue"><span class="std std-ref">BillingPaymentPastDue</span></a>]</div>
+<div class="line">Past due information for recurring payment errors.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>upcoming_invoice_total</strong>: int or float</div>
+<div class="line">Value of the upcoming invoice.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>trial_end</strong>: str or None</div>
+<div class="line">Timestamp when the trial for the subscription ends if the subscription has a trial active.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingeditsubscription">
+<span id="id16"></span><h2>BillingEditSubscription<a class="headerlink" href="#billingeditsubscription" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>plan</strong>: Optional[<a class="reference internal" href="#billingplan"><span class="std std-ref">BillingPlan</span></a>]</div>
+<div class="line">New account plan.</div>
+<div class="line">Only one of <cite>plan</cite>, <cite>services</cite> and <cite>addons</cite> is accepted.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>services</strong>: Optional[<a class="reference internal" href="#billingsubscriptionservices"><span class="std std-ref">BillingSubscriptionServices</span></a>]</div>
+<div class="line">New limits for each service in the account’s subscription.</div>
+<div class="line">Only one of <cite>plan</cite>, <cite>services</cite> and <cite>addons</cite> is accepted.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>addons</strong>: Optional[<a class="reference internal" href="#billingsubscriptionaddons"><span class="std std-ref">BillingSubscriptionAddOns</span></a>]</div>
+<div class="line">Only one of <cite>plan</cite>, <cite>services</cite> and <cite>addons</cite> is accepted.</div>
+<div class="line">New add-ons in the account’s subscription.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>coupon</strong>: Optional[str]</div>
+<div class="line">Coupon code.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingresourceallocationservices">
+<span id="id17"></span><h2>BillingResourceAllocationServices<a class="headerlink" href="#billingresourceallocationservices" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingResourceAllocationServices</strong> = dict[BillingService, Union[int, float]]</p>
+</div></blockquote>
+</section>
+<section id="billingprofileresourceallocation">
+<span id="id18"></span><h2>BillingProfileResourceAllocation<a class="headerlink" href="#billingprofileresourceallocation" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updated_at</strong>: str</div>
+<div class="line">Timestamp when the resource allocation for the profile was last updated.</div>
+</div>
+<p><strong>BillingResourceAllocationServices</strong>: <a class="reference internal" href="#billingresourceallocationservices"><span class="std std-ref">BillingResourceAllocationServices</span></a></p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingprofileeditresourceallocation">
+<span id="id19"></span><h2>BillingProfileEditResourceAllocation<a class="headerlink" href="#billingprofileeditresourceallocation" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Profile ID.</div>
+</div>
+<p><strong>BillingResourceAllocationServices</strong>: Optional[<a class="reference internal" href="#billingresourceallocationservices"><span class="std std-ref">BillingResourceAllocationServices</span></a>]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="billingeditresourceallocation">
+<span id="id20"></span><h2>BillingEditResourceAllocation<a class="headerlink" href="#billingeditresourceallocation" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>BillingEditResourceAllocation</strong> = list[<a class="reference internal" href="#billingprofileeditresourceallocation"><span class="std std-ref">BillingProfileEditResourceAllocation</span></a>]</p>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Billing</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Billing</strong></a></li>
+      <li>Next: <a href="../Buckets/index.html" title="next chapter"><strong>Buckets</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Billing/Billing_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

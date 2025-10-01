@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Files &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Files Type" href="Files_Type.html" />
+    <link rel="prev" title="Devices Type" href="../Devices/Devices_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="files">
+<h1><strong>Files</strong><a class="headerlink" href="#files" title="Link to this heading">¶</a></h1>
+<p>Manage files in TagoIO.</p>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Lists all files in the application with pagination support.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="Files_Type.html#filequery"><span class="std std-ref">FileQuery</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;paginationToken&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Files_Type.html#filelistinfo"><span class="std std-ref">FileListInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">list</span><span class="p">({</span>
+  <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/my/folder&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;total&#39;: 200, &#39;usage&#39;: 0.05, &#39;files&#39;: [{ &#39;size&#39;: 7812, ...}], &#39;folders&#39;: [&#39;my-folder&#39;] }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="uploadbase64">
+<h2>uploadBase64<a class="headerlink" href="#uploadbase64" title="Link to this heading">¶</a></h2>
+<p>Uploads base64 encoded files to TagoIO storage.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>fileList</strong>: list[<a class="reference internal" href="Files_Type.html#base64file"><span class="std std-ref">Base64File</span></a>]</div>
+<div class="line">List of files to upload in base64 format</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">uploadBase64</span><span class="p">([{</span>
+  <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;/my-files/document.pdf&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;base64EncodedContent&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;public&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="move">
+<h2>move<a class="headerlink" href="#move" title="Link to this heading">¶</a></h2>
+<p>Moves or renames files in TagoIO storage.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>fileList</strong>: list[<a class="reference internal" href="Files_Type.html#movefiles"><span class="std std-ref">MoveFiles</span></a>]</div>
+<div class="line">List of file paths to move/rename</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">move</span><span class="p">([{</span>
+  <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;/old/path/file.txt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;/new/path/renamed.txt&quot;</span>
+<span class="p">}])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="copy">
+<h2>copy<a class="headerlink" href="#copy" title="Link to this heading">¶</a></h2>
+<p>Copies files in TagoIO files.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>fileList</strong>: list[<a class="reference internal" href="Files_Type.html#copyfiles"><span class="std std-ref">CopyFiles</span></a>]</div>
+<div class="line">List of file paths to copy</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">copy</span><span class="p">([{</span>
+  <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;/source/file.txt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;/destination/copy.txt&quot;</span>
+<span class="p">}])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Deletes files or folders from TagoIO storage.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>files</strong>: list[str]</div>
+<div class="line">List of file paths to delete</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">delete</span><span class="p">([</span>
+  <span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;/folder/to/delete&quot;</span>
+<span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="checkpermission">
+<h2>checkPermission<a class="headerlink" href="#checkpermission" title="Link to this heading">¶</a></h2>
+<p>Checks if a file is public or private.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>file</strong>: str</div>
+<div class="line">File path to check permissions</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, bool]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">permission</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">checkPermission</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">permission</span><span class="p">[</span><span class="s2">&quot;public&quot;</span><span class="p">])</span>  <span class="c1"># True or False</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="changepermission">
+<h2>changePermission<a class="headerlink" href="#changepermission" title="Link to this heading">¶</a></h2>
+<p>Changes visibility settings for multiple files.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>filesVisibility</strong>: list[<a class="reference internal" href="Files_Type.html#filespermission"><span class="std std-ref">FilesPermission</span></a>]</div>
+<div class="line">List of file permission settings</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">changePermission</span><span class="p">([{</span>
+  <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;public&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="getfileurlsigned">
+<h2>getFileURLSigned<a class="headerlink" href="#getfileurlsigned" title="Link to this heading">¶</a></h2>
+<p>Gets a signed URL with temporary authentication token.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>url</strong>: str</div>
+<div class="line">URL of the file to get signed URL</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">signed_url</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">getFileURLSigned</span><span class="p">(</span><span class="s2">&quot;https://api.tago.io/file/...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">signed_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="getfilemd5">
+<h2>getFileMD5<a class="headerlink" href="#getfilemd5" title="Link to this heading">¶</a></h2>
+<p>Gets the MD5 hash of a file with authentication for private files.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>url</strong>: str</div>
+<div class="line">URL of the file to get MD5 hash</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">md5_hash</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">getFileMD5</span><span class="p">(</span><span class="s2">&quot;https://storage.tago.io/file/path/document.pdf&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">md5_hash</span><span class="p">)</span>  <span class="c1"># e.g. &quot;d41d8cd98f00b204e9800998ecf8427e&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="uploadfile">
+<h2>uploadFile<a class="headerlink" href="#uploadfile" title="Link to this heading">¶</a></h2>
+<p>Uploads a single file to TagoIO using multipart upload.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/127-files">Files</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/140-uploading-files">Uploading Files</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>file</strong>: bytes</div>
+<div class="line">Binary file data to upload</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>filename</strong>: str</div>
+<div class="line">Path and filename for the file</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>options</strong>: <a class="reference internal" href="Files_Type.html#uploadoptions"><span class="std std-ref">UploadOptions</span></a></div>
+<div class="line">Options for the file upload</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, str]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">file_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">uploadFile</span><span class="p">(</span><span class="n">file_data</span><span class="p">,</span> <span class="s2">&quot;/uploads/myfile.txt&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">&quot;chunkSize&quot;</span><span class="p">:</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>  <span class="c1"># 5MB chunks</span>
+  <span class="s2">&quot;onProgress&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">progress</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Upload progress: </span><span class="si">{</span><span class="n">progress</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">])</span>  <span class="c1"># https://api.tago.io/file/.../uploads/myfile.txt</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Files_Type.html"><strong>Files Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#filequery">FileQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#fileinfo">FileInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#filelistinfo">FileListInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#base64file">Base64File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#copyfiles">CopyFiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#movefiles">MoveFiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#filespermission">FilesPermission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files_Type.html#uploadoptions">UploadOptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Devices/Devices_Type.html" title="previous chapter"><strong>Devices Type</strong></a></li>
+      <li>Next: <a href="Files_Type.html" title="next chapter"><strong>Files Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Files/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

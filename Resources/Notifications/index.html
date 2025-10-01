@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Notifications &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Notifications Type" href="Notification_Type.html" />
+    <link rel="prev" title="Files Type" href="../Files/Files_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="notifications">
+<h1><strong>Notifications</strong><a class="headerlink" href="#notifications" title="Link to this heading">¶</a></h1>
+<p>Manage notifications in your application.</p>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Retrieves all notifications from the application with optional filtering.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="Notification_Type.html#notificationquery"><span class="std std-ref">NotificationQuery(Query)</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Notification_Type.html#notificationinfo"><span class="std std-ref">NotificationInfo(NotificationCreate)</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">list</span><span class="p">({</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;read&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;notification-id-123&#39;, &#39;title&#39;: &#39;System Update&#39;, &#39;message&#39;: &#39;Features&#39;, ...}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="markasread">
+<h2>markAsRead<a class="headerlink" href="#markasread" title="Link to this heading">¶</a></h2>
+<p>Marks one or multiple notifications as read.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationIDS</strong>: Union[str, list[str]]</div>
+<div class="line">Notification ID or list of notification IDs</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="c1"># Mark single notification</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">markAsRead</span><span class="p">(</span><span class="s2">&quot;notification-id-123&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mark multiple notifications</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">markAsRead</span><span class="p">([</span><span class="s2">&quot;id-1&quot;</span><span class="p">,</span> <span class="s2">&quot;id-2&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="markasunread">
+<h2>markAsUnread<a class="headerlink" href="#markasunread" title="Link to this heading">¶</a></h2>
+<p>Marks one or multiple notifications as unread.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationIDS</strong>: Union[str, list[str]]</div>
+<div class="line">Notification ID or list of notification IDs</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="c1"># Mark single notification</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">markAsUnread</span><span class="p">(</span><span class="s2">&quot;notification-id-123&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mark multiple notifications</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">markAsUnread</span><span class="p">([</span><span class="s2">&quot;id-1&quot;</span><span class="p">,</span> <span class="s2">&quot;id-2&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="markallasread">
+<h2>markAllAsRead<a class="headerlink" href="#markallasread" title="Link to this heading">¶</a></h2>
+<p>Marks all notifications in the application as read.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">None</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">markAllAsRead</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># All TagoIO Notification Run Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="notificationbutton">
+<h2>notificationButton<a class="headerlink" href="#notificationbutton" title="Link to this heading">¶</a></h2>
+<p>Records when a notification button is pressed by the user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: str</div>
+<div class="line">Notification ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>buttonID</strong>: str</div>
+<div class="line">Button ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">notificationButton</span><span class="p">(</span><span class="s2">&quot;notification-123&quot;</span><span class="p">,</span> <span class="s2">&quot;button-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new notification in the system.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationData</strong>: <a class="reference internal" href="Notification_Type.html#notificationcreate"><span class="std std-ref">NotificationCreate</span></a></div>
+<div class="line">Notification data to create</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;System Update&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;New features available&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>  <span class="c1"># notification-id-123</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="remove">
+<h2>remove<a class="headerlink" href="#remove" title="Link to this heading">¶</a></h2>
+<p>Permanently deletes a notification from the system.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/11-notification">Notification</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: str</div>
+<div class="line">Notification ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">string</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;notification-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Notification_Type.html"><strong>Notifications Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggeranalysis">NotificationTriggerAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggerhttp">NotificationTriggerHTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggerprofile">NotificationTriggerProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationbutton">NotificationButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationiconimage">NotificationIconImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationiconsvg">NotificationIconSVG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationcreate">NotificationCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationquery-query">NotificationQuery(<span class="xref std std-ref">Query</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationinfo-notificationcreate">NotificationInfo(<span class="xref std std-ref">NotificationCreate</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationinfobasic">NotificationInfoBasic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationcreatereturn">NotificationCreateReturn</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Files/Files_Type.html" title="previous chapter"><strong>Files Type</strong></a></li>
+      <li>Next: <a href="Notification_Type.html" title="next chapter"><strong>Notifications Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Notifications/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
