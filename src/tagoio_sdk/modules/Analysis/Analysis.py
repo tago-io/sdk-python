@@ -1,115 +1,205 @@
+import asyncio
+import inspect
 import json
 import os
-import signal
 import sys
 
 from typing import Any
-from typing import Callable
+from typing import List
 from typing import Optional
 
+from tagoio_sdk.common.JSON_Parse_Safe import JSONParseSafe
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.infrastructure.api_sse import openSSEListening
+from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisConstructorParams
 from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisEnvironment
-from tagoio_sdk.modules.Services import Services
+from tagoio_sdk.modules.Analysis.Analysis_Type import AnalysisFunction
+from tagoio_sdk.modules.Services.Console import ConsoleService
+from tagoio_sdk.regions import getConnectionURI as getRegionObj
+from tagoio_sdk.regions import setRuntimeRegion
 
 
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
 
 
 class Analysis(TagoIOModule):
-    def __init__(self, params):
+    """
+    Analysis execution context for TagoIO
+
+    This class provides the runtime environment for executing analysis scripts in TagoIO.
+    It manages environment variables, console outputs, and analysis execution lifecycle.
+    Analyses can run locally for development or in the TagoIO cloud platform.
+
+    Example: Basic analysis usage
+        ```python
+        from tagoio_sdk import Analysis
+
+        def my_analysis(context, scope):
+            # Get analysis environment variables
+            environment = context.environment
+
+            # Use console service for logging
+            context.log("Analysis started")
+
+            # Your analysis logic here
+            print("Processing data...")
+
+        analysis = Analysis(my_analysis, {"token": "your-analysis-token"})
+        ```
+
+    Example: Environment variables
+        ```python
+        def my_analysis(context, scope):
+            env = context.environment
+            api_key = next((e["value"] for e in env if e["key"] == "API_KEY"), None)
+
+        analysis = Analysis(my_analysis)
+        ```
+
+    Example: Manual start control
+        ```python
+        analysis = Analysis(my_analysis, {
+            "token": "token",
+            "autostart": False
+        })
+
+        # Start analysis manually
+        analysis.start()
+        ```
+    """
+
+    def __init__(self, analysis: AnalysisFunction, params: Optional[AnalysisConstructorParams] = None):
+        if params is None:
+            params = {"token": "unknown"}
+
         super().__init__(params)
-        self._running = True
+        self.analysis = analysis
 
-    def _signal_handler(self, signum, frame):
-        """Handle Ctrl+C gracefully"""
-        print("\n¬ Analysis stopped by user. Goodbye!")
-        self._running = False
-        sys.exit(0)
+        if params.get("autostart"):
+            self.start()
 
-    def init(self, analysis: Callable):
-        self._analysis = analysis
+    def start(self) -> None:
+        if self.started:
+            return
 
-        # Set up signal handler for graceful shutdown
-        signal.signal(signal.SIGINT, self._signal_handler)
-        signal.signal(signal.SIGTERM, self._signal_handler)
+        self.started = True
 
-        if T_ANALYSIS_CONTEXT is None:
-            self.__localRuntime()
+        if not os.environ.get("T_ANALYSIS_CONTEXT"):
+            self._localRuntime()
         else:
-            self.__runOnTagoIO()
+            self._runOnTagoIO()
 
-    def __runOnTagoIO(self):
-        def context():
-            pass
+    def _runOnTagoIO(self) -> None:
+        if not self.analysis or not callable(self.analysis):
+            raise TypeError("Invalid analysis function")
 
-        context.log = print
-        context.token = os.environ["T_ANALYSIS_TOKEN"]
-        context.analysis_id = os.environ["T_ANALYSIS_ID"]
-        try:
-            context.environment = json.loads(os.environ["T_ANALYSIS_ENV"])
-        except (KeyError, json.JSONDecodeError):
-            context.environment = []
+        # Create context object
+        context = {
+            "log": print,
+            "token": os.environ.get("T_ANALYSIS_TOKEN", ""),
+            "environment": JSONParseSafe(os.environ.get("T_ANALYSIS_ENV", "[]"), []),
+            "analysis_id": os.environ.get("T_ANALYSIS_ID", ""),
+        }
 
-        try:
-            data = json.loads(os.environ["T_ANALYSIS_DATA"])
-        except (KeyError, json.JSONDecodeError):
-            data = []
+        data = JSONParseSafe(os.environ.get("T_ANALYSIS_DATA", "[]"), [])
 
-        self._analysis(context, data)
+        self.analysis(context, data)
 
-    def __runLocal(
+    def _stringifyMsg(self, msg: Any) -> str:
+        if isinstance(msg, dict) and not isinstance(msg, list):
+            return json.dumps(msg)
+        return str(msg)
+
+    def _runLocal(
         self,
-        environment: list[AnalysisEnvironment],
-        data: list[Any],
-        analysis_id: str,
+        environment: List[AnalysisEnvironment],
+        data: List[Any],
+        analysisID: str,
         token: str,
-    ):
-        """Run Analysis @internal"""
+    ) -> None:
+        if not self.analysis or not callable(self.analysis):
+            raise TypeError("Invalid analysis function")
 
-        def log(*args: any):
-            print(*args)
-            log_message = " ".join(str(arg) for arg in args)
-            Services.Services({"token": token}).console.log(log_message)
+        tagoConsole = ConsoleService({"token": token, "region": self.params.get("region")})
 
-        def context():
-            pass
+        def log(*args: Any) -> None:
+            """Log messages to console and TagoIO"""
+            # Only print locally if not auto-running
+            if not os.environ.get("T_ANALYSIS_AUTO_RUN"):
+                print(*args)
 
-        context.log = log
-        context.token = token
-        context.environment = environment
-        context.analysis_id = analysis_id
+            # Handle error objects with stack trace
+            processedArgs = []
+            for arg in args:
+                if hasattr(arg, "stack"):
+                    processedArgs.append(arg.stack)
+                else:
+                    processedArgs.append(arg)
 
-        self._analysis(context, data or [])
+            # Convert all arguments to strings
+            argsStrings = [self._stringifyMsg(arg) for arg in processedArgs]
 
-    def __localRuntime(self):
-        analysis = self.doRequest({"path": "/info", "method": "GET"})
+            # Send to TagoIO console
+            try:
+                tagoConsole.log(" ".join(argsStrings))
+            except Exception as e:
+                print(f"Console error: {e}", file=sys.stderr)
+
+        context = {
+            "log": log,
+            "token": token,
+            "environment": environment,
+            "analysis_id": analysisID,
+        }
+
+        # Execute analysis function
+        if inspect.iscoroutinefunction(self.analysis):
+            # Async function
+            try:
+                asyncio.run(self.analysis(context, data or []))
+            except Exception as error:
+                log(error)
+        else:
+            # Sync function
+            try:
+                self.analysis(context, data or [])
+            except Exception as error:
+                log(error)
+
+    def _localRuntime(self) -> None:
+        """Set up local runtime environment for development"""
+        if self.params.get("token") == "unknown":
+            raise ValueError("To run analysis locally, you need a token")
+
+        try:
+            analysis = self.doRequest({"path": "/info", "method": "GET"})
+        except Exception:
+            analysis = None
 
         if not analysis:
-            print("¬ Error :: Analysis not found or not active.")
+            print("¬ Error :: Analysis not found or not active.", file=sys.stderr)
             return
 
         if analysis.get("run_on") != "external":
             print("¬ Warning :: Analysis is not set to run on external")
 
-        tokenEnd = self.token[-5:]
-
+        # Open SSE connection
         try:
             sse = openSSEListening(
                 {
-                    "token": self.token,
-                    "region": self.region,
+                    "token": self.params.get("token"),
+                    "region": self.params.get("region"),
                     "channel": "analysis_trigger",
                 }
             )
-            print(
-                f"\n¬ Connected to TagoIO :: Analysis [{analysis['name']}]({tokenEnd}) is ready."
-            )
-            print("¬ Waiting for analysis trigger... (Press Ctrl+C to stop)\n")
         except Exception as e:
-            print("¬ Connection was closed, trying to reconnect...")
-            print(f"Error: {e}")
+            print(f"¬ Connection error: {e}", file=sys.stderr)
             return
+
+        tokenEnd = str(self.params.get("token", ""))[-5:]
+
+        print(f"\n¬ Connected to TagoIO :: Analysis [{analysis.get('name', 'Unknown')}]({tokenEnd}) is ready.")
+        print("¬ Waiting for analysis trigger... (Press Ctrl+C to stop)\n")
 
         try:
             for event in sse.events():
@@ -117,31 +207,58 @@ class Analysis(TagoIOModule):
                     break
 
                 try:
-                    data = json.loads(event.data).get("payload")
+                    parsed = JSONParseSafe(event.data, {})
+                    payload = parsed.get("payload")
 
-                    if not data:
+                    if not payload:
                         continue
 
-                    self.__runLocal(
-                        data["environment"],
-                        data["data"],
-                        data["analysis_id"],
-                        self.token,
+                    self._runLocal(
+                        payload.get("environment", []),
+                        payload.get("data", []),
+                        payload.get("analysis_id", ""),
+                        payload.get("token", self.params.get("token", "")),
                     )
-                except RuntimeError:
-                    print("¬ Connection was closed, trying to reconnect...")
-                    pass
+                except Exception as e:
+                    print(f"¬ Error processing event: {e}", file=sys.stderr)
+                    continue
+
         except KeyboardInterrupt:
             print("\n¬ Analysis stopped by user. Goodbye!")
         except Exception as e:
-            print(f"\n¬ Unexpected error: {e}")
+            print(f"¬ Connection was closed: {e}", file=sys.stderr)
+            print("¬ Trying to reconnect...")
         finally:
             self._running = False
 
     @staticmethod
-    def use(analysis: Callable, params: Optional[str] = {"token": "unknown"}):
-        if not os.environ.get("T_ANALYSIS_TOKEN"):
-            os.environ["T_ANALYSIS_TOKEN"] = params.get("token")
-            Analysis(params).init(analysis)
-        else:
-            Analysis({"token": os.environ["T_ANALYSIS_TOKEN"]}).init(analysis)
+    def use(
+        analysis: AnalysisFunction,
+        params: Optional[AnalysisConstructorParams] = None,
+    ) -> "Analysis":
+        """
+        Create and configure Analysis instance with environment setup
+
+        This static method provides a convenient way to create an Analysis instance
+        while automatically configuring environment variables and runtime region.
+
+        Example:
+            ```python
+            def my_analysis(context, scope):
+                context.log("Hello from analysis!")
+
+            analysis = Analysis.use(my_analysis, {"token": "my-token"})
+            ```
+        """
+        if params is None:
+            params = {"token": "unknown"}
+
+        if not os.environ.get("T_ANALYSIS_TOKEN") and params.get("token"):
+            os.environ["T_ANALYSIS_TOKEN"] = params["token"]
+
+        # Configure runtime region
+        runtimeRegion = params.get("region") if getRegionObj(params["region"]) else None
+        if runtimeRegion:
+            setRuntimeRegion(runtimeRegion)
+
+        return Analysis(analysis, params)
