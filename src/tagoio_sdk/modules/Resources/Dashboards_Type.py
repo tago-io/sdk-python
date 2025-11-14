@@ -74,9 +74,7 @@ class DashboardInfo(TypedDict):
     background: any
     type: str
     blueprint_device_behavior: Literal["more_than_one", "always"]
-    blueprint_selector_behavior: Literal[
-        "open", "closed", "always_open", "always_closed"
-    ]
+    blueprint_selector_behavior: Literal["open", "closed", "always_open", "always_closed"]
     blueprint_devices: blueprint_devices
     theme: any
     setup: any
@@ -183,7 +181,9 @@ class PublicKeyResponse(TypedDict):
     expire_time: ExpireTimeOption
 
 
-EditDataModel = PostDataModel and {id: GenericID}
+class EditDataModel(PostDataModel):
+    id: GenericID
+
 
 PublicKeyResponse = PublicKeyResponse
 

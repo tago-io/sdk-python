@@ -1,3 +1,6 @@
+from typing import Any
+from typing import Dict
+from typing import List
 from typing import Optional
 from typing import TypedDict
 
@@ -5,6 +8,7 @@ from tagoio_sdk.common.Common_Type import ExpireTimeOption
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import Query
 from tagoio_sdk.common.tagoio_module import TagoIOModule
+from tagoio_sdk.modules.Resources.Dashboard_Widgets import Widgets
 from tagoio_sdk.modules.Resources.Dashboards_Type import AnalysisRelated
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardCreateInfo
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
@@ -15,21 +19,26 @@ from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class Dashboards(TagoIOModule):
-    def listDashboard(self, queryObj: Query = None) -> list[DashboardInfo]:
+    def listDashboard(self, queryObj: Optional[Query] = None) -> List[DashboardInfo]:
         """
-        Retrieves a list with all dashboards from the account
+        @description:
+            Lists all dashboards from your application with pagination support.
 
-        :default:
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
 
-            queryObj: {
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.listDashboard({
                 "page": 1,
                 "fields": ["id", "name"],
-                "filter": {},
-                "amount": 20,
-                "orderBy": ["label", "asc"],
-            }
-
-        :param queryObj Search query params
+                "amount": 10,
+                "orderBy": ["label", "asc"]
+            })
+            print(result)  # [{'id': 'dashboard-id-123', 'label': 'My Dashboard', ...}, ...]
+            ```
         """
 
         if queryObj is None:
@@ -58,14 +67,27 @@ class Dashboards(TagoIOModule):
         result = dateParserList(result, ["created_at", "updated_at", "last_access"])
         return result
 
-    class dashboard(TypedDict):
+    class CreateDashboardResponse(TypedDict):
         dashboard: GenericID
 
-    def create(self, dashboardObj: DashboardCreateInfo) -> dashboard:
+    def create(self, dashboardObj: DashboardCreateInfo) -> CreateDashboardResponse:
         """
-        Create dashboard
+        @description:
+            Creates a new dashboard in your application.
 
-        :param dashboardObj Dashboard object
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Create** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.create({
+                "label": "My Dashboard",
+                "tags": [{"key": "type", "value": "monitoring"}]
+            })
+            print(result)  # {'dashboard': 'dashboard-id-123'}
+            ```
         """
         result = self.doRequest(
             {
@@ -77,20 +99,30 @@ class Dashboards(TagoIOModule):
 
         return result
 
-    def edit(self, dashboardID: GenericID, dashboardObj: DashboardInfo) -> str:
+    def edit(self, dashboardID: GenericID, dashboardObj: Dict[str, Any]) -> str:
         """
-        Modify any property of the dashboards
+        @description:
+            Modifies an existing dashboard's properties.
 
-        :param dashboardID Dashboard identification
-        :param dashboardObj Dashboard Object with data to be replaced
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.edit("dashboard-id-123", {
+                "label": "Updated Dashboard",
+                "active": False
+            })
+            print(result)  # Successfully Updated
+            ```
         """
         result = self.doRequest(
             {
                 "path": f"/dashboard/{dashboardID}",
                 "method": "PUT",
-                "body": {
-                    dashboardObj,
-                },
+                "body": dashboardObj,
             }
         )
 
@@ -98,9 +130,19 @@ class Dashboards(TagoIOModule):
 
     def delete(self, dashboardID: GenericID) -> str:
         """
-        Deletes an dashboard from the account
+        @description:
+            Deletes a dashboard from the application.
 
-        :param dashboardID Dashboard identification
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Delete** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.delete("dashboard-id-123")
+            print(result)  # Successfully Removed
+            ```
         """
         result = self.doRequest(
             {
@@ -113,9 +155,19 @@ class Dashboards(TagoIOModule):
 
     def info(self, dashboardID: GenericID) -> DashboardInfo:
         """
-        Gets information about the dashboard
+        @description:
+            Retrieves detailed information about a specific dashboard.
 
-        :param dashboardID Dashboard identification
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            dashboard_info = resources.dashboards.info("dashboard-id-123")
+            print(dashboard_info)  # {'id': 'dashboard-id-123', 'label': 'My Dashboard', ...}
+            ```
         """
         result = self.doRequest(
             {
@@ -127,22 +179,33 @@ class Dashboards(TagoIOModule):
         result = dateParser(result, ["created_at", "updated_at", "last_access"])
         return result
 
-    class duplicate(TypedDict):
+    class DuplicateDashboardResponse(TypedDict):
         dashboard_id: str
         message: str
 
-    class dashboardObj(TypedDict):
-        setup: Optional[any]
+    class DuplicateDashboardOptions(TypedDict):
+        setup: Optional[Any]
         new_label: Optional[str]
 
     def duplicate(
-        self, dashboardID: GenericID, dashboardObj: Optional[dashboardObj] = None
-    ) -> duplicate:
+        self,
+        dashboardID: GenericID,
+        dashboardObj: Optional[DuplicateDashboardOptions] = None,
+    ) -> DuplicateDashboardResponse:
         """
-        Duplicate the dashboard to your own account
+        @description:
+            Creates a copy of an existing dashboard.
 
-        :param dashboardID Dashboard identification
-        :param dashboardObj Object with data of the duplicate dashboard
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Duplicate** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.duplicate("dashboard-id-123", {"new_label": "Copy of My Dashboard"})
+            print(result)  # {'dashboard_id': 'new-dashboard-id', 'message': 'Dashboard duplicated successfully'}
+            ```
         """
         result = self.doRequest(
             {
@@ -154,14 +217,21 @@ class Dashboards(TagoIOModule):
 
         return result
 
-    def getPublicKey(
-        self, dashboardID: GenericID, expireTime: ExpireTimeOption = "never"
-    ) -> PublicKeyResponse:
+    def getPublicKey(self, dashboardID: GenericID, expireTime: ExpireTimeOption = "never") -> PublicKeyResponse:
         """
-        Generate a new public token for the dashboard
+        @description:
+            Generates a new public access token for the dashboard.
 
-        :param dashboardID Dashboard identification
-        :param expireTime Time when token will expire
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy in Access Management.
+            ```python
+            resources = Resources()
+            public_key = resources.dashboards.getPublicKey("dashboard-id-123", "1day")
+            print(public_key)  # {'token': 'token-id-123', 'expire_time': '2025-01-02T00:00:00.000Z'}
+            ```
         """
         result = self.doRequest(
             {
@@ -179,9 +249,19 @@ class Dashboards(TagoIOModule):
 
     def listDevicesRelated(self, dashboardID: GenericID) -> list[DevicesRelated]:
         """
-        Get list of devices related with dashboard
+        @description:
+            Lists all devices associated with the dashboard.
 
-        :param dashboardID Dashboard identification
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Related devices** in Access Management.
+            ```python
+            resources = Resources()
+            devices = resources.dashboards.listDevicesRelated("dashboard-id-123")
+            print(devices)  # [{'id': 'device-id-123'}, {'id': 'device-id-xyz'}, ...]
+            ```
         """
         result = self.doRequest(
             {
@@ -194,9 +274,19 @@ class Dashboards(TagoIOModule):
 
     def listAnalysisRelated(self, dashboardID: GenericID) -> list[AnalysisRelated]:
         """
-        Get list of analysis related with a dashboard
+        @description:
+            Lists all analyses associated with a dashboard.
 
-        :param dashboardID Dashboard identification
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Related analysis** in Access Management.
+            ```python
+            resources = Resources()
+            analyses = resources.dashboards.listAnalysisRelated("dashboard-id-123")
+            print(analyses)  # [{'id': 'analysis-id-123', 'name': 'Analysis #1'}, ...]
+            ```
         """
         result = self.doRequest(
             {
@@ -212,15 +302,26 @@ class Dashboards(TagoIOModule):
         analysisID: GenericID,
         dashboardID: GenericID,
         widgetID: GenericID,
-        scope: Optional[any] = None,
+        scope: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
-        Runs an analysis located in a widget's header button
+        @description:
+            Executes an analysis from a widget's header button.
 
-        :param analysisID The id of the analysis to run
-        :param dashboardID The id of the dashboard that contains the widget
-        :param widgetID The id of the widget that contains the header button
-        :param scope Data to send to the analysis
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            ```python
+            resources = Resources()
+            result = resources.dashboards.runWidgetHeaderButtonAnalysis(
+                "analysis-id-123",
+                "dashboard-id-456",
+                "widget-id-789",
+                {"custom_data": "value"}
+            )
+            print(result)  # Analysis executed successfully
+            ```
         """
         if scope is None:
             scope = {}
@@ -228,8 +329,12 @@ class Dashboards(TagoIOModule):
             {
                 "path": f"/analysis/{analysisID}/run/{dashboardID}/{widgetID}",
                 "method": "POST",
-                "body": scope,
+                "body": {"scope": scope},
             }
         )
 
         return result
+
+    def __init__(self, params):
+        super().__init__(params)
+        self.widgets = Widgets(params)
