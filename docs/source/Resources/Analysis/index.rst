@@ -1,13 +1,16 @@
 **Analysis**
 ============
 
-Manage analysis in account.
+Manage analysis in your application.
 
 =======
 list
 =======
 
-Retrieves a list with all analyses from the account
+Lists all analyses from the application with pagination support.
+Use this to retrieve and manage analyses in your application.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
@@ -17,238 +20,343 @@ Retrieves a list with all analyses from the account
         .. code-block::
             :caption: **Default queryObj:**
 
-            queryObj: {
+            queryObj = {
                 "page": 1,
                 "fields": ["id", "name"],
                 "filter": {},
                 "amount": 20,
-                "orderBy": ["name","asc"],
+                "orderBy": ["name", "asc"]
             }
 
     **Returns:**
 
         | list[:ref:`AnalysisListItem`]
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Access" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.list()
+        resources = Resources()
+        list_result = resources.analyses.list({
+            "page": 1,
+            "fields": ["id", "name"],
+            "amount": 10,
+            "orderBy": ["name", "asc"]
+        })
+        print(list_result)  # [{'id': 'analysis-id-123', 'name': 'Analysis Test', ...}]
 
 
 =======
 create
 =======
 
-Create a new analysis
+Creates a new analysis in your application.
+
+See: `Creating Analysis <https://help.tago.io/portal/en/kb/articles/120-creating-analysis>`_
 
     **Parameters:**
 
-        | **analysisInfo**: :ref:`AnalysisCreateInfo`
-        | Analysis information
+        | **analysisObj**: :ref:`AnalysisCreateInfo`
+        | Data object to create new TagoIO Analysis
 
     **Returns:**
 
         | Dict[str, GenericID | GenericToken]
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Create" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.create({
-                "name": "My Analysis",
-                "runtime": "python",
-                "active": True,
-            })
+        resources = Resources()
+        new_analysis = resources.analyses.create({
+            "name": "My Analysis",
+            "runtime": "python",
+            "tags": [{"key": "type", "value": "data-processing"}]
+        })
+        print(new_analysis["id"], new_analysis["token"])  # analysis-id-123, analysis-token-123
 
 
 =======
 edit
 =======
 
-Modify any property of the analyze
+Modifies an existing analysis.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
-        | **analysisInfo**: :ref:`AnalysisCreateInfo`
-        | Analysis information
+        | **analysisObj**: :ref:`AnalysisInfo`
+        | Analysis object with data to replace
 
     **Returns:**
 
         | string
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Create" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.edit("analysisID", { "name": "My Analysis Edited" })
+        resources = Resources()
+        result = resources.analyses.edit("analysis-id-123", {
+            "name": "Updated Analysis",
+            "active": False
+        })
+        print(result)  # Successfully Updated
 
 
 =======
 delete
 =======
 
-Deletes an analysis from the account
+Deletes an analysis from your application.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
     **Returns:**
 
         | string
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Delete" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.delete("analysisID")
+        resources = Resources()
+        result = resources.analyses.delete("analysis-id-123")
+        print(result)  # Successfully Removed
 
 
 =======
 info
 =======
 
-Gets information about an analysis
+Retrieves detailed information about a specific analysis.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
     **Returns:**
 
         | :ref:`AnalysisInfo`
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Access" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.info("analysisID")
+        resources = Resources()
+        analysis_info = resources.analyses.info("analysis-id-123")
+        print(analysis_info)  # {'id': 'analysis-id-123', 'name': 'My Analysis', ...}
 
 
 =======
 run
 =======
 
-Run an analysis
+Executes an analysis with optional scope parameters.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
+
+        | *Optional* **scopeObj**: Dict[str, Any]
+        | Simulate scope for analysis
 
     **Returns:**
 
         | Dict[str, GenericToken]
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Run Analysis" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.run("analysisID")
+        resources = Resources()
+        result = resources.analyses.run("analysis-id-123", {"environment": "production"})
+        print(result["analysis_token"])  # analysis-token-123
 
 
 =============
 tokenGenerate
 =============
 
-Generate a new token for the analysis
+Generates a new token for the analysis.
+This is only allowed when the analysis is running in external mode.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
     **Returns:**
 
         | Dict[str, str]
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.tokenGenerate("analysisID")
+        resources = Resources()
+        token = resources.analyses.tokenGenerate("analysis-id-123")
+        print(token["analysis_token"])  # analysis-token-123
 
 
 ============
 uploadScript
 ============
 
-Upload a file (base64) to Analysis. Automatically erase the old one
+Uploads a script file to an analysis.
+The file content must be base64-encoded. This automatically replaces the old script.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
-        | **file**: :ref:`ScriptFile`
-        | File information
+        | **fileObj**: :ref:`ScriptFile`
+        | Object with name, language and content (base64) of the file
 
     **Returns:**
 
         | string
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
-            import base64
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Upload Analysis Script" in Access Management.
+        from tagoio_sdk import Resources
 
-            data = "print(Hello, World!)"
-            encoded_bytes = base64.b64encode(data.encode('utf-8')).decode('utf-8')
-
-            resources = Resources()
-            resources.analysis.uploadScript("analysisID", {
-                "name": "My Script",
-                "content": encoded_bytes,
-                "language": "python",
-            })
+        resources = Resources()
+        result = resources.analyses.uploadScript("analysis-id-123", {
+            "name": "script.py",
+            "content": "base64-encoded-content",
+            "language": "python"
+        })
+        print(result)  # Successfully Uploaded
 
 
 ==============
 downloadScript
 ==============
 
-Get a url to download the analysis. If `version` is specified in `options`, downloads a specific version.
+Gets a download URL for the analysis script.
+If version is specified in options, downloads a specific version.
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
 
     **Parameters:**
 
-        | **analysisID**: GenericID: str
-        | Analysis ID
+        | **analysisID**: str
+        | Analysis identification
 
-        | *Optional* **options**: Dict["version", int]
-        | Options
+        | *Optional* **options**: Dict[Literal["version"], int]
+        | Options for the Analysis script to download (e.g., {"version": 1})
 
     **Returns:**
 
-        | Dict[str, Any]
+        | Dict
 
-    .. code-block::
-        :caption: **Example:**
+    .. code-block:: python
 
-            from tagoio_sdk import Resources
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Download Analysis Script" in Access Management.
+        from tagoio_sdk import Resources
 
-            resources = Resources()
-            resources.analysis.downloadScript("analysisID")
+        resources = Resources()
+        download = resources.analyses.downloadScript("analysis-id-123", {"version": 1})
+        print(download["url"])  # https://...
+        print(download["expire_at"])  # 2025-01-13T...
+
+
+============
+listSnippets
+============
+
+Get all available snippets for a specific runtime environment.
+Fetches analysis code snippets from the public TagoIO snippets repository.
+
+See: `Script Examples <https://help.tago.io/portal/en/kb/articles/64-script-examples>`_
+
+See: `Script Editor <https://help.tago.io/portal/en/kb/articles/104-script-editor>`_
+
+    **Parameters:**
+
+        | **runtime**: :ref:`SnippetRuntime`
+        | The runtime environment to get snippets for
+
+    **Returns:**
+
+        | :ref:`SnippetsListResponse`
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        deno_snippets = resources.analyses.listSnippets("deno-rt2025")
+
+        # Print all snippet titles
+        for snippet in deno_snippets["snippets"]:
+            print(f"{snippet['title']}: {snippet['description']}")
+
+
+==============
+getSnippetFile
+==============
+
+Get the raw source code content of a specific snippet file.
+Fetches the actual code content from the TagoIO snippets repository.
+
+See: `Script Examples <https://help.tago.io/portal/en/kb/articles/64-script-examples>`_
+
+See: `Script Editor <https://help.tago.io/portal/en/kb/articles/104-script-editor>`_
+
+    **Parameters:**
+
+        | **runtime**: :ref:`SnippetRuntime`
+        | The runtime environment the snippet belongs to
+
+        | **filename**: str
+        | The filename of the snippet to retrieve
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+
+        # Get TypeScript code for console example
+        code = resources.analyses.getSnippetFile("deno-rt2025", "console.ts")
+        print(code)
+
+        # Get Python code for data processing
+        python_code = resources.analyses.getSnippetFile("python-rt2025", "avg-min-max.py")
+        print(python_code)
 
 .. toctree::
 
