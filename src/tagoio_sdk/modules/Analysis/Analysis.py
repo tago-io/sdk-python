@@ -73,9 +73,12 @@ class Analysis(TagoIOModule):
             params = {"token": "unknown"}
 
         super().__init__(params)
+        self.params = params
         self.analysis = analysis
+        self.started = False
+        self._running = True
 
-        if params.get("autostart"):
+        if params.get("autostart") != False:
             self.start()
 
     def start(self) -> None:
@@ -257,7 +260,7 @@ class Analysis(TagoIOModule):
             os.environ["T_ANALYSIS_TOKEN"] = params["token"]
 
         # Configure runtime region
-        runtimeRegion = params.get("region") if getRegionObj(params["region"]) else None
+        runtimeRegion = params.get("region") if getRegionObj(params.get("region")) else None
         if runtimeRegion:
             setRuntimeRegion(runtimeRegion)
 
