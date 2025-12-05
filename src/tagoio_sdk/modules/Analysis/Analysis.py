@@ -78,7 +78,7 @@ class Analysis(TagoIOModule):
         self.started = False
         self._running = True
 
-        if params.get("autostart"):
+        if params.get("autostart", True):
             self.start()
 
     def start(self) -> None:
