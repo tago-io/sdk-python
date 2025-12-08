@@ -45,7 +45,7 @@ AnalysisToken = str
 AnalysisID = str
 
 
-class TagoContext(TypedDict):
+class TagoContext:
     """
     TagoIO Analysis Context interface.
     As current version of the SDK doesn't provide the full TagoContext interface.
