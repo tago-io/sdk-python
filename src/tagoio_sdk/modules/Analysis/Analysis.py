@@ -120,8 +120,8 @@ class Analysis(TagoIOModule):
 
         context.log = print
         context.token = os.environ.get("T_ANALYSIS_TOKEN", "")
-        context.analysis_id = (JSONParseSafe(os.environ.get("T_ANALYSIS_ENV", "[]"), []),)
-        context.environment = (os.environ.get("T_ANALYSIS_ID", ""),)
+        context.analysis_id = os.environ.get("T_ANALYSIS_ID", "")
+        context.environment = JSONParseSafe(os.environ.get("T_ANALYSIS_ENV", "[]"), [])
 
         data = JSONParseSafe(os.environ.get("T_ANALYSIS_DATA", "[]"), [])
 
