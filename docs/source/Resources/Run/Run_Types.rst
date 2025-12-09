@@ -294,7 +294,7 @@ UserInfo
         | **options**: object
         | **tags**: list[:ref:`TagsObj`]
 
-.. _LoginResponse:
+.. _LoginResponseRunUser:
 
 LoginResponse
 -------------

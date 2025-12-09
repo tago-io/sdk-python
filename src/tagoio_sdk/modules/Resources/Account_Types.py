@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 from typing import Optional
 from typing import TypedDict
 
@@ -40,3 +41,48 @@ class AccountInfo(TypedDict):
     created_at: datetime
     updated_at: datetime
     otp: Optional[AccountOpt]
+
+
+class AccountCreateInfo(TypedDict, total=False):
+    name: str
+    email: str
+    password: str
+    cpassword: str
+    country: Optional[str]
+    timezone: str
+    company: Optional[str]
+    newsletter: Optional[bool]
+    developer: Optional[bool]
+
+
+OTPType = Literal["sms", "email", "authenticator"]
+
+
+class TokenCreateInfo(TypedDict):
+    profile_id: GenericID
+    email: str
+    password: str
+    pin_code: str
+    otp_type: OTPType
+    name: str
+
+
+class LoginCredentials(TypedDict):
+    email: str
+    password: str
+    otp_type: OTPType
+    pin_code: str
+
+
+class ProfileListInfoForLogin(TypedDict):
+    id: GenericID
+    name: str
+
+
+class LoginResponse(TypedDict):
+    type: str
+    id: GenericID
+    email: str
+    company: str
+    name: str
+    profiles: list[ProfileListInfoForLogin]

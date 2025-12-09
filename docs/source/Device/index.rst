@@ -12,7 +12,7 @@ Instance
         | **token**: str
         | Device Token
 
-        | *Optional* **region**: Regions: "usa-1" or "env"
+        | *Optional* **region**: Regions: "us-e1" or "ue-w1" or "env"
         | Region is a optional parameter
 
 .. code-block::
@@ -20,7 +20,7 @@ Instance
 
         from tagoio_sdk import Device
 
-        myDevice = Device({"token": "my_device_token", "region": "usa-1"})
+        myDevice = Device({"token": "my_device_token", "region": "us-e1"})
 
 
 

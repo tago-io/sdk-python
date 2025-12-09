@@ -10,7 +10,7 @@ Instance
         | *Optional* **token**: str
         | Token is a optional parameter (Analysis Token).
 
-        | *Optional* **region**: str "usa-1" or "env"
+        | *Optional* **region**: str "us-e1" or "ue-w1" or "env"
         | Region is a optional parameter
 
 .. code-block::
