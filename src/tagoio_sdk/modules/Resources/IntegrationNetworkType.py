@@ -58,8 +58,33 @@ class NetworkInfo(NetworkCreateInfo):
     serial_number: Optional[serial_number]
 
 
+class NetworkTokenInfo(TypedDict):
+    token: str
+    network: GenericID
+    name: str
+    permission: str
+    created_at: datetime
+    updated_at: Optional[datetime]
+
+
 class DeviceNetworkToken(TypedDict):
     token: uuid.UUID
     network: GenericID
     name: str
-    crated_at: datetime
+    created_at: datetime
+
+
+class NetworkQuery(TypedDict, total=False):
+    page: int
+    amount: int
+    fields: list[str]
+    filter: dict
+    orderBy: list[str]
+
+
+class ListTokenQuery(TypedDict, total=False):
+    page: int
+    amount: int
+    fields: list[str]
+    filter: dict
+    orderBy: list[str]
