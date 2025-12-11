@@ -488,3 +488,60 @@ class ListDeviceTokenQuery(TypedDict):
     """
     Tuple with a field and an order
     """
+
+
+class DeviceChunkData(TypedDict):
+    id: str
+    """
+    Chunk ID in format 'from_to' (Unix timestamps).
+    """
+    from_date: str
+    """
+    Start date of the chunk (ISO 8601).
+    """
+    to_date: str
+    """
+    End date of the chunk (ISO 8601).
+    """
+    amount: Union[int, float]
+    """
+    Amount of data records in the chunk.
+    """
+
+
+class DeviceDataBackup(TypedDict):
+    deviceID: GenericID
+    """
+    Device ID.
+    """
+    file_address: str
+    """
+    File path in TagoIO Files where backup will be saved.
+    Can use template variables: $DEVICE$, $CHUNK$, $FROM$, $TO$, $TIMESTAMP$.
+    """
+    headers: Optional[bool]
+    """
+    Include CSV headers in the exported file.
+    """
+
+
+class DeviceDataBackupResponse(TypedDict):
+    file_address: str
+    """
+    Final file path where the backup was saved.
+    """
+    chunk_id: Optional[str]
+    """
+    Chunk ID if backup was for a specific chunk.
+    """
+
+
+class DeviceDataRestore(TypedDict):
+    deviceID: GenericID
+    """
+    Device ID.
+    """
+    file_address: str
+    """
+    File path in TagoIO Files to restore data from (CSV format).
+    """
