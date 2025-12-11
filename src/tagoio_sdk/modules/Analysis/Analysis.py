@@ -44,7 +44,37 @@ class Analysis(TagoIOModule):
             # Your analysis logic here
             print("Processing data...")
 
-        analysis = Analysis(my_analysis, {"token": "your-analysis-token"})
+        Analysis.use(analysis=my_analysis, params={"token": "your-analysis-token"})
+        ```
+
+    Example: Analysis with EU region
+        ```python
+        from tagoio_sdk import Analysis
+
+        def my_analysis(context, scope):
+            context.log("Running in EU region")
+            print("Environment:", context.environment)
+
+        # Using Analysis.use() method
+        Analysis.use(analysis=my_analysis, params={"token": "your-analysis-token", "region": "eu-w1"})
+        ```
+
+    Example: Analysis with Tago Deploy
+        ```python
+        from tagoio_sdk import Analysis
+
+        def my_analysis(context, scope):
+            context.log("Running in TDeploy")
+            print("Scope:", scope)
+
+        # Tago Deploy requires a dictionary with tdeploy ID
+        Analysis.use(
+            analysis=my_analysis,
+            params={
+                "token": "your-analysis-token",
+                "region": {"tdeploy": "your-tdeploy-id"}
+            }
+        )
         ```
 
     Example: Environment variables
@@ -53,38 +83,30 @@ class Analysis(TagoIOModule):
             env = context.environment
             api_key = next((e["value"] for e in env if e["key"] == "API_KEY"), None)
 
-        analysis = Analysis(my_analysis)
-        ```
-
-    Example: Manual start control
-        ```python
-        analysis = Analysis(my_analysis, {
-            "token": "token",
-            "autostart": False
-        })
-
-        # Start analysis manually
-        analysis.start()
+        Analysis.use(analysis=my_analysis, params={"token": "your-analysis-token"})
         ```
     """
 
-    def __init__(self, analysis: AnalysisFunction, params: Optional[AnalysisConstructorParams] = None):
+    def __init__(self, params: Optional[AnalysisConstructorParams] = None):
         if params is None:
             params = {"token": "unknown"}
 
         super().__init__(params)
+        self.params = params
+        self._running = True
+
+    def init(self, analysis: AnalysisFunction):
         self.analysis = analysis
 
-        if params.get("autostart"):
-            self.start()
+        if not os.environ.get("T_ANALYSIS_TOKEN") and self.params.get("token"):
+            os.environ["T_ANALYSIS_TOKEN"] = self.params.get("token")
 
-    def start(self) -> None:
-        if self.started:
-            return
+        # Configure runtime region
+        runtimeRegion = getRegionObj(self.params["region"]) if self.params.get("region") else None
+        if runtimeRegion:
+            setRuntimeRegion(runtimeRegion)
 
-        self.started = True
-
-        if not os.environ.get("T_ANALYSIS_CONTEXT"):
+        if T_ANALYSIS_CONTEXT is None:
             self._localRuntime()
         else:
             self._runOnTagoIO()
@@ -93,13 +115,13 @@ class Analysis(TagoIOModule):
         if not self.analysis or not callable(self.analysis):
             raise TypeError("Invalid analysis function")
 
-        # Create context object
-        context = {
-            "log": print,
-            "token": os.environ.get("T_ANALYSIS_TOKEN", ""),
-            "environment": JSONParseSafe(os.environ.get("T_ANALYSIS_ENV", "[]"), []),
-            "analysis_id": os.environ.get("T_ANALYSIS_ID", ""),
-        }
+        def context():
+            pass
+
+        context.log = print
+        context.token = os.environ.get("T_ANALYSIS_TOKEN", "")
+        context.analysis_id = os.environ.get("T_ANALYSIS_ID", "")
+        context.environment = JSONParseSafe(os.environ.get("T_ANALYSIS_ENV", "[]"), [])
 
         data = JSONParseSafe(os.environ.get("T_ANALYSIS_DATA", "[]"), [])
 
@@ -145,12 +167,13 @@ class Analysis(TagoIOModule):
             except Exception as e:
                 print(f"Console error: {e}", file=sys.stderr)
 
-        context = {
-            "log": log,
-            "token": token,
-            "environment": environment,
-            "analysis_id": analysisID,
-        }
+        def context():
+            pass
+
+        context.log = log
+        context.token = token
+        context.environment = environment
+        context.analysis_id = analysisID
 
         # Execute analysis function
         if inspect.iscoroutinefunction(self.analysis):
@@ -177,7 +200,7 @@ class Analysis(TagoIOModule):
             analysis = None
 
         if not analysis:
-            print("¬ Error :: Analysis not found or not active.", file=sys.stderr)
+            print("¬ Error :: Analysis not found or not active or invalid analysis token.", file=sys.stderr)
             return
 
         if analysis.get("run_on") != "external":
@@ -217,7 +240,7 @@ class Analysis(TagoIOModule):
                         payload.get("environment", []),
                         payload.get("data", []),
                         payload.get("analysis_id", ""),
-                        payload.get("token", self.params.get("token", "")),
+                        self.token,
                     )
                 except Exception as e:
                     print(f"¬ Error processing event: {e}", file=sys.stderr)
@@ -253,12 +276,4 @@ class Analysis(TagoIOModule):
         if params is None:
             params = {"token": "unknown"}
 
-        if not os.environ.get("T_ANALYSIS_TOKEN") and params.get("token"):
-            os.environ["T_ANALYSIS_TOKEN"] = params["token"]
-
-        # Configure runtime region
-        runtimeRegion = params.get("region") if getRegionObj(params["region"]) else None
-        if runtimeRegion:
-            setRuntimeRegion(runtimeRegion)
-
-        return Analysis(analysis, params)
+        return Analysis(params).init(analysis)

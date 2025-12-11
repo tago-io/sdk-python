@@ -271,9 +271,9 @@ See: `Login to Account <https://api.docs.tago.io/#3196249b-4aef-46ff-b5c3-f103b6
         print(login_result)  # {'type': 'user', 'id': '...', 'profiles': [...]}
 
 
-==============
+===============
 passwordRecover
-==============
+===============
 
 Send password recovery email to the specified address. This is a static method that doesn't require authentication.
 
@@ -385,9 +385,9 @@ Confirm account creation using the token sent via email. This is a static method
         print(result)  # Account confirmed successfully
 
 
-==================
+===================
 requestLoginPINCode
-==================
+===================
 
 Request the PIN Code for a given OTP Type (authenticator, sms, or email). This is a static method that doesn't require authentication.
 
@@ -472,5 +472,5 @@ Decline a team member invitation to become a profile's team member. This is a st
 
 .. toctree::
 
-    Account_Type
+    Account_type
     ../../regions

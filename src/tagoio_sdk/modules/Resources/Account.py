@@ -56,6 +56,7 @@ class Account(TagoIOModule):
             ```python
             resources = Resources()
             result = resources.account.edit({
+                "id": "account-id"
                 "name": "Updated Account Name",
                 "timezone": "America/New_York",
                 "company": "My Company"
