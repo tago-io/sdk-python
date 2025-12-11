@@ -154,7 +154,7 @@ Log in as a specific user in the TagoRUN service.
 
     **Returns:**
 
-        | **result**: :ref:`LoginResponse`
+        | **result**: :ref:`LoginResponseRunUser`
         | Login response.
 
 

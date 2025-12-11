@@ -343,10 +343,10 @@ class Analyses(TagoIOModule):
         @example:
             ```python
             resources = Resources()
-            deno_snippets = resources.analyses.listSnippets("deno-rt2025")
+            python_snippets = resources.analyses.listSnippets("python-rt2025")
 
             # Print all snippet titles
-            for snippet in deno_snippets["snippets"]:
+            for snippet in python_snippets["snippets"]:
                 print(f"{snippet['title']}: {snippet['description']}")
             ```
 
