@@ -485,3 +485,77 @@ ListDeviceTokenQuery
             ]]
         | [Optional] Tuple with a field and an order
 
+
+.. _DeviceChunkData:
+
+DeviceChunkData
+---------------
+
+    Chunk information from an immutable device.
+
+    **Attributes:**
+
+        | **id**: str
+        | Chunk ID in format 'from_to' (Unix timestamps).
+
+        | **from_date**: str
+        | Start date of the chunk (ISO 8601).
+
+        | **to_date**: str
+        | End date of the chunk (ISO 8601).
+
+        | **amount**: int or float
+        | Amount of data records in the chunk.
+
+
+.. _DeviceDataBackup:
+
+DeviceDataBackup
+----------------
+
+    Parameters for device data backup operation.
+
+    **Attributes:**
+
+        | **deviceID**: :ref:`GenericID`
+        | Device ID.
+
+        | **file_address**: str
+        | File path in TagoIO Files where backup will be saved.
+        | Can use template variables: $DEVICE$, $CHUNK$, $FROM$, $TO$, $TIMESTAMP$.
+
+        | **headers**: Optional[bool]
+        | [Optional] Include CSV headers in the exported file.
+
+
+.. _DeviceDataBackupResponse:
+
+DeviceDataBackupResponse
+------------------------
+
+    Response from device data backup operation.
+
+    **Attributes:**
+
+        | **file_address**: str
+        | Final file path where the backup was saved.
+
+        | **chunk_id**: Optional[str]
+        | [Optional] Chunk ID if backup was for a specific chunk.
+
+
+.. _DeviceDataRestore:
+
+DeviceDataRestore
+-----------------
+
+    Parameters for device data restore operation.
+
+    **Attributes:**
+
+        | **deviceID**: :ref:`GenericID`
+        | Device ID.
+
+        | **file_address**: str
+        | File path in TagoIO Files to restore data from (CSV format).
+
