@@ -159,7 +159,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.create({"name": "New Profile"}, allocate_free_resources=True)
+            result = resources.profile.create({"name": "New Profile"}, allocate_free_resources=True)
             print(result)  # {'id': 'profile-id-123'}
             ```
         """
@@ -182,7 +182,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.edit("profile-id-123", {"name": "Updated Profile Name"})
+            result = resources.profile.edit("profile-id-123", {"name": "Updated Profile Name"})
             print(result)  # Successfully Updated
             ```
         """
@@ -202,7 +202,7 @@ class Profile(TagoIOModule):
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
             # The "pin_code" field is required when 2FA is activated
-            result = resources.profiles.delete("profile-id-123", {"password": "your-password", "pin_code": "123456"})
+            result = resources.profile.delete("profile-id-123", {"password": "your-password", "pin_code": "123456"})
             print(result)  # Successfully Removed
             ```
         """
@@ -223,7 +223,7 @@ class Profile(TagoIOModule):
             If receive an error "Authorization Denied", check policy **Account** / **Access profile statistics** in Access Management.
             ```python
             resources = Resources()
-            result = resources.profiles.usageStatisticList("profile-id-123", {
+            result = resources.profile.usageStatisticList("profile-id-123", {
                 "start_date": "2024-09-01",
                 "end_date": "2024-12-31",
                 "periodicity": "day"
@@ -254,7 +254,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.auditLog("profile-id-123", {
+            result = resources.profile.auditLog("profile-id-123", {
                 "start_date": "2024-12-01",
                 "end_date": "2024-12-07"
             })
@@ -285,7 +285,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.auditLogQuery("profile-id-123", "query-id-456")
+            result = resources.profile.auditLogQuery("profile-id-123", "query-id-456")
             print(result)
             ```
         """
@@ -304,7 +304,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.serviceEdit("profile-id-123", {
+            result = resources.profile.serviceEdit("profile-id-123", {
                 "input": 350000,
                 "output": 342153,
                 "analysis": 5
@@ -330,7 +330,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.transferTokenToAnotherProfile("target-profile-123")
+            result = resources.profile.transferTokenToAnotherProfile("target-profile-123")
             print(result)
             ```
         """
@@ -351,7 +351,7 @@ class Profile(TagoIOModule):
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
             # The "pin_code" / "otp_type" field is required when 2FA is activated
-            result = resources.profiles.tokenCreate("profile-id-123", {
+            result = resources.profile.tokenCreate("profile-id-123", {
                 "name": "API Access",
                 "permission": "full",
                 "email": "example@email.com",
@@ -383,7 +383,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.tokenDelete("profile-id-123", "token-xyz")
+            result = resources.profile.tokenDelete("profile-id-123", "token-xyz")
             print(result)  # Token Successfully Removed
             ```
         """
@@ -402,7 +402,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.addTeamMember("profile-id-123", "user@example.com")
+            result = resources.profile.addTeamMember("profile-id-123", "user@example.com")
             print(result)  # User invited
             ```
         """
@@ -427,7 +427,7 @@ class Profile(TagoIOModule):
         @example:
             ```python
             resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
-            result = resources.profiles.teamList("profile-id-123")
+            result = resources.profile.teamList("profile-id-123")
             print(result)  # [{'id': 'account-id-123', 'active': False, 'name': 'John Doe', ...}, ...]
             ```
         """
@@ -449,7 +449,7 @@ class Profile(TagoIOModule):
             If receive an error "Authorization Denied", check policy in Access Management.
             ```python
             resources = Resources()
-            result = resources.profiles.deleteTeamMember("profile-id-123", "account-id-456")
+            result = resources.profile.deleteTeamMember("profile-id-123", "account-id-456")
             print(result)  # Account Successfully Removed
             ```
         """
