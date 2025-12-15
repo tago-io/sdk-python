@@ -260,9 +260,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def paramList(
-        self, deviceID: GenericID, sentStatus: bool = None
-    ) -> list[ConfigurationParams]:
+    def paramList(self, deviceID: GenericID, sentStatus: bool = None) -> list[ConfigurationParams]:
         """
         @description:
             Retrieves a list of configuration parameters for a device.
@@ -285,7 +283,7 @@ class Devices(TagoIOModule):
             {
                 "path": f"/device/{deviceID}/params",
                 "method": "GET",
-                "params": {"sent_status": sentStatus},
+                "params": {"sent_status": str(sentStatus).lower() if sentStatus else None},
             }
         )
         return result
@@ -366,9 +364,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def tokenCreate(
-        self, deviceID: GenericID, tokenParams: TokenData
-    ) -> TokenCreateResponse:
+    def tokenCreate(self, deviceID: GenericID, tokenParams: TokenData) -> TokenCreateResponse:
         """
         @description:
             Generates and retrieves a new authentication token for a device.
@@ -422,9 +418,7 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def getDeviceData(
-        self, deviceID: GenericID, queryParams: DataQuery = None
-    ) -> list[Data]:
+    def getDeviceData(self, deviceID: GenericID, queryParams: DataQuery = None) -> list[Data]:
         """
         @description:
             Retrieves data from all variables in the device with optional query filters.
@@ -481,9 +475,7 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def sendDeviceData(
-        self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]
-    ) -> str:
+    def sendDeviceData(self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]) -> str:
         """
         @description:
             Sends data to a device. Accepts a single data object or an array of data objects.
@@ -520,9 +512,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def editDeviceData(
-        self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]
-    ) -> str:
+    def editDeviceData(self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]) -> str:
         """
         @description:
             Modifies existing data records in a device. Requires the data record ID.
@@ -557,9 +547,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def deleteDeviceData(
-        self, deviceID: GenericID, queryParam: DataQuery = None
-    ) -> str:
+    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = None) -> str:
         """
         @description:
             Deletes data from a device based on specified query parameters.
@@ -669,9 +657,7 @@ class Devices(TagoIOModule):
 
         return result
 
-    def dataBackup(
-        self, params: DeviceDataBackup, chunkID: Optional[GenericID] = None
-    ) -> DeviceDataBackupResponse:
+    def dataBackup(self, params: DeviceDataBackup, chunkID: Optional[GenericID] = None) -> DeviceDataBackupResponse:
         """
         @description:
             Schedule to export the device's data to TagoIO Files.
@@ -701,11 +687,7 @@ class Devices(TagoIOModule):
             "file_address": params.get("file_address"),
         }
 
-        path = (
-            f"/device/{params['deviceID']}/chunk/backup"
-            if chunkID
-            else f"/device/{params['deviceID']}/data/backup"
-        )
+        path = f"/device/{params['deviceID']}/chunk/backup" if chunkID else f"/device/{params['deviceID']}/data/backup"
 
         result = self.doRequest(
             {
