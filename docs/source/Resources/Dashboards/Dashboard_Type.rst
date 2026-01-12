@@ -134,10 +134,10 @@ shared
         | Whether re-sharing is allowed
 
 
-.. _blueprint_devices_conditions:
+.. _BlueprintDeviceConfig:
 
-blueprint_devices
------------------
+BlueprintDeviceConfig
+---------------------
 
     Blueprint device configuration for dynamic dashboards.
 
@@ -207,7 +207,7 @@ DashboardInfo
         | **blueprint_selector_behavior**: "open" or "closed" or "always_open" or "always_closed"
         | Blueprint selector behavior mode
 
-        | **blueprint_devices**: :ref:`blueprint_devices_conditions`
+        | **blueprint_devices**: :ref:`BlueprintDeviceConfig`
         | Blueprint device configuration
 
         | **theme**: any
@@ -426,12 +426,12 @@ PostDataModel
         | Variable name
 
 
-.. _blueprint_devices_origin:
+.. _BlueprintDeviceOrigin:
 
-blueprint_devices (origin-based)
---------------------------------
+BlueprintDeviceOrigin
+---------------------
 
-    Blueprint device configuration with origin reference.
+    Blueprint device configuration with origin reference for widget data queries.
 
     **Attributes:**
 
@@ -476,7 +476,7 @@ GetDataModel
         | **overwrite**: Optional[:ref:`widgetOverwrite`]
         | Overwrite options
 
-        | **blueprint_devices**: Optional[list[:ref:`blueprint_devices_origin`]]
+        | **blueprint_devices**: Optional[list[:ref:`BlueprintDeviceOrigin`]]
         | Blueprint devices list
 
         | **page**: Optional[int or float]
