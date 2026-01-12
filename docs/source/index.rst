@@ -340,7 +340,7 @@ Support & Resources
 
 🐛 **Issues & Bugs:** `GitHub Issues <https://github.com/tago-io/sdk-python/issues>`_
 
-💬 **Help Center:** `TagoIO Support <https://help.tago.io/portal/en/home>`_
+💬 **Help Center:** `TagoIO Support <https://support.tago.io/>`_
 
 🌐 **Platform:** `TagoIO Console <https://admin.tago.io>`_
 
