@@ -283,7 +283,7 @@ class Devices(TagoIOModule):
             {
                 "path": f"/device/{deviceID}/params",
                 "method": "GET",
-                "params": {"sent_status": str(sentStatus).lower() if sentStatus else None},
+                "params": {"sent_status": str(sentStatus).lower() if sentStatus is not None else None},
             }
         )
         return result
