@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tagoio-sdk"
-version = "5.1.0"
+version = "5.1.1"
 description = "Official Python SDK for TagoIO"
 authors = [{name = "TagoIO Inc.", email = "contact@tago.io"}]
 license = {text = "Apache-2.0"}
