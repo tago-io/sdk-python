@@ -53,7 +53,7 @@ class shared(TypedDict):
     allow_share: bool
 
 
-class blueprint_devices(TypedDict):
+class BlueprintDeviceConfig(TypedDict):
     conditions: list[conditions]
     name: str
     id: str
@@ -74,10 +74,8 @@ class DashboardInfo(TypedDict):
     background: any
     type: str
     blueprint_device_behavior: Literal["more_than_one", "always"]
-    blueprint_selector_behavior: Literal[
-        "open", "closed", "always_open", "always_closed"
-    ]
-    blueprint_devices: blueprint_devices
+    blueprint_selector_behavior: Literal["open", "closed", "always_open", "always_closed"]
+    blueprint_devices: BlueprintDeviceConfig
     theme: any
     setup: any
     shared: shared
@@ -159,7 +157,7 @@ class PostDataModel(TypedDict):
     variable: str
 
 
-class blueprint_devices(TypedDict):
+class BlueprintDeviceOrigin(TypedDict):
     origin: GenericID
     id: GenericID
     bucket: Optional[GenericID]
@@ -173,7 +171,7 @@ class widgetOverwrite(TypedDict):
 
 class GetDataModel(TypedDict):
     overwrite: Optional[widgetOverwrite]
-    blueprint_devices: Optional[list[blueprint_devices]]
+    blueprint_devices: Optional[list[BlueprintDeviceOrigin]]
     page: Optional[Union[int, float]]
     amount: Optional[Union[int, float]]
 
@@ -183,7 +181,9 @@ class PublicKeyResponse(TypedDict):
     expire_time: ExpireTimeOption
 
 
-EditDataModel = PostDataModel and {id: GenericID}
+class EditDataModel(PostDataModel):
+    id: GenericID
+
 
 PublicKeyResponse = PublicKeyResponse
 

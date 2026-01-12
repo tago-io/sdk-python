@@ -1,3 +1,4 @@
+from typing import List
 from typing import Optional
 from typing import Union
 
@@ -11,8 +12,12 @@ from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Device.Device_Type import DataQuery
 from tagoio_sdk.modules.Device.Device_Type import DeviceInfo
 from tagoio_sdk.modules.Resources.Device_Type import ConfigurationParams
+from tagoio_sdk.modules.Resources.Device_Type import DeviceChunkData
 from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateInfo
 from tagoio_sdk.modules.Resources.Device_Type import DeviceCreateResponse
+from tagoio_sdk.modules.Resources.Device_Type import DeviceDataBackup
+from tagoio_sdk.modules.Resources.Device_Type import DeviceDataBackupResponse
+from tagoio_sdk.modules.Resources.Device_Type import DeviceDataRestore
 from tagoio_sdk.modules.Resources.Device_Type import DeviceEditInfo
 from tagoio_sdk.modules.Resources.Device_Type import DeviceListItem
 from tagoio_sdk.modules.Resources.Device_Type import DeviceQuery
@@ -26,20 +31,25 @@ from tagoio_sdk.modules.Utils.dateParser import dateParserList
 class Devices(TagoIOModule):
     def listDevice(self, queryObj: DeviceQuery = None) -> list[DeviceListItem]:
         """
-        Retrieves a list with all devices from the account
+        @description:
+            Retrieves a list of all devices from the account with optional filtering and pagination.
 
-        :default:
+        @see:
+            https://help.tago.io/portal/en/kb/articles/478-devices Devices Overview
 
-            queryObj: {
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            devices = resources.devices.listDevice({
                 "page": 1,
-                "fields": ["id", "name"],
-                "filter": {},
                 "amount": 20,
-                "orderBy": ["name", "asc"],
-                "resolveBucketName": False
-            }
-
-        :param DeviceQuery queryObj: Search query params
+                "fields": ["id", "name", "active"],
+                "filter": {"name": "Temperature*"},
+                "orderBy": ["name", "asc"]
+            })
+            print(devices)  # [{'id': 'device-id-123', 'name': 'Temperature Sensor', ...}]
+            ```
         """
         if queryObj is None:
             queryObj = {}
@@ -80,9 +90,28 @@ class Devices(TagoIOModule):
 
     def create(self, deviceObj: DeviceCreateInfo) -> DeviceCreateResponse:
         """
-        Generates and retrieves a new action from the Device
+        @description:
+            Creates a new device in the account with specified configuration and returns device credentials.
 
-        :param DeviceCreateInfo deviceObj: Object data to create new device
+        @see:
+            https://help.tago.io/portal/en/kb/articles/478-devices Devices Overview
+            https://help.tago.io/portal/en/kb/articles/481-device-types Device Types
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Create** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.create({
+                "name": "Temperature Sensor",
+                "network": "network-id-123",
+                "connector": "connector-id-456",
+                "type": "immutable",
+                "chunk_period": "month",
+                "chunk_retention": 6,
+                "active": True
+            })
+            print(result)  # {'device_id': '...', 'bucket_id': '...', 'token': '...'}
+            ```
         """
         result = self.doRequest(
             {
@@ -95,11 +124,23 @@ class Devices(TagoIOModule):
 
     def edit(self, deviceID: GenericID, deviceObj: DeviceEditInfo) -> str:
         """
-        Modify any property of the device
+        @description:
+            Modifies any property of an existing device.
 
-        :param GenericID deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/478-devices Devices Overview
 
-        :param DeviceEditInfo deviceObj: Device object with fields to replace
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.edit("device-id-123", {
+                "name": "Updated Sensor Name",
+                "active": False,
+                "tags": [{"key": "location", "value": "warehouse"}]
+            })
+            print(result)  # Successfully Updated
+            ```
         """
         result = self.doRequest(
             {
@@ -112,9 +153,19 @@ class Devices(TagoIOModule):
 
     def delete(self, deviceID: GenericID) -> str:
         """
-        Deletes an device from the account
+        @description:
+            Permanently deletes a device from the account along with all its data.
 
-        :param GenericID deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/478-devices Devices Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Delete** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.delete("device-id-123")
+            print(result)  # Successfully Removed
+            ```
         """
         result = self.doRequest(
             {
@@ -126,9 +177,19 @@ class Devices(TagoIOModule):
 
     def info(self, deviceID: GenericID) -> DeviceInfo:
         """
-        Get Info of the Device
+        @description:
+            Retrieves detailed information about a specific device.
 
-        :param GenericID deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/478-devices Devices Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            device_info = resources.devices.info("device-id-123")
+            print(device_info)  # {'id': '...', 'name': '...', 'type': 'mutable', ...}
+            ```
         """
         result = self.doRequest(
             {
@@ -157,13 +218,30 @@ class Devices(TagoIOModule):
         paramID: Optional[GenericID] = None,
     ) -> str:
         """
-        Create or edit param for the Device
+        @description:
+            Creates new configuration parameters or updates existing ones for a device.
 
-        :param deviceID Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/configuration-parameters Configuration Parameters
 
-        :param configObj Configuration Data
-
-        :param paramID Parameter ID
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            # Create new parameter
+            result = resources.devices.paramSet("device-id-123", {
+                "key": "threshold",
+                "value": "25.5",
+                "sent": False
+            })
+            # Update existing parameter
+            result = resources.devices.paramSet("device-id-123", {
+                "key": "threshold",
+                "value": "30.0",
+                "sent": False
+            }, "param-id-456")
+            print(result)  # Successfully Updated
+            ```
         """
         body = configObj
         if paramID and not isinstance(configObj, list):
@@ -182,32 +260,49 @@ class Devices(TagoIOModule):
 
         return result
 
-    def paramList(
-        self, deviceID: GenericID, sentStatus: bool = None
-    ) -> list[ConfigurationParams]:
+    def paramList(self, deviceID: GenericID, sentStatus: bool = None) -> list[ConfigurationParams]:
         """
-        List Params for the Device
+        @description:
+            Retrieves a list of configuration parameters for a device.
 
-        :param GenericID deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/configuration-parameters Configuration Parameters
 
-        :param bool sentStatus: True return only sent=true, False return only sent=false
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            # Get all parameters
+            params = resources.devices.paramList("device-id-123")
+            # Get only sent parameters
+            sent_params = resources.devices.paramList("device-id-123", sentStatus=True)
+            print(params)  # [{'id': '...', 'key': 'threshold', 'value': '25.5', 'sent': False}]
+            ```
         """
         result = self.doRequest(
             {
                 "path": f"/device/{deviceID}/params",
                 "method": "GET",
-                "params": {"sent_status": sentStatus},
+                "params": {"sent_status": str(sentStatus).lower() if sentStatus is not None else None},
             }
         )
         return result
 
     def paramRemove(self, deviceID: GenericID, paramID: GenericID) -> str:
         """
-        Remove param for the Device
+        @description:
+            Removes a specific configuration parameter from a device.
 
-        :param GenericID deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/configuration-parameters Configuration Parameters
 
-        :param GenericID paramID: Parameter ID
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.paramRemove("device-id-123", "param-id-456")
+            print(result)  # Successfully Removed
+            ```
         """
         result = self.doRequest(
             {
@@ -223,21 +318,24 @@ class Devices(TagoIOModule):
         queryObj: ListDeviceTokenQuery = None,
     ) -> list[DeviceTokenDataList]:
         """
-        Retrieves a list of all tokens
+        @description:
+            Retrieves a list of all authentication tokens for a device with optional filtering.
 
-        :default:
+        @see:
+            https://help.tago.io/portal/en/kb/articles/495-access-tokens Device Tokens
 
-            queryObj: {
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            tokens = resources.devices.tokenList("device-id-123", {
                 "page": 1,
-                "fields": ["name", "token", "permission"],
-                "filter": {},
                 "amount": 20,
-                "orderBy": ["created_at", "desc"],
-            }
-
-        :param GenericID deviceID: Device ID
-
-        :param ListDeviceTokenQuery queryObj: Search query params
+                "fields": ["name", "token", "permission"],
+                "orderBy": ["created_at", "desc"]
+            })
+            print(tokens)  # [{'name': 'Default Token', 'token': '...', 'permission': 'full', ...}]
+            ```
         """
 
         if queryObj is None:
@@ -262,21 +360,29 @@ class Devices(TagoIOModule):
                 },
             }
         )
-        result = dateParserList(
-            result, ["created_at", "expire_time"]
-        )
+        result = dateParserList(result, ["created_at", "expire_time"])
 
         return result
 
-    def tokenCreate(
-        self, deviceID: GenericID, tokenParams: TokenData
-    ) -> TokenCreateResponse:
+    def tokenCreate(self, deviceID: GenericID, tokenParams: TokenData) -> TokenCreateResponse:
         """
-        Generates and retrieves a new token
+        @description:
+            Generates and retrieves a new authentication token for a device.
 
-        :param deviceID: Device ID
+        @see:
+            https://help.tago.io/portal/en/kb/articles/495-access-tokens Device Tokens
 
-        :param tokenParams: Params for new token
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Create Token** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.tokenCreate("device-id-123", {
+                "name": "Production Token",
+                "permission": "write",
+                "expire_time": "never"
+            })
+            print(result)  # {'token': 'new-token-value', 'expire_date': None}
+            ```
         """
         result = self.doRequest(
             {
@@ -290,9 +396,19 @@ class Devices(TagoIOModule):
 
     def tokenDelete(self, token: GenericToken) -> str:
         """
-        Delete a token
+        @description:
+            Permanently deletes an authentication token.
 
-        :param GenericToken token: Token
+        @see:
+            https://help.tago.io/portal/en/kb/articles/495-access-tokens Device Tokens
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Delete Token** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.tokenDelete("token-to-delete")
+            print(result)  # Successfully Removed
+            ```
         """
         result = self.doRequest(
             {
@@ -302,25 +418,27 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def getDeviceData(
-        self, deviceID: GenericID, queryParams: DataQuery = None
-    ) -> list[Data]:
+    def getDeviceData(self, deviceID: GenericID, queryParams: DataQuery = None) -> list[Data]:
         """
-        Get data from all variables in the device.
+        @description:
+            Retrieves data from all variables in the device with optional query filters.
 
-        :param deviceID: Device ID.
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
 
-        :param queryParams: Query parameters to filter the results.
-
-        :rtype: Array with the data values stored in the device.
-
-        :example:
-
-            myDevice = Account({ "token": "my_device_token" })
-
-            result = myAccount.devices.getDeviceData(
-                "Device Id", {"variables": "location"}
-            )
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            # Get all data
+            data = resources.devices.getDeviceData("device-id-123")
+            # Get specific variable data
+            temp_data = resources.devices.getDeviceData("device-id-123", {
+                "variables": ["temperature"],
+                "qty": 10
+            })
+            print(temp_data)  # [{'variable': 'temperature', 'value': 25.5, 'time': '...', ...}]
+            ```
         """
         if queryParams is None:
             queryParams = {}
@@ -335,11 +453,19 @@ class Devices(TagoIOModule):
 
     def emptyDeviceData(self, deviceID: GenericID) -> str:
         """
-        Empty all data in a device.
+        @description:
+            Permanently removes all data from a device. This operation cannot be undone.
 
-        :param GenericID deviceID: Device ID.
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
 
-        :rtype: Success message.
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.emptyDeviceData("device-id-123")
+            print(result)  # All data has been removed
+            ```
         """
         result = self.doRequest(
             {
@@ -349,30 +475,32 @@ class Devices(TagoIOModule):
         )
         return result
 
-    def sendDeviceData(
-        self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]
-    ) -> str:
+    def sendDeviceData(self, deviceID: GenericID, data: Union[DataCreate, list[DataCreate]]) -> str:
         """
-        Send data to a device.
+        @description:
+            Sends data to a device. Accepts a single data object or an array of data objects.
 
-        :param GenericID deviceID: Device ID.
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
 
-        :param DataCreate data: An array or one object with data to be send to TagoIO.
-
-        :rtype: Success message.
-
-        Example::
-        ```python
-        # Example of using the function
-        resources = Resource()
-        resource.devices.sendDeviceData("myDeviceID", {
-            "variable": "temperature",
-            "unit": "F",
-            "value": 55,
-            "time": "2015-11-03 13:44:33",
-            "location": { "lat": 42.2974279, "lng": -85.628292 },
-        })
-        ```
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.sendDeviceData("device-id-123", {
+                "variable": "temperature",
+                "value": 25.5,
+                "unit": "°C",
+                "time": "2025-01-09 13:44:33",
+                "location": {"lat": 42.2974279, "lng": -85.628292}
+            })
+            # Send multiple data points
+            result = resources.devices.sendDeviceData("device-id-123", [
+                {"variable": "temperature", "value": 25.5},
+                {"variable": "humidity", "value": 60}
+            ])
+            print(result)  # Successfully Inserted
+            ```
         """
         result = self.doRequest(
             {
@@ -384,24 +512,30 @@ class Devices(TagoIOModule):
 
         return result
 
-    def editDeviceData(
-        self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]
-    ) -> str:
+    def editDeviceData(self, deviceID: GenericID, updatedData: Union[DataEdit, list[DataEdit]]) -> str:
         """
-        Edit data in a device.
+        @description:
+            Modifies existing data records in a device. Requires the data record ID.
 
-        :param GenericID deviceID: Device ID.
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
 
-        :param DataEdit data: A single or an array of updated data records.
-
-        :rtype: Success message.
-
-        Example::
-        ```python
-        # Example of using the function
-        resources = Resource()
-        resource.devices.editDeviceData("myDeviceID", {"id": "idOfTheRecord", "value": "new value", "unit": "new unit"})
-        ```
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.editDeviceData("device-id-123", {
+                "id": "data-record-id",
+                "value": 30.0,
+                "unit": "°F"
+            })
+            # Edit multiple records
+            result = resources.devices.editDeviceData("device-id-123", [
+                {"id": "record-1-id", "value": 25.5},
+                {"id": "record-2-id", "value": 65}
+            ])
+            print(result)  # Device Data Updated
+            ```
         """
         result = self.doRequest(
             {
@@ -413,24 +547,29 @@ class Devices(TagoIOModule):
 
         return result
 
-    def deleteDeviceData(
-        self, deviceID: GenericID, queryParam: DataQuery = None
-    ) -> str:
+    def deleteDeviceData(self, deviceID: GenericID, queryParam: DataQuery = None) -> str:
         """
-        Delete data from a device.
+        @description:
+            Deletes data from a device based on specified query parameters.
 
-        :param GenericID deviceID: Device ID.
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
 
-        :param DataQuery queryParam: Parameters to specify what should be deleted on the device's data.
-
-        :rtype: Success message.
-
-        Example::
-        ```python
-        # Example of using the function
-        resources = Resource()
-        resource.devices.deleteDeviceData("myDeviceID", {"ids": ["recordIdToDelete", "anotherRecordIdToDelete" ]})
-        ```
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            # Delete specific records by ID
+            result = resources.devices.deleteDeviceData("device-id-123", {
+                "ids": ["record-id-1", "record-id-2"]
+            })
+            # Delete by variable
+            result = resources.devices.deleteDeviceData("device-id-123", {
+                "variables": ["old_sensor"],
+                "qty": 100
+            })
+            print(result)  # Successfully Removed
+            ```
         """
         if queryParam is None:
             queryParam = {}
@@ -446,8 +585,19 @@ class Devices(TagoIOModule):
 
     def amount(self, deviceID: GenericID) -> Union[int, float]:
         """
-        Get Amount of data stored in the Device
-        :param deviceID: Device ID
+        @description:
+            Gets the amount of data stored in a device.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            amount = resources.devices.amount("device-id-123")
+            print(amount)  # 15234
+            ```
         """
         result = self.doRequest(
             {
@@ -455,4 +605,130 @@ class Devices(TagoIOModule):
                 "method": "GET",
             }
         )
+        return result
+
+    def getChunk(self, deviceID: GenericID) -> List[DeviceChunkData]:
+        """
+        @description:
+            Retrieves chunk information from an immutable device.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/chunk-management Chunk Management
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Manage chunks** in Access Management.
+            ```python
+            resources = Resources()
+            chunks = resources.devices.getChunk("device-id-123")
+            print(chunks)  # [{'amount': 0, 'id': 'chunk-id-123', 'from_date': '2025-01-09T00:00:00.000+00:00', ...}]
+            ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/chunk",
+                "method": "GET",
+            }
+        )
+
+        return result
+
+    def deleteChunk(self, deviceID: GenericID, chunkID: GenericID) -> str:
+        """
+        @description:
+            Deletes a chunk from an immutable device.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/chunk-management#Delete_chunks Delete Chunks
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Manage chunks** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.deleteChunk("device-id-123", "chunk-id-123")
+            print(result)  # Chunk chunk-id-123 deleted
+            ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/chunk/{chunkID}",
+                "method": "DELETE",
+            }
+        )
+
+        return result
+
+    def dataBackup(self, params: DeviceDataBackup, chunkID: Optional[GenericID] = None) -> DeviceDataBackupResponse:
+        """
+        @description:
+            Schedule to export the device's data to TagoIO Files.
+            For mutable devices, exports all data. For immutable devices with chunkID, exports specific chunk.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/55-data-export Data Export
+            https://help.tago.io/portal/en/kb/articles/device-data#Backing_Up_Data Backing Up Data
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Export Data** in Access Management.
+            ```python
+            resources = Resources()
+            import time
+            timestamp = int(time.time())
+            result = resources.devices.dataBackup({
+                "deviceID": "device-id-123",
+                "file_address": f"/backups/device-id-123/{timestamp}",
+                "headers": True
+            })
+            print(result)  # {'file_address': 'backups/device-id-123/1736433519380.csv'}
+            ```
+        """
+        body = {
+            "chunk_id": chunkID,
+            "headers": params.get("headers"),
+            "file_address": params.get("file_address"),
+        }
+
+        path = f"/device/{params['deviceID']}/chunk/backup" if chunkID else f"/device/{params['deviceID']}/data/backup"
+
+        result = self.doRequest(
+            {
+                "path": path,
+                "method": "POST",
+                "body": body,
+            }
+        )
+
+        return result
+
+    def dataRestore(self, params: DeviceDataRestore) -> str:
+        """
+        @description:
+            Restores data to a device from a CSV file in TagoIO Files.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/device-data#Importing Importing Device Data
+            https://api.docs.tago.io/#7ebca255-6c38-43d3-97d0-9b62155f202e Import Data API
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Import Data** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.devices.dataRestore({
+                "deviceID": "device-id-123",
+                "file_address": "/backups/backup.csv"
+            })
+            print(result)  # Data import added to the queue successfully!
+            ```
+        """
+        body = {
+            "file_address": params.get("file_address"),
+        }
+
+        result = self.doRequest(
+            {
+                "path": f"/device/{params['deviceID']}/data/restore",
+                "method": "POST",
+                "body": body,
+            }
+        )
+
         return result

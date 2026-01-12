@@ -96,3 +96,43 @@ TokenData
         | **serie_number**: Optional[str]
         | **verification_code**: Optional[str]
         | **middleware**: Optional[str]
+
+
+.. _NetworkTokenInfo:
+
+NetworkTokenInfo
+----------------
+    **Attributes:**
+
+        | **token**: str
+        | **network**: :ref:`GenericID`
+        | **name**: str
+        | **permission**: str
+        | **created_at**: datetime
+        | **updated_at**: Optional[datetime]
+
+
+.. _NetworkQuery:
+
+NetworkQuery
+------------
+    **Attributes:**
+
+        | **page**: int
+        | **amount**: int
+        | **fields**: list[str]
+        | **filter**: dict
+        | **orderBy**: list[str]
+
+
+.. _ListTokenQuery:
+
+ListTokenQuery
+--------------
+    **Attributes:**
+
+        | **page**: int
+        | **amount**: int
+        | **fields**: list[str]
+        | **filter**: dict
+        | **orderBy**: list[str]
