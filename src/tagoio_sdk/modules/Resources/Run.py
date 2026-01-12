@@ -75,7 +75,7 @@ class Run(TagoIOModule):
 
         return result
 
-    def listUsers(self, query: Query) -> list[UserInfo]:
+    def listUsers(self, query: Optional[Query] = {}) -> list[UserInfo]:
         """
         @description:
             Retrieves a paginated list of Run users with customizable fields and filtering options.
