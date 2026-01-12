@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Integration Network Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Connector" href="../IntegrationConnector/index.html" />
+    <link rel="prev" title="Integration Network" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="integration-network-type">
+<h1><strong>Integration Network Type</strong><a class="headerlink" href="#integration-network-type" title="Link to this heading">¶</a></h1>
+<section id="serial-number">
+<span id="id1"></span><h2>serial_number<a class="headerlink" href="#serial-number" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>mask</strong>: Optional[str]</div>
+<div class="line"><strong>label</strong>: Optional[str]</div>
+<div class="line"><strong>image</strong>: Optional[str]</div>
+<div class="line"><strong>case</strong>: Optional[str]</div>
+<div class="line"><strong>help</strong>: Optional[str]</div>
+<div class="line"><strong>required</strong>: bool</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="networkideviceparameters">
+<span id="ideviceparameters"></span><h2>IDeviceParameters<a class="headerlink" href="#networkideviceparameters" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: Optional[str]</div>
+<div class="line"><strong>label</strong>: Optional[str]</div>
+<div class="line"><strong>type</strong>: Optional[“text” or “dropdown” or “switch” or “number”]</div>
+<div class="line"><strong>default</strong>: Optional[any]</div>
+<div class="line"><strong>group</strong>: Optional[“default” or “main” or “advanced” or “hide”]</div>
+<div class="line"><strong>options</strong>: Optional[list[any]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="networkcreateinfo">
+<span id="id2"></span><h2>NetworkCreateInfo<a class="headerlink" href="#networkcreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: Optional[str]</div>
+<div class="line"><strong>description</strong>: Optional[str]</div>
+<div class="line"><strong>logo_irl</strong>: Optional[str]</div>
+<div class="line"><strong>icon_url</strong>: Optional[str]</div>
+<div class="line"><strong>banner_url</strong>: Optional[str]</div>
+<div class="line"><strong>device_parameters</strong>: Optional[list[IDeviceParameters]]</div>
+<div class="line"><strong>middleware_endpoint</strong>: Optional[str]</div>
+<div class="line"><strong>payload_encoder</strong>: Optional[str]</div>
+<div class="line"><strong>payload_decoder</strong>: Optional[str]</div>
+<div class="line"><strong>public</strong>: Optional[bool]</div>
+<div class="line"><strong>documentation_url</strong>: Optional[str]</div>
+<div class="line"><strong>serial_number</strong>: Optional[serial_number]</div>
+<div class="line"><strong>require_devices_access</strong>: Optional[bool]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="networkinfo">
+<span id="id3"></span><h2>NetworkInfo<a class="headerlink" href="#networkinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: GenericID</div>
+<div class="line"><strong>name</strong>: Optional[str]</div>
+<div class="line"><strong>description</strong>: Optional[str]</div>
+<div class="line"><strong>logo_url</strong>: Optional[str]</div>
+<div class="line"><strong>icon_url</strong>: Optional[str]</div>
+<div class="line"><strong>banner_url</strong>: Optional[str]</div>
+<div class="line"><strong>device_parameters</strong>: Optional[list[IDeviceParameters]]</div>
+<div class="line"><strong>middleware_endpoint</strong>: Optional[str]</div>
+<div class="line"><strong>payload_encoder</strong>: Optional[str]</div>
+<div class="line"><strong>payload_decoder</strong>: Optional[str]</div>
+<div class="line"><strong>public</strong>: Optional[bool]</div>
+<div class="line"><strong>documentation_url</strong>: Optional[str]</div>
+<div class="line"><strong>serial_number</strong>: Optional[serial_number]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicenetworktoken">
+<span id="id4"></span><h2>DeviceNetworkToken<a class="headerlink" href="#devicenetworktoken" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: uuid</div>
+<div class="line"><strong>network</strong>: GenericID</div>
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>created_at</strong>: datetime</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="tokendata">
+<span id="integrationtokendata"></span><h2>TokenData<a class="headerlink" href="#tokendata" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>expire_time</strong>: Optional[ExpireTimeOption]</div>
+<div class="line"><strong>permission</strong>: PermissionOption</div>
+<div class="line"><strong>serie_number</strong>: Optional[str]</div>
+<div class="line"><strong>verification_code</strong>: Optional[str]</div>
+<div class="line"><strong>middleware</strong>: Optional[str]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="networktokeninfo">
+<span id="id5"></span><h2>NetworkTokenInfo<a class="headerlink" href="#networktokeninfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: str</div>
+<div class="line"><strong>network</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>permission</strong>: str</div>
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line"><strong>updated_at</strong>: Optional[datetime]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="networkquery">
+<span id="id6"></span><h2>NetworkQuery<a class="headerlink" href="#networkquery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>page</strong>: int</div>
+<div class="line"><strong>amount</strong>: int</div>
+<div class="line"><strong>fields</strong>: list[str]</div>
+<div class="line"><strong>filter</strong>: dict</div>
+<div class="line"><strong>orderBy</strong>: list[str]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listtokenquery">
+<span id="id7"></span><h2>ListTokenQuery<a class="headerlink" href="#listtokenquery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>page</strong>: int</div>
+<div class="line"><strong>amount</strong>: int</div>
+<div class="line"><strong>fields</strong>: list[str]</div>
+<div class="line"><strong>filter</strong>: dict</div>
+<div class="line"><strong>orderBy</strong>: list[str]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Integration Network</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Integration Network</strong></a></li>
+      <li>Next: <a href="../IntegrationConnector/index.html" title="next chapter"><strong>Integration Connector</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/IntegrationNetwork/IntegrationNetwork_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

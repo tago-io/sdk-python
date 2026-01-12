@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dashboard Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dictionaries" href="../Dictionaries/index.html" />
+    <link rel="prev" title="Dashboards" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dashboard-type">
+<h1><strong>Dashboard Type</strong><a class="headerlink" href="#dashboard-type" title="Link to this heading">¶</a></h1>
+<section id="arrangement">
+<span id="id1"></span><h2>Arrangement<a class="headerlink" href="#arrangement" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Widget arrangement configuration on the dashboard layout.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>widget_id</strong>: str</div>
+<div class="line">Unique identifier for the widget</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>x</strong>: int or float</div>
+<div class="line">Horizontal position coordinate</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>y</strong>: int or float</div>
+<div class="line">Vertical position coordinate</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>width</strong>: int or float</div>
+<div class="line">Widget width</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>height</strong>: int or float</div>
+<div class="line">Widget height</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tab</strong>: Optional[str]</div>
+<div class="line">Tab identifier where the widget is located</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="dashboardcreateinfo">
+<span id="id2"></span><h2>DashboardCreateInfo<a class="headerlink" href="#dashboardcreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Information required to create a new dashboard.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>label</strong>: str</div>
+<div class="line">Dashboard label/name</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>arrangement</strong>: list[<a class="reference internal" href="#arrangement"><span class="std std-ref">Arrangement</span></a>]</div>
+<div class="line">Layout configuration for widgets</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tags</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+<div class="line">Tags for dashboard categorization</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>visible</strong>: bool</div>
+<div class="line">Dashboard visibility status</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="icon">
+<span id="id3"></span><h2>icon<a class="headerlink" href="#icon" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Dashboard icon configuration.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>url</strong>: str</div>
+<div class="line">Icon URL</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>color</strong>: Optional[str]</div>
+<div class="line">Icon color Hexadecimal</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="conditions">
+<span id="id4"></span><h2>conditions<a class="headerlink" href="#conditions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Condition key-value pair for blueprint device filtering.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>key</strong>: str</div>
+<div class="line">Condition key</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>value</strong>: str</div>
+<div class="line">Condition value</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="filter-conditions">
+<span id="id5"></span><h2>filter_conditions<a class="headerlink" href="#filter-conditions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Filter conditions for blueprint device selection.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>blueprint_device</strong>: str</div>
+<div class="line">Blueprint device identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tag_key</strong>: str</div>
+<div class="line">Tag key for filtering</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: str</div>
+<div class="line">Filter type</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="shared">
+<span id="id6"></span><h2>shared<a class="headerlink" href="#shared" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Dashboard sharing information.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: str</div>
+<div class="line">Share identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Shared user email</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Shared user name</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>free_account</strong>: bool</div>
+<div class="line">Whether the user has a free account</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>allow_tags</strong>: bool</div>
+<div class="line">Whether tags are allowed</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>expire_time</strong>: str</div>
+<div class="line">Share expiration time</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>allow_share</strong>: bool</div>
+<div class="line">Whether re-sharing is allowed</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="blueprintdeviceconfig">
+<span id="id7"></span><h2>BlueprintDeviceConfig<a class="headerlink" href="#blueprintdeviceconfig" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Blueprint device configuration for dynamic dashboards.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>conditions</strong>: list[<a class="reference internal" href="#conditions"><span class="std std-ref">conditions</span></a>]</div>
+<div class="line">Device selection conditions</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Blueprint name</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>id</strong>: str</div>
+<div class="line">Blueprint identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>label</strong>: str</div>
+<div class="line">Blueprint label</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>filter_conditions</strong>: list[<a class="reference internal" href="#filter-conditions"><span class="std std-ref">filter_conditions</span></a>]</div>
+<div class="line">Filter conditions</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>theme</strong>: any</div>
+<div class="line">Theme configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>setup</strong>: any</div>
+<div class="line">Setup configuration</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="dashboardinfo">
+<span id="id8"></span><h2>DashboardInfo<a class="headerlink" href="#dashboardinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Complete dashboard information.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard unique identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">Dashboard creation timestamp</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updated_at</strong>: datetime</div>
+<div class="line">Last update timestamp</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_access</strong>: datetime</div>
+<div class="line">Last access timestamp</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>group_by</strong>: list</div>
+<div class="line">Grouping configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tabs</strong>: list</div>
+<div class="line">Dashboard tabs</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>icon</strong>: <a class="reference internal" href="#icon"><span class="std std-ref">icon</span></a></div>
+<div class="line">Dashboard icon</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>background</strong>: any</div>
+<div class="line">Background configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: str</div>
+<div class="line">Dashboard type</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>blueprint_device_behavior</strong>: “more_than_one” or “always”</div>
+<div class="line">Blueprint device behavior mode</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>blueprint_selector_behavior</strong>: “open” or “closed” or “always_open” or “always_closed”</div>
+<div class="line">Blueprint selector behavior mode</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>blueprint_devices</strong>: <a class="reference internal" href="#blueprintdeviceconfig"><span class="std std-ref">BlueprintDeviceConfig</span></a></div>
+<div class="line">Blueprint device configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>theme</strong>: any</div>
+<div class="line">Dashboard theme</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>setup</strong>: any</div>
+<div class="line">Dashboard setup</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>shared</strong>: <a class="reference internal" href="#shared"><span class="std std-ref">shared</span></a></div>
+<div class="line">Sharing configuration</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetdata">
+<span id="id9"></span><h2>WidgetData<a class="headerlink" href="#widgetdata" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Widget data configuration.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>origin</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Data origin identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>qty</strong>: Optional[int or float]</div>
+<div class="line">Quantity of data points</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>timezone</strong>: Optional[str]</div>
+<div class="line">Timezone for data queries</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>variables</strong>: Optional[str]</div>
+<div class="line">Variables to query</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Bucket identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>query</strong>: Optional[“min” or “max” or “count” or “avg” or “sum”]</div>
+<div class="line">Query type</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>start_date</strong>: Optional[datetime or str]</div>
+<div class="line">Query start date</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>end_date</strong>: Optional[datetime or str]</div>
+<div class="line">Query end date</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>overwrite</strong>: Optional[bool]</div>
+<div class="line">Whether to overwrite existing data</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetresource">
+<span id="id10"></span><h2>WidgetResource<a class="headerlink" href="#widgetresource" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Widget resource filtering configuration.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>filter</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+<div class="line">Filter tags</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="deviceresourceview">
+<span id="id11"></span><h2>DeviceResourceView<a class="headerlink" href="#deviceresourceview" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Available views for device resources in widgets.</p>
+<p><strong>Type:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Literal[f”tags.{str}”, f”param.{str}”, “name”, “id”, “bucket_name”, “network_name”, “connector_name”, “connector”, “network”, “bucket”, “last_input”, “created_at”, “active”]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetdeviceresource">
+<span id="id12"></span><h2>WidgetDeviceResource<a class="headerlink" href="#widgetdeviceresource" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Device resource configuration for widgets.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>type</strong>: “device”</div>
+<div class="line">Resource type</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>view</strong>: <a class="reference internal" href="#deviceresourceview"><span class="std std-ref">DeviceResourceView</span></a></div>
+<div class="line">View configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>editable</strong>: “name” or f”tags.{str}” or f”param.{str}”</div>
+<div class="line">Editable fields</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="editdeviceresource">
+<span id="id13"></span><h2>EditDeviceResource<a class="headerlink" href="#editdeviceresource" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Device resource edit configuration.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>device</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: Optional[str]</div>
+<div class="line">Device name</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: Optional[bool]</div>
+<div class="line">Device active status</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>edit</strong>: dict[str, str or bool]</div>
+<div class="line">Fields to edit</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="editresourceoptions">
+<span id="id14"></span><h2>EditResourceOptions<a class="headerlink" href="#editresourceoptions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Options for editing resources.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>identifier</strong>: Optional[str]</div>
+<div class="line">Resource identifier</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetinfo">
+<span id="id15"></span><h2>WidgetInfo<a class="headerlink" href="#widgetinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Complete widget information.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysis_run</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Analysis run identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboard</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>display</strong>: any</div>
+<div class="line">Display configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: Optional[list[<a class="reference internal" href="#widgetdata"><span class="std std-ref">WidgetData</span></a>]]</div>
+<div class="line">Widget data configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>resource</strong>: Optional[list[<a class="reference internal" href="#widgetdeviceresource"><span class="std std-ref">WidgetDeviceResource</span></a>]]</div>
+<div class="line">Widget resource configuration</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>id</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>label</strong>: str</div>
+<div class="line">Widget label</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>realtime</strong>: Optional[bool]</div>
+<div class="line">Real-time update status</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: str</div>
+<div class="line">Widget type</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicesrelated">
+<span id="id16"></span><h2>DevicesRelated<a class="headerlink" href="#devicesrelated" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Device information related to dashboard.</p>
+<p>Extends BucketDeviceInfo with additional bucket field.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Device name</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Bucket identifier</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="analysisrelated">
+<span id="id17"></span><h2>AnalysisRelated<a class="headerlink" href="#analysisrelated" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Analysis information related to dashboard.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Analysis identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Analysis name</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="postdatamodel">
+<span id="id18"></span><h2>PostDataModel<a class="headerlink" href="#postdatamodel" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Model for posting data to widgets.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>origin</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Data origin identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>variable</strong>: str</div>
+<div class="line">Variable name</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="blueprintdeviceorigin">
+<span id="id19"></span><h2>BlueprintDeviceOrigin<a class="headerlink" href="#blueprintdeviceorigin" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Blueprint device configuration with origin reference for widget data queries.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>origin</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Origin identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Bucket identifier</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetoverwrite">
+<span id="id20"></span><h2>widgetOverwrite<a class="headerlink" href="#widgetoverwrite" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Widget data overwrite options.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>start_date</strong>: Optional[any]</div>
+<div class="line">Override start date</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>end_date</strong>: Optional[any]</div>
+<div class="line">Override end date</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>timezone</strong>: Optional[any]</div>
+<div class="line">Override timezone</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="getdatamodel">
+<span id="id21"></span><h2>GetDataModel<a class="headerlink" href="#getdatamodel" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Model for retrieving widget data.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>overwrite</strong>: Optional[<a class="reference internal" href="#widgetoverwrite"><span class="std std-ref">widgetOverwrite</span></a>]</div>
+<div class="line">Overwrite options</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>blueprint_devices</strong>: Optional[list[<a class="reference internal" href="#blueprintdeviceorigin"><span class="std std-ref">BlueprintDeviceOrigin</span></a>]]</div>
+<div class="line">Blueprint devices list</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>page</strong>: Optional[int or float]</div>
+<div class="line">Page number for pagination</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>amount</strong>: Optional[int or float]</div>
+<div class="line">Amount of items per page</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="publickeyresponse">
+<span id="id22"></span><h2>PublicKeyResponse<a class="headerlink" href="#publickeyresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Response containing dashboard public access token.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a></div>
+<div class="line">Public access token</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>expire_time</strong>: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></div>
+<div class="line">Token expiration time</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="editdatamodel">
+<span id="id23"></span><h2>EditDataModel<a class="headerlink" href="#editdatamodel" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Model for editing widget data.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#postdatamodel"><span class="std std-ref">PostDataModel</span></a></p>
+<p><strong>Additional Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Data record identifier</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="widgetoverwriteoptions">
+<span id="id24"></span><h2>widgetOverwriteOptions<a class="headerlink" href="#widgetoverwriteoptions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Available options for widget data override.</p>
+<p><strong>Type:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Literal[“start_date”, “end_date”, “timezone”]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Dashboards</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Dashboards</strong></a></li>
+      <li>Next: <a href="../Dictionaries/index.html" title="next chapter"><strong>Dictionaries</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Dashboards/Dashboard_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

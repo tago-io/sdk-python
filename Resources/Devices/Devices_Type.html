@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Devices Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Files" href="../Files/index.html" />
+    <link rel="prev" title="Devices" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="devices-type">
+<h1><strong>Devices Type</strong><a class="headerlink" href="#devices-type" title="Link to this heading">¶</a></h1>
+<section id="bucket">
+<span id="id1"></span><h2>bucket<a class="headerlink" href="#bucket" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></p>
+<p><strong>name</strong>: str</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="deviceinfo">
+<span id="id2"></span><h2>DeviceInfo<a class="headerlink" href="#deviceinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: DataStorageType</div>
+<div class="line">Device’s data storage (bucket) type.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>profile</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the profile that owns the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>: bucket</div>
+<div class="line">Bucket storing the device’s data.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_output</strong>: datetime or None</div>
+<div class="line">Date for the device’s last output.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_input</strong>: datetime or None</div>
+<div class="line">Date for the device’s last input.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updated_at</strong>: datetime</div>
+<div class="line">Date for the device’s last update.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">Date for the device’s creation.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>inspected_at</strong>: datetime or None</div>
+<div class="line">Date for the device’s last inspection.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_retention</strong>: datetime or None</div>
+<div class="line">Date for the device’s last data retention.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="deviceinfolist">
+<span id="id3"></span><h2>DeviceInfoList<a class="headerlink" href="#deviceinfolist" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: DataStorageType</div>
+<div class="line">Device’s data storage (bucket) type.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>profile</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the profile that owns the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_output</strong>: datetime or None</div>
+<div class="line">Date for the device’s last output.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_input</strong>: datetime or None</div>
+<div class="line">Date for the device’s last input.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updated_at</strong>: datetime</div>
+<div class="line">Date for the device’s last update.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">Date for the device’s creation.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>inspected_at</strong>: datetime or None</div>
+<div class="line">Date for the device’s last inspection.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>last_retention</strong>: datetime or None</div>
+<div class="line">Date for the device’s last data retention.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicequery">
+<span id="id4"></span><h2>DeviceQuery<a class="headerlink" href="#devicequery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>page</strong>: int or float</div>
+<div class="line">Page of list starting from 1</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>amount</strong>: int or float</div>
+<div class="line">Amount of items will return.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>fields</strong>: list[
+    “id” or
+    “type” or
+    “profile” or
+    “last_output” or
+    “last_input” or
+    “updated_at” or
+    “created_at” or
+    “inspected_at” or
+    “last_retention”
+]</div>
+<div class="line">Array of field names.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>filter</strong>: DeviceInfo</div>
+<div class="line">Filter object.</div>
+</div>
+<div class="line-block">
+<div class="line">orderBy: list[
+    “name” or
+    “visible” or
+    “active” or
+    “last_input” or
+    “last_output” or
+    “created_at” or
+    “updated_at” or
+    “asc” or
+    “desc”
+]</div>
+<div class="line">Tuple with a field and an order</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>resolveBucketName</strong>: Optional[bool]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicelistitem">
+<span id="id5"></span><h2>DeviceListItem<a class="headerlink" href="#devicelistitem" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>DeviceListItem</strong> = DeviceInfoList</p>
+</div></blockquote>
+</section>
+<section id="configurationparams">
+<span id="id6"></span><h2>ConfigurationParams<a class="headerlink" href="#configurationparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>sent</strong>: bool</p>
+<p><strong>key</strong>: str</p>
+<p><strong>value</strong>: str</p>
+<p><strong>id</strong>: Optional[str]</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicecreateresponse">
+<span id="id7"></span><h2>DeviceCreateResponse<a class="headerlink" href="#devicecreateresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>device_id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></p>
+<p><strong>bucket_id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></p>
+<p><strong>token</strong>:  <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a></p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicecreateinfobasic">
+<span id="id8"></span><h2>DeviceCreateInfoBasic<a class="headerlink" href="#devicecreateinfobasic" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Device name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Connector ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>network</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: Optional[str]</div>
+<div class="line">[Optional] Device’s data storage (bucket) type.</div>
+<div class="line">:default: “legacy”</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>description</strong>: Optional[str or None]</div>
+<div class="line">[Optional] Description of the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: Optional[bool]</div>
+<div class="line">[Optional] Set if the device will be active.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>visible</strong>: Optional[bool]</div>
+<div class="line">[Optional] Set if the device will be visible.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>configuration_params</strong>: Optional[list[ConfigurationParams]]</div>
+<div class="line">[Optional] An array of configuration params</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tags</strong>: Optional[list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line">[Optional] An array of tags</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serie_number</strong>: Optional[str]</div>
+<div class="line">[Optional] Device serial number.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector_parse</strong>: Optional[bool]</div>
+<div class="line">[Optional] If device will use connector parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>parse_function</strong>: Optional[str]</div>
+<div class="line">[Optional] Javascript code for use as payload parser</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicecreateinfobasicmutable">
+<span id="id9"></span><h2>DeviceCreateInfoBasicMutable<a class="headerlink" href="#devicecreateinfobasicmutable" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Device name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Connector ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>network</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: “mutable”</div>
+<div class="line">Device’s data storage (bucket) type.</div>
+<div class="line">:default: “legacy”</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>description</strong>: str or None</div>
+<div class="line">Description of the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Set if the device will be active.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>visible</strong>: bool</div>
+<div class="line">Set if the device will be visible.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>configuration_params</strong>: list[<a class="reference internal" href="#configurationparams"><span class="std std-ref">ConfigurationParams</span></a>]</div>
+<div class="line">An array of configuration params</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tags</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+<div class="line">An array of tags</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serie_number</strong>: str</div>
+<div class="line">Device serial number.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector_parse</strong>: bool</div>
+<div class="line">If device will use connector parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>parse_function</strong>: str</div>
+<div class="line">Javascript code for use as payload parser</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicecreateinfobasicimutable">
+<span id="id10"></span><h2>DeviceCreateInfoBasicImutable<a class="headerlink" href="#devicecreateinfobasicimutable" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Device name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Connector ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>network</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: “imutable”</div>
+<div class="line">Device’s data storage (bucket) type.</div>
+<div class="line">:default: “legacy”</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>description</strong>: str or None</div>
+<div class="line">Description of the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Set if the device will be active.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>visible</strong>: bool</div>
+<div class="line">Set if the device will be visible.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>configuration_params</strong>: list[<a class="reference internal" href="#configurationparams"><span class="std std-ref">ConfigurationParams</span></a>]</div>
+<div class="line">An array of configuration params</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tags</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+<div class="line">An array of tags</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serie_number</strong>: str</div>
+<div class="line">Device serial number.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector_parse</strong>: bool</div>
+<div class="line">If device will use connector parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>parse_function</strong>: str</div>
+<div class="line">Javascript code for use as payload parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>chunk_period</strong>: “day” or “week” or “month” or “quarter”</div>
+<div class="line">Chunk division to retain data in the device.</div>
+<div class="line">Required for Immutable devices.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>chunk_retention</strong>: int or float</div>
+<div class="line">Amount of chunks to retain data according to the <cite>chunk_period</cite>.</div>
+<div class="line">Integer between in the range of 0 to 36 (inclusive).</div>
+<div class="line">Required for Immutable devices.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicecreateinfomutable">
+<span id="id11"></span><h2>DeviceCreateInfoMutable<a class="headerlink" href="#devicecreateinfomutable" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>DeviceCreateInfoMutable</strong> = DeviceCreateInfoBasicMutable</p>
+</div></blockquote>
+</section>
+<section id="devicecreateinfoimmutable">
+<span id="id12"></span><h2>DeviceCreateInfoImmutable<a class="headerlink" href="#devicecreateinfoimmutable" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>DeviceCreateInfoImmutable</strong> = DeviceCreateInfoBasicImutable</p>
+</div></blockquote>
+</section>
+<section id="devicecreateinfo">
+<span id="id13"></span><h2>DeviceCreateInfo<a class="headerlink" href="#devicecreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>DeviceCreateInfo</strong> = DeviceCreateInfoMutable or DeviceCreateInfoImmutable</p>
+</div></blockquote>
+</section>
+<section id="deviceeditinfo">
+<span id="id14"></span><h2>DeviceEditInfo<a class="headerlink" href="#deviceeditinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Device name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Connector ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>network</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>description</strong>: str or None</div>
+<div class="line">Description of the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Set if the device will be active.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>visible</strong>: bool</div>
+<div class="line">Set if the device will be visible.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>configuration_params</strong>: list[<a class="reference internal" href="#configurationparams"><span class="std std-ref">ConfigurationParams</span></a>]</div>
+<div class="line">An array of configuration params</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tags</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+<div class="line">An array of tags</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serie_number</strong>: str</div>
+<div class="line">Device serial number.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connector_parse</strong>: bool</div>
+<div class="line">If device will use connector parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>parse_function</strong>: str</div>
+<div class="line">Javascript code for use as payload parser</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>chunk_retention</strong>: int or float</div>
+<div class="line">Amount of chunks to retain data according to the <cite>chunk_period</cite>.</div>
+<div class="line">Integer between in the range of 0 to 36 (inclusive).</div>
+<div class="line">Required for Immutable devices.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="tokendata">
+<span id="devicestokendata"></span><h2>TokenData<a class="headerlink" href="#tokendata" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">A name for the token.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>expire_time</strong>: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></div>
+<div class="line">The time for when the token should expire.</div>
+<div class="line">It will be randomly generated if not included.</div>
+<div class="line">Accepts “never” as value.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>permission</strong>: <a class="reference internal" href="../../common/Common_Type.html#permissionoption"><span class="std std-ref">PermissionOption</span></a></div>
+<div class="line">Token permission should be ‘write’, ‘read’ or ‘full’.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serie_number</strong>: Optional[str]</div>
+<div class="line">[optional] The serial number of the device.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>verification_code</strong>: Optional[str]</div>
+<div class="line">[optional] Verification code to validate middleware requests.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>middleware</strong>: Optional[str]</div>
+<div class="line">[optional] Middleware or type of the device that will be added.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicetokendatalist">
+<span id="id15"></span><h2>DeviceTokenDataList<a class="headerlink" href="#devicetokendatalist" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p><strong>token</strong>:  <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a></p>
+<p><strong>device_id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></p>
+<p><strong>network_id</strong>:  <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></p>
+<p><strong>name</strong>: str</p>
+<p><strong>permission</strong>: <a class="reference internal" href="../../common/Common_Type.html#permissionoption"><span class="std std-ref">PermissionOption</span></a></p>
+<p><strong>serie_number</strong>: str or None</p>
+<p><strong>last_authorization</strong>: str or None</p>
+<p><strong>expire_time</strong>: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></p>
+<p><strong>created_at</strong>: str</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="listdevicetokenquery">
+<span id="id16"></span><h2>ListDeviceTokenQuery<a class="headerlink" href="#listdevicetokenquery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>page</strong>: int or float</div>
+<div class="line">Page of list starting from 1</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>amount</strong>: int or float</div>
+<div class="line">Amount of items will return.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>fields</strong>: list[
+    “token” or
+    “device_id” or
+    “network_id” or
+    “name” or
+    “permission” or
+    “serie_number” or
+    “last_authorization” or
+    “expire_time”
+]</div>
+<div class="line">Array of field names.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>filter</strong>: <a class="reference internal" href="#devicetokendatalist"><span class="std std-ref">DeviceTokenDataList</span></a></div>
+<div class="line">Filter object.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>orderBy</strong>: Optional[
+list[
+    “name” or
+    “permission” or
+    “serie_number” or
+    “last_authorization” or
+    “created_at” or
+    “asc” or
+    “desc”
+]]</div>
+<div class="line">[Optional] Tuple with a field and an order</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicechunkdata">
+<span id="id17"></span><h2>DeviceChunkData<a class="headerlink" href="#devicechunkdata" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Chunk information from an immutable device.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: str</div>
+<div class="line">Chunk ID in format ‘from_to’ (Unix timestamps).</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>from_date</strong>: str</div>
+<div class="line">Start date of the chunk (ISO 8601).</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>to_date</strong>: str</div>
+<div class="line">End date of the chunk (ISO 8601).</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>amount</strong>: int or float</div>
+<div class="line">Amount of data records in the chunk.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicedatabackup">
+<span id="id18"></span><h2>DeviceDataBackup<a class="headerlink" href="#devicedatabackup" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Parameters for device data backup operation.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file_address</strong>: str</div>
+<div class="line">File path in TagoIO Files where backup will be saved.</div>
+<div class="line">Can use template variables: $DEVICE$, $CHUNK$, $FROM$, $TO$, $TIMESTAMP$.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>headers</strong>: Optional[bool]</div>
+<div class="line">[Optional] Include CSV headers in the exported file.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicedatabackupresponse">
+<span id="id19"></span><h2>DeviceDataBackupResponse<a class="headerlink" href="#devicedatabackupresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Response from device data backup operation.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>file_address</strong>: str</div>
+<div class="line">Final file path where the backup was saved.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>chunk_id</strong>: Optional[str]</div>
+<div class="line">[Optional] Chunk ID if backup was for a specific chunk.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="devicedatarestore">
+<span id="id20"></span><h2>DeviceDataRestore<a class="headerlink" href="#devicedatarestore" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Parameters for device data restore operation.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>deviceID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Device ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file_address</strong>: str</div>
+<div class="line">File path in TagoIO Files to restore data from (CSV format).</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Devices</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Devices</strong></a></li>
+      <li>Next: <a href="../Files/index.html" title="next chapter"><strong>Files</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Devices/Devices_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

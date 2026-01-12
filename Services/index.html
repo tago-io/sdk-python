@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Services &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Attachment Type" href="Attachment_Type.html" />
+    <link rel="prev" title="Device Type" href="../Device/Device_Type.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="services">
+<h1><strong>Services</strong><a class="headerlink" href="#services" title="Link to this heading">¶</a></h1>
+<section id="instance">
+<h2>Instance<a class="headerlink" href="#instance" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>token</strong>: str</div>
+<div class="line">Token is a optional parameter (Analysis Token).</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: str “us-e1” or “ue-w1” or “env”</div>
+<div class="line">Region is a optional parameter</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+    <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="attachment">
+<h2>Attachment<a class="headerlink" href="#attachment" title="Link to this heading">¶</a></h2>
+<p>Send Attachment</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>archive</strong>: <a class="reference internal" href="Attachment_Type.html#archivefile"><span class="std std-ref">ArchiveFile</span></a></div>
+<div class="line">Archive JSON Object</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">Attachment</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;base64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="consoleservice">
+<h2>ConsoleService<a class="headerlink" href="#consoleservice" title="Link to this heading">¶</a></h2>
+<p>Log message in analysis console</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>message</strong>: str</div>
+<div class="line">Log message</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>time</strong>: datetime</div>
+<div class="line">Date of message</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="email">
+<h2>Email<a class="headerlink" href="#email" title="Link to this heading">¶</a></h2>
+<p>Send Email</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>email</strong>: Any or <a class="reference internal" href="Email_Type.html#emailwithrawtext"><span class="std std-ref">EmailWithRawText</span></a> or <a class="reference internal" href="Email_Type.html#emailwithhtml"><span class="std std-ref">EmailWithHTML</span></a> or <a class="reference internal" href="Email_Type.html#emailwithtemplate"><span class="std std-ref">EmailWithTemplate</span></a></div>
+<div class="line">Email objects</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;myclien@tago.io&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Subject&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mqtt">
+<h2>MQTT<a class="headerlink" href="#mqtt" title="Link to this heading">¶</a></h2>
+<p>Publish to a MQTT Device</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>mqtt</strong>: <a class="reference internal" href="MQTT_Type.html#mqttdata"><span class="std std-ref">MQTTData</span></a></div>
+<div class="line">MQTT object, contains topic, bucket, message and options(retain and qos)</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">MQTT</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;bucket&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_id&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="s2">&quot;teste/TEMPERATURE&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;qos&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;retain&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="notification">
+<h2>Notification<a class="headerlink" href="#notification" title="Link to this heading">¶</a></h2>
+<p>Send Notification</p>
+<p>You can add ref_id from a bucket or dashboard, if it is valid it will show up a button Go To
+Dashboard Any account with share of the dashboard/bucket will receive too.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notification</strong>: <a class="reference internal" href="../Resources/Notifications/Notification_Type.html#notificationcreate"><span class="std std-ref">NotificationCreate</span></a></div>
+<div class="line">Notification Object</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">Notification</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">title</span><span class="p">:</span> <span class="s2">&quot;Example&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="p">:</span> <span class="s2">&quot;Message Test&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="pdf">
+<h2>PDF<a class="headerlink" href="#pdf" title="Link to this heading">¶</a></h2>
+<p>Generate a PDF from html, url or base64</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>params</strong>: <a class="reference internal" href="Pdf_Type.html#pdfparams"><span class="std std-ref">PDFParams</span></a></div>
+<div class="line">Parameters used to generate the pdf</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">PDF</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">base64</span><span class="p">:</span> <span class="s2">&quot;base64&quot;</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="sms">
+<h2>SMS<a class="headerlink" href="#sms" title="Link to this heading">¶</a></h2>
+<p>Send SMS to phone number</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sms</strong>: <a class="reference internal" href="SMS_Type.html#smsdata"><span class="std std-ref">SMSData</span></a></div>
+<div class="line">Data that sms will be send, number and message</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Services</span>
+
+        <span class="n">services</span> <span class="o">=</span> <span class="n">Services</span><span class="p">()</span>
+        <span class="n">services</span><span class="o">.</span><span class="n">sms</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;434434434434&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Attachment_Type.html"><strong>Attachment Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Attachment_Type.html#archivefile">ArchiveFile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Email_Type.html"><strong>Email Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#attachmentoptions">AttachmentOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#templateoptions">TemplateOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailbase">EmailBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailrawtext">EmailRawText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailhtml">EmailHTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailwithtemplate">EmailWithTemplate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailwithhtml">EmailWithHTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Email_Type.html#emailwithrawtext">EmailWithRawText</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MQTT_Type.html"><strong>MQTT Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MQTT_Type.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MQTT_Type.html#mqttdata">MQTTData</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Notification_Type.html"><strong>Notification Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggeranalysis">NotificationTriggerAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggerhttp">NotificationTriggerHTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationtriggerprofile">NotificationTriggerProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationbutton">NotificationButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationiconimage">NotificationIconImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationiconsvg">NotificationIconSVG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notification_Type.html#notificationcreate">NotificationCreate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Pdf_Type.html"><strong>PDF Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Pdf_Type.html#margin">margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pdf_Type.html#options">options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pdf_Type.html#pdfparams">PDFParams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SMS_Type.html"><strong>SMS Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SMS_Type.html#smsdata">SMSData</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html"><strong>Resources</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Services</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instance">Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attachment">Attachment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#consoleservice">ConsoleService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#email">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt">MQTT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notification">Notification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pdf">PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sms">SMS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../Device/Device_Type.html" title="previous chapter"><strong>Device Type</strong></a></li>
+      <li>Next: <a href="Attachment_Type.html" title="next chapter"><strong>Attachment Type</strong></a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../_sources/Services/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

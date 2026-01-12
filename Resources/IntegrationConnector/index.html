@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Integration Connector &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Connector Type" href="IntegrationConnector_Type.html" />
+    <link rel="prev" title="Integration Network Type" href="../IntegrationNetwork/IntegrationNetwork_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="integration-connector">
+<h1><strong>Integration Connector</strong><a class="headerlink" href="#integration-connector" title="Link to this heading">¶</a></h1>
+<p>Manage connectors in your application.</p>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Lists all connectors from the application with pagination support.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/466-connector-overview">Connector Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="IntegrationConnector_Type.html#connectorquery"><span class="std std-ref">ConnectorQuery(Query)</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="IntegrationConnector_Type.html#connectorinfo"><span class="std std-ref">ConnectorInfo(ConnectorCreateInfo)</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">list</span><span class="p">({</span>
+  <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;connector-id-123&#39;, &#39;name&#39;: &#39;My Connector&#39;}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific connector.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/466-connector-overview">Connector Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>connectorID</strong>: GenericID: str</div>
+<div class="line">Connector ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>fields</strong>: List[str]</div>
+<div class="line">List of fields to retrieve</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="IntegrationConnector_Type.html#connectorinfo"><span class="std std-ref">ConnectorInfo(ConnectorCreateInfo)</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;connector-id-123&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;connector-id-123&#39;, &#39;name&#39;: &#39;My Connector&#39;, &#39;profile&#39;: &#39;profile-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new connector in the application.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/466-connector-overview#Creating_a_connector">Creating a connector</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>connectorObj</strong>: <a class="reference internal" href="IntegrationConnector_Type.html#connectorcreateinfo"><span class="std std-ref">ConnectorCreateInfo</span></a></div>
+<div class="line">Object with connector properties</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict[str, GenericID]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Connector&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;networks&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;connector&quot;</span><span class="p">])</span>  <span class="c1"># &#39;connector-id-123&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Modifies an existing connector’s properties.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/466-connector-overview">Connector Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>connectorID</strong>: GenericID: str</div>
+<div class="line">Connector ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connectorObj</strong>: Dict</div>
+<div class="line">Object with properties to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;connector-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Connector&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Connector Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Deletes a connector from the application.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/466-connector-overview">Connector Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>connectorID</strong>: str</div>
+<div class="line">Connector ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">connectors</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;connector-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Connector Successfully Deleted</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="IntegrationConnector_Type.html"><strong>Integration Connector Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector_Type.html#connectorideviceparameters">IDeviceParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector_Type.html#connectorcreateinfo">ConnectorCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector_Type.html#connectorinfo-connectorcreateinfo">ConnectorInfo(<span class="xref std std-ref">ConnectorCreateInfo</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector_Type.html#connectorquery-query">ConnectorQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../IntegrationNetwork/IntegrationNetwork_Type.html" title="previous chapter"><strong>Integration Network Type</strong></a></li>
+      <li>Next: <a href="IntegrationConnector_Type.html" title="next chapter"><strong>Integration Connector Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/IntegrationConnector/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

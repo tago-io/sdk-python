@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Account &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Account Type" href="Account_type.html" />
+    <link rel="prev" title="Actions Type" href="../Actions/Actions_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="account">
+<h1><strong>Account</strong><a class="headerlink" href="#account" title="Link to this heading">¶</a></h1>
+<p>Manage your TagoIO account, authentication, and security settings.</p>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Gets all account information including settings, preferences, and OTP configuration.</p>
+<p>See: <a class="reference external" href="https://api.docs.tago.io/#d1b06528-75e6-4dfc-80fb-9a553a26ea3b">Edit Account</a></p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Account_type.html#accountinfo"><span class="std std-ref">AccountInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">account_info</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">account_info</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;account-id&#39;, &#39;name&#39;: &#39;My Account&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Edit current account information such as name, timezone, company, and preferences.</p>
+<p>See: <a class="reference external" href="https://api.docs.tago.io/#d1b06528-75e6-4dfc-80fb-9a553a26ea3b">Edit Account</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>accountObj</strong>: dict</div>
+<div class="line">Account information to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">edit</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Account Name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;America/New_York&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;company&quot;</span><span class="p">:</span> <span class="s2">&quot;My Company&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Account Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Delete current account. This action is irreversible and will remove all profiles and data.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/210-deleting-your-account">Deleting Your Account</a></p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="c1"># WARNING: This action is irreversible!</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Account Successfully Deleted</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="passwordchange">
+<h2>passwordChange<a class="headerlink" href="#passwordchange" title="Link to this heading">¶</a></h2>
+<p>Change account password for the authenticated user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/209-resetting-my-password">Resetting My Password</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>password</strong>: str</div>
+<div class="line">New password</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">passwordChange</span><span class="p">(</span><span class="s2">&quot;new-secure-password&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Password changed successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="enableotp">
+<h2>enableOTP<a class="headerlink" href="#enableotp" title="Link to this heading">¶</a></h2>
+<p>Enable OTP (One-Time Password) for a given OTP Type (authenticator, sms, or email).
+You will be requested to confirm the operation with a pin code.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>credentials</strong>: dict</div>
+<div class="line">Dictionary with email and password</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>typeOTP</strong>: <a class="reference internal" href="Account_type.html#otptype"><span class="std std-ref">OTPType</span></a></div>
+<div class="line">Type of OTP: “authenticator”, “sms”, or “email”</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">enableOTP</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;email&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># OTP enabled, confirmation required</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="disableotp">
+<h2>disableOTP<a class="headerlink" href="#disableotp" title="Link to this heading">¶</a></h2>
+<p>Disable OTP (One-Time Password) for a given OTP Type (authenticator, sms, or email).</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>credentials</strong>: dict</div>
+<div class="line">Dictionary with email and password</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>typeOTP</strong>: <a class="reference internal" href="Account_type.html#otptype"><span class="std std-ref">OTPType</span></a></div>
+<div class="line">Type of OTP: “authenticator”, “sms”, or “email”</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">disableOTP</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;authenticator&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># OTP disabled successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="confirmotp">
+<h2>confirmOTP<a class="headerlink" href="#confirmotp" title="Link to this heading">¶</a></h2>
+<p>Confirm OTP enabling process for a given OTP Type (authenticator, sms, or email).</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>pinCode</strong>: str</div>
+<div class="line">Six-digit PIN code</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>typeOTP</strong>: <a class="reference internal" href="Account_type.html#otptype"><span class="std std-ref">OTPType</span></a></div>
+<div class="line">Type of OTP: “authenticator”, “sms”, or “email”</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check your account token permissions.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">confirmOTP</span><span class="p">(</span><span class="s2">&quot;123456&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># OTP confirmed successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokencreate">
+<h2>tokenCreate<a class="headerlink" href="#tokencreate" title="Link to this heading">¶</a></h2>
+<p>Generates and retrieves a new token for the account. This is a static method that doesn’t require authentication.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/495-account-token">Account Token</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>tokenParams</strong>: <a class="reference internal" href="Account_type.html#tokencreateinfo"><span class="std std-ref">TokenCreateInfo</span></a></div>
+<div class="line">Token creation parameters</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">token_result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">tokenCreate</span><span class="p">({</span>
+    <span class="s2">&quot;profile_id&quot;</span><span class="p">:</span> <span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pin_code&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;otp_type&quot;</span><span class="p">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My API Token&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">token_result</span><span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">])</span>  <span class="c1"># your-new-token-123</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="login">
+<h2>login<a class="headerlink" href="#login" title="Link to this heading">¶</a></h2>
+<p>Retrieve list of profiles for login and perform authentication. This is a static method that doesn’t require authentication.</p>
+<p>See: <a class="reference external" href="https://api.docs.tago.io/#3196249b-4aef-46ff-b5c3-f103b6f0bfbd">Login to Account</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>credentials</strong>: <a class="reference internal" href="Account_type.html#logincredentials"><span class="std std-ref">LoginCredentials</span></a></div>
+<div class="line">Login credentials including email, password, OTP type, and PIN code</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Account_type.html#loginresponse"><span class="std std-ref">LoginResponse</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">login_result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">login</span><span class="p">({</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;otp_type&quot;</span><span class="p">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pin_code&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">login_result</span><span class="p">)</span>  <span class="c1"># {&#39;type&#39;: &#39;user&#39;, &#39;id&#39;: &#39;...&#39;, &#39;profiles&#39;: [...]}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="passwordrecover">
+<h2>passwordRecover<a class="headerlink" href="#passwordrecover" title="Link to this heading">¶</a></h2>
+<p>Send password recovery email to the specified address. This is a static method that doesn’t require authentication.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/209-resetting-my-password">Resetting My Password</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Email address for password recovery</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">passwordRecover</span><span class="p">(</span><span class="s2">&quot;user@example.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Email sent successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Create a new TagoIO account. This is a static method that doesn’t require authentication.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>createParams</strong>: <a class="reference internal" href="Account_type.html#accountcreateinfo"><span class="std std-ref">AccountCreateInfo</span></a></div>
+<div class="line">Account creation parameters</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;john@example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secure-password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cpassword&quot;</span><span class="p">:</span> <span class="s2">&quot;secure-password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;America/New_York&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;company&quot;</span><span class="p">:</span> <span class="s2">&quot;My Company&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;newsletter&quot;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Account created successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="resendconfirmation">
+<h2>resendConfirmation<a class="headerlink" href="#resendconfirmation" title="Link to this heading">¶</a></h2>
+<p>Re-send confirmation account email to the specified address. This is a static method that doesn’t require authentication.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Email address to resend confirmation</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">resendConfirmation</span><span class="p">(</span><span class="s2">&quot;user@example.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Confirmation email sent</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="confirmaccount">
+<h2>confirmAccount<a class="headerlink" href="#confirmaccount" title="Link to this heading">¶</a></h2>
+<p>Confirm account creation using the token sent via email. This is a static method that doesn’t require authentication.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: str</div>
+<div class="line">Confirmation token from email</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">confirmAccount</span><span class="p">(</span><span class="s2">&quot;confirmation-token-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Account confirmed successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="requestloginpincode">
+<h2>requestLoginPINCode<a class="headerlink" href="#requestloginpincode" title="Link to this heading">¶</a></h2>
+<p>Request the PIN Code for a given OTP Type (authenticator, sms, or email). This is a static method that doesn’t require authentication.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>credentials</strong>: dict</div>
+<div class="line">Dictionary with email and password</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>typeOTP</strong>: <a class="reference internal" href="Account_type.html#otptype"><span class="std std-ref">OTPType</span></a></div>
+<div class="line">Type of OTP: “authenticator”, “sms”, or “email”</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">requestLoginPINCode</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;email&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># PIN code sent</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="acceptteaminvitation">
+<h2>acceptTeamInvitation<a class="headerlink" href="#acceptteaminvitation" title="Link to this heading">¶</a></h2>
+<p>Accept a team member invitation to become a profile’s team member. This is a static method that doesn’t require authentication.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: str</div>
+<div class="line">Invitation token from email</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">acceptTeamInvitation</span><span class="p">(</span><span class="s2">&quot;invitation-token-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Invitation accepted</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="declineteaminvitation">
+<h2>declineTeamInvitation<a class="headerlink" href="#declineteaminvitation" title="Link to this heading">¶</a></h2>
+<p>Decline a team member invitation to become a profile’s team member. This is a static method that doesn’t require authentication.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: str</div>
+<div class="line">Invitation token from email</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: <a class="reference internal" href="../../regions.html#regions"><span class="std std-ref">Regions</span></a></div>
+<div class="line">TagoIO Region Server (default: USA)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk.modules.Resources.Account</span><span class="w"> </span><span class="kn">import</span> <span class="n">Account</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">declineTeamInvitation</span><span class="p">(</span><span class="s2">&quot;invitation-token-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Invitation declined</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Account_type.html"><strong>Account Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#accountoptions">AccountOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#accountopt">AccountOpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#accountinfo">AccountInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#accountcreateinfo">AccountCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#otptype">OTPType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#tokencreateinfo">TokenCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#logincredentials">LoginCredentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#profilelistinfoforlogin">ProfileListInfoForLogin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account_type.html#loginresponse">LoginResponse</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../regions.html">Regions</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Actions/Actions_Type.html" title="previous chapter"><strong>Actions Type</strong></a></li>
+      <li>Next: <a href="Account_type.html" title="next chapter"><strong>Account Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Account/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

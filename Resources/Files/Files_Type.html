@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Files Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Notifications" href="../Notifications/index.html" />
+    <link rel="prev" title="Files" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="files-type">
+<h1><strong>Files Type</strong><a class="headerlink" href="#files-type" title="Link to this heading">¶</a></h1>
+<section id="filequery">
+<span id="id1"></span><h2>FileQuery<a class="headerlink" href="#filequery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">path: str</div>
+<div class="line">Path to search for files</div>
+</div>
+<div class="line-block">
+<div class="line">paginationToken: str</div>
+<div class="line">Token for paginated results</div>
+</div>
+<div class="line-block">
+<div class="line">quantity: int</div>
+<div class="line">Number of files to return</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="fileinfo">
+<span id="id2"></span><h2>FileInfo<a class="headerlink" href="#fileinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">filename: str</div>
+<div class="line">Name of the file</div>
+</div>
+<div class="line-block">
+<div class="line">size: int</div>
+<div class="line">Size of the file in bytes</div>
+</div>
+<div class="line-block">
+<div class="line">last_modified: Optional[datetime]</div>
+<div class="line">Date and time when the file was last modified</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="filelistinfo">
+<span id="id3"></span><h2>FileListInfo<a class="headerlink" href="#filelistinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">files: List[<a class="reference internal" href="#fileinfo"><span class="std std-ref">FileInfo</span></a>]</div>
+<div class="line">List of file information</div>
+</div>
+<div class="line-block">
+<div class="line">folders: List[str]</div>
+<div class="line">List of folder names</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="base64file">
+<span id="id4"></span><h2>Base64File<a class="headerlink" href="#base64file" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">filename: str</div>
+<div class="line">Name of file</div>
+</div>
+<div class="line-block">
+<div class="line">file: str</div>
+<div class="line">String of Base64</div>
+</div>
+<div class="line-block">
+<div class="line">public: bool</div>
+<div class="line">Make file public</div>
+<div class="line">default: False</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="copyfiles">
+<span id="id5"></span><h2>CopyFiles<a class="headerlink" href="#copyfiles" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">from: str</div>
+<div class="line">Source path of the file to be copied</div>
+</div>
+<div class="line-block">
+<div class="line">to: str</div>
+<div class="line">Destination path for the copied file</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="movefiles">
+<span id="id6"></span><h2>MoveFiles<a class="headerlink" href="#movefiles" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">from: str</div>
+<div class="line">Source path of the file to be moved</div>
+</div>
+<div class="line-block">
+<div class="line">to: str</div>
+<div class="line">Destination path for the moved file</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="filespermission">
+<span id="id7"></span><h2>FilesPermission<a class="headerlink" href="#filespermission" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">file: str</div>
+<div class="line">Path to the file</div>
+</div>
+<div class="line-block">
+<div class="line">public: bool</div>
+<div class="line">Whether the file should be publicly accessible</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="uploadoptions">
+<span id="id8"></span><h2>UploadOptions<a class="headerlink" href="#uploadoptions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">maxTriesForEachChunk: int</div>
+<div class="line">The maximum amount of tries to upload each chunk to TagoIO. After this many unsuccessful tries of a single chunk, the upload is aborted</div>
+</div>
+<div class="line-block">
+<div class="line">timeoutForEachFailedChunk: int</div>
+<div class="line">Timeout before trying to upload the same chunk if the request failed</div>
+</div>
+<div class="line-block">
+<div class="line">contentType: str</div>
+<div class="line">The file’s content type. This is optional</div>
+</div>
+<div class="line-block">
+<div class="line">isPublic: bool</div>
+<div class="line">If the file can be accessed by anybody with a link or not</div>
+</div>
+<div class="line-block">
+<div class="line">dashboard: str</div>
+<div class="line">Dashboard ID. Uploading files from a widget requires <cite>dashboard</cite>, <cite>widget</cite>, and <cite>fieldId</cite> to be provided.</div>
+</div>
+<div class="line-block">
+<div class="line">widget: str</div>
+<div class="line">Widget ID. Uploading files from a widget requires <cite>dashboard</cite>, <cite>widget</cite>, and <cite>fieldId</cite> to be provided.</div>
+</div>
+<div class="line-block">
+<div class="line">fieldId: str</div>
+<div class="line">ID of the field from the widget where the file is selected. Uploading files from a widget requires <cite>dashboard</cite>, <cite>widget</cite>, and <cite>fieldId</cite> to be provided.</div>
+</div>
+<div class="line-block">
+<div class="line">onCancelToken: Callable[[Callable[[], Any]], Any]</div>
+<div class="line">Will provide a cancel token for you to cancel the request</div>
+</div>
+<div class="line-block">
+<div class="line">chunkSize: int</div>
+<div class="line">The byte size of each chunk sent to TagoIO. This will influence how many requests this function will perform</div>
+</div>
+<div class="line-block">
+<div class="line">onProgress: Callable[[float], Any]</div>
+<div class="line">Will provide the upload percentage for this file</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Files</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Files</strong></a></li>
+      <li>Next: <a href="../Notifications/index.html" title="next chapter"><strong>Notifications</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Files/Files_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

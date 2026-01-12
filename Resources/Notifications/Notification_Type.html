@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Notifications Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Network" href="../IntegrationNetwork/index.html" />
+    <link rel="prev" title="Notifications" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="notifications-type">
+<h1><strong>Notifications Type</strong><a class="headerlink" href="#notifications-type" title="Link to this heading">¶</a></h1>
+<section id="notificationtriggeranalysis">
+<span id="id1"></span><h2>NotificationTriggerAnalysis<a class="headerlink" href="#notificationtriggeranalysis" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">analysis_id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the analysis to trigger.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationtriggerhttp">
+<span id="id2"></span><h2>NotificationTriggerHTTP<a class="headerlink" href="#notificationtriggerhttp" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">url: str</div>
+<div class="line">The URL to make the request to.</div>
+</div>
+<div class="line-block">
+<div class="line">method: “POST” or “GET” or “PUT” or “DELETE” or “REDIRECT”</div>
+<div class="line">HTTP method to use for the request.</div>
+</div>
+<div class="line-block">
+<div class="line">body: dict[str, Any]</div>
+<div class="line">Body of the HTTP request.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationtriggerprofile">
+<span id="id3"></span><h2>NotificationTriggerProfile<a class="headerlink" href="#notificationtriggerprofile" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">share_profile: “accept” or “refuse”</div>
+<div class="line">Action to take on a profile share.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationbutton">
+<span id="id4"></span><h2>NotificationButton<a class="headerlink" href="#notificationbutton" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: str</div>
+<div class="line">Unique identifier for the button.</div>
+</div>
+<div class="line-block">
+<div class="line">label: str</div>
+<div class="line">Text displayed on the button.</div>
+</div>
+<div class="line-block">
+<div class="line">color: Optional[str]</div>
+<div class="line">Color of the button.</div>
+</div>
+<div class="line-block">
+<div class="line">triggers: <a class="reference internal" href="#notificationtriggeranalysis"><span class="std std-ref">NotificationTriggerAnalysis</span></a> or <a class="reference internal" href="#notificationtriggerhttp"><span class="std std-ref">NotificationTriggerHTTP</span></a> or list[<a class="reference internal" href="#notificationtriggerprofile"><span class="std std-ref">NotificationTriggerProfile</span></a>]</div>
+<div class="line">Actions triggered when the button is clicked.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationiconimage">
+<span id="id5"></span><h2>NotificationIconImage<a class="headerlink" href="#notificationiconimage" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">image_url: str</div>
+<div class="line">URL of the image to use as the notification icon.</div>
+</div>
+<div class="line-block">
+<div class="line">bg_color: Optional[HexColor]</div>
+<div class="line">Background color for the icon.</div>
+</div>
+<div class="line-block">
+<div class="line">fit: Optional[“fill” or “contain” or “cover”]</div>
+<div class="line">How the image should fit in its container.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationiconsvg">
+<span id="id6"></span><h2>NotificationIconSVG<a class="headerlink" href="#notificationiconsvg" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">svg_url: str</div>
+<div class="line">URL of the SVG to use as the notification icon.</div>
+</div>
+<div class="line-block">
+<div class="line">svg_color: Optional[HexColor]</div>
+<div class="line">Color of the SVG.</div>
+</div>
+<div class="line-block">
+<div class="line">bg_color: Optional[HexColor]</div>
+<div class="line">Background color for the icon.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationcreate">
+<span id="id7"></span><h2>NotificationCreate<a class="headerlink" href="#notificationcreate" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">title: str</div>
+<div class="line">Title of the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">message: str</div>
+<div class="line">Content of the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">read: Optional[bool]</div>
+<div class="line">Whether the notification has been read.</div>
+</div>
+<div class="line-block">
+<div class="line">icon: Optional[<a class="reference internal" href="#notificationiconsvg"><span class="std std-ref">NotificationIconSVG</span></a> or <a class="reference internal" href="#notificationiconimage"><span class="std std-ref">NotificationIconImage</span></a>]</div>
+<div class="line">Icon for the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">buttons: Optional[list[<a class="reference internal" href="#notificationbutton"><span class="std std-ref">NotificationButton</span></a>]]</div>
+<div class="line">Buttons to display with the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">buttons_enabled: Optional[bool]</div>
+<div class="line">Whether buttons are enabled.</div>
+</div>
+<div class="line-block">
+<div class="line">buttons_autodisable: Optional[bool]</div>
+<div class="line">Whether buttons should automatically disable after being clicked.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationquery-query">
+<span id="notificationquery"></span><h2>NotificationQuery(<a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a>)<a class="headerlink" href="#notificationquery-query" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">fields: Optional[List[“created_at”]]</div>
+<div class="line">Fields to include in the query response.</div>
+</div>
+<div class="line-block">
+<div class="line">filter: Optional[Dict[“read”, bool]]</div>
+<div class="line">Filters for the query.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationinfo-notificationcreate">
+<span id="notificationinfo"></span><h2>NotificationInfo(<a class="reference internal" href="#notificationcreate"><span class="std std-ref">NotificationCreate</span></a>)<a class="headerlink" href="#notificationinfo-notificationcreate" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Unique identifier for the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: datetime</div>
+<div class="line">When the notification was created.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationinfobasic">
+<span id="id8"></span><h2>NotificationInfoBasic<a class="headerlink" href="#notificationinfobasic" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Unique identifier for the notification.</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: datetime</div>
+<div class="line">When the notification was created.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="notificationcreatereturn">
+<span id="id9"></span><h2>NotificationCreateReturn<a class="headerlink" href="#notificationcreatereturn" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Unique identifier for the newly created notification.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Notifications</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Notifications</strong></a></li>
+      <li>Next: <a href="../IntegrationNetwork/index.html" title="next chapter"><strong>Integration Network</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Notifications/Notification_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

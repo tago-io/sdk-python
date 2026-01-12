@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Device &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Device Type" href="Device_Type.html" />
+    <link rel="prev" title="Service Authorization Types" href="../Resources/ServiceAuthorization/Service_Authorization_Types.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="device">
+<h1><strong>Device</strong><a class="headerlink" href="#device" title="Link to this heading">¶</a></h1>
+<p>In order to modify, add, delete or do anything else with the data inside buckets, it is necessary to use the device function.</p>
+<section id="instance">
+<h2>Instance<a class="headerlink" href="#instance" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: str</div>
+<div class="line">Device Token</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: Regions: “us-e1” or “ue-w1” or “env”</div>
+<div class="line">Region is a optional parameter</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-e1&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Get information about the current device.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="senddata">
+<h2>sendData<a class="headerlink" href="#senddata" title="Link to this heading">¶</a></h2>
+<p>Send data to device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Device_Type.html#devicedata"><span class="std std-ref">Data</span></a> or list[<a class="reference internal" href="Device_Type.html#devicedata"><span class="std std-ref">Data</span></a>]</div>
+<div class="line">An array or one object with data to be send to TagoIO using device token</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">sendData</span><span class="p">({</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-11-03 13:44:33&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">42.2974279</span><span class="p">,</span> <span class="s2">&quot;lng&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">85.628292</span> <span class="p">},</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="getdata">
+<h2>getData<a class="headerlink" href="#getdata" title="Link to this heading">¶</a></h2>
+<p>Get data from TagoIO Device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>queryParams</strong>: <a class="reference internal" href="Device_Type.html#dataquery"><span class="std std-ref">DataQuery</span></a></div>
+<div class="line">Object with query params</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">getData</span><span class="p">({</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;last_item&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;humidity&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="editdata">
+<h2>editData<a class="headerlink" href="#editdata" title="Link to this heading">¶</a></h2>
+<p>Edit data in a Mutable-type device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Device_Type.html#devicedata"><span class="std std-ref">Data</span></a> or list[<a class="reference internal" href="Device_Type.html#devicedata"><span class="std std-ref">Data</span></a>]</div>
+<div class="line">Array or object with the data to be edited, each object with the data’s ID.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span><span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">editData</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;id_of_the_data_item&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-04-01 12:34:56&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">42.2974279</span><span class="p">,</span> <span class="s2">&quot;lng&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">85.628292</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="deletedata">
+<h2>deleteData<a class="headerlink" href="#deletedata" title="Link to this heading">¶</a></h2>
+<p>Delete data from device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>queryParams</strong>: <a class="reference internal" href="Device_Type.html#dataquery"><span class="std std-ref">DataQuery</span></a></div>
+<div class="line">Object with query params</div>
+<div class="line">If not pass any query param, it will delete the last item</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">});</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">deleteData</span><span class="p">({</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;last_item&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;humidity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="getparameters">
+<h2>getParameters<a class="headerlink" href="#getparameters" title="Link to this heading">¶</a></h2>
+<p>Get parameters from device.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>onlyUnRead</strong>: bool</div>
+<div class="line">set true to get only unread parameters</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">getParameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setparameterasread">
+<h2>setParameterAsRead<a class="headerlink" href="#setparameterasread" title="Link to this heading">¶</a></h2>
+<p>Mark parameter as read.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>parameterID</strong>: GenericID: str</div>
+<div class="line">Parameter identification</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Device</span>
+
+    <span class="n">myDevice</span> <span class="o">=</span> <span class="n">Device</span><span class="p">({</span> <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;my_device_token&quot;</span> <span class="p">})</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">myDevice</span><span class="o">.</span><span class="n">setParameterAsRead</span><span class="p">(</span><span class="n">parameterID</span><span class="o">=</span><span class="s2">&quot;parameter_id&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Device_Type.html"><strong>Device Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Device_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device_Type.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device_Type.html#dataquerydefault">DataQueryDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device_Type.html#dataqueryfirstlast">DataQueryFirstLast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device_Type.html#dataquery">DataQuery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html"><strong>Resources</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Device</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instance">Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#senddata">sendData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getdata">getData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editdata">editData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deletedata">deleteData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getparameters">getParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setparameterasread">setParameterAsRead</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../Resources/ServiceAuthorization/Service_Authorization_Types.html" title="previous chapter"><strong>Service Authorization Types</strong></a></li>
+      <li>Next: <a href="Device_Type.html" title="next chapter"><strong>Device Type</strong></a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../_sources/Device/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dashboards &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dashboard Type" href="Dashboard_Type.html" />
+    <link rel="prev" title="Buckets" href="../Buckets/index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dashboards">
+<h1><strong>Dashboards</strong><a class="headerlink" href="#dashboards" title="Link to this heading">¶</a></h1>
+<p>Manage dashboards in your application.</p>
+<section id="listdashboard">
+<h2>listDashboard<a class="headerlink" href="#listdashboard" title="Link to this heading">¶</a></h2>
+<p>Lists all dashboards from your application with pagination support.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a></div>
+<div class="line">Query parameters to filter and paginate the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Dashboard_Type.html#dashboardinfo"><span class="std std-ref">DashboardInfo</span></a>]</div>
+<div class="line">List of dashboard information objects.</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">listDashboard</span><span class="p">({</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;dashboard-id-123&#39;, &#39;label&#39;: &#39;My Dashboard&#39;, ...}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new dashboard in your application.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardObj</strong>: <a class="reference internal" href="Dashboard_Type.html#dashboardcreateinfo"><span class="std std-ref">DashboardCreateInfo</span></a></div>
+<div class="line">Dashboard configuration object</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict</div>
+<div class="line">Object containing the created dashboard ID</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Create&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;My Dashboard&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;monitoring&quot;</span><span class="p">}]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;dashboard&#39;: &#39;dashboard-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Modifies an existing dashboard’s properties.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboardObj</strong>: dict[str, Any]</div>
+<div class="line">Dictionary with properties to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Edit&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Dashboard&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Deletes a dashboard from the application.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Delete&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Dashboard_Type.html#dashboardinfo"><span class="std std-ref">DashboardInfo</span></a></div>
+<div class="line">Complete dashboard information</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">dashboard_info</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dashboard_info</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;dashboard-id-123&#39;, &#39;label&#39;: &#39;My Dashboard&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="duplicate">
+<h2>duplicate<a class="headerlink" href="#duplicate" title="Link to this heading">¶</a></h2>
+<p>Creates a copy of an existing dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier to duplicate</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>dashboardObj</strong>: dict</div>
+<div class="line">Duplication options</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text"><strong>dashboardObj options:</strong></span><a class="headerlink" href="#id31" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dashboardObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;setup&quot;</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>       <span class="c1"># Custom setup configuration</span>
+    <span class="s2">&quot;new_label&quot;</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>    <span class="c1"># Label for the duplicated dashboard</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict</div>
+<div class="line">Object with dashboard_id and success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Duplicate&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">duplicate</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;new_label&quot;</span><span class="p">:</span> <span class="s2">&quot;Copy of My Dashboard&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;dashboard_id&#39;: &#39;new-dashboard-id&#39;, &#39;message&#39;: &#39;Dashboard duplicated successfully&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="getpublickey">
+<h2>getPublicKey<a class="headerlink" href="#getpublickey" title="Link to this heading">¶</a></h2>
+<p>Generates a new public access token for the dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>expireTime</strong>: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></div>
+<div class="line">Time when token will expire (default: “never”)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Dashboard_Type.html#publickeyresponse"><span class="std std-ref">PublicKeyResponse</span></a></div>
+<div class="line">Object with public token and expiration time</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">public_key</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">getPublicKey</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;1day&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">public_key</span><span class="p">)</span>  <span class="c1"># {&#39;token&#39;: &#39;token-id-123&#39;, &#39;expire_time&#39;: &#39;2025-01-02T00:00:00.000Z&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="listdevicesrelated">
+<h2>listDevicesRelated<a class="headerlink" href="#listdevicesrelated" title="Link to this heading">¶</a></h2>
+<p>Lists all devices associated with the dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Dashboard_Type.html#devicesrelated"><span class="std std-ref">DevicesRelated</span></a>]</div>
+<div class="line">List of devices related to the dashboard</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Related devices&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">listDevicesRelated</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;device-id-123&#39;, &#39;bucket&#39;: &#39;bucket-id&#39;}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="listanalysisrelated">
+<h2>listAnalysisRelated<a class="headerlink" href="#listanalysisrelated" title="Link to this heading">¶</a></h2>
+<p>Lists all analyses associated with a dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Dashboard_Type.html#analysisrelated"><span class="std std-ref">AnalysisRelated</span></a>]</div>
+<div class="line">List of analyses related to the dashboard</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Related analysis&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">analyses</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">listAnalysisRelated</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">analyses</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;analysis-id-123&#39;, &#39;name&#39;: &#39;Analysis #1&#39;}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="runwidgetheaderbuttonanalysis">
+<h2>runWidgetHeaderButtonAnalysis<a class="headerlink" href="#runwidgetheaderbuttonanalysis" title="Link to this heading">¶</a></h2>
+<p>Executes an analysis from a widget’s header button.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>analysisID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The ID of the analysis to run</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The ID of the widget that contains the header button</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>scope</strong>: dict[str, Any]</div>
+<div class="line">Data to send to the analysis (default: {})</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">runWidgetHeaderButtonAnalysis</span><span class="p">(</span>
+    <span class="s2">&quot;analysis-id-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dashboard-id-456&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;widget-id-789&quot;</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;custom_data&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Analysis executed successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets">
+<h2>Widgets<a class="headerlink" href="#widgets" title="Link to this heading">¶</a></h2>
+<p>The Widgets class provides methods to manage dashboard widgets. Access it through <code class="docutils literal notranslate"><span class="pre">resources.dashboards.widgets</span></code>.</p>
+</section>
+<section id="widgets-create">
+<h2>widgets.create<a class="headerlink" href="#widgets-create" title="Link to this heading">¶</a></h2>
+<p>Creates a new widget for a specified dashboard with the given configuration.</p>
+<p><strong>Note:</strong> After created, the widget is not added into the dashboard arrangement. You must edit the dashboard to include it in the arrangement.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetObj</strong>: <a class="reference internal" href="Dashboard_Type.html#widgetinfo"><span class="std std-ref">WidgetInfo</span></a></div>
+<div class="line">Widget configuration object</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict[str, <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Object containing the created widget ID</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Create and Edit&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;origin-id-123&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;last_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;show_units&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;show_variables&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;origin-id-123&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;display&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;widget&#39;: &#39;widget-id-456&#39;}</span>
+
+<span class="c1"># To add the widget size to the dashboard</span>
+<span class="c1"># Before running this, make sure doesn&#39;t have more widgets in the dashboard.</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;arrangement&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;widget_id&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;widget&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;minW&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;minH&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-edit">
+<h2>widgets.edit<a class="headerlink" href="#widgets-edit" title="Link to this heading">¶</a></h2>
+<p>Updates an existing widget’s configuration on a dashboard.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: dict</div>
+<div class="line">Dictionary with widget properties to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Edit&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Temperature&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-delete">
+<h2>widgets.delete<a class="headerlink" href="#widgets-delete" title="Link to this heading">¶</a></h2>
+<p>Permanently removes a widget from a dashboard.</p>
+<p><strong>Note:</strong> After deleted, the widget is not removed from the dashboard arrangement. You must edit the dashboard to remove it from the arrangement.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Delete and Edit&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+
+<span class="c1"># To remove sizes from all widgets from a dashboard</span>
+<span class="c1"># Before running this, make sure doesn&#39;t have more widgets in the dashboard.</span>
+<span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;arrangement&quot;</span><span class="p">:</span> <span class="p">[]})</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-info">
+<h2>widgets.info<a class="headerlink" href="#widgets-info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific widget.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Dashboard_Type.html#widgetinfo"><span class="std std-ref">WidgetInfo</span></a></div>
+<div class="line">Complete widget information</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Dashboard&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;widget-id-456&#39;, &#39;data&#39;: [{&#39;query&#39;: &#39;last_value&#39;, ...}, ...], ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-getdata">
+<h2>widgets.getData<a class="headerlink" href="#widgets-getdata" title="Link to this heading">¶</a></h2>
+<p>Retrieves data or resource list for a specific widget based on the given parameters.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>params</strong>: <a class="reference internal" href="Dashboard_Type.html#getdatamodel"><span class="std std-ref">GetDataModel</span></a></div>
+<div class="line">Query parameters for data retrieval</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">object</div>
+<div class="line">Widget data and configuration</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">getData</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-12-31&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;widget&#39;: {&#39;analysis_run&#39;: None, &#39;dashboard&#39;: &#39;6791456f8b726c0009adccec&#39;, ...}, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-senddata">
+<h2>widgets.sendData<a class="headerlink" href="#widgets-senddata" title="Link to this heading">¶</a></h2>
+<p>Sends new data values to be displayed in the widget.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Dashboard_Type.html#postdatamodel"><span class="std std-ref">PostDataModel</span></a> or list[<a class="reference internal" href="Dashboard_Type.html#postdatamodel"><span class="std std-ref">PostDataModel</span></a>]</div>
+<div class="line">Data to send to the widget</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>bypassBucket</strong>: bool</div>
+<div class="line">Whether to bypass bucket validation (default: False)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">object</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">sendData</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;origin-id-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">25.5</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [&#39;1 Data Added&#39;]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-editdata">
+<h2>widgets.editData<a class="headerlink" href="#widgets-editdata" title="Link to this heading">¶</a></h2>
+<p>Updates existing data values for a specific widget.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Dashboard_Type.html#editdatamodel"><span class="std std-ref">EditDataModel</span></a> or list[<a class="reference internal" href="Dashboard_Type.html#editdatamodel"><span class="std std-ref">EditDataModel</span></a>]</div>
+<div class="line">Data to update</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>bypassBucket</strong>: bool</div>
+<div class="line">Whether to bypass bucket validation (default: False)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">object</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">editData</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;origin-id-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;data-id-789&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">25.5</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Device Data Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-deletedata">
+<h2>widgets.deleteData<a class="headerlink" href="#widgets-deletedata" title="Link to this heading">¶</a></h2>
+<p>Removes multiple data items from the widget by pairs of data ID and resource ID.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>idPairs</strong>: list[str]</div>
+<div class="line">List of data ID and resource ID pairs in format “data_id:resource_id”</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">deleteData</span><span class="p">(</span>
+    <span class="s2">&quot;dashboard-id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;widget-id&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;data_1-id:device_A-id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_2-id:device_A-id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_3-id:device_B-id&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-editresource">
+<h2>widgets.editResource<a class="headerlink" href="#widgets-editresource" title="Link to this heading">¶</a></h2>
+<p>Updates resource values associated with the widget.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>resourceData</strong>: <a class="reference internal" href="Dashboard_Type.html#editdeviceresource"><span class="std std-ref">EditDeviceResource</span></a> or list[<a class="reference internal" href="Dashboard_Type.html#editdeviceresource"><span class="std std-ref">EditDeviceResource</span></a>]</div>
+<div class="line">Resource data to update</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>options</strong>: <a class="reference internal" href="Dashboard_Type.html#editresourceoptions"><span class="std std-ref">EditResourceOptions</span></a></div>
+<div class="line">Edit options</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">object</div>
+<div class="line">Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">editResource</span><span class="p">(</span>
+    <span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;widget-id-456&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;device-id-789&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Device Name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;my-identifier&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Resource Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="widgets-tokengenerate">
+<h2>widgets.tokenGenerate<a class="headerlink" href="#widgets-tokengenerate" title="Link to this heading">¶</a></h2>
+<p>Generates a new authentication token for embedding a widget. Each call regenerates the token.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/dashboards/">Dashboard Overview</a> | <a class="reference external" href="https://docs.tago.io/docs/tagoio/widgets/">Widgets</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>dashboardID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Dashboard identifier</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>widgetID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Widget identifier</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict[str, <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a>]</div>
+<div class="line">Object containing the widget token</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">dashboards</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">tokenGenerate</span><span class="p">(</span><span class="s2">&quot;dashboard-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;widget-id-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;widget_token&#39;: &#39;widget-token-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Dashboard_Type.html"><strong>Dashboard Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#arrangement">Arrangement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#dashboardcreateinfo">DashboardCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#icon">icon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#conditions">conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#filter-conditions">filter_conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#shared">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#blueprintdeviceconfig">BlueprintDeviceConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#dashboardinfo">DashboardInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetdata">WidgetData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetresource">WidgetResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#deviceresourceview">DeviceResourceView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetdeviceresource">WidgetDeviceResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#editdeviceresource">EditDeviceResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#editresourceoptions">EditResourceOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetinfo">WidgetInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#devicesrelated">DevicesRelated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#analysisrelated">AnalysisRelated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#postdatamodel">PostDataModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#blueprintdeviceorigin">BlueprintDeviceOrigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetoverwrite">widgetOverwrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#getdatamodel">GetDataModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#publickeyresponse">PublicKeyResponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#editdatamodel">EditDataModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboard_Type.html#widgetoverwriteoptions">widgetOverwriteOptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Buckets/index.html" title="previous chapter"><strong>Buckets</strong></a></li>
+      <li>Next: <a href="Dashboard_Type.html" title="next chapter"><strong>Dashboard Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Dashboards/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

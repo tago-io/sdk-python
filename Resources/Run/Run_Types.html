@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Run Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Secrets" href="../Secrets/index.html" />
+    <link rel="prev" title="Run" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="run-type">
+<h1><strong>Run Type</strong><a class="headerlink" href="#run-type" title="Link to this heading">¶</a></h1>
+<section id="themeoption">
+<span id="id1"></span><h2>ThemeOption<a class="headerlink" href="#themeoption" title="Link to this heading">¶</a></h2>
+<dl>
+<dt><strong>ThemeOption</strong> =</dt><dd><div class="line-block">
+<div class="line">“actionSchedule” or</div>
+<div class="line">“actionTriggerByData” or</div>
+<div class="line">“actionTriggerByResource” or</div>
+<div class="line">“actionTriggerByMQTT” or</div>
+<div class="line">“alertDangerBackground” or</div>
+<div class="line">“alertInfoBackground” or</div>
+<div class="line">“alertWarningBackground” or</div>
+<div class="line">“analysisExternal” or</div>
+<div class="line">“analysisInternal” or</div>
+<div class="line">“buttonDanger” or</div>
+<div class="line">“buttonDangerText” or</div>
+<div class="line">“buttonDefault” or</div>
+<div class="line">“buttonDefaultText” or</div>
+<div class="line">“buttonDisabled” or</div>
+<div class="line">“buttonDisabledText” or</div>
+<div class="line">“buttonIconLabel” or</div>
+<div class="line">“buttonPrimary” or</div>
+<div class="line">“buttonPrimaryText” or</div>
+<div class="line">“buttonSuccess” or</div>
+<div class="line">“buttonSuccessText” or</div>
+<div class="line">“buttonWarning” or</div>
+<div class="line">“buttonWarningText” or</div>
+<div class="line">“deviceInputOutput1Day” or</div>
+<div class="line">“deviceInputOutput3Days” or</div>
+<div class="line">“deviceInputOutput3Hours” or</div>
+<div class="line">“deviceInputOutput6Hours” or</div>
+<div class="line">“deviceInputOutputRest” or</div>
+<div class="line">“dottedBorder” or</div>
+<div class="line">“dropdownAccent” or</div>
+<div class="line">“dropdownBackground” or</div>
+<div class="line">“floatingSidebarTitle” or</div>
+<div class="line">“footerBackground” or</div>
+<div class="line">“formControlBorder” or</div>
+<div class="line">“gaugeEmpty” or</div>
+<div class="line">“gaugeFill” or</div>
+<div class="line">“gaugePrimaryText” or</div>
+<div class="line">“gaugeSecondaryText” or</div>
+<div class="line">“iconRadioSelected” or</div>
+<div class="line">“iconRadioSubTitle” or</div>
+<div class="line">“informationIcon” or</div>
+<div class="line">“inputBackground” or</div>
+<div class="line">“inputBackgroundReadOnly” or</div>
+<div class="line">“inputError” or</div>
+<div class="line">“inputForeground” or</div>
+<div class="line">“inputForegroundReadOnly” or</div>
+<div class="line">“lightBorder” or</div>
+<div class="line">“limitAlert” or</div>
+<div class="line">“link” or</div>
+<div class="line">“listNavColor” or</div>
+<div class="line">“listTitleLabel” or</div>
+<div class="line">“loading” or</div>
+<div class="line">“loginButton” or</div>
+<div class="line">“loginButtonText” or</div>
+<div class="line">“loginForeground” or</div>
+<div class="line">“loginForm” or</div>
+<div class="line">“modalContainer” or</div>
+<div class="line">“modalOverlay” or</div>
+<div class="line">“navbar” or</div>
+<div class="line">“navbarBetaDeveloperBorder” or</div>
+<div class="line">“navbarButton” or</div>
+<div class="line">“navbarDropdownBorder” or</div>
+<div class="line">“navbarDropdownOption” or</div>
+<div class="line">“navbarDropdownOptionBorder” or</div>
+<div class="line">“navbarText” or</div>
+<div class="line">“navDescription” or</div>
+<div class="line">“notificationButtonAmount” or</div>
+<div class="line">“notificationButtonAmountText” or</div>
+<div class="line">“notificationFilterBackground” or</div>
+<div class="line">“notificationFooter” or</div>
+<div class="line">“notificationItemBorder” or</div>
+<div class="line">“notificationItemDate” or</div>
+<div class="line">“notificationItemTextAccepted” or</div>
+<div class="line">“notificationItemUnread” or</div>
+<div class="line">“primary” or</div>
+<div class="line">“publicPageNavigationBar” or</div>
+<div class="line">“sidebarAccessSelected” or</div>
+<div class="line">“sidebarAccountSelected” or</div>
+<div class="line">“sidebarActionSelected” or</div>
+<div class="line">“sidebarAnalysisSelected” or</div>
+<div class="line">“sidebarBackground” or</div>
+<div class="line">“sidebarBillingSelected” or</div>
+<div class="line">“sidebarBucketSelected” or</div>
+<div class="line">“sidebarDashboardSelected” or</div>
+<div class="line">“sidebarDeviceSelected” or</div>
+<div class="line">“sidebarExploreSelected” or</div>
+<div class="line">“sidebarFileSelected” or</div>
+<div class="line">“sidebarForegroundIcon” or</div>
+<div class="line">“sidebarForegroundText” or</div>
+<div class="line">“sidebarHomeSelected” or</div>
+<div class="line">“sidebarItem” or</div>
+<div class="line">“sidebarRibbon” or</div>
+<div class="line">“sidebarRunSelected” or</div>
+<div class="line">“sidebarSeparator” or</div>
+<div class="line">“sidebarSeparatorForeground” or</div>
+<div class="line">“sidebarUserSelected” or</div>
+<div class="line">“snakeButtonOutline” or</div>
+<div class="line">“svgTagoFont” or</div>
+<div class="line">“svgTagoIOHole” or</div>
+<div class="line">“switchDisabledBackground” or</div>
+<div class="line">“switchSlider” or</div>
+<div class="line">“tabBackground” or</div>
+<div class="line">“tabLabelBorder” or</div>
+<div class="line">“tooltipContainer” or</div>
+<div class="line">“tooltipText” or</div>
+<div class="line">“verticalTabItem” or</div>
+<div class="line">“verticalTabItemBorder” or</div>
+<div class="line">“widgetCardBackground” or</div>
+<div class="line">“widgetIconsAccent” or</div>
+<div class="line">“widgetIconsBackground” or</div>
+<div class="line">“widgetIconsColor” or</div>
+<div class="line">“widgetIconsFooterBasic” or</div>
+<div class="line">“widgetIconsFooterPremium” or</div>
+<div class="line">“auth_bg_opacity” or</div>
+<div class="line">“auth_bg_src” or</div>
+<div class="line">“auth_bg_type” or</div>
+<div class="line">“auth_form_opacity”</div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="sidebar-buttons">
+<span id="id2"></span><h2>sidebar_buttons<a class="headerlink" href="#sidebar-buttons" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>color</strong>: str</div>
+<div class="line"><strong>href</strong>: str</div>
+<div class="line"><strong>iconUrl</strong>: str</div>
+<div class="line"><strong>text</strong>: str</div>
+<div class="line"><strong>type</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="signup-fields">
+<span id="id3"></span><h2>signup_fields<a class="headerlink" href="#signup-fields" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>placeholder</strong>: str</div>
+<div class="line"><strong>required</strong>: bool</div>
+<div class="line"><strong>type</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="feature-devicewifisetup">
+<span id="id4"></span><h2>feature_devicewifisetup<a class="headerlink" href="#feature-devicewifisetup" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>background_color</strong>: str</div>
+<div class="line"><strong>button_cancel_background_color</strong>: str</div>
+<div class="line"><strong>button_cancel_text_color</strong>: str</div>
+<div class="line"><strong>button_confirm_background_color</strong>: str</div>
+<div class="line"><strong>button_confirm_text_color</strong>: str</div>
+<div class="line"><strong>enabled</strong>: bool</div>
+<div class="line"><strong>ip</strong>: str</div>
+<div class="line"><strong>language</strong>: str</div>
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>port</strong>: str</div>
+<div class="line"><strong>protocol</strong>: str</div>
+<div class="line"><strong>text_color</strong>: str</div>
+<div class="line"><strong>translations</strong>: Dict[str, object]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="email-templates">
+<span id="id5"></span><h2>email_templates<a class="headerlink" href="#email-templates" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>subject</strong>: str</div>
+<div class="line"><strong>value</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="typeddict">
+<span id="id6"></span><h2>TypedDict<a class="headerlink" href="#typeddict" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>subject</strong>: str</div>
+<div class="line"><strong>value</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="feature-geolocation">
+<span id="id7"></span><h2>feature_geolocation<a class="headerlink" href="#feature-geolocation" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>buffer_size</strong>: Union[int, float]</div>
+<div class="line"><strong>device</strong>: Union[str, None]</div>
+<div class="line"><strong>enabled</strong>: bool</div>
+<div class="line"><strong>middleware_url</strong>: str</div>
+<div class="line"><strong>minimum_distance</strong>: Union[int, float]</div>
+<div class="line"><strong>minimum_interval</strong>: Union[int, float]</div>
+<div class="line"><strong>target</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="otp">
+<span id="id8"></span><h2>otp<a class="headerlink" href="#otp" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>authenticator</strong>: bool</div>
+<div class="line"><strong>sms</strong>: bool</div>
+<div class="line"><strong>email</strong>: bool</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="runinfo">
+<span id="id9"></span><h2>RunInfo<a class="headerlink" href="#runinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile</strong>: GenericID</div>
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>sub_title</strong>: str</div>
+<div class="line"><strong>url</strong>: str</div>
+<div class="line"><strong>email_domain</strong>: Union[str, None]</div>
+<div class="line"><strong>signup_method</strong>: str</div>
+<div class="line"><strong>favicon</strong>: Union[str, None]</div>
+<div class="line"><strong>logo</strong>: Union[str, None]</div>
+<div class="line"><strong>signup_logo</strong>: Union[str, None]</div>
+<div class="line"><strong>signup_logo_options</strong>: object</div>
+<div class="line"><strong>sidebar_buttons</strong>: list[sidebar_buttons]</div>
+<div class="line"><strong>signup_fields</strong>: list[signup_fields]</div>
+<div class="line"><strong>email_templates</strong>: Dict[str, email_templates]</div>
+<div class="line"><strong>feature_devicewifisetup</strong>: feature_devicewifisetup</div>
+<div class="line"><strong>feature_geolocation</strong>: feature_geolocation</div>
+<div class="line"><strong>theme</strong>: ThemeOption</div>
+<div class="line"><strong>integration</strong>: object</div>
+<div class="line"><strong>sso_saml_active</strong>: bool</div>
+<div class="line"><strong>security</strong>: Dict[str, otp]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="usercreateinfo">
+<span id="id10"></span><h2>UserCreateInfo<a class="headerlink" href="#usercreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>email</strong>: str</div>
+<div class="line"><strong>password**</strong>: str</div>
+<div class="line"><strong>timezone</strong>: str</div>
+<div class="line"><strong>company</strong>: Optional[str]</div>
+<div class="line"><strong>phone</strong>: Optional[str]</div>
+<div class="line"><strong>language</strong>: Optional[str]</div>
+<div class="line"><strong>tags</strong>: Optional[list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line"><strong>active</strong>: Optional[bool]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="userinfo">
+<span id="id11"></span><h2>UserInfo<a class="headerlink" href="#userinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line"><strong>email</strong>: str</div>
+<div class="line"><strong>timezone</strong>: str</div>
+<div class="line"><strong>company</strong>: Optional[str]</div>
+<div class="line"><strong>phone</strong>: Optional[str]</div>
+<div class="line"><strong>language</strong>: Optional[str]</div>
+<div class="line"><strong>tags</strong>: Optional[list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line"><strong>active</strong>: Optional[bool]</div>
+<div class="line"><strong>id</strong>: GenericID</div>
+<div class="line"><strong>profile</strong>: GenericID</div>
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line"><strong>newsletter</strong>: bool</div>
+<div class="line"><strong>last_login</strong>: Union[datetime, None]</div>
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line"><strong>updated_at</strong>: datetime</div>
+<div class="line"><strong>options</strong>: object</div>
+<div class="line"><strong>tags</strong>: list[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="loginresponse">
+<span id="loginresponserunuser"></span><h2>LoginResponse<a class="headerlink" href="#loginresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: GenericToken</div>
+<div class="line"><strong>expire_date</strong>: ExpireTimeOption</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="loginasuseroptions">
+<span id="id12"></span><h2>LoginAsUserOptions<a class="headerlink" href="#loginasuseroptions" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>expire_time</strong>: Optional[str]</div>
+<div class="line">Date to expire the login token.</div>
+</div>
+</div></blockquote>
+<dl>
+<dt><strong>example:</strong></dt><dd><div class="line-block">
+<div class="line">“3 months”, “1 year”, “20 hours”</div>
+<div class="line">:default: “8 hours”</div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="emailtestdata">
+<span id="id13"></span><h2>EmailTestData<a class="headerlink" href="#emailtestdata" title="Link to this heading">¶</a></h2>
+<p>Type for the email test data.</p>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>subject</strong>: str</div>
+<div class="line">Subject of the test email.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>body</strong>: str</div>
+<div class="line">Body content of the test email.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="samlattributemappings">
+<span id="id14"></span><h2>SAMLAttributeMappings<a class="headerlink" href="#samlattributemappings" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line"><strong>firstName</strong>: str</div>
+<div class="line"><strong>lastName</strong>: Optional[str]</div>
+<div class="line"><strong>phone</strong>: Optional[str]</div>
+<div class="line"><strong>company</strong>: Optional[str]</div>
+<div class="line"><strong>language</strong>: Optional[str]</div>
+<div class="line"><strong>timezone</strong>: Optional[str]</div>
+<div class="line"><strong>tags</strong>: Dict[str, str]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sp">
+<span id="id15"></span><h2>sp<a class="headerlink" href="#sp" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>entity_id</strong>: str</div>
+<div class="line"><strong>acs_url</strong>: str</div>
+<div class="line"><strong>metadata</strong>: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="idp">
+<span id="id16"></span><h2>idp<a class="headerlink" href="#idp" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><dl>
+<dt><strong>Attributes:</strong></dt><dd><div class="line-block">
+<div class="line"><strong>issuer</strong>: str</div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="runsamlinfo">
+<span id="id17"></span><h2>RunSAMLInfo<a class="headerlink" href="#runsamlinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sp</strong>: sp</div>
+<div class="line">Information for TagoIO’s API routes to use as a Service Provider in SAML authentication flows.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>idp</strong>: idp</div>
+<div class="line">Relevant information from the Identity Provider’s metadata after being parsed by TagoIO.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>mapping</strong>: SAMLAttributeMappings</div>
+<div class="line">Attribute mappings for the Identity Provider’s attributes to the attributes used in TagoIO.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="runsamleditinfo">
+<span id="id18"></span><h2>RunSAMLEditInfo<a class="headerlink" href="#runsamleditinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>idp_metadata</strong>: Optional[str]</div>
+<div class="line">Identity Provider’s XML metadata encoded in a base 64 string.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>mapping</strong>: SAMLAttributeMappings</div>
+<div class="line">Attribute mappings for the Identity Provider’s attributes to the attributes used in TagoIO.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="customdomaindnsrecord">
+<span id="id19"></span><h2>CustomDomainDnsRecord<a class="headerlink" href="#customdomaindnsrecord" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>status</strong>: bool</div>
+</div>
+<div class="line-block">
+<div class="line">Status for the DNS record check.</div>
+</div>
+<div class="line-block">
+<div class="line">When <cite>true</cite>, the DNS record is properly configured with the provided key and value.</div>
+<div class="line">When <cite>false</cite>, the DNS record is either not yet configured or the <cite>key</cite> exists but the</div>
+<div class="line">value in the DNS record does not match the <cite>value</cite> provided.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>type</strong>: str</div>
+<div class="line">Type of the DNS record.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>key</strong>: str</div>
+<div class="line">Key for key-value pair in the DNS record.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>value</strong>: str</div>
+<div class="line">Value for the key-value pair the DNS record.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>current_value</strong>: Optional[str]</div>
+<div class="line">Current value in the provider’s record for the DNS record’s <cite>key</cite>.</div>
+<div class="line">Only returned when the DNS record has the matching <cite>key</cite> configured.</div>
+</div>
+<div class="line-block">
+<div class="line">When <cite>status</cite> is <cite>true</cite>, the value here will be the same as the one in <cite>value</cite>.</div>
+<div class="line">When <cite>status</cite> is <cite>false</cite>, the value here can is either stale or there was an error</div>
+<div class="line">copying the provided <cite>value</cite> in the DNS provider’s record.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="customdomainresponse">
+<span id="id20"></span><h2>CustomDomainResponse<a class="headerlink" href="#customdomainresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Type for the Custom Domain response from the API, unparsed.</div>
+</div>
+<div class="line-block">
+<div class="line">:internal</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Whether the custom domain is active.</div>
+</div>
+<div class="line-block">
+<div class="line">This is only <cite>true</cite> when all the required DNS records are properly configured in the DNS provider.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>domain</strong>: str</div>
+<div class="line">Configured domain for the RUN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>subdomain</strong>: str</div>
+<div class="line">Configured subdomain for the RUN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Mailing address for the RUN with custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_ssl</strong>: CustomDomainDnsRecord</div>
+<div class="line">DNS record for the SSL certificate.</div>
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_page</strong>: CustomDomainDnsRecord</div>
+<div class="line">DNS record for the page endpoint.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_1</strong>: CustomDomainDnsRecord</div>
+<div class="line">First DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_2</strong>: CustomDomainDnsRecord</div>
+<div class="line">Second DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_3</strong>: CustomDomainDnsRecord</div>
+<div class="line">Third DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: str</div>
+<div class="line">Timestamp (in string format) for when the custom domain was configured.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="customdomaininfo">
+<span id="id21"></span><h2>CustomDomainInfo<a class="headerlink" href="#customdomaininfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Type for the Custom Domain information in a profile’s RUN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Whether the custom domain is active.</div>
+<div class="line">This is only <cite>true</cite> when all the required DNS records are properly configured in the DNS</div>
+<div class="line">provider.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>domain</strong>: str</div>
+<div class="line">Configured domain for the RUN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>subdomain</strong>: str</div>
+<div class="line">Configured subdomain for the RUN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Mailing address for the RUN with custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_ssl</strong>: CustomDomainDnsRecord</div>
+<div class="line">DNS record for the SSL certificate.</div>
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_page</strong>: CustomDomainDnsRecord</div>
+<div class="line">DNS record for the page endpoint.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_1</strong>: CustomDomainDnsRecord</div>
+<div class="line">First DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_2</strong>: CustomDomainDnsRecord</div>
+<div class="line">Second DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dns_email_3</strong>: CustomDomainDnsRecord</div>
+<div class="line">Third DNS record for the e-mail.</div>
+</div>
+<div class="line-block">
+<div class="line">The information in this record needs to be configured in the DNS provider for the custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">Timestamp for when the custom domain was configured.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="customdomaincreate">
+<span id="id22"></span><h2>CustomDomainCreate<a class="headerlink" href="#customdomaincreate" title="Link to this heading">¶</a></h2>
+<p>Type for the data required to configure a profile’s RUN Custom Domain.</p>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>domain</strong>: str</div>
+<div class="line">Domain for the RUN’s custom domain.</div>
+</div>
+<div class="line-block">
+<div class="line">If the desired custom domain is <cite>portal.mycompany.com</cite>, this will be <cite>“mycompany.com”</cite>.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>subdomain</strong>: str</div>
+<div class="line">Subdomain for the RUN’s custom domain.</div>
+<div class="line">If the desired custom domain is <cite>portal.mycompany.com</cite>, this will be <cite>“portal”</cite>.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Mailing address for the RUN with custom domain.</div>
+<div class="line">If the desired custom domain is <cite>portal.mycompany.com</cite>, this can be either <cite>“portal.mycompany.com”</cite> or <cite>“mycompany.com”</cite>.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Run</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Run</strong></a></li>
+      <li>Next: <a href="../Secrets/index.html" title="next chapter"><strong>Secrets</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Run/Run_Types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

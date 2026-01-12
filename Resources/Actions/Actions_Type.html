@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Actions Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Account" href="../Account/index.html" />
+    <link rel="prev" title="Actions" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="actions-type">
+<h1><strong>Actions Type</strong><a class="headerlink" href="#actions-type" title="Link to this heading">¶</a></h1>
+<section id="triggergeofencevaluetype">
+<span id="id1"></span><h2>TriggerGeofenceValueType<a class="headerlink" href="#triggergeofencevaluetype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">center: Optional[List[float]]</div>
+<div class="line">E.g [longitude, latitude]</div>
+</div>
+<div class="line-block">
+<div class="line">radius: Optional[float]</div>
+</div>
+<div class="line-block">
+<div class="line">coordinates: Optional[List[List[float]]]</div>
+<div class="line">E.g [[longitude, latitude], [longitude, latitude], …]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypescriptparams">
+<span id="id2"></span><h2>ActionTypeScriptParams<a class="headerlink" href="#actiontypescriptparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">script: List[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+</div>
+<div class="line-block">
+<div class="line">type: “script”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypenotificationparams">
+<span id="id3"></span><h2>ActionTypeNotificationParams<a class="headerlink" href="#actiontypenotificationparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">message: str</div>
+</div>
+<div class="line-block">
+<div class="line">subject: str</div>
+</div>
+<div class="line-block">
+<div class="line">type: “notification”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypenotificationrunparams">
+<span id="id4"></span><h2>ActionTypeNotificationRunParams<a class="headerlink" href="#actiontypenotificationrunparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">message: str</div>
+</div>
+<div class="line-block">
+<div class="line">subject: str</div>
+</div>
+<div class="line-block">
+<div class="line">run_user: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">type: “notification_run”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypeemailparams">
+<span id="id5"></span><h2>ActionTypeEmailParams<a class="headerlink" href="#actiontypeemailparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">message: str</div>
+</div>
+<div class="line-block">
+<div class="line">subject: str</div>
+</div>
+<div class="line-block">
+<div class="line">to: str</div>
+</div>
+<div class="line-block">
+<div class="line">type: “email”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypesmsparams">
+<span id="id6"></span><h2>ActionTypeSMSParams<a class="headerlink" href="#actiontypesmsparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">message: str</div>
+</div>
+<div class="line-block">
+<div class="line">to: str</div>
+</div>
+<div class="line-block">
+<div class="line">type: “sms”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypemqttparams">
+<span id="id7"></span><h2>ActionTypeMQTTParams<a class="headerlink" href="#actiontypemqttparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">bucket: str</div>
+</div>
+<div class="line-block">
+<div class="line">payload: str</div>
+</div>
+<div class="line-block">
+<div class="line">topic: str</div>
+</div>
+<div class="line-block">
+<div class="line">type: “mqtt”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontypepostparams">
+<span id="id8"></span><h2>ActionTypePostParams<a class="headerlink" href="#actiontypepostparams" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">headers: Dict</div>
+</div>
+<div class="line-block">
+<div class="line">type: “post”</div>
+</div>
+<div class="line-block">
+<div class="line">url: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggerresourcetype">
+<span id="id9"></span><h2>ActionTriggerResourceType<a class="headerlink" href="#actiontriggerresourcetype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">resource: “device” or “bucket” or “file” or “analysis” or “action” or “am” or “user” or “financial” or “profile”</div>
+</div>
+<div class="line-block">
+<div class="line">when: “create” or “update” or “delete”</div>
+</div>
+<div class="line-block">
+<div class="line">tag_key: str</div>
+</div>
+<div class="line-block">
+<div class="line">tag_value: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggerintervaltype">
+<span id="id10"></span><h2>ActionTriggerIntervalType<a class="headerlink" href="#actiontriggerintervaltype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">interval: str</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggercrontype">
+<span id="id11"></span><h2>ActionTriggerCronType<a class="headerlink" href="#actiontriggercrontype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">timezone: Union[str, datetime]</div>
+</div>
+<div class="line-block">
+<div class="line">cron: str</div>
+<div class="line">The cron expression</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggerconditiontype">
+<span id="id12"></span><h2>ActionTriggerConditionType<a class="headerlink" href="#actiontriggerconditiontype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">device: str</div>
+</div>
+<div class="line-block">
+<div class="line">variable: str</div>
+</div>
+<div class="line-block">
+<div class="line">is: <a class="reference internal" href="../../common/Common_Type.html#conditionals"><span class="std std-ref">Conditionals</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">value: str</div>
+</div>
+<div class="line-block">
+<div class="line">second_value: Optional[str]</div>
+</div>
+<div class="line-block">
+<div class="line">value_type: “string” or “number” or “boolean” or “*”</div>
+</div>
+<div class="line-block">
+<div class="line">unlock: Optional[bool]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggerusagetype">
+<span id="id13"></span><h2>ActionTriggerUsageType<a class="headerlink" href="#actiontriggerusagetype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">service_or_resource: “input” or “output” or “analysis” or “data_records” or “sms” or “email” or “run_users” or “push_notification” or “file_storage” or “device” or “dashboard” or “action” or “tcore” or “team_members” or “am”</div>
+</div>
+<div class="line-block">
+<div class="line">condition: “=” or “&gt;”</div>
+</div>
+<div class="line-block">
+<div class="line">condition_value: float</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggergeofencetype">
+<span id="id14"></span><h2>ActionTriggerGeofenceType<a class="headerlink" href="#actiontriggergeofencetype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">device: str</div>
+</div>
+<div class="line-block">
+<div class="line">variable: str</div>
+</div>
+<div class="line-block">
+<div class="line">is: “IN” or “OUT”</div>
+</div>
+<div class="line-block">
+<div class="line">value: <a class="reference internal" href="#triggergeofencevaluetype"><span class="std std-ref">TriggerGeofenceValueType</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">unlock: Optional[bool]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actiontriggertype">
+<span id="id15"></span><h2>ActionTriggerType<a class="headerlink" href="#actiontriggertype" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><p>ActionTriggerType is a Union of:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="#actiontriggerresourcetype"><span class="std std-ref">ActionTriggerResourceType</span></a></div>
+<div class="line"><a class="reference internal" href="#actiontriggerintervaltype"><span class="std std-ref">ActionTriggerIntervalType</span></a></div>
+<div class="line"><a class="reference internal" href="#actiontriggercrontype"><span class="std std-ref">ActionTriggerCronType</span></a></div>
+<div class="line"><a class="reference internal" href="#actiontriggerconditiontype"><span class="std std-ref">ActionTriggerConditionType</span></a></div>
+<div class="line"><a class="reference internal" href="#actiontriggerusagetype"><span class="std std-ref">ActionTriggerUsageType</span></a></div>
+<div class="line"><a class="reference internal" href="#actiontriggergeofencetype"><span class="std std-ref">ActionTriggerGeofenceType</span></a></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actioncreateinfo">
+<span id="id16"></span><h2>ActionCreateInfo<a class="headerlink" href="#actioncreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+<div class="line">The name for the action</div>
+</div>
+<div class="line-block">
+<div class="line">profile: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line">active: Optional[bool]</div>
+<div class="line">True if the action is active or not. The default is true</div>
+</div>
+<div class="line-block">
+<div class="line">tags: Optional[List[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line">An array of tags</div>
+</div>
+<div class="line-block">
+<div class="line">description: Optional[str]</div>
+<div class="line">Description of the action</div>
+</div>
+<div class="line-block">
+<div class="line">lock: Optional[bool]</div>
+</div>
+<div class="line-block">
+<div class="line">type: Optional[str]</div>
+<div class="line">Type of action</div>
+</div>
+<div class="line-block">
+<div class="line">trigger: Optional[List[<a class="reference internal" href="#actiontriggertype"><span class="std std-ref">ActionTriggerType</span></a>]]</div>
+<div class="line">Array of trigger configuration according to type</div>
+</div>
+<div class="line-block">
+<div class="line">action: Dict</div>
+<div class="line">Action configuration</div>
+</div>
+<div class="line-block">
+<div class="line">trigger_when_unlock: Optional[bool]</div>
+<div class="line">Trigger the action when unlock condition is met</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actioninfo-actioncreateinfo">
+<span id="actioninfo"></span><h2>ActionInfo(<a class="reference internal" href="#actioncreateinfo"><span class="std std-ref">ActionCreateInfo</span></a>)<a class="headerlink" href="#actioninfo-actioncreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">last_triggered: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">updated_at: datetime</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: datetime</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="mqttresourceaction">
+<span id="id17"></span><h2>MQTTResourceAction<a class="headerlink" href="#mqttresourceaction" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">client_id: str</div>
+</div>
+<div class="line-block">
+<div class="line">connected_at: str</div>
+</div>
+<div class="line-block">
+<div class="line">disconnect_at: Optional[str]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="actionquery-query">
+<span id="actionquery"></span><h2>ActionQuery(<a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a>)<a class="headerlink" href="#actionquery-query" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">fields: Optional[List[“name” or “active” or “last_triggered” or “created_at” or “updated_at”]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Actions</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Actions</strong></a></li>
+      <li>Next: <a href="../Account/index.html" title="next chapter"><strong>Account</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Actions/Actions_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

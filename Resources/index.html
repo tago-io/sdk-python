@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Resources &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Access" href="Access/index.html" />
+    <link rel="prev" title="TagoIO Python SDK Documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="resources">
+<h1><strong>Resources</strong><a class="headerlink" href="#resources" title="Link to this heading">¶</a></h1>
+<p>To set up an resource object, you need to import the <code class="docutils literal notranslate"><span class="pre">Resources</span></code> class from the <code class="docutils literal notranslate"><span class="pre">tagoio_sdk</span></code> module.</p>
+<section id="instance">
+<h2>Instance<a class="headerlink" href="#instance" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>token</strong>: str</div>
+<div class="line">Token is a optional parameter</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>region</strong>: str “us-e1” or “ue-w1” or “env”</div>
+<div class="line">Region is a optional parameter</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>Example:</strong></span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Access/index.html"><strong>Access</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Access/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Access/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Access/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Access/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Access/index.html#info">info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Access/Access_Type.html"><strong>Access Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Access/Access_Type.html#permissions">Permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Access/Access_Type.html#accesscreateinfo">AccessCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Access/Access_Type.html#accessinfo-accesscreateinfo">AccessInfo(<span class="xref std std-ref">AccessCreateInfo</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Access/Access_Type.html#accessquery-query">AccessQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Actions/index.html"><strong>Actions</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Actions/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Actions/index.html#info">info</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Actions/Actions_Type.html"><strong>Actions Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#triggergeofencevaluetype">TriggerGeofenceValueType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypescriptparams">ActionTypeScriptParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypenotificationparams">ActionTypeNotificationParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypenotificationrunparams">ActionTypeNotificationRunParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypeemailparams">ActionTypeEmailParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypesmsparams">ActionTypeSMSParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypemqttparams">ActionTypeMQTTParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontypepostparams">ActionTypePostParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggerresourcetype">ActionTriggerResourceType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggerintervaltype">ActionTriggerIntervalType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggercrontype">ActionTriggerCronType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggerconditiontype">ActionTriggerConditionType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggerusagetype">ActionTriggerUsageType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggergeofencetype">ActionTriggerGeofenceType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actiontriggertype">ActionTriggerType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actioncreateinfo">ActionCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actioninfo-actioncreateinfo">ActionInfo(<span class="xref std std-ref">ActionCreateInfo</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#mqttresourceaction">MQTTResourceAction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Actions/Actions_Type.html#actionquery-query">ActionQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Account/index.html"><strong>Account</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#passwordchange">passwordChange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#enableotp">enableOTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#disableotp">disableOTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#confirmotp">confirmOTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#tokencreate">tokenCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#login">login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#passwordrecover">passwordRecover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#resendconfirmation">resendConfirmation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#confirmaccount">confirmAccount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#requestloginpincode">requestLoginPINCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#acceptteaminvitation">acceptTeamInvitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Account/index.html#declineteaminvitation">declineTeamInvitation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Account/Account_type.html"><strong>Account Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#accountoptions">AccountOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#accountopt">AccountOpt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#accountinfo">AccountInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#accountcreateinfo">AccountCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#otptype">OTPType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#tokencreateinfo">TokenCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#logincredentials">LoginCredentials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#profilelistinfoforlogin">ProfileListInfoForLogin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Account/Account_type.html#loginresponse">LoginResponse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../regions.html">Regions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis/index.html"><strong>Analysis</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#run">run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#tokengenerate">tokenGenerate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#uploadscript">uploadScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#downloadscript">downloadScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#listsnippets">listSnippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analysis/index.html#getsnippetfile">getSnippetFile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Analysis/Analysis_Type.html"><strong>Analysis Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#scriptfile">ScriptFile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#analysiscreateinfo">AnalysisCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#analysisinfo-analysiscreateinfo">AnalysisInfo(<span class="xref std std-ref">AnalysisCreateInfo</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#analysisquery-query">AnalysisQuery(<span class="xref std std-ref">Query</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#analysislistitem">AnalysisListItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#snippetruntime">SnippetRuntime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#snippetitem">SnippetItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Analysis/Analysis_Type.html#snippetslistresponse">SnippetsListResponse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Billing/index.html"><strong>Billing</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Billing/index.html#getprices">getPrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing/index.html#getsubscription">getSubscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing/index.html#editsubscription">editSubscription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Billing/index.html#editallocation">editAllocation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Billing/Billing_Type.html"><strong>Billing Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingplan">BillingPlan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingaddon">BillingAddOn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingservice">BillingService</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingserviceprice">BillingServicePrice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingallserviceprices">BillingAllServicePrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingplanprices">BillingPlanPrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingplanpriceslist">BillingPlanPrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingaddonprices">BillingAddOnPrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingaddonpriceslist">BillingAddOnPrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingprices">BillingPrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#current-cycle">current_cycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingservicesubscription">BillingServiceSubscription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingsubscriptionservices">BillingSubscriptionServices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingsubscriptionaddons">BillingSubscriptionAddOns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingpaymenterror">BillingPaymentError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingpaymentpastdue">BillingPaymentPastDue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingsubscription">BillingSubscription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingeditsubscription">BillingEditSubscription</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingresourceallocationservices">BillingResourceAllocationServices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingprofileresourceallocation">BillingProfileResourceAllocation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingprofileeditresourceallocation">BillingProfileEditResourceAllocation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Billing/Billing_Type.html#billingeditresourceallocation">BillingEditResourceAllocation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Buckets/index.html"><strong>Buckets</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Buckets/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Buckets/index.html#amount">amount</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Dashboards/index.html"><strong>Dashboards</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#listdashboard">listDashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#duplicate">duplicate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#getpublickey">getPublicKey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#listdevicesrelated">listDevicesRelated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#listanalysisrelated">listAnalysisRelated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#runwidgetheaderbuttonanalysis">runWidgetHeaderButtonAnalysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-create">widgets.create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-edit">widgets.edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-delete">widgets.delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-info">widgets.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-getdata">widgets.getData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-senddata">widgets.sendData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-editdata">widgets.editData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-deletedata">widgets.deleteData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-editresource">widgets.editResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dashboards/index.html#widgets-tokengenerate">widgets.tokenGenerate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Dashboards/Dashboard_Type.html"><strong>Dashboard Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#arrangement">Arrangement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#dashboardcreateinfo">DashboardCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#icon">icon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#conditions">conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#filter-conditions">filter_conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#shared">shared</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#blueprintdeviceconfig">BlueprintDeviceConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#dashboardinfo">DashboardInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetdata">WidgetData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetresource">WidgetResource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#deviceresourceview">DeviceResourceView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetdeviceresource">WidgetDeviceResource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#editdeviceresource">EditDeviceResource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#editresourceoptions">EditResourceOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetinfo">WidgetInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#devicesrelated">DevicesRelated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#analysisrelated">AnalysisRelated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#postdatamodel">PostDataModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#blueprintdeviceorigin">BlueprintDeviceOrigin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetoverwrite">widgetOverwrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#getdatamodel">GetDataModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#publickeyresponse">PublicKeyResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#editdatamodel">EditDataModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dashboards/Dashboard_Type.html#widgetoverwriteoptions">widgetOverwriteOptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Dictionaries/index.html"><strong>Dictionaries</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#languageedit">languageEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#languagedelete">languageDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#languageinfo">languageInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dictionaries/index.html#languageinfobyslug">languageInfoBySlug</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html"><strong>Dictionaries Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#dictionarycreateinfo">DictionaryCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#dictionarylanguage">DictionaryLanguage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#dictionaryinfo-dictionarycreateinfo">DictionaryInfo(<span class="xref std std-ref">DictionaryCreateInfo</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#languagedata">LanguageData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#languageeditdata">LanguageEditData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#languageinfoquery">LanguageInfoQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dictionaries/Dictionaries_Type.html#dictionaryquery-query">DictionaryQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Devices/index.html"><strong>Devices</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#amount">amount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#databackup">dataBackup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#datarestore">dataRestore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#deletechunk">deleteChunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#deletedevicedata">deleteDeviceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#editdevicedata">editDeviceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#emptydevicedata">emptyDeviceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#getchunk">getChunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#getdevicedata">getDeviceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#listdevice">listDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#paramlist">paramList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#paramremove">paramRemove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#paramset">paramSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#senddevicedata">sendDeviceData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#tokencreate">tokenCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#tokendelete">tokenDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Devices/index.html#tokenlist">tokenList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Devices/Devices_Type.html"><strong>Devices Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#bucket">bucket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#deviceinfo">DeviceInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#deviceinfolist">DeviceInfoList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicequery">DeviceQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicelistitem">DeviceListItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#configurationparams">ConfigurationParams</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateresponse">DeviceCreateResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfobasic">DeviceCreateInfoBasic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfobasicmutable">DeviceCreateInfoBasicMutable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfobasicimutable">DeviceCreateInfoBasicImutable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfomutable">DeviceCreateInfoMutable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfoimmutable">DeviceCreateInfoImmutable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicecreateinfo">DeviceCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#deviceeditinfo">DeviceEditInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicetokendatalist">DeviceTokenDataList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#listdevicetokenquery">ListDeviceTokenQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicechunkdata">DeviceChunkData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicedatabackup">DeviceDataBackup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicedatabackupresponse">DeviceDataBackupResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Devices/Devices_Type.html#devicedatarestore">DeviceDataRestore</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Files/index.html"><strong>Files</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#uploadbase64">uploadBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#move">move</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#copy">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#checkpermission">checkPermission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#changepermission">changePermission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#getfileurlsigned">getFileURLSigned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#getfilemd5">getFileMD5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Files/index.html#uploadfile">uploadFile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Files/Files_Type.html"><strong>Files Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#filequery">FileQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#fileinfo">FileInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#filelistinfo">FileListInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#base64file">Base64File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#copyfiles">CopyFiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#movefiles">MoveFiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#filespermission">FilesPermission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Files/Files_Type.html#uploadoptions">UploadOptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Notifications/index.html"><strong>Notifications</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#markasread">markAsRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#markasunread">markAsUnread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#markallasread">markAllAsRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#notificationbutton">notificationButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Notifications/index.html#remove">remove</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Notifications/Notification_Type.html"><strong>Notifications Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationtriggeranalysis">NotificationTriggerAnalysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationtriggerhttp">NotificationTriggerHTTP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationtriggerprofile">NotificationTriggerProfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationbutton">NotificationButton</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationiconimage">NotificationIconImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationiconsvg">NotificationIconSVG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationcreate">NotificationCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationquery-query">NotificationQuery(<span class="xref std std-ref">Query</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationinfo-notificationcreate">NotificationInfo(<span class="xref std std-ref">NotificationCreate</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationinfobasic">NotificationInfoBasic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Notifications/Notification_Type.html#notificationcreatereturn">NotificationCreateReturn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="IntegrationNetwork/index.html"><strong>Integration Network</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#listnetwork">listNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#tokenlist">tokenList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#tokencreate">tokenCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork/index.html#tokendelete">tokenDelete</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html"><strong>Integration Network Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#serial-number">serial_number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#networkideviceparameters">IDeviceParameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#networkcreateinfo">NetworkCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#networkinfo">NetworkInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#devicenetworktoken">DeviceNetworkToken</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#networktokeninfo">NetworkTokenInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#networkquery">NetworkQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationNetwork/IntegrationNetwork_Type.html#listtokenquery">ListTokenQuery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="IntegrationConnector/index.html"><strong>Integration Connector</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationConnector/index.html#delete">delete</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="IntegrationConnector/IntegrationConnector_Type.html"><strong>Integration Connector Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationConnector/IntegrationConnector_Type.html#connectorideviceparameters">IDeviceParameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationConnector/IntegrationConnector_Type.html#connectorcreateinfo">ConnectorCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationConnector/IntegrationConnector_Type.html#connectorinfo-connectorcreateinfo">ConnectorInfo(<span class="xref std std-ref">ConnectorCreateInfo</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="IntegrationConnector/IntegrationConnector_Type.html#connectorquery-query">ConnectorQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Profile/index.html"><strong>Profile</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#summary">summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#tokenlist">tokenList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#delete">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#usagestatisticlist">usageStatisticList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#auditlog">auditLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#auditlogquery">auditLogQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#serviceedit">serviceEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#transfertokentoanotherprofile">transferTokenToAnotherProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#tokencreate">tokenCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#tokendelete">tokenDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#addteammember">addTeamMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#teamlist">teamList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile/index.html#deleteteammember">deleteTeamMember</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Profile/Profile_Types.html"><strong>Profile Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profilelistinfo">ProfileListInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profilelimit">ProfileLimit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profileaddons">ProfileAddOns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#info">info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profileinfo">ProfileInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#amount">amount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#limit-used">limit_used</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profilesummary">ProfileSummary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#usagestatistic">UsageStatistic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#auditlogevent">AuditLogEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#auditlogstatistics">AuditLogStatistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#auditlog">AuditLog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#auditlogfilter">AuditLogFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#addoninfo">AddonInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#statisticsdate">StatisticsDate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profileteam">ProfileTeam</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profilecreateinfo">ProfileCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Profile/Profile_Types.html#profilecredentials">ProfileCredentials</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Run/index.html"><strong>Run</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#listusers">listUsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#userinfo">userInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#usercreate">userCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#useredit">userEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#userdelete">userDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#loginasuser">loginAsUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#emailtest">emailTest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#notificationlist">notificationList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#notificationcreate">notificationCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#notificationedit">notificationEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#notificationdelete">notificationDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#ssosamlinfo">ssoSAMLInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#ssosamledit">ssoSAMLEdit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#createcustomdomain">createCustomDomain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#getcustomdomain">getCustomDomain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#deletecustomdomain">deleteCustomDomain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run/index.html#regeneratecustomdomain">regenerateCustomDomain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Run/Run_Types.html"><strong>Run Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#themeoption">ThemeOption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#sidebar-buttons">sidebar_buttons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#signup-fields">signup_fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#feature-devicewifisetup">feature_devicewifisetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#email-templates">email_templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#typeddict">TypedDict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#feature-geolocation">feature_geolocation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#otp">otp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#runinfo">RunInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#usercreateinfo">UserCreateInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#userinfo">UserInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#loginresponse">LoginResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#loginasuseroptions">LoginAsUserOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#emailtestdata">EmailTestData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#samlattributemappings">SAMLAttributeMappings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#sp">sp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#idp">idp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#runsamlinfo">RunSAMLInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#runsamleditinfo">RunSAMLEditInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#customdomaindnsrecord">CustomDomainDnsRecord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#customdomainresponse">CustomDomainResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#customdomaininfo">CustomDomainInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Run/Run_Types.html#customdomaincreate">CustomDomainCreate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Secrets/index.html"><strong>Secrets</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Secrets/index.html#list">list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Secrets/index.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Secrets/index.html#create">create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Secrets/index.html#edit">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Secrets/index.html#delete">delete</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Secrets/Secrets_Type.html"><strong>Secrets Type</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Secrets/Secrets_Type.html#secretsinfo">SecretsInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Secrets/Secrets_Type.html#secretscreate">SecretsCreate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Secrets/Secrets_Type.html#secretsedit">SecretsEdit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Secrets/Secrets_Type.html#secretsfilter">SecretsFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Secrets/Secrets_Type.html#secretsquery-query">SecretsQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ServiceAuthorization/index.html"><strong>Service Authorization</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ServiceAuthorization/index.html#tokenlist">tokenList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceAuthorization/index.html#tokencreate">tokenCreate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceAuthorization/index.html#tokendelete">tokenDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceAuthorization/index.html#tokenedit">tokenEdit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ServiceAuthorization/Service_Authorization_Types.html"><strong>Service Authorization Types</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ServiceAuthorization/Service_Authorization_Types.html#generictoken">GenericToken</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ServiceAuthorization/Service_Authorization_Types.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ServiceAuthorization/Service_Authorization_Types.html#serviceauthorizationfilter">ServiceAuthorizationFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ServiceAuthorization/Service_Authorization_Types.html#serviceauthorizationquery-query">ServiceAuthorizationQuery(<span class="xref std std-ref">Query</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Resources</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">TagoIO Python SDK Documentation</a></li>
+      <li>Next: <a href="Access/index.html" title="next chapter"><strong>Access</strong></a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../_sources/Resources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

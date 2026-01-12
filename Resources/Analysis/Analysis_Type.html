@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analysis Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Billing" href="../Billing/index.html" />
+    <link rel="prev" title="Analysis" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="analysis-type">
+<h1><strong>Analysis Type</strong><a class="headerlink" href="#analysis-type" title="Link to this heading">¶</a></h1>
+<section id="scriptfile">
+<span id="id1"></span><h2>ScriptFile<a class="headerlink" href="#scriptfile" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+</div>
+<div class="line-block">
+<div class="line">content: <a class="reference internal" href="../../common/Common_Type.html#base64"><span class="std std-ref">Base64</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">language: “node” or “python”</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="analysiscreateinfo">
+<span id="id2"></span><h2>AnalysisCreateInfo<a class="headerlink" href="#analysiscreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+</div>
+<div class="line-block">
+<div class="line">description: Optional[str]</div>
+</div>
+<div class="line-block">
+<div class="line">interval: Optional[str]</div>
+</div>
+<div class="line-block">
+<div class="line">run_on: Optional[“tago” or “external”]</div>
+</div>
+<div class="line-block">
+<div class="line">file_name: Optional[str]</div>
+</div>
+<div class="line-block">
+<div class="line">runtime: Optional[“node” or “python”]</div>
+</div>
+<div class="line-block">
+<div class="line">active: Optional[bool]</div>
+</div>
+<div class="line-block">
+<div class="line">profile: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+</div>
+<div class="line-block">
+<div class="line">variables: Optional[List[Dict[str, Union[str, int, bool]]]]</div>
+</div>
+<div class="line-block">
+<div class="line">tags: Optional[List[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="analysisinfo-analysiscreateinfo">
+<span id="analysisinfo"></span><h2>AnalysisInfo(<a class="reference internal" href="#analysiscreateinfo"><span class="std std-ref">AnalysisCreateInfo</span></a>)<a class="headerlink" href="#analysisinfo-analysiscreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">token: str</div>
+</div>
+<div class="line-block">
+<div class="line">last_run: <a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a></div>
+</div>
+<div class="line-block">
+<div class="line">created_at: datetime</div>
+</div>
+<div class="line-block">
+<div class="line">updated_at: datetime</div>
+</div>
+<div class="line-block">
+<div class="line">locked_at: Any</div>
+</div>
+<div class="line-block">
+<div class="line">console: Optional[List[str]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="analysisquery-query">
+<span id="analysisquery"></span><h2>AnalysisQuery(<a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a>)<a class="headerlink" href="#analysisquery-query" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">fields: Optional[List[“name” or “active” or “run_on” or “last_run” or “created_at” or “updated_at”]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="analysislistitem">
+<span id="id3"></span><h2>AnalysisListItem<a class="headerlink" href="#analysislistitem" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+</div>
+<div class="line-block">
+<div class="line">name: Optional[str]</div>
+</div>
+<div class="line-block">
+<div class="line">active: Optional[bool]</div>
+</div>
+<div class="line-block">
+<div class="line">run_on: Optional[“tago” or “external”]</div>
+</div>
+<div class="line-block">
+<div class="line">last_run: Optional[<a class="reference internal" href="../../common/Common_Type.html#expiretimeoption"><span class="std std-ref">ExpireTimeOption</span></a>]</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: Optional[datetime]</div>
+</div>
+<div class="line-block">
+<div class="line">updated_at: Optional[datetime]</div>
+</div>
+<div class="line-block">
+<div class="line">locked_at: Optional[datetime]</div>
+</div>
+<div class="line-block">
+<div class="line">console: Optional[List[str]]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="snippetruntime">
+<span id="id4"></span><h2>SnippetRuntime<a class="headerlink" href="#snippetruntime" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Available runtime environments for snippets.</p>
+<p><strong>Type:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Literal[“node-legacy”, “python-legacy”, “node-rt2025”, “python-rt2025”, “deno-rt2025”]</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="snippetitem">
+<span id="id5"></span><h2>SnippetItem<a class="headerlink" href="#snippetitem" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Individual snippet metadata.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: str</div>
+<div class="line">Unique identifier for the snippet</div>
+</div>
+<div class="line-block">
+<div class="line">title: str</div>
+<div class="line">Human-readable title</div>
+</div>
+<div class="line-block">
+<div class="line">description: str</div>
+<div class="line">Description of what the snippet does</div>
+</div>
+<div class="line-block">
+<div class="line">language: str</div>
+<div class="line">Programming language (typescript, javascript, python)</div>
+</div>
+<div class="line-block">
+<div class="line">tags: List[str]</div>
+<div class="line">Array of tags for categorization</div>
+</div>
+<div class="line-block">
+<div class="line">filename: str</div>
+<div class="line">Filename of the snippet</div>
+</div>
+<div class="line-block">
+<div class="line">file_path: str</div>
+<div class="line">Full path to the file in the runtime directory</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="snippetslistresponse">
+<span id="id6"></span><h2>SnippetsListResponse<a class="headerlink" href="#snippetslistresponse" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>API response containing all snippets metadata for a runtime.</p>
+<p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">runtime: <a class="reference internal" href="#snippetruntime"><span class="std std-ref">SnippetRuntime</span></a></div>
+<div class="line">Runtime environment identifier</div>
+</div>
+<div class="line-block">
+<div class="line">schema_version: int</div>
+<div class="line">Schema version for the API response format</div>
+</div>
+<div class="line-block">
+<div class="line">generated_at: str</div>
+<div class="line">ISO timestamp when the response was generated</div>
+</div>
+<div class="line-block">
+<div class="line">snippets: List[<a class="reference internal" href="#snippetitem"><span class="std std-ref">SnippetItem</span></a>]</div>
+<div class="line">Array of all available snippets for this runtime</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Analysis</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Analysis</strong></a></li>
+      <li>Next: <a href="../Billing/index.html" title="next chapter"><strong>Billing</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Analysis/Analysis_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

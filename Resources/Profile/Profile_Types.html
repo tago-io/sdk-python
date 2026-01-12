@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Profile Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Run" href="../Run/index.html" />
+    <link rel="prev" title="Profile" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="profile-type">
+<h1><strong>Profile Type</strong><a class="headerlink" href="#profile-type" title="Link to this heading">¶</a></h1>
+<section id="profilelistinfo">
+<span id="id1"></span><h2>ProfileListInfo<a class="headerlink" href="#profilelistinfo" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the information of a profile in a list.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The ID of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">The name of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>logo_url</strong>: str</div>
+<div class="line">The URL of the profile’s logo.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profilelimit">
+<span id="id2"></span><h2>ProfileLimit<a class="headerlink" href="#profilelimit" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the limits of a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>input</strong>: Union[int, float]</div>
+<div class="line">The limit for input.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>output</strong>: Union[int, float]</div>
+<div class="line">The limit for output.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>sms</strong>: Union[int, float]</div>
+<div class="line">The limit for SMS.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: Union[int, float]</div>
+<div class="line">The limit for email.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>analysis</strong>: Union[int, float]</div>
+<div class="line">The limit for analysis.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data_records</strong>: Union[int, float]</div>
+<div class="line">The limit for data records.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>run_users</strong>: Union[int, float]</div>
+<div class="line">The limit for run users.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>push_notification</strong>: Union[int, float]</div>
+<div class="line">The limit for push notifications.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file_storage</strong>: Union[int, float]</div>
+<div class="line">The limit for file storage.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profileaddons">
+<span id="id3"></span><h2>ProfileAddOns<a class="headerlink" href="#profileaddons" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the add-ons of a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>custom_dns</strong>: bool</div>
+<div class="line">Whether the profile has the Custom Domain add-on purchased.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>mobile</strong>: bool</div>
+<div class="line">Whether the profile has the Custom Mobile App add-on purchased.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="info">
+<span id="id4"></span><h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the information of a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The ID of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>account</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The ID of the account associated with the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">The name of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>logo_url</strong>: str</div>
+<div class="line">The URL of the profile’s logo.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>banner_url</strong>: str</div>
+<div class="line">The URL of the profile’s banner.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">The datetime when the profile was created.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>updated_at</strong>: datetime</div>
+<div class="line">The datetime when the profile was last updated.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profileinfo">
+<span id="id5"></span><h2>ProfileInfo<a class="headerlink" href="#profileinfo" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the information of a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>info</strong>: <a class="reference internal" href="#info"><span class="std std-ref">info</span></a></div>
+<div class="line">The information of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>allocation</strong>: <a class="reference internal" href="#profilelimit"><span class="std std-ref">ProfileLimit</span></a></div>
+<div class="line">The limits allocation of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>addons</strong>: <a class="reference internal" href="#profileaddons"><span class="std std-ref">ProfileAddOns</span></a></div>
+<div class="line">The add-ons of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>account_plan</strong>: str</div>
+<div class="line">The account plan associated with the profile.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="amount">
+<span id="id6"></span><h2>amount<a class="headerlink" href="#amount" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the amount of resources used by a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>device</strong>: Union[int, float]</div>
+<div class="line">The amount of devices used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bucket</strong>: Union[int, float]</div>
+<div class="line">The amount of buckets used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboard</strong>: Union[int, float]</div>
+<div class="line">The amount of dashboards used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dashboard_shared</strong>: Union[int, float]</div>
+<div class="line">The amount of shared dashboards used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>analysis</strong>: Union[int, float]</div>
+<div class="line">The amount of analyses used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>action</strong>: Union[int, float]</div>
+<div class="line">The amount of actions used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>am</strong>: Union[int, float]</div>
+<div class="line">The amount of AMs used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>run_users</strong>: Union[int, float]</div>
+<div class="line">The amount of run users used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>dictionary</strong>: Union[int, float]</div>
+<div class="line">The amount of dictionaries used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>connectors</strong>: Union[int, float]</div>
+<div class="line">The amount of connectors used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>networks</strong>: Union[int, float]</div>
+<div class="line">The amount of networks used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tcore</strong>: Union[int, float]</div>
+<div class="line">The amount of Tcore used.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="limit-used">
+<span id="id7"></span><h2>limit_used<a class="headerlink" href="#limit-used" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the limits used by a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>input</strong>: Union[int, float]</div>
+<div class="line">The amount of input used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>output</strong>: Union[int, float]</div>
+<div class="line">The amount of output used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>analysis</strong>: Union[int, float]</div>
+<div class="line">The amount of analysis used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>sms</strong>: Union[int, float]</div>
+<div class="line">The amount of SMS used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: Union[int, float]</div>
+<div class="line">The amount of email used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data_records</strong>: Union[int, float]</div>
+<div class="line">The amount of data records used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>run_users</strong>: Union[int, float]</div>
+<div class="line">The amount of run users used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>push_notification</strong>: Union[int, float]</div>
+<div class="line">The amount of push notifications used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file_storage</strong>: Union[int, float]</div>
+<div class="line">The amount of file storage used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tcore</strong>: Union[int, float]</div>
+<div class="line">The amount of Tcore used.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profilesummary">
+<span id="id8"></span><h2>ProfileSummary<a class="headerlink" href="#profilesummary" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the summary of a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>limit</strong>: <a class="reference internal" href="#profilelimit"><span class="std std-ref">ProfileLimit</span></a></div>
+<div class="line">The limits of the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>amount</strong>: <a class="reference internal" href="#amount"><span class="std std-ref">amount</span></a></div>
+<div class="line">The amount of resources used by the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>limit_used</strong>: <a class="reference internal" href="#limit-used"><span class="std std-ref">limit_used</span></a></div>
+<div class="line">The limits used by the profile.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>addons</strong>: <a class="reference internal" href="#profileaddons"><span class="std std-ref">ProfileAddOns</span></a></div>
+<div class="line">The add-ons of the profile.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="usagestatistic">
+<span id="id9"></span><h2>UsageStatistic<a class="headerlink" href="#usagestatistic" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing a single usage statistic with timestamp.</p>
+<p>Not all of the services will be present for every statistic, only if for the usage period the service was used.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>time</strong>: datetime</div>
+<div class="line">Timestamp for the usage statistic.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>input</strong>: Union[int, float]</div>
+<div class="line">Input data usage.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>output</strong>: Union[int, float]</div>
+<div class="line">Output data usage.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>analysis</strong>: Union[int, float]</div>
+<div class="line">Analysis execution time used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>sms</strong>: Union[int, float]</div>
+<div class="line">SMS messages sent.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: Union[int, float]</div>
+<div class="line">Email messages sent.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data_records</strong>: Union[int, float]</div>
+<div class="line">Data records stored.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>run_users</strong>: Union[int, float]</div>
+<div class="line">Run users used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>push_notification</strong>: Union[int, float]</div>
+<div class="line">Push notifications sent.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>file_storage</strong>: Union[int, float]</div>
+<div class="line">File storage used.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tcore</strong>: Union[int, float]</div>
+<div class="line">TCore resources used.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="auditlogevent">
+<span id="id10"></span><h2>AuditLogEvent<a class="headerlink" href="#auditlogevent" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing a single audit log event.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>resourceName</strong>: str</div>
+<div class="line">Name of the resource that triggered the event.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>message</strong>: str</div>
+<div class="line">Descriptive message about the event.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>resourceID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the resource that triggered the event.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>who</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">ID of the account that performed the action.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>date</strong>: datetime</div>
+<div class="line">Timestamp when the event occurred.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="auditlogstatistics">
+<span id="id11"></span><h2>AuditLogStatistics<a class="headerlink" href="#auditlogstatistics" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing statistics for an audit log query.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>recordsMatched</strong>: int</div>
+<div class="line">Number of records that matched the query.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>recordsScanned</strong>: int</div>
+<div class="line">Number of records scanned during the query.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bytesScanned</strong>: int</div>
+<div class="line">Number of bytes scanned during the query.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="auditlog">
+<span id="id12"></span><h2>AuditLog<a class="headerlink" href="#auditlog" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing an audit log query result.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>events</strong>: list[<a class="reference internal" href="#auditlogevent"><span class="std std-ref">AuditLogEvent</span></a>]</div>
+<div class="line">List of audit log events.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>statistics</strong>: <a class="reference internal" href="#auditlogstatistics"><span class="std std-ref">AuditLogStatistics</span></a></div>
+<div class="line">Statistics about the query execution.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>status</strong>: Literal[“Running”, “Complete”, “Failed”, “Timeout”, “Unknown”]</div>
+<div class="line">Current status of the audit log query.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>queryId</strong>: str</div>
+<div class="line">Unique identifier for the audit log query.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="auditlogfilter">
+<span id="id13"></span><h2>AuditLogFilter<a class="headerlink" href="#auditlogfilter" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing filters for audit log queries.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>resourceID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Filter by specific resource ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>resourceName</strong>: Literal[“action”, “am”, “analysis”, “connector”, “dashboard”, “device”, “dictionary”, “network”, “profile”, “run”, “runuser”]</div>
+<div class="line">Filter by resource type.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>find</strong>: str</div>
+<div class="line">Search string for filtering events.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>start_date</strong>: Union[str, datetime]</div>
+<div class="line">Start date for the query range.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>end_date</strong>: Union[str, datetime]</div>
+<div class="line">End date for the query range.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>limit</strong>: int</div>
+<div class="line">Maximum number of results to return.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="addoninfo">
+<span id="id14"></span><h2>AddonInfo<a class="headerlink" href="#addoninfo" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing profile addon information.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>id</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">The addon ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">The addon name.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>logo_url</strong>: Optional[str]</div>
+<div class="line">URL of the addon’s logo.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="statisticsdate">
+<span id="id15"></span><h2>StatisticsDate<a class="headerlink" href="#statisticsdate" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing parameters for fetching usage statistics.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>timezone</strong>: str</div>
+<div class="line">Timezone to be used in the statistics entries (default: “UTC”).</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>date</strong>: Union[str, datetime]</div>
+<div class="line">Timestamp for fetching hourly statistics in a day.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>start_date</strong>: Union[str, datetime]</div>
+<div class="line">Starting date for fetching statistics in an interval.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>end_date</strong>: Union[str, datetime]</div>
+<div class="line">End date for fetching statistics in an interval.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>periodicity</strong>: Literal[“hour”, “day”, “month”]</div>
+<div class="line">Periodicity of the statistics to fetch (default: “hour”).</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profileteam">
+<span id="id16"></span><h2>ProfileTeam<a class="headerlink" href="#profileteam" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing a team member with access to a profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>active</strong>: bool</div>
+<div class="line">Whether the team member’s access is active.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>created_at</strong>: datetime</div>
+<div class="line">When the team member was added.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Email address of the team member.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>id</strong>: str</div>
+<div class="line">Account ID of the team member.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Name of the team member.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profilecreateinfo">
+<span id="id17"></span><h2>ProfileCreateInfo<a class="headerlink" href="#profilecreateinfo" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing the information needed to create a new profile.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>name</strong>: str</div>
+<div class="line">Name of the profile to be created.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="profilecredentials">
+<span id="id18"></span><h2>ProfileCredentials<a class="headerlink" href="#profilecredentials" title="Link to this heading">¶</a></h2>
+<p>TypedDict representing credentials required for sensitive profile operations.</p>
+<blockquote>
+<div><p><strong>Properties:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>password</strong>: str</div>
+<div class="line">Account password.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>pin_code</strong>: str</div>
+<div class="line">Two-factor authentication PIN code (required when 2FA is enabled).</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>Profile</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>Profile</strong></a></li>
+      <li>Next: <a href="../Run/index.html" title="next chapter"><strong>Run</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Profile/Profile_Types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Integration Network &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Network Type" href="IntegrationNetwork_Type.html" />
+    <link rel="prev" title="Notifications Type" href="../Notifications/Notification_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="integration-network">
+<h1><strong>Integration Network</strong><a class="headerlink" href="#integration-network" title="Link to this heading">¶</a></h1>
+<p>Manage integration networks in the account.</p>
+<section id="listnetwork">
+<h2>listNetwork<a class="headerlink" href="#listnetwork" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of all networks from the account with pagination support.
+Use this to retrieve and manage networks in your application.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration">Network Integration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="IntegrationNetwork_Type.html#networkquery"><span class="std std-ref">NetworkQuery</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">List[<a class="reference internal" href="IntegrationNetwork_Type.html#networkinfo"><span class="std std-ref">NetworkInfo</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">networks</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">listNetwork</span><span class="p">({</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">networks</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;network-id-123&#39;, &#39;name&#39;: &#39;My Network&#39;, ...}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific network.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration">Network Integration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>fields</strong>: List[str]</div>
+<div class="line">Fields to retrieve (default: [“id”, “name”])</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="IntegrationNetwork_Type.html#networkinfo"><span class="std std-ref">NetworkInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">network_info</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">network_info</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;...&#39;, &#39;name&#39;: &#39;My Network&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new integration network in the account.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration#create-a-new-integration">Creating a Network Integration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkObj</strong>: <a class="reference internal" href="IntegrationNetwork_Type.html#networkcreateinfo"><span class="std std-ref">NetworkCreateInfo</span></a></div>
+<div class="line">Network information</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Dict[str, str]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Create&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">new_network</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Custom Network&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom integration network&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;middleware_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://my-middleware.com/endpoint&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;public&quot;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_network</span><span class="p">)</span>  <span class="c1"># {&#39;network&#39;: &#39;network-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Modifies any property of an existing network.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>networkObj</strong>: <a class="reference internal" href="IntegrationNetwork_Type.html#networkcreateinfo"><span class="std std-ref">NetworkCreateInfo</span></a></div>
+<div class="line">Network information to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Edit&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Network Name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated description&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;public&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Permanently deletes a network from the account.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Delete&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokenlist">
+<h2>tokenList<a class="headerlink" href="#tokenlist" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of all authentication tokens for a network with optional filtering.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration#tokens-and-getting-devices">Tokens and Getting Devices</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="IntegrationNetwork_Type.html#listtokenquery"><span class="std std-ref">ListTokenQuery</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;permission&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">List[<a class="reference internal" href="IntegrationNetwork_Type.html#networktokeninfo"><span class="std std-ref">NetworkTokenInfo</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">tokenList</span><span class="p">(</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;permission&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  <span class="c1"># [{&#39;name&#39;: &#39;Default Token&#39;, &#39;token&#39;: &#39;...&#39;, &#39;permission&#39;: &#39;full&#39;, ...}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokencreate">
+<h2>tokenCreate<a class="headerlink" href="#tokencreate" title="Link to this heading">¶</a></h2>
+<p>Generates and retrieves a new authentication token for a network.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration#tokens-and-getting-devices">Tokens and Getting Devices</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>networkID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Network ID</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tokenParams</strong>: <a class="reference internal" href="IntegrationNetwork_Type.html#integrationtokendata"><span class="std std-ref">TokenData</span></a></div>
+<div class="line">Parameters for the new token</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse"><span class="std std-ref">TokenCreateResponse</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Create Token&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">tokenCreate</span><span class="p">(</span><span class="s2">&quot;network-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Production Token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;permission&quot;</span><span class="p">:</span> <span class="s2">&quot;write&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expire_time&quot;</span><span class="p">:</span> <span class="s2">&quot;never&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;token&#39;: &#39;new-token-value&#39;, &#39;expire_date&#39;: None}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokendelete">
+<h2>tokenDelete<a class="headerlink" href="#tokendelete" title="Link to this heading">¶</a></h2>
+<p>Permanently deletes an authentication token.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/integrations/general/creating-a-network-integration#tokens-and-getting-devices">Tokens and Getting Devices</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>token</strong>: <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a></div>
+<div class="line">Token to delete</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;Integration Network&quot; / &quot;Delete Token&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">tokenDelete</span><span class="p">(</span><span class="s2">&quot;token-to-delete&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="IntegrationNetwork_Type.html"><strong>Integration Network Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#serial-number">serial_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#networkideviceparameters">IDeviceParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#networkcreateinfo">NetworkCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#networkinfo">NetworkInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#devicenetworktoken">DeviceNetworkToken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#networktokeninfo">NetworkTokenInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#networkquery">NetworkQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntegrationNetwork_Type.html#listtokenquery">ListTokenQuery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Notifications/Notification_Type.html" title="previous chapter"><strong>Notifications Type</strong></a></li>
+      <li>Next: <a href="IntegrationNetwork_Type.html" title="next chapter"><strong>Integration Network Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/IntegrationNetwork/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

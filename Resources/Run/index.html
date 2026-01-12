@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Run &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Run Type" href="Run_Types.html" />
+    <link rel="prev" title="Profile Type" href="../Profile/Profile_Types.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="run">
+<h1><strong>Run</strong><a class="headerlink" href="#run" title="Link to this heading">¶</a></h1>
+<p>Manage TagoRUN environment configuration and users.</p>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves information about the current Run environment configuration.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/run-themes">Run Themes</a></p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Run_Types.html#runinfo"><span class="std std-ref">RunInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Profile** / **Access TagoRun settings** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;My Run Environment&#39;, &#39;logo&#39;: &#39;https://example.com/logo.png&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Updates the Run environment configuration settings.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a> | <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/run-themes">Run Themes</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: dict</div>
+<div class="line">Run configuration data to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Profile** / **Edit TagoRun settings** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">edit</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Run Environment&quot;</span><span class="p">,</span> <span class="s2">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/logo.png&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># TagoIO Run Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="listusers">
+<h2>listUsers<a class="headerlink" href="#listusers" title="Link to this heading">¶</a></h2>
+<p>Retrieves a paginated list of Run users with customizable fields and filtering options.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>query</strong>: <a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a></div>
+<div class="line">Query parameters for filtering and sorting</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text"><strong>Default query:</strong></span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Run_Types.html#userinfo"><span class="std std-ref">UserInfo</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, or return empty list check policy **Run User** / **Access** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">listUsers</span><span class="p">({</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;user-id-123&#39;, &#39;name&#39;: &#39;John Doe&#39;, &#39;email&#39;: &#39;example@email.com&#39;}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="userinfo">
+<h2>userInfo<a class="headerlink" href="#userinfo" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific Run user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Run_Types.html#userinfo"><span class="std std-ref">UserInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Access** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">userInfo</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;user-id-123&#39;, &#39;name&#39;: &#39;John Doe&#39;, &#39;email&#39;: &#39;example@email.com&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="usercreate">
+<h2>userCreate<a class="headerlink" href="#usercreate" title="Link to this heading">¶</a></h2>
+<p>Creates a new user in the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#usercreateinfo"><span class="std std-ref">UserCreateInfo</span></a></div>
+<div class="line">User creation data</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Create** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">userCreate</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;john@example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;secure123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;America/New_York&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;user&#39;: &#39;user-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="useredit">
+<h2>userEdit<a class="headerlink" href="#useredit" title="Link to this heading">¶</a></h2>
+<p>Updates information for an existing Run user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: dict</div>
+<div class="line">User data to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Edit** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">userEdit</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Name&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># TagoIO Run User Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="userdelete">
+<h2>userDelete<a class="headerlink" href="#userdelete" title="Link to this heading">¶</a></h2>
+<p>Permanently deletes a user from the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/191-tagorun">TagoRun</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Delete** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">userDelete</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="loginasuser">
+<h2>loginAsUser<a class="headerlink" href="#loginasuser" title="Link to this heading">¶</a></h2>
+<p>Generates a login token to authenticate as a specific Run user.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>options</strong>: <a class="reference internal" href="Run_Types.html#loginasuseroptions"><span class="std std-ref">LoginAsUserOptions</span></a></div>
+<div class="line">Login options (e.g., expire_time)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="../Account/Account_type.html#loginresponse"><span class="std std-ref">LoginResponse</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Login as user** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">loginAsUser</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">])</span>  <span class="c1"># eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="emailtest">
+<h2>emailTest<a class="headerlink" href="#emailtest" title="Link to this heading">¶</a></h2>
+<p>Tests the email configuration by sending a test message.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#emailtestdata"><span class="std std-ref">EmailTestData</span></a></div>
+<div class="line">Email test data with subject and body</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">emailTest</span><span class="p">({</span><span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Email&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;This is a test message&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># E-mail sent to example@email.com</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="notificationlist">
+<h2>notificationList<a class="headerlink" href="#notificationlist" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of notifications for a specific Run user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/223-notifications-for-users">Notifications for Users</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="../Notifications/Notification_Type.html#notificationinfo"><span class="std std-ref">NotificationInfo(NotificationCreate)</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Access notification** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">notificationList</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;notification-id-123&#39;, &#39;title&#39;: &#39;System Update&#39;, &#39;message&#39;: &#39;Features&#39;, ...}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="notificationcreate">
+<h2>notificationCreate<a class="headerlink" href="#notificationcreate" title="Link to this heading">¶</a></h2>
+<p>Creates a new notification for a Run user.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/223-notifications-for-users">Notifications for Users</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>userID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">User identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="../Notifications/Notification_Type.html#notificationcreate"><span class="std std-ref">NotificationCreate</span></a></div>
+<div class="line">Notification data</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="../Notifications/Notification_Type.html#notificationcreatereturn"><span class="std std-ref">NotificationCreateReturn</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Create notification** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">notificationCreate</span><span class="p">(</span><span class="s2">&quot;user-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Update&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;New feature available&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;notification-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="notificationedit">
+<h2>notificationEdit<a class="headerlink" href="#notificationedit" title="Link to this heading">¶</a></h2>
+<p>Updates an existing notification in the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/223-notifications-for-users">Notifications for Users</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Notification identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>data</strong>: dict</div>
+<div class="line">Notification data to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Edit notification** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">notificationEdit</span><span class="p">(</span><span class="s2">&quot;notification-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Title&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># TagoIO Notification User Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="notificationdelete">
+<h2>notificationDelete<a class="headerlink" href="#notificationdelete" title="Link to this heading">¶</a></h2>
+<p>Deletes a notification from the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/223-notifications-for-users">Notifications for Users</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>notificationID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Notification identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Run User** / **Delete notification** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">notificationDelete</span><span class="p">(</span><span class="s2">&quot;notification-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="ssosamlinfo">
+<h2>ssoSAMLInfo<a class="headerlink" href="#ssosamlinfo" title="Link to this heading">¶</a></h2>
+<p>Retrieves the SAML Single Sign-On configuration information for the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/491-single-sign-on-sso">Single Sign-On (SSO)</a></p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Run_Types.html#runsamlinfo"><span class="std std-ref">RunSAMLInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">ssoSAMLInfo</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;sp&#39;: {&#39;entity_id&#39;: &#39;https://example.com&#39;, ...}, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="ssosamledit">
+<h2>ssoSAMLEdit<a class="headerlink" href="#ssosamledit" title="Link to this heading">¶</a></h2>
+<p>Updates the SAML SSO configuration for the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/491-single-sign-on-sso">Single Sign-On (SSO)</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>data</strong>: <a class="reference internal" href="Run_Types.html#runsamleditinfo"><span class="std std-ref">RunSAMLEditInfo</span></a></div>
+<div class="line">SAML SSO configuration data</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">ssoSAMLEdit</span><span class="p">({</span>
+    <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;idp_metadata&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;xml&gt;...&lt;/xml&gt;&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># TagoIO Run SAML SSO Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="createcustomdomain">
+<h2>createCustomDomain<a class="headerlink" href="#createcustomdomain" title="Link to this heading">¶</a></h2>
+<p>Creates a custom domain configuration for the Run environment.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/custom-domain-configuration">Custom Domain Configuration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>customDomainData</strong>: <a class="reference internal" href="Run_Types.html#customdomaincreate"><span class="std std-ref">CustomDomainCreate</span></a></div>
+<div class="line">Custom domain configuration data</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">createCustomDomain</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;app.mycompany.com&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Custom domain created successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="getcustomdomain">
+<h2>getCustomDomain<a class="headerlink" href="#getcustomdomain" title="Link to this heading">¶</a></h2>
+<p>Retrieves the custom domain configuration for a Run profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/custom-domain-configuration">Custom Domain Configuration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Run_Types.html#customdomaininfo"><span class="std std-ref">CustomDomainInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">getCustomDomain</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;domain&#39;: &#39;app.mycompany.com&#39;, &#39;verified&#39;: True, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="deletecustomdomain">
+<h2>deleteCustomDomain<a class="headerlink" href="#deletecustomdomain" title="Link to this heading">¶</a></h2>
+<p>Removes the custom domain configuration from a Run profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/custom-domain-configuration">Custom Domain Configuration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">deleteCustomDomain</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Custom domain deleted successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="regeneratecustomdomain">
+<h2>regenerateCustomDomain<a class="headerlink" href="#regeneratecustomdomain" title="Link to this heading">¶</a></h2>
+<p>Regenerates the custom domain configuration for a Run profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/custom-domain-configuration">Custom Domain Configuration</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profile_id</strong>: str</div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">regenerateCustomDomain</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Custom domain regenerated successfully</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Run_Types.html"><strong>Run Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#themeoption">ThemeOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#sidebar-buttons">sidebar_buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#signup-fields">signup_fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#feature-devicewifisetup">feature_devicewifisetup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#email-templates">email_templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#typeddict">TypedDict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#feature-geolocation">feature_geolocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#otp">otp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#runinfo">RunInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#usercreateinfo">UserCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#userinfo">UserInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#loginresponse">LoginResponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#loginasuseroptions">LoginAsUserOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#emailtestdata">EmailTestData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#samlattributemappings">SAMLAttributeMappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#sp">sp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#idp">idp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#runsamlinfo">RunSAMLInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#runsamleditinfo">RunSAMLEditInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#customdomaindnsrecord">CustomDomainDnsRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#customdomainresponse">CustomDomainResponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#customdomaininfo">CustomDomainInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run_Types.html#customdomaincreate">CustomDomainCreate</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../Profile/Profile_Types.html" title="previous chapter"><strong>Profile Type</strong></a></li>
+      <li>Next: <a href="Run_Types.html" title="next chapter"><strong>Run Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Run/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

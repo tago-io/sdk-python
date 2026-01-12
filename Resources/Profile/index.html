@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Profile &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Profile Type" href="Profile_Types.html" />
+    <link rel="prev" title="Integration Connector Type" href="../IntegrationConnector/IntegrationConnector_Type.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="profile">
+<h1><strong>Profile</strong><a class="headerlink" href="#profile" title="Link to this heading">¶</a></h1>
+<p>Manage profiles in your TagoIO account.</p>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific profile using its ID or ‘current’ for the active profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/198-profiles">Profiles</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification (use “current” for the active profile)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Profile_Types.html#profileinfo"><span class="std std-ref">ProfileInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Account** / **Access profile** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">profile_info</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="c1"># Or get current profile</span>
+<span class="n">current_profile</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;current&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">profile_info</span><span class="p">)</span>  <span class="c1"># {&#39;info&#39;: {&#39;id&#39;: &#39;profile-id-123&#39;, &#39;account&#39;: &#39;account-id-123&#39;, ...}, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of all profiles associated with the current account.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/198-profiles">Profiles</a></p>
+<blockquote>
+<div><p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Profile_Types.html#profilelistinfo"><span class="std std-ref">ProfileListInfo</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Account** / **Access profile** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;profile-id-123&#39;, &#39;name&#39;: &#39;Profile Test&#39;, ...}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="summary">
+<h2>summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h2>
+<p>Retrieves a summary of the profile’s usage and statistics.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/198-profiles">Profiles</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Profile_Types.html#profilesummary"><span class="std std-ref">ProfileSummary</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Account** / **Access profile** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;amount&#39;: {&#39;device&#39;: 10, &#39;bucket&#39;: 10, &#39;dashboard&#39;: 5, ...}, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokenlist">
+<h2>tokenList<a class="headerlink" href="#tokenlist" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of all tokens associated with a specific profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/495-account-token">Account Token</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a></div>
+<div class="line">Query parameters to filter the results</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;permission&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;orderBy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="s2">&quot;asc&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="../../common/Common_Type.html#tokendatalist"><span class="std std-ref">TokenDataList</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">tokenList</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;permission&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;name&#39;: &#39;Token #1&#39;, &#39;token&#39;: &#39;token-value&#39;, &#39;permission&#39;: &#39;full&#39;, ...}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new profile with the specified name and optional resource allocation settings.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/198-profiles">Profiles</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileObj</strong>: <a class="reference internal" href="Profile_Types.html#profilecreateinfo"><span class="std std-ref">ProfileCreateInfo</span></a></div>
+<div class="line">Profile information to create</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>allocate_free_resources</strong>: bool</div>
+<div class="line">Whether to allocate free resources to the new profile (default: False)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict with key “id” containing the new profile ID</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Profile&quot;</span><span class="p">},</span> <span class="n">allocate_free_resources</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;id&#39;: &#39;profile-id-123&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Updates profile information with the provided data.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/198-profiles">Profiles</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>profileObj</strong>: dict</div>
+<div class="line">Profile information to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Profile Name&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Permanently removes a profile from the account.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication (2FA)</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>credentials</strong>: <a class="reference internal" href="Profile_Types.html#profilecredentials"><span class="std std-ref">ProfileCredentials</span></a></div>
+<div class="line">Account credentials (password and pin_code if 2FA is enabled)</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="c1"># The &quot;pin_code&quot; field is required when 2FA is activated</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span><span class="p">,</span> <span class="s2">&quot;pin_code&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="usagestatisticlist">
+<h2>usageStatisticList<a class="headerlink" href="#usagestatisticlist" title="Link to this heading">¶</a></h2>
+<p>Retrieves usage statistics for a profile within a specified time period.</p>
+<p>Usage statistics are cumulative: if a service was not used in a time period, the statistics for that time period will not be in the object.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>dateObj</strong>: <a class="reference internal" href="Profile_Types.html#statisticsdate"><span class="std std-ref">StatisticsDate</span></a></div>
+<div class="line">Date range and periodicity parameters</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Profile_Types.html#usagestatistic"><span class="std std-ref">UsageStatistic</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy **Account** / **Access profile statistics** in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">usageStatisticList</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-09-01&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-12-31&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;periodicity&quot;</span><span class="p">:</span> <span class="s2">&quot;day&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;time&#39;: &#39;2024-09-02T00:01:29.749Z&#39;, &#39;analysis&#39;: 0.07, &#39;data_records&#39;: 67254, ...}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="auditlog">
+<h2>auditLog<a class="headerlink" href="#auditlog" title="Link to this heading">¶</a></h2>
+<p>Creates a new audit log query for tracking profile activities.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/audit-log">Audit Log</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>filterObj</strong>: <a class="reference internal" href="Profile_Types.html#auditlogfilter"><span class="std std-ref">AuditLogFilter</span></a></div>
+<div class="line">Filters to apply to the audit log query</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Profile_Types.html#auditlog"><span class="std std-ref">AuditLog</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">auditLog</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-12-01&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-12-07&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="auditlogquery">
+<h2>auditLogQuery<a class="headerlink" href="#auditlogquery" title="Link to this heading">¶</a></h2>
+<p>Retrieves audit log entries using a previously created query.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/audit-log">Audit Log</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>queryId</strong>: str</div>
+<div class="line">Query ID from a previous auditLog call</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="Profile_Types.html#auditlog"><span class="std std-ref">AuditLog</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">auditLogQuery</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;query-id-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="serviceedit">
+<h2>serviceEdit<a class="headerlink" href="#serviceedit" title="Link to this heading">¶</a></h2>
+<p>Updates service configuration and resource limits for a profile.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>serviceObj</strong>: dict</div>
+<div class="line">Service configuration and resource limits to update</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">serviceEdit</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="mi">350000</span><span class="p">,</span>
+    <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="mi">342153</span><span class="p">,</span>
+    <span class="s2">&quot;analysis&quot;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Profile resource allocation Successfully Updated</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="transfertokentoanotherprofile">
+<h2>transferTokenToAnotherProfile<a class="headerlink" href="#transfertokentoanotherprofile" title="Link to this heading">¶</a></h2>
+<p>Transfers the current authentication token to another profile.</p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>targetProfileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Target profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">transferTokenToAnotherProfile</span><span class="p">(</span><span class="s2">&quot;target-profile-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokencreate">
+<h2>tokenCreate<a class="headerlink" href="#tokencreate" title="Link to this heading">¶</a></h2>
+<p>Creates a new authentication token for the specified profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/495-account-token">Account Token</a></p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/526-two-factor-authentication">Two-Factor Authentication (2FA)</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>tokenParams</strong>: <a class="reference internal" href="../../common/Common_Type.html#commontokendata"><span class="std std-ref">TokenData</span></a></div>
+<div class="line">Token parameters including name, permission, email, and password</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse"><span class="std std-ref">TokenCreateResponse</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="c1"># The &quot;pin_code&quot; / &quot;otp_type&quot; field is required when 2FA is activated</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">tokenCreate</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;API Access&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;permission&quot;</span><span class="p">:</span> <span class="s2">&quot;full&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;example@email.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;your-password&quot;</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {&#39;token&#39;: &#39;token-value&#39;, &#39;name&#39;: &#39;API Access&#39;, ...}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tokendelete">
+<h2>tokenDelete<a class="headerlink" href="#tokendelete" title="Link to this heading">¶</a></h2>
+<p>Revokes and removes an authentication token from the profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/495-account-token">Account Token</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>token</strong>: <a class="reference internal" href="../../common/Common_Type.html#generictoken"><span class="std std-ref">GenericToken</span></a></div>
+<div class="line">Token to be deleted</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">tokenDelete</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;token-xyz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Token Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="addteammember">
+<h2>addTeamMember<a class="headerlink" href="#addteammember" title="Link to this heading">¶</a></h2>
+<p>Adds a new team member to the profile using their email address.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/106-sharing-your-profile">Team Management - Sharing your Profile</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>email</strong>: str</div>
+<div class="line">Email address of the team member to invite</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">addTeamMember</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># User invited</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="teamlist">
+<h2>teamList<a class="headerlink" href="#teamlist" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list of all team members that have access to the specified profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/106-sharing-your-profile">Team Management - Sharing your Profile</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="Profile_Types.html#profileteam"><span class="std std-ref">ProfileTeam</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR-PROFILE-TOKEN&quot;</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">teamList</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [{&#39;id&#39;: &#39;account-id-123&#39;, &#39;active&#39;: False, &#39;name&#39;: &#39;John Doe&#39;, ...}, ...]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="deleteteammember">
+<h2>deleteTeamMember<a class="headerlink" href="#deleteteammember" title="Link to this heading">¶</a></h2>
+<p>Removes a team member from the profile.</p>
+<p>See: <a class="reference external" href="https://help.tago.io/portal/en/kb/articles/106-sharing-your-profile">Team Management - Sharing your Profile</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>profileID</strong>: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Profile identification</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>accountId</strong>: str</div>
+<div class="line">Account ID of the team member to remove</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">str - Success message</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">deleteTeamMember</span><span class="p">(</span><span class="s2">&quot;profile-id-123&quot;</span><span class="p">,</span> <span class="s2">&quot;account-id-456&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># Account Successfully Removed</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Profile_Types.html"><strong>Profile Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilelistinfo">ProfileListInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilelimit">ProfileLimit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profileaddons">ProfileAddOns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#info">info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profileinfo">ProfileInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#amount">amount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#limit-used">limit_used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilesummary">ProfileSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#usagestatistic">UsageStatistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#auditlogevent">AuditLogEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#auditlogstatistics">AuditLogStatistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#auditlog">AuditLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#auditlogfilter">AuditLogFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#addoninfo">AddonInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#statisticsdate">StatisticsDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profileteam">ProfileTeam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilecreateinfo">ProfileCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Profile_Types.html#profilecredentials">ProfileCredentials</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../IntegrationConnector/IntegrationConnector_Type.html" title="previous chapter"><strong>Integration Connector Type</strong></a></li>
+      <li>Next: <a href="Profile_Types.html" title="next chapter"><strong>Profile Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/Profile/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
