@@ -226,3 +226,230 @@ TypedDict representing the summary of a profile.
 
         | **addons**: :ref:`ProfileAddOns`
         | The add-ons of the profile.
+
+
+.. _UsageStatistic:
+
+UsageStatistic
+-----------------
+TypedDict representing a single usage statistic with timestamp.
+
+Not all of the services will be present for every statistic, only if for the usage period the service was used.
+
+    **Properties:**
+
+        | **time**: datetime
+        | Timestamp for the usage statistic.
+
+        | **input**: Union[int, float]
+        | Input data usage.
+
+        | **output**: Union[int, float]
+        | Output data usage.
+
+        | **analysis**: Union[int, float]
+        | Analysis execution time used.
+
+        | **sms**: Union[int, float]
+        | SMS messages sent.
+
+        | **email**: Union[int, float]
+        | Email messages sent.
+
+        | **data_records**: Union[int, float]
+        | Data records stored.
+
+        | **run_users**: Union[int, float]
+        | Run users used.
+
+        | **push_notification**: Union[int, float]
+        | Push notifications sent.
+
+        | **file_storage**: Union[int, float]
+        | File storage used.
+
+        | **tcore**: Union[int, float]
+        | TCore resources used.
+
+
+.. _AuditLogEvent:
+
+AuditLogEvent
+-----------------
+TypedDict representing a single audit log event.
+
+    **Properties:**
+
+        | **resourceName**: str
+        | Name of the resource that triggered the event.
+
+        | **message**: str
+        | Descriptive message about the event.
+
+        | **resourceID**: :ref:`GenericID`
+        | ID of the resource that triggered the event.
+
+        | **who**: :ref:`GenericID`
+        | ID of the account that performed the action.
+
+        | **date**: datetime
+        | Timestamp when the event occurred.
+
+
+.. _AuditLogStatistics:
+
+AuditLogStatistics
+------------------
+TypedDict representing statistics for an audit log query.
+
+    **Properties:**
+
+        | **recordsMatched**: int
+        | Number of records that matched the query.
+
+        | **recordsScanned**: int
+        | Number of records scanned during the query.
+
+        | **bytesScanned**: int
+        | Number of bytes scanned during the query.
+
+
+.. _AuditLog:
+
+AuditLog
+-----------------
+TypedDict representing an audit log query result.
+
+    **Properties:**
+
+        | **events**: list[:ref:`AuditLogEvent`]
+        | List of audit log events.
+
+        | **statistics**: :ref:`AuditLogStatistics`
+        | Statistics about the query execution.
+
+        | **status**: Literal["Running", "Complete", "Failed", "Timeout", "Unknown"]
+        | Current status of the audit log query.
+
+        | **queryId**: str
+        | Unique identifier for the audit log query.
+
+
+.. _AuditLogFilter:
+
+AuditLogFilter
+-----------------
+TypedDict representing filters for audit log queries.
+
+    **Properties:**
+
+        | **resourceID**: :ref:`GenericID`
+        | Filter by specific resource ID.
+
+        | **resourceName**: Literal["action", "am", "analysis", "connector", "dashboard", "device", "dictionary", "network", "profile", "run", "runuser"]
+        | Filter by resource type.
+
+        | **find**: str
+        | Search string for filtering events.
+
+        | **start_date**: Union[str, datetime]
+        | Start date for the query range.
+
+        | **end_date**: Union[str, datetime]
+        | End date for the query range.
+
+        | **limit**: int
+        | Maximum number of results to return.
+
+
+.. _AddonInfo:
+
+AddonInfo
+-----------------
+TypedDict representing profile addon information.
+
+    **Properties:**
+
+        | **id**: :ref:`GenericID`
+        | The addon ID.
+
+        | **name**: str
+        | The addon name.
+
+        | **logo_url**: Optional[str]
+        | URL of the addon's logo.
+
+
+.. _StatisticsDate:
+
+StatisticsDate
+-----------------
+TypedDict representing parameters for fetching usage statistics.
+
+    **Properties:**
+
+        | **timezone**: str
+        | Timezone to be used in the statistics entries (default: "UTC").
+
+        | **date**: Union[str, datetime]
+        | Timestamp for fetching hourly statistics in a day.
+
+        | **start_date**: Union[str, datetime]
+        | Starting date for fetching statistics in an interval.
+
+        | **end_date**: Union[str, datetime]
+        | End date for fetching statistics in an interval.
+
+        | **periodicity**: Literal["hour", "day", "month"]
+        | Periodicity of the statistics to fetch (default: "hour").
+
+
+.. _ProfileTeam:
+
+ProfileTeam
+-----------------
+TypedDict representing a team member with access to a profile.
+
+    **Properties:**
+
+        | **active**: bool
+        | Whether the team member's access is active.
+
+        | **created_at**: datetime
+        | When the team member was added.
+
+        | **email**: str
+        | Email address of the team member.
+
+        | **id**: str
+        | Account ID of the team member.
+
+        | **name**: str
+        | Name of the team member.
+
+
+.. _ProfileCreateInfo:
+
+ProfileCreateInfo
+-----------------
+TypedDict representing the information needed to create a new profile.
+
+    **Properties:**
+
+        | **name**: str
+        | Name of the profile to be created.
+
+
+.. _ProfileCredentials:
+
+ProfileCredentials
+------------------
+TypedDict representing credentials required for sensitive profile operations.
+
+    **Properties:**
+
+        | **password**: str
+        | Account password.
+
+        | **pin_code**: str
+        | Two-factor authentication PIN code (required when 2FA is enabled).
