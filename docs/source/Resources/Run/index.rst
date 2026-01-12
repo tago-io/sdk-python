@@ -1,320 +1,543 @@
-
 **Run**
-========
-
-Manage services in account.
-
 =======
+
+Manage TagoRUN environment configuration and users.
+
+====
 info
-=======
+====
 
-Get information about the TagoRUN service.
+Retrieves information about the current Run environment configuration.
 
-        **Returns**
-
-            | **result**: :ref:`RunInfo`
-            | Information about the TagoRUN service.
-
-
-=======
-edit
-=======
-
-Edit the TagoRUN service information.
-
-    **Parameters:**
-
-        | **data**: :ref:`RunInfo`
-        | Updated information for the TagoRUN service.
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_ | `Run Themes <https://help.tago.io/portal/en/kb/articles/run-themes>`_
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | :ref:`RunInfo`
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Profile** / **Access TagoRun settings** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.info()
+        print(result)  # {'name': 'My Run Environment', 'logo': 'https://example.com/logo.png', ...}
 
 
-============
+====
+edit
+====
+
+Updates the Run environment configuration settings.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_ | `Run Themes <https://help.tago.io/portal/en/kb/articles/run-themes>`_
+
+    **Parameters:**
+
+        | **data**: dict
+        | Run configuration data to update
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Profile** / **Edit TagoRun settings** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.edit({"name": "My Run Environment", "logo": "https://example.com/logo.png"})
+        print(result)  # TagoIO Run Successfully Updated
+
+
+=========
 listUsers
-============
+=========
 
-List users in the TagoRUN service.
+Retrieves a paginated list of Run users with customizable fields and filtering options.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
 
         | **query**: :ref:`Query`
-        | Query parameters for filtering and sorting the user list.
+        | Query parameters for filtering and sorting
+
+        .. code-block::
+            :caption: **Default query:**
+
+            query = {
+                "page": 1,
+                "fields": ["id", "name"],
+                "filter": {},
+                "amount": 20,
+                "orderBy": ["name", "asc"]
+            }
 
     **Returns:**
 
-        | **result**: list[:ref:`UserInfo`]
-        | List of user information.
+        | list[:ref:`UserInfo`]
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", or return empty list check policy **Run User** / **Access** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.listUsers({
+            "page": 1,
+            "fields": ["id", "name", "email"],
+            "amount": 20
+        })
+        print(result)  # [{'id': 'user-id-123', 'name': 'John Doe', 'email': 'example@email.com'}]
 
 
-============
+========
 userInfo
-============
+========
 
-Get information about a specific user in the TagoRUN service.
+Retrieves detailed information about a specific Run user.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
 
         | **userID**: :ref:`GenericID`
-        | ID of the user.
+        | User identification
 
     **Returns:**
 
-        | **result**: :ref:`UserInfo`
-        | Information about the user.
+        | :ref:`UserInfo`
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Access** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.userInfo("user-id-123")
+        print(result)  # {'id': 'user-id-123', 'name': 'John Doe', 'email': 'example@email.com', ...}
 
 
-================
+==========
 userCreate
-================
+==========
 
-Create a new user in the TagoRUN service.
+Creates a new user in the Run environment.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
 
         | **data**: :ref:`UserCreateInfo`
-        | Information for creating the user.
+        | User creation data
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | dict
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Create** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.userCreate({
+            "name": "John Doe",
+            "email": "john@example.com",
+            "password": "secure123",
+            "timezone": "America/New_York"
+        })
+        print(result)  # {'user': 'user-id-123'}
 
 
-================
-userCreate
-================
-
-Create a new user in the TagoRUN service.
-
-    **Parameters:**
-
-        | **data**: :ref:`UserCreateInfo`
-        | Information for creating the user.
-
-    **Returns:**
-
-        | **result**: str
-        | Success message.
-
-
-================
+========
 userEdit
-================
+========
 
-Edit information about a specific user in the TagoRUN service.
+Updates information for an existing Run user.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
 
         | **userID**: :ref:`GenericID`
-        | ID of the user.
+        | User identification
 
-        | **data**: :ref:`UserInfo`
-        | Updated information for the user.
+        | **data**: dict
+        | User data to update
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Edit** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.userEdit("user-id-123", {"name": "Updated Name"})
+        print(result)  # TagoIO Run User Successfully Updated
 
 
-==================
+==========
 userDelete
-==================
+==========
 
-Delete a specific user from the TagoRUN service.
+Permanently deletes a user from the Run environment.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
 
         | **userID**: :ref:`GenericID`
-        | ID of the user.
+        | User identification
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Delete** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.userDelete("user-id-123")
+        print(result)  # Successfully Removed
 
 
-==================
+===========
 loginAsUser
+===========
+
+Generates a login token to authenticate as a specific Run user.
+
+    **Parameters:**
+
+        | **userID**: :ref:`GenericID`
+        | User identification
+
+        | *Optional* **options**: :ref:`LoginAsUserOptions`
+        | Login options (e.g., expire_time)
+
+    **Returns:**
+
+        | :ref:`LoginResponse`
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Login as user** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.loginAsUser("user-id-123")
+        print(result["token"])  # eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...
+
+
+=========
+emailTest
+=========
+
+Tests the email configuration by sending a test message.
+
+    **Parameters:**
+
+        | **data**: :ref:`EmailTestData`
+        | Email test data with subject and body
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.emailTest({"subject": "Test Email", "body": "This is a test message"})
+        print(result)  # E-mail sent to example@email.com
+
+
+================
+notificationList
+================
+
+Retrieves a list of notifications for a specific Run user.
+
+See: `Notifications for Users <https://help.tago.io/portal/en/kb/articles/223-notifications-for-users>`_
+
+    **Parameters:**
+
+        | **userID**: :ref:`GenericID`
+        | User identification
+
+    **Returns:**
+
+        | list[:ref:`NotificationInfo`]
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Access notification** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.notificationList("user-id-123")
+        print(result)  # [{'id': 'notification-id-123', 'title': 'System Update', 'message': 'Features', ...}]
+
+
+==================
+notificationCreate
 ==================
 
-Log in as a specific user in the TagoRUN service.
+Creates a new notification for a Run user.
+
+See: `Notifications for Users <https://help.tago.io/portal/en/kb/articles/223-notifications-for-users>`_
 
     **Parameters:**
 
         | **userID**: :ref:`GenericID`
-        | ID of the user.
-
-        | **options**: Optional[:ref:`LoginAsUserOptions`]
-        | Additional options for the login.
-
-    **Returns:**
-
-        | **result**: :ref:`LoginResponseRunUser`
-        | Login response.
-
-
-================
-emailTest
-================
-
-Send a test email from the TagoRUN service.
-
-    **Parameters:**
-
-        | **data**: :ref:`EmailBase`
-        | Email data including subject and body.
-
-    **Returns:**
-
-        | **result**: str
-        | Success message.
-
-
-======================
-notificationList
-======================
-
-List notifications for a specific user in the TagoRUN service.
-
-    **Parameters:**
-
-        | **userID**: :ref:`GenericID`
-        | ID of the user.
-
-    **Returns:**
-
-        | **result**: list[:ref:`NotificationInfo`]
-        | List of notification information.
-
-
-======================
-notificationCreate
-======================
-
-Create a new notification for a specific user in the TagoRUN service.
-
-    **Parameters:**
-
-        | **userID**: :ref:`GenericID`
-        | ID of the user.
+        | User identification
 
         | **data**: :ref:`NotificationCreate`
-        | Information for creating the notification.
+        | Notification data
 
     **Returns:**
 
-        | **result**: :ref:`NotificationCreateReturn`
-        | Information about the created notification.
+        | :ref:`NotificationCreateReturn`
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Create notification** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.notificationCreate("user-id-123", {
+            "title": "Update",
+            "message": "New feature available"
+        })
+        print(result)  # {'id': 'notification-id-123'}
 
 
-======================
+================
 notificationEdit
-======================
+================
 
-Edit information about a specific notification in the TagoRUN service.
+Updates an existing notification in the Run environment.
+
+See: `Notifications for Users <https://help.tago.io/portal/en/kb/articles/223-notifications-for-users>`_
 
     **Parameters:**
 
         | **notificationID**: :ref:`GenericID`
-        | ID of the notification.
+        | Notification identification
 
-        | **data**: :ref:`NotificationCreate`
-        | Updated information for the notification.
+        | **data**: dict
+        | Notification data to update
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Edit notification** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.notificationEdit("notification-id-123", {"title": "Updated Title"})
+        print(result)  # TagoIO Notification User Successfully Updated
 
 
-======================
+==================
 notificationDelete
-======================
+==================
 
-Delete a specific notification from the TagoRUN service.
+Deletes a notification from the Run environment.
+
+See: `Notifications for Users <https://help.tago.io/portal/en/kb/articles/223-notifications-for-users>`_
 
     **Parameters:**
 
         | **notificationID**: :ref:`GenericID`
-        | ID of the notification.
+        | Notification identification
 
     **Returns:**
 
-        | **result**: str
-        | Success message.
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Delete notification** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.notificationDelete("notification-id-123")
+        print(result)  # Successfully Removed
 
 
-============
+===========
 ssoSAMLInfo
-============
+===========
 
-Get the SAML Single Sign-On information for the account's RUN.
+Retrieves the SAML Single Sign-On configuration information for the Run environment.
+
+See: `Single Sign-On (SSO) <https://help.tago.io/portal/en/kb/articles/491-single-sign-on-sso>`_
+
+    **Returns:**
+
+        | :ref:`RunSAMLInfo`
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.ssoSAMLInfo()
+        print(result)  # {'sp': {'entity_id': 'https://example.com', ...}, ...}
 
 
-============
+===========
 ssoSAMLEdit
-============
+===========
 
-Edit the SAML Single Sign-On metadata and mappings for the account's RUN.
+Updates the SAML SSO configuration for the Run environment.
+
+See: `Single Sign-On (SSO) <https://help.tago.io/portal/en/kb/articles/491-single-sign-on-sso>`_
 
     **Parameters:**
 
         | **data**: :ref:`RunSAMLEditInfo`
-        | Updated data for a RUN's SAML Single Sign-On configuration.
+        | SAML SSO configuration data
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.ssoSAMLEdit({
+            "active": True,
+            "idp_metadata": "<xml>...</xml>"
+        })
+        print(result)  # TagoIO Run SAML SSO Successfully Updated
 
 
-===================
+==================
 createCustomDomain
-===================
+==================
 
-Create a TagoRUN custom domain for the profile.
+Creates a custom domain configuration for the Run environment.
+
+See: `Custom Domain Configuration <https://help.tago.io/portal/en/kb/articles/custom-domain-configuration>`_
 
     **Parameters:**
 
-            | **profile_id**: str
-            | ID of the profile
+        | **profile_id**: str
+        | Profile identification
+
+        | **customDomainData**: :ref:`CustomDomainCreate`
+        | Custom domain configuration data
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.createCustomDomain("profile-id-123", {
+            "domain": "app.mycompany.com"
+        })
+        print(result)  # Custom domain created successfully
+
+
+===============
+getCustomDomain
+===============
+
+Retrieves the custom domain configuration for a Run profile.
+
+See: `Custom Domain Configuration <https://help.tago.io/portal/en/kb/articles/custom-domain-configuration>`_
+
+    **Parameters:**
+
+        | **profile_id**: str
+        | Profile identification
+
+    **Returns:**
+
+        | :ref:`CustomDomainInfo`
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.getCustomDomain("profile-id-123")
+        print(result)  # {'domain': 'app.mycompany.com', 'verified': True, ...}
+
+
+==================
+deleteCustomDomain
+==================
+
+Removes the custom domain configuration from a Run profile.
+
+See: `Custom Domain Configuration <https://help.tago.io/portal/en/kb/articles/custom-domain-configuration>`_
+
+    **Parameters:**
+
+        | **profile_id**: str
+        | Profile identification
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.deleteCustomDomain("profile-id-123")
+        print(result)  # Custom domain deleted successfully
+
+
+======================
+regenerateCustomDomain
+======================
+
+Regenerates the custom domain configuration for a Run profile.
+
+See: `Custom Domain Configuration <https://help.tago.io/portal/en/kb/articles/custom-domain-configuration>`_
+
+    **Parameters:**
+
+        | **profile_id**: str
+        | Profile identification
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        from tagoio_sdk import Resources
+
+        resources = Resources({"token": "YOUR-PROFILE-TOKEN"})
+        result = resources.run.regenerateCustomDomain("profile-id-123")
+        print(result)  # Custom domain regenerated successfully
+
 
 .. toctree::
 
     Run_Types
-
-
-================
-getCustomDomain
-================
-
-Set details of TagoRun custom domain for the profile.
-
-        **Parameters**
-
-            | **profile_id**: str
-            | ID of the profile
-
-
-===================
-deleteCustomDomain
-===================
-
-Delete a TagoRUN custom domain for the profile.
-
-        **Parameters**
-
-            | **profile_id**: str
-            | ID of the profile
-
-
-=======================
-regenerateCustomDomain
-=======================
-
-Regenerate a TagoRUN custom domain for the profile.
-
-        **Parameters**
-
-            | **profile_id**: str
-            | ID of the profile

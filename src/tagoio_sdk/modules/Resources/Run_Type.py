@@ -255,6 +255,17 @@ class LoginAsUserOptions(TypedDict):
     """
 
 
+class EmailTestData(TypedDict):
+    subject: str
+    """
+    Subject of the test email.
+    """
+    body: str
+    """
+    Body content of the test email.
+    """
+
+
 class SAMLAttributeMappings(TypedDict):
     email: str
     firstName: str

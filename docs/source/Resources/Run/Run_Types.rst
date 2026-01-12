@@ -319,6 +319,21 @@ LoginAsUserOptions
         | :default: "8 hours"
 
 
+.. _EmailTestData:
+
+EmailTestData
+-------------
+
+Type for the email test data.
+
+    **Attributes:**
+
+        | **subject**: str
+        | Subject of the test email.
+
+        | **body**: str
+        | Body content of the test email.
+
 
 .. _SAMLAttributeMappings:
 
