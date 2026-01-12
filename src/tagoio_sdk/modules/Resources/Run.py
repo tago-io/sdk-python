@@ -75,7 +75,7 @@ class Run(TagoIOModule):
 
         return result
 
-    def listUsers(self, query: Optional[Query] = {}) -> list[UserInfo]:
+    def listUsers(self, query: Optional[Query] = None) -> list[UserInfo]:
         """
         @description:
             Retrieves a paginated list of Run users with customizable fields and filtering options.
@@ -95,6 +95,8 @@ class Run(TagoIOModule):
             print(result)  # [{'id': 'user-id-123', 'name': 'John Doe', 'email': 'example@email.com'}]
             ```
         """
+        if query is None:
+            query = {}
         if "orderBy" in query:
             firstArgument = query["orderBy"][0]
             secondArgument = query["orderBy"][1]
