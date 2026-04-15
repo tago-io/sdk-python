@@ -101,9 +101,7 @@ MQTT
 ====
 
 .. deprecated::
-    Legacy MQTT is deprecated and will be removed in a future major version.
-    Migrate to the new MQTT connector or use the HTTP API.
-    See: https://docs.tago.io/docs/tagoio/integrations/networks/mqtt/
+    Migrate to TagoTIP: https://docs.tago.io/docs/tagotip/transports/mqtt
 
 Publish to a MQTT Device
 
