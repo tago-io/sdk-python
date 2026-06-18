@@ -100,6 +100,9 @@ Send Email
 MQTT
 ====
 
+.. deprecated::
+    Migrate to TagoTIP: https://docs.tago.io/docs/tagotip/transports/mqtt
+
 Publish to a MQTT Device
 
     **Parameters:**

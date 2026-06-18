@@ -1,6 +1,9 @@
 **MQTT Type**
 ===============
 
+.. deprecated::
+    Migrate to TagoTIP: https://docs.tago.io/docs/tagotip/transports/mqtt
+
 .. _mqtt_options:
 
 options
