@@ -12,12 +12,13 @@ from tagoio_sdk.common.Common_Type import ExpireTimeOption
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import Query
 from tagoio_sdk.common.Common_Type import TagsObj
+from tagoio_sdk.common.Common_Type import RunTypeOptions
 
 
 class ScriptFile(TypedDict):
     name: str
     content: Base64
-    language: Literal["node", "python"]
+    language: RunTypeOptions
 
 
 class AnalysisCreateInfo(TypedDict, total=False):
@@ -26,7 +27,7 @@ class AnalysisCreateInfo(TypedDict, total=False):
     interval: Optional[str]
     run_on: Optional[Literal["tago", "external"]]
     file_name: Optional[str]
-    runtime: Optional[Literal["node", "python"]]
+    runtime: Optional[RunTypeOptions]
     active: Optional[bool]
     profile: Optional[GenericID]
     variables: Optional[List[Dict[str, Union[str, int, bool]]]]
@@ -44,11 +45,7 @@ class AnalysisInfo(AnalysisCreateInfo):
 
 
 class AnalysisQuery(Query):
-    fields: Optional[
-        List[
-            Literal["name", "active", "run_on", "last_run", "created_at", "updated_at"]
-        ]
-    ]
+    fields: Optional[List[Literal["name", "active", "run_on", "last_run", "created_at", "updated_at"]]]
 
 
 class AnalysisListItem(TypedDict, total=False):
@@ -63,9 +60,7 @@ class AnalysisListItem(TypedDict, total=False):
     console: Optional[List[str]]
 
 
-SnippetRuntime = Literal[
-    "node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"
-]
+SnippetRuntime = Literal["node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"]
 """Available runtime environments for snippets"""
 
 

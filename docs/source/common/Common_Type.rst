@@ -43,6 +43,13 @@ Conditionals
 
     | **Conditionals**: Literal["<", ">", "=", "!", "><", "*"]
 
+.. _RunTypeOptions:
+
+RunTypeOptions
+----------------
+
+    | **RunTypeOptions**: Literal["node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"]
+
 .. _TokenCreateResponse:
 
 TokenCreateResponse

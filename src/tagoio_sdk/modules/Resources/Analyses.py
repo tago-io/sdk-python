@@ -19,7 +19,6 @@ from tagoio_sdk.modules.Resources.Analysis_Types import SnippetsListResponse
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
-
 # Base URL for TagoIO analysis snippets repository
 SNIPPETS_BASE_URL = "https://snippets.tago.io"
 
@@ -85,7 +84,7 @@ class Analyses(TagoIOModule):
             resources = Resources()
             new_analysis = resources.analyses.create({
                 "name": "My Analysis",
-                "runtime": "python",
+                "runtime": "python-rt2025",
                 "tags": [{"key": "type", "value": "data-processing"}]
             })
             print(new_analysis["id"], new_analysis["token"])  # analysis-id-123, analysis-token-123
@@ -268,7 +267,7 @@ class Analyses(TagoIOModule):
             result = resources.analyses.uploadScript("analysis-id-123", {
                 "name": "script.py",
                 "content": "base64-encoded-content",
-                "language": "python"
+                "language": "python-rt2025"
             })
             print(result)  # Successfully Uploaded
             ```

@@ -13,7 +13,7 @@ ScriptFile
 
         | content: :ref:`Base64`
 
-        | language: "node" or "python"
+        | language: :ref:`RunTypeOptions`
 
 
 
@@ -34,7 +34,7 @@ AnalysisCreateInfo
 
         | file_name: Optional[str]
 
-        | runtime: Optional["node" or "python"]
+        | runtime: Optional[:ref:`RunTypeOptions`]
 
         | active: Optional[bool]
 

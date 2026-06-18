@@ -4,7 +4,6 @@ from typing import Optional
 from typing import TypedDict
 from typing import Union
 
-
 GenericID = str
 """ID used on TagoIO, string with 24 character"""
 
@@ -19,6 +18,8 @@ ExpireTimeOption = Union[Literal["never"], datetime]
 PermissionOption = Literal["write", "read", "full", "deny"]
 
 Conditionals = Literal["<", ">", "=", "!", "><", "*"]
+
+RunTypeOptions = Literal["node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"]
 
 
 class TokenCreateResponse(TypedDict):
