@@ -20,6 +20,8 @@ PermissionOption = Literal["write", "read", "full", "deny"]
 
 Conditionals = Literal["<", ">", "=", "!", "><", "*"]
 
+RunTypeOptions = Literal["node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"]
+
 
 class TokenCreateResponse(TypedDict):
     token: GenericToken
