@@ -4,6 +4,7 @@ from typing import Optional
 from typing import TypedDict
 from typing import Union
 
+
 GenericID = str
 """ID used on TagoIO, string with 24 character"""
 

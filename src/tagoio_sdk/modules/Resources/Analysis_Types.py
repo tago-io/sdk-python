@@ -11,8 +11,8 @@ from tagoio_sdk.common.Common_Type import Base64
 from tagoio_sdk.common.Common_Type import ExpireTimeOption
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import Query
-from tagoio_sdk.common.Common_Type import TagsObj
 from tagoio_sdk.common.Common_Type import RunTypeOptions
+from tagoio_sdk.common.Common_Type import TagsObj
 
 
 class ScriptFile(TypedDict):

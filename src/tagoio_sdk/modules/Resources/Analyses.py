@@ -19,6 +19,7 @@ from tagoio_sdk.modules.Resources.Analysis_Types import SnippetsListResponse
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
+
 # Base URL for TagoIO analysis snippets repository
 SNIPPETS_BASE_URL = "https://snippets.tago.io"
 
