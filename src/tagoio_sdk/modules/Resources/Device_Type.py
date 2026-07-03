@@ -276,7 +276,7 @@ class DeviceCreateInfoBasicMutable(TypedDict):
     """
 
 
-class DeviceCreateInfoBasicImutable(TypedDict):
+class DeviceCreateInfoBasicImmutable(TypedDict):
     name: str
     """
     Device name.
@@ -289,7 +289,7 @@ class DeviceCreateInfoBasicImutable(TypedDict):
     """
     Network ID.
     """
-    type: Literal["imutable"]
+    type: Literal["immutable"]
     """
     Device's data storage (bucket) type.
 
@@ -418,7 +418,7 @@ class DeviceCreateInfoBasicHybrid(TypedDict):
 
 DeviceCreateInfoMutable = DeviceCreateInfoBasicMutable
 
-DeviceCreateInfoImmutable = DeviceCreateInfoBasicImutable
+DeviceCreateInfoImmutable = DeviceCreateInfoBasicImmutable
 
 DeviceCreateInfoHybrid = DeviceCreateInfoBasicHybrid
 
