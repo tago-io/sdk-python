@@ -8,7 +8,7 @@ from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import TagsObj
 
 
-DataStorageType = Literal["immutable", "mutable", "legacy"]
+DataStorageType = Literal["immutable", "mutable", "legacy", "hybrid"]
 
 
 class ExportBucketOption(TypedDict):
