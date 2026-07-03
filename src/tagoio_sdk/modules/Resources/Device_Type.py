@@ -62,6 +62,8 @@ class DeviceInfo(TypedDict):
     """
     Regex that routes each variable to the mutable side at insert time (unanchored substring match).
 
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
+
     Present for Hybrid devices. Can only be changed while the device is empty.
     """
 
@@ -412,6 +414,8 @@ class DeviceCreateInfoBasicHybrid(TypedDict):
     """
     Regex that routes each variable to the mutable side at insert time (unanchored substring match).
 
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
+
     Required for Hybrid devices. Can only be changed while the device is empty.
     """
 
@@ -483,6 +487,8 @@ class DeviceEditInfo(TypedDict):
     mutable_variable_regex: Optional[str]
     """
     Regex that routes each variable to the mutable side at insert time (unanchored substring match).
+
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
 
     Required for Hybrid devices. Can only be changed while the device is empty.
     """
