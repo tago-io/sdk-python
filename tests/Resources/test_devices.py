@@ -379,6 +379,21 @@ def testEmptyDeviceData(requests_mock: Mocker) -> None:
     assert result == "All data removed"
 
 
+def testEmptyDeviceDataWithRoute(requests_mock: Mocker) -> None:
+    """Test emptyDeviceData with the hybrid route param in the request body."""
+    device_id = "device-id-123"
+    requests_mock.post(
+        f"https://api.tago.io/device/{device_id}/empty",
+        json={"status": True, "result": "All data removed"},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.devices.emptyDeviceData(device_id, {"route": "mutable"})
+
+    assert result == "All data removed"
+    assert requests_mock.last_request.json() == {"route": "mutable"}
+
+
 def testAmount(requests_mock: Mocker) -> None:
     """Test amount method of Devices class."""
     device_id = "device-id-123"

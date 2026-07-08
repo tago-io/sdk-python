@@ -265,9 +265,9 @@ DeviceCreateInfoBasicMutable
 
 
 
-.. _DeviceCreateInfoBasicImutable:
+.. _DeviceCreateInfoBasicImmutable:
 
-DeviceCreateInfoBasicImutable
+DeviceCreateInfoBasicImmutable
 --------------------------------
 
     **Attributes:**
@@ -281,7 +281,7 @@ DeviceCreateInfoBasicImutable
         | **network**:  :ref:`GenericID`
         | Network ID.
 
-        | **type**: "imutable"
+        | **type**: "immutable"
         | Device's data storage (bucket) type.
         | :default: "legacy"
 
@@ -332,7 +332,7 @@ DeviceCreateInfoMutable
 DeviceCreateInfoImmutable
 --------------------------
 
-    **DeviceCreateInfoImmutable** = DeviceCreateInfoBasicImutable
+    **DeviceCreateInfoImmutable** = DeviceCreateInfoBasicImmutable
 
 
 .. _DeviceCreateInfo:

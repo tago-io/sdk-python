@@ -58,6 +58,14 @@ class DeviceInfo(TypedDict):
     """
     Date for the device's last data retention.
     """
+    mutable_variable_regex: str or None
+    """
+    Regex that routes each variable to the mutable side at insert time (unanchored substring match).
+
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
+
+    Present for Hybrid devices. Can only be changed while the device is empty.
+    """
 
 
 class DeviceInfoList(TypedDict):
@@ -270,7 +278,7 @@ class DeviceCreateInfoBasicMutable(TypedDict):
     """
 
 
-class DeviceCreateInfoBasicImutable(TypedDict):
+class DeviceCreateInfoBasicImmutable(TypedDict):
     name: str
     """
     Device name.
@@ -283,7 +291,7 @@ class DeviceCreateInfoBasicImutable(TypedDict):
     """
     Network ID.
     """
-    type: Literal["imutable"]
+    type: Literal["immutable"]
     """
     Device's data storage (bucket) type.
 
@@ -337,11 +345,90 @@ class DeviceCreateInfoBasicImutable(TypedDict):
     """
 
 
+class DeviceCreateInfoBasicHybrid(TypedDict):
+    name: str
+    """
+    Device name.
+    """
+    connector: GenericID
+    """
+    Connector ID.
+    """
+    network: GenericID
+    """
+    Network ID.
+    """
+    type: Literal["hybrid"]
+    """
+    Device's data storage (bucket) type.
+
+    :default: "legacy"
+    """
+    description: str or None
+    """
+    Description of the device.
+    """
+    active: bool
+    """
+    Set if the device will be active.
+    """
+    visible: bool
+    """
+    Set if the device will be visible.
+    """
+    configuration_params: list[ConfigurationParams]
+    """
+    An array of configuration params
+    """
+    tags: list[TagsObj]
+    """
+    An array of tags
+    """
+    serie_number: str
+    """
+    Device serial number.
+    """
+    connector_parse: bool
+    """
+    If device will use connector parser
+    """
+    parse_function: str
+    """
+    Javascript code for use as payload parser
+    """
+    chunk_period: Literal["day", "week", "month", "quarter"]
+    """
+    Chunk division to retain data in the device.
+
+    Required for Immutable devices.
+    """
+    chunk_retention: Union[int, float]
+    """
+    Amount of chunks to retain data according to the `chunk_period`.
+
+    Integer between in the range of 0 to 36 (inclusive).
+
+    Required for Immutable devices.
+    """
+    mutable_variable_regex: str
+    """
+    Regex that routes each variable to the mutable side at insert time (unanchored substring match).
+
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
+
+    Required for Hybrid devices. Can only be changed while the device is empty.
+    """
+
+
 DeviceCreateInfoMutable = DeviceCreateInfoBasicMutable
 
-DeviceCreateInfoImmutable = DeviceCreateInfoBasicImutable
+DeviceCreateInfoImmutable = DeviceCreateInfoBasicImmutable
 
-DeviceCreateInfo = DeviceCreateInfoMutable or DeviceCreateInfoImmutable
+DeviceCreateInfoHybrid = DeviceCreateInfoBasicHybrid
+
+DeviceCreateInfo = (
+    DeviceCreateInfoMutable or DeviceCreateInfoImmutable or DeviceCreateInfoHybrid
+)
 
 
 class DeviceEditInfo(TypedDict):
@@ -397,9 +484,26 @@ class DeviceEditInfo(TypedDict):
 
     Required for Immutable devices.
     """
+    mutable_variable_regex: Optional[str]
+    """
+    Regex that routes each variable to the mutable side at insert time (unanchored substring match).
+
+    It must not match every variable or no variable; use a mutable or immutable device for those cases.
+
+    Required for Hybrid devices. Can only be changed while the device is empty.
+    """
 
 
 DeviceEditInfo = DeviceEditInfo
+
+
+class DeviceEmptyParams(TypedDict, total=False):
+    route: Literal["mutable", "immutable"]
+    """
+    For Hybrid devices only: empty a single side of the device instead of everything.
+    "mutable" truncates the editable variables; "immutable" drops the telemetry chunks.
+    Omit to remove all data (every device type).
+    """
 
 
 class TokenData(TypedDict):

@@ -19,6 +19,7 @@ from tagoio_sdk.modules.Resources.Device_Type import DeviceDataBackup
 from tagoio_sdk.modules.Resources.Device_Type import DeviceDataBackupResponse
 from tagoio_sdk.modules.Resources.Device_Type import DeviceDataRestore
 from tagoio_sdk.modules.Resources.Device_Type import DeviceEditInfo
+from tagoio_sdk.modules.Resources.Device_Type import DeviceEmptyParams
 from tagoio_sdk.modules.Resources.Device_Type import DeviceListItem
 from tagoio_sdk.modules.Resources.Device_Type import DeviceQuery
 from tagoio_sdk.modules.Resources.Device_Type import DeviceTokenDataList
@@ -451,10 +452,12 @@ class Devices(TagoIOModule):
         )
         return dateParserList(result, ["time", "created_at"])
 
-    def emptyDeviceData(self, deviceID: GenericID) -> str:
+    def emptyDeviceData(self, deviceID: GenericID, params: Optional[DeviceEmptyParams] = None) -> str:
         """
         @description:
             Permanently removes all data from a device. This operation cannot be undone.
+            On Hybrid devices, pass params with route "mutable" or "immutable" to empty a
+            single side; omit it to remove all data.
 
         @see:
             https://help.tago.io/portal/en/kb/articles/device-data Device Data Management
@@ -471,6 +474,7 @@ class Devices(TagoIOModule):
             {
                 "path": f"/device/{deviceID}/empty",
                 "method": "POST",
+                "body": params,
             }
         )
         return result
