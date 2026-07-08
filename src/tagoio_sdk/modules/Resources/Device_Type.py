@@ -497,6 +497,15 @@ class DeviceEditInfo(TypedDict):
 DeviceEditInfo = DeviceEditInfo
 
 
+class DeviceEmptyParams(TypedDict, total=False):
+    route: Literal["mutable", "immutable"]
+    """
+    For Hybrid devices only: empty a single side of the device instead of everything.
+    "mutable" truncates the editable variables; "immutable" drops the telemetry chunks.
+    Omit to remove all data (every device type).
+    """
+
+
 class TokenData(TypedDict):
     name: str
     """
