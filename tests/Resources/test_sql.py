@@ -126,21 +126,6 @@ def testSqlMethodExecute(requests_mock: Mocker) -> None:
     assert result["served_from_cache"] is False
 
 
-def testSqlMethodExecuteAdhoc(requests_mock: Mocker) -> None:
-    requests_mock.post(
-        "https://api.tago.io/sql/execute",
-        json={"status": True, "result": EXECUTE_RESULT},
-    )
-
-    resources = Resources({"token": "your_token_value"})
-    result = resources.sql.executeAdhoc(
-        "SELECT variable, value FROM device($1) AS d LIMIT 10",
-        [{"key": "$1", "value": "my-device-id"}],
-    )
-
-    assert result["rows"][0]["variable"] == "temperature"
-
-
 def testSqlMethodTables(requests_mock: Mocker) -> None:
     requests_mock.get(
         "https://api.tago.io/sql/tables",

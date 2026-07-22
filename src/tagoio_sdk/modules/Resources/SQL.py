@@ -10,7 +10,6 @@ from tagoio_sdk.modules.Resources.SQL_Types import SQLCreateInfo
 from tagoio_sdk.modules.Resources.SQL_Types import SQLExecuteObj
 from tagoio_sdk.modules.Resources.SQL_Types import SQLExecuteResult
 from tagoio_sdk.modules.Resources.SQL_Types import SQLInfo
-from tagoio_sdk.modules.Resources.SQL_Types import SQLParam
 from tagoio_sdk.modules.Resources.SQL_Types import SQLQuery
 from tagoio_sdk.modules.Resources.SQL_Types import SQLTablesQuery
 from tagoio_sdk.modules.Resources.SQL_Types import SQLTablesResult
@@ -218,35 +217,6 @@ class SQL(TagoIOModule):
                 "path": f"/sql/{sqlID}/execute",
                 "method": "POST",
                 "body": executeObj or {},
-            }
-        )
-
-    def executeAdhoc(
-        self, query: str, params: Optional[List[SQLParam]] = None
-    ) -> SQLExecuteResult:
-        """
-        @description:
-            Runs a one-off TagoSQL query without storing it. Profile token only;
-            results are never cached. Store queries you run regularly with `create`.
-
-        @see:
-            https://docs.tago.io/docs/tagoio/tagosql/executing-queries Executing Queries
-
-        @example:
-            ```python
-            resources = Resources()
-            result = resources.sql.executeAdhoc(
-                "SELECT variable, value FROM device($1) AS d WHERE value > $2 LIMIT 10",
-                [{"key": "$1", "value": "my-device-id"}, {"key": "$2", "value": "25"}],
-            )
-            print(result)  # {'columns': [...], 'rows': [...], 'row_count': 3, ...}
-            ```
-        """
-        return self.doRequest(
-            {
-                "path": "/sql/execute",
-                "method": "POST",
-                "body": {"query": query, "params": params or []},
             }
         )
 
