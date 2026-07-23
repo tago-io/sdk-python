@@ -42,3 +42,4 @@ Instance
     Run/index
     Secrets/index
     ServiceAuthorization/index
+    SQL/index
