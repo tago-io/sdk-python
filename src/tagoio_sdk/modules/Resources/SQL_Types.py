@@ -34,6 +34,9 @@ class SQLInfo(SQLCreateInfo):
     version: int
     created_at: datetime
     updated_at: datetime
+    # Read-only, derived server-side: True when the query text uses session
+    # functions. Never accepted as input.
+    session_context: bool
 
 
 class SQLQuery(Query):
@@ -97,6 +100,15 @@ class SQLResourceItem(TypedDict):
     name: str
 
 
+class SQLFunctionInfo(TypedDict, total=False):
+    name: str
+    kind: Literal["aggregate", "session"]
+    args: List[str]
+    description: str
+    # Present only on session functions; carries the COALESCE authoring idiom.
+    example: Optional[str]
+
+
 class SQLTablesResources(TypedDict):
     devices: List[SQLResourceItem]
     entities: List[SQLResourceItem]
@@ -105,6 +117,7 @@ class SQLTablesResources(TypedDict):
 class SQLTablesResult(TypedDict):
     tables: List[SQLTableInfo]
     resources: SQLTablesResources
+    functions: List[SQLFunctionInfo]
 
 
 class SQLTablesQuery(TypedDict, total=False):

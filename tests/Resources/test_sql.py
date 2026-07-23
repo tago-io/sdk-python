@@ -11,6 +11,7 @@ QUERY_ROW = {
     "id": "sql-id-123",
     "name": "Latest temperature",
     "tags": [{"key": "audience", "value": "dashboard"}],
+    "session_context": True,
     "created_at": "2026-07-01T12:00:00.000Z",
     "updated_at": "2026-07-02T12:00:00.000Z",
 }
@@ -39,6 +40,7 @@ def testSqlMethodList(requests_mock: Mocker) -> None:
 
     assert isinstance(result, list)
     assert result[0]["id"] == "sql-id-123"
+    assert result[0]["session_context"] is True
 
 
 def testSqlMethodCreate(requests_mock: Mocker) -> None:
@@ -67,6 +69,7 @@ def testSqlMethodInfo(requests_mock: Mocker) -> None:
     result = resources.sql.info("sql-id-123")
 
     assert result["name"] == "Latest temperature"
+    assert result["session_context"] is True
 
 
 def testSqlMethodEdit(requests_mock: Mocker) -> None:
@@ -136,6 +139,21 @@ def testSqlMethodTables(requests_mock: Mocker) -> None:
                     {"function": "device", "label": "Device Data", "columns": []}
                 ],
                 "resources": {"devices": [], "entities": []},
+                "functions": [
+                    {
+                        "name": "count",
+                        "kind": "aggregate",
+                        "args": ["column"],
+                        "description": "Row count",
+                    },
+                    {
+                        "name": "session_user_tag",
+                        "kind": "session",
+                        "args": ["key"],
+                        "description": "The executing user's value for a tag key, filled by the server",
+                        "example": "COALESCE(session_user_tag('key'), '...')",
+                    },
+                ],
             },
         },
     )
@@ -144,3 +162,6 @@ def testSqlMethodTables(requests_mock: Mocker) -> None:
     result = resources.sql.tables({"filter": "sensor"})
 
     assert result["tables"][0]["function"] == "device"
+    assert result["functions"][0]["name"] == "count"
+    assert result["functions"][1]["kind"] == "session"
+    assert "COALESCE" in result["functions"][1]["example"]
