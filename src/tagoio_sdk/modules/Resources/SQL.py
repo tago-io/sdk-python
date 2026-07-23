@@ -46,8 +46,9 @@ class SQL(TagoIOModule):
             "filter": queryObj.get("filter", {}),
             "amount": queryObj.get("amount", 20),
         }
-        if "orderBy" in queryObj:
-            params["orderBy"] = f"{queryObj['orderBy'][0]},{queryObj['orderBy'][1]}"
+        orderBy = queryObj.get("orderBy")
+        if isinstance(orderBy, (list, tuple)) and len(orderBy) == 2:
+            params["orderBy"] = f"{orderBy[0]},{orderBy[1]}"
 
         result = self.doRequest(
             {
@@ -242,8 +243,9 @@ class SQL(TagoIOModule):
         # ? endpoint's filter is a plain substring, so it goes on the path.
         params = {key: value for key, value in queryObj.items() if key != "filter"}
         path = "/sql/tables"
-        if "filter" in queryObj:
-            path = f"/sql/tables?filter={quote(str(queryObj['filter']))}"
+        filterValue = queryObj.get("filter")
+        if isinstance(filterValue, str) and filterValue:
+            path = f"/sql/tables?filter={quote(filterValue)}"
         return self.doRequest(
             {
                 "path": path,

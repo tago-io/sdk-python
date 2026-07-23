@@ -78,7 +78,13 @@ def testSqlMethodEdit(requests_mock: Mocker) -> None:
     )
 
     resources = Resources({"token": "your_token_value"})
-    result = resources.sql.edit("sql-id-123", {"name": "Latest temperature"})
+    result = resources.sql.edit(
+        "sql-id-123",
+        {
+            "name": "Latest temperature",
+            "query": "SELECT variable, value FROM device($1) AS d LIMIT 20",
+        },
+    )
 
     assert result["id"] == "sql-id-123"
 
@@ -165,3 +171,24 @@ def testSqlMethodTables(requests_mock: Mocker) -> None:
     assert result["functions"][0]["name"] == "count"
     assert result["functions"][1]["kind"] == "session"
     assert "COALESCE" in result["functions"][1]["example"]
+    # ? The substring filter must ride on the path, not as an expanded param.
+    assert "filter=sensor" in requests_mock.last_request.url
+
+
+def testSqlMethodTablesOmitsNoneFilter(requests_mock: Mocker) -> None:
+    requests_mock.get(
+        "https://api.tago.io/sql/tables",
+        json={
+            "status": True,
+            "result": {
+                "tables": [],
+                "resources": {"devices": [], "entities": []},
+                "functions": [],
+            },
+        },
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    resources.sql.tables({"filter": None})
+
+    assert "filter" not in requests_mock.last_request.url
