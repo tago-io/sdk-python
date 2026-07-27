@@ -66,20 +66,14 @@ class SQLFilter(TypedDict, total=False):
 
 
 class SQLQuery(Query):
+    # ? List projection allowlist: other row fields come from info() only.
     fields: Optional[
         List[
             Literal[
                 "id",
                 "name",
-                "description",
-                "query",
-                "params",
-                "cache_enabled",
-                "cache_ttl_seconds",
-                "rate_limit_rpm",
-                "active",
                 "tags",
-                "version",
+                "active",
                 "created_at",
                 "updated_at",
             ]
