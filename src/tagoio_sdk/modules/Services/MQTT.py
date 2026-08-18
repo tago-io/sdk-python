@@ -1,3 +1,5 @@
+import warnings
+
 from typing import Optional
 from typing import TypedDict
 from typing import Union
@@ -20,6 +22,17 @@ class MQTTData(TypedDict):
 
 class MQTT(TagoIOModule):
     def publish(self, mqtt: MQTTData) -> str:
+        """Publish an MQTT message.
+
+        .. deprecated::
+            Migrate to TagoTIP: https://docs.tago.io/docs/tagotip/transports/mqtt
+        """
+        warnings.warn(
+            "services.mqtt.publish() is deprecated. "
+            "Migrate to TagoTIP: https://docs.tago.io/docs/tagotip/transports/mqtt",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         result = self.doRequest(
             {
                 "path": "/analysis/services/mqtt/publish",
