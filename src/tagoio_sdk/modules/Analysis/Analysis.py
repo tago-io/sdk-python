@@ -3,10 +3,13 @@ import inspect
 import json
 import os
 import sys
+import time
 
 from typing import Any
 from typing import List
 from typing import Optional
+
+import requests
 
 from tagoio_sdk.common.JSON_Parse_Safe import JSONParseSafe
 from tagoio_sdk.common.tagoio_module import TagoIOModule
@@ -20,6 +23,10 @@ from tagoio_sdk.regions import setRuntimeRegion
 
 
 T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
+
+SSE_RECONNECT_BASE_DELAY = 1.0
+SSE_RECONNECT_MAX_DELAY = 60.0
+SSE_FATAL_STATUS_CODES = (401, 403)
 
 
 class Analysis(TagoIOModule):
@@ -206,53 +213,80 @@ class Analysis(TagoIOModule):
         if analysis.get("run_on") != "external":
             print("¬ Warning :: Analysis is not set to run on external")
 
-        # Open SSE connection
-        try:
-            sse = openSSEListening(
-                {
-                    "token": self.params.get("token"),
-                    "region": self.params.get("region"),
-                    "channel": "analysis_trigger",
-                }
-            )
-        except Exception as e:
-            print(f"¬ Connection error: {e}", file=sys.stderr)
-            return
-
         tokenEnd = str(self.params.get("token", ""))[-5:]
-
-        print(f"\n¬ Connected to TagoIO :: Analysis [{analysis.get('name', 'Unknown')}]({tokenEnd}) is ready.")
-        print("¬ Waiting for analysis trigger... (Press Ctrl+C to stop)\n")
+        delay = SSE_RECONNECT_BASE_DELAY
 
         try:
-            for event in sse.events():
-                if not self._running:
-                    break
-
+            while self._running:
                 try:
-                    parsed = JSONParseSafe(event.data, {})
-                    payload = parsed.get("payload")
-
-                    if not payload:
-                        continue
-
-                    self._runLocal(
-                        payload.get("environment", []),
-                        payload.get("data", []),
-                        payload.get("analysis_id", ""),
-                        self.token,
-                    )
+                    sse = self._openTriggerStream()
+                except requests.HTTPError as e:
+                    status = e.response.status_code if e.response is not None else None
+                    if status in SSE_FATAL_STATUS_CODES:
+                        print(
+                            f"¬ Connection error: {e}. Listener stopped, "
+                            "check the analysis token.",
+                            file=sys.stderr,
+                        )
+                        sys.exit(1)
+                    delay = self._waitToReconnect(delay, e)
+                    continue
                 except Exception as e:
-                    print(f"¬ Error processing event: {e}", file=sys.stderr)
+                    delay = self._waitToReconnect(delay, e)
                     continue
 
+                print(
+                    f"\n¬ Connected to TagoIO :: Analysis "
+                    f"[{analysis.get('name', 'Unknown')}]({tokenEnd}) is ready."
+                )
+                print("¬ Waiting for analysis trigger... (Press Ctrl+C to stop)\n")
+                delay = SSE_RECONNECT_BASE_DELAY
+
+                try:
+                    self._consumeTriggers(sse)
+                except Exception as e:
+                    print(f"¬ Connection was closed: {e}", file=sys.stderr)
+                    delay = self._waitToReconnect(delay, e)
         except KeyboardInterrupt:
             print("\n¬ Analysis stopped by user. Goodbye!")
-        except Exception as e:
-            print(f"¬ Connection was closed: {e}", file=sys.stderr)
-            print("¬ Trying to reconnect...")
         finally:
             self._running = False
+
+    def _openTriggerStream(self):
+        return openSSEListening(
+            {
+                "token": self.params.get("token"),
+                "region": self.params.get("region"),
+                "channel": "analysis_trigger",
+            }
+        )
+
+    def _consumeTriggers(self, sse) -> None:
+        for event in sse.events():
+            if not self._running:
+                return
+
+            try:
+                parsed = JSONParseSafe(event.data, {})
+                payload = parsed.get("payload")
+
+                if not payload:
+                    continue
+
+                self._runLocal(
+                    payload.get("environment", []),
+                    payload.get("data", []),
+                    payload.get("analysis_id", ""),
+                    self.token,
+                )
+            except Exception as e:
+                print(f"¬ Error processing event: {e}", file=sys.stderr)
+
+    def _waitToReconnect(self, delay: float, error: Exception) -> float:
+        """Sleep for the current backoff delay and return the next one."""
+        print(f"¬ Reconnecting in {delay:g}s... ({error})", file=sys.stderr)
+        time.sleep(delay)
+        return min(delay * 2, SSE_RECONNECT_MAX_DELAY)
 
     @staticmethod
     def use(
