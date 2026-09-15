@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SQL &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SQL Type" href="SQL_Type.html" />
+    <link rel="prev" title="Service Authorization Types" href="../ServiceAuthorization/Service_Authorization_Types.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sql">
+<h1><strong>SQL</strong><a class="headerlink" href="#sql" title="Link to this heading">¶</a></h1>
+<p>Manage and run TagoSQL queries on your profile.</p>
+<section id="list">
+<h2>list<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>Retrieves a list with all TagoSQL queries from the profile.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="SQL_Type.html#sqlquery"><span class="std std-ref">SQLQuery(Query)</span></a></div>
+<div class="line">Query parameters to filter the results.</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><strong>Default queryObj:</strong></span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queryObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">list[<a class="reference internal" href="SQL_Type.html#sqlinfo"><span class="std std-ref">SQLInfo</span></a>]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;SQL Query&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">list</span><span class="p">({</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [ { &#39;id&#39;: &#39;query-id-123&#39;, &#39;name&#39;: &#39;My query&#39;, ... } ]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="create">
+<h2>create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
+<p>Creates a new TagoSQL query on the profile.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlObj</strong>: <a class="reference internal" href="SQL_Type.html#sqlcreateinfo"><span class="std std-ref">SQLCreateInfo</span></a></div>
+<div class="line">Query definition.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqlinfo"><span class="std std-ref">SQLInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Latest temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT variable, value, time FROM device($1) AS d WHERE variable = &#39;temperature&#39; ORDER BY time DESC LIMIT 10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;$1&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;my-device-id&quot;</span><span class="p">}]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;id&#39;: &#39;query-id-123&#39;, &#39;name&#39;: &#39;Latest temperature&#39;, ... }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="info">
+<h2>info<a class="headerlink" href="#info" title="Link to this heading">¶</a></h2>
+<p>Retrieves detailed information about a specific TagoSQL query.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlID</strong>: str</div>
+<div class="line">Query ID.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqlinfo"><span class="std std-ref">SQLInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;SQL Query&quot; / &quot;Access&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;query-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;id&#39;: &#39;query-id-123&#39;, &#39;name&#39;: &#39;My query&#39;, &#39;query&#39;: &#39;SELECT ...&#39;, ... }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="edit">
+<h2>edit<a class="headerlink" href="#edit" title="Link to this heading">¶</a></h2>
+<p>Replaces a TagoSQL query. The query is re-validated and its cached results are dropped; a new version is stored when the query or the params change.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlID</strong>: str</div>
+<div class="line">Query ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>sqlObj</strong>: <a class="reference internal" href="SQL_Type.html#sqlcreateinfo"><span class="std std-ref">SQLCreateInfo</span></a></div>
+<div class="line">New query definition.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqlinfo"><span class="std std-ref">SQLInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="s2">&quot;query-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Latest temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT variable, value, time FROM device($1) AS d ORDER BY time DESC LIMIT 20&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;$1&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;my-device-id&quot;</span><span class="p">}]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;id&#39;: &#39;query-id-123&#39;, &#39;version&#39;: 2, ... }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p>Deletes a TagoSQL query from the profile.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlID</strong>: str</div>
+<div class="line">Query ID.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">dict[str, str]</div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;query-id-123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;id&#39;: &#39;query-id-123&#39; }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="getversion">
+<h2>getVersion<a class="headerlink" href="#getversion" title="Link to this heading">¶</a></h2>
+<p>Retrieves a historical snapshot (query and params) of a TagoSQL query. To restore it, send the snapshot’s query and params back with <code class="docutils literal notranslate"><span class="pre">edit</span></code>.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/queries">TagoSQL Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlID</strong>: str</div>
+<div class="line">Query ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>version</strong>: int</div>
+<div class="line">Version number to retrieve.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqlversioninfo"><span class="std std-ref">SQLVersionInfo</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">getVersion</span><span class="p">(</span><span class="s2">&quot;query-id-123&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;query&#39;: &#39;SELECT ...&#39;, &#39;params&#39;: [], &#39;created_at&#39;: ... }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="execute">
+<h2>execute<a class="headerlink" href="#execute" title="Link to this heading">¶</a></h2>
+<p>Executes a TagoSQL query. Params sent here override the saved defaults per key; <code class="docutils literal notranslate"><span class="pre">test:</span> <span class="pre">True</span></code> skips the result cache entirely.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/executing-queries">Executing Queries</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>sqlID</strong>: str</div>
+<div class="line">Query ID.</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Optional</em> <strong>executeObj</strong>: <a class="reference internal" href="SQL_Type.html#sqlexecuteobj"><span class="std std-ref">SQLExecuteObj</span></a></div>
+<div class="line">Execution options.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqlexecuteresult"><span class="std std-ref">SQLExecuteResult</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If receive an error &quot;Authorization Denied&quot;, check policy &quot;SQL Query&quot; / &quot;Execute&quot; in Access Management.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;query-id-123&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;$1&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;my-device-id&quot;</span><span class="p">}]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;columns&#39;: [...], &#39;rows&#39;: [...], &#39;row_count&#39;: 1, ... }</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="tables">
+<h2>tables<a class="headerlink" href="#tables" title="Link to this heading">¶</a></h2>
+<p>Retrieves the TagoSQL schema discovery catalog: the virtual table families with their typed columns, plus the profile’s devices and entities. Pass <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> to resolve one entity’s columns.</p>
+<p>See: <a class="reference external" href="https://docs.tago.io/docs/tagoio/tagosql/tables">Available Tables</a></p>
+<blockquote>
+<div><p><strong>Parameters:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><em>Optional</em> <strong>queryObj</strong>: <a class="reference internal" href="SQL_Type.html#sqltablesquery"><span class="std std-ref">SQLTablesQuery</span></a></div>
+<div class="line">Query parameters to filter the catalog.</div>
+</div>
+</div></blockquote>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference internal" href="SQL_Type.html#sqltablesresult"><span class="std std-ref">SQLTablesResult</span></a></div>
+</div>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tagoio_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resources</span>
+
+<span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">tables</span><span class="p">({</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;sensor&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># { &#39;tables&#39;: [...], &#39;resources&#39;: { &#39;devices&#39;: [...], &#39;entities&#39;: [...] } }</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SQL_Type.html"><strong>SQL Type</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlparam">SQLParam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlcreateinfo">SQLCreateInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlinfo">SQLInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlfilter">SQLFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlquery-query">SQLQuery(<span class="xref std std-ref">Query</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlexecuteobj">SQLExecuteObj</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlcolumn">SQLColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlexecuteresult">SQLExecuteResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlversioninfo">SQLVersionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqltableinfo">SQLTableInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlresourceitem">SQLResourceItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqlfunctioninfo">SQLFunctionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqltablesresources">SQLTablesResources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqltablesresult">SQLTablesResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SQL_Type.html#sqltablesquery">SQLTablesQuery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#runtypeoptions">RunTypeOptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+      <li>Previous: <a href="../ServiceAuthorization/Service_Authorization_Types.html" title="previous chapter"><strong>Service Authorization Types</strong></a></li>
+      <li>Next: <a href="SQL_Type.html" title="next chapter"><strong>SQL Type</strong></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/SQL/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
