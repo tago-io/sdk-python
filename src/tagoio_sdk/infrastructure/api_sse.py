@@ -15,6 +15,10 @@ channelsWithID = ["device_inspector", "analysis_console", "ui_dashboard"]
 channelsWithoutID = ["notification", "analysis_trigger", "ui"]
 channels = channelsWithID + channelsWithoutID
 
+# ? (connect, read) seconds. The server emits a keep-alive comment every 5s, so a
+# ? read that stays silent this long means the connection is dead.
+SSE_REQUEST_TIMEOUT = (10, 60)
+
 
 class OpenSSEWithID(GenericModuleParams):
     channel: Literal["device_inspector", "analysis_console", "ui_dashboard"]
@@ -48,6 +52,12 @@ def openSSEListening(params: OpenSSEConfig) -> SSEClient:
 
     url += "?" + urlencode(query_params)
 
-    response = requests.get(url, stream=True, headers={"Accept": "text/event-stream"})
+    response = requests.get(
+        url,
+        stream=True,
+        headers={"Accept": "text/event-stream"},
+        timeout=SSE_REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
 
     return SSEClient(response)
