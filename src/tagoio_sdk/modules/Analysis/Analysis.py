@@ -2,6 +2,7 @@ import asyncio
 import inspect
 import json
 import os
+import re
 import sys
 import time
 
@@ -27,6 +28,14 @@ T_ANALYSIS_CONTEXT = os.environ.get("T_ANALYSIS_CONTEXT") or None
 SSE_RECONNECT_BASE_DELAY = 1.0
 SSE_RECONNECT_MAX_DELAY = 60.0
 SSE_FATAL_STATUS_CODES = (401, 403)
+# ? requests embeds the full URL, token query included, in its error text.
+TOKEN_QUERY_PATTERN = re.compile(r"(token=)[^&\s]+")
+
+
+def _describeError(error: Exception) -> str:
+    if isinstance(error, requests.HTTPError) and error.response is not None:
+        return f"HTTP {error.response.status_code}"
+    return TOKEN_QUERY_PATTERN.sub(r"\1***", str(error))
 
 
 class Analysis(TagoIOModule):
@@ -224,8 +233,8 @@ class Analysis(TagoIOModule):
                     status = e.response.status_code if e.response is not None else None
                     if status in SSE_FATAL_STATUS_CODES:
                         print(
-                            f"¬ Connection error: {e}. Listener stopped, "
-                            "check the analysis token.",
+                            f"¬ Connection error: {_describeError(e)}. "
+                            "Listener stopped, check the analysis token.",
                             file=sys.stderr,
                         )
                         sys.exit(1)
@@ -244,9 +253,16 @@ class Analysis(TagoIOModule):
 
                 try:
                     self._consumeTriggers(sse)
+                    closeReason: Exception = ConnectionError("stream ended")
                 except Exception as e:
-                    print(f"¬ Connection was closed: {e}", file=sys.stderr)
-                    delay = self._waitToReconnect(delay, e)
+                    closeReason = e
+
+                if self._running:
+                    print(
+                        f"¬ Connection was closed: {_describeError(closeReason)}",
+                        file=sys.stderr,
+                    )
+                    delay = self._waitToReconnect(delay, closeReason)
         except KeyboardInterrupt:
             print("\n¬ Analysis stopped by user. Goodbye!")
         finally:
@@ -284,7 +300,10 @@ class Analysis(TagoIOModule):
 
     def _waitToReconnect(self, delay: float, error: Exception) -> float:
         """Sleep for the current backoff delay and return the next one."""
-        print(f"¬ Reconnecting in {delay:g}s... ({error})", file=sys.stderr)
+        print(
+            f"¬ Reconnecting in {delay:g}s... ({_describeError(error)})",
+            file=sys.stderr,
+        )
         time.sleep(delay)
         return min(delay * 2, SSE_RECONNECT_MAX_DELAY)
 

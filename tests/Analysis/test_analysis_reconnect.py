@@ -124,3 +124,33 @@ def testKeyboardInterruptDuringBackoffStopsCleanly():
     runListener(streams, interrupt)
 
     assert len(streams) == 1
+
+
+def testCleanStreamEndReconnectsWithBackoff(capsys):
+    sleeps = []
+    streams = [FakeStream([]), FakeStream([]), FakeStream([KeyboardInterrupt()])]
+
+    runListener(streams, sleeps.append)
+
+    base = analysis_module.SSE_RECONNECT_BASE_DELAY
+    assert sleeps == [base, base]
+    assert "Reconnecting in" in capsys.readouterr().err
+
+
+def testErrorMessagesDoNotLeakTheToken(capsys):
+    url = "https://sse.tago.io/events?channel=analysis_trigger&token=abcde12345"
+    response = requests.Response()
+    response.status_code = 401
+    response.url = url
+    authError = requests.HTTPError(
+        f"401 Client Error: Unauthorized for url: {url}", response=response
+    )
+    connError = requests.ConnectionError(f"Max retries exceeded with url: {url}")
+
+    with pytest.raises(SystemExit):
+        runListener([connError, authError], lambda _delay: None)
+
+    err = capsys.readouterr().err
+    assert "abcde12345" not in err
+    assert "401" in err
+    assert "Reconnecting in" in err
