@@ -261,13 +261,52 @@ UserCreateInfo
 
         | **name**: str
         | **email**: str
-        | **password****: str
+        | **password**: NotRequired[str]
+        | Omit when ``generate_password`` is True.
         | **timezone**: str
         | **company**: Optional[str]
         | **phone**: Optional[str]
         | **language**: Optional[str]
         | **tags**: Optional[list[:ref:`TagsObj`]]
         | **active**: Optional[bool]
+        | **generate_password**: NotRequired[bool]
+        | Server generates the password and turns on ``force_password_change``. Rejected if ``password`` is also sent.
+        | **send_email**: NotRequired[Union[bool, str]]
+        | True sends the ``welcome`` email; a string picks an ``email_templates`` key. Unknown keys fall back to ``welcome``, then to a built-in default.
+
+.. _UserEditInfo:
+
+UserEditInfo
+------------
+
+    All attributes are optional.
+
+    **Attributes:**
+
+        | **name**: str
+        | **password**: str
+        | **timezone**: str
+        | **company**: Optional[str]
+        | **phone**: Optional[str]
+        | **language**: str
+        | **newsletter**: Optional[bool]
+        | **active**: bool
+        | **options**: Optional[dict]
+        | **tags**: list[:ref:`TagsObj`]
+        | **custom_preferences**: Optional[dict]
+        | **force_password_change**: bool
+        | **logout_sessions**: bool
+        | Deletes the user's active sessions.
+
+.. _UserInviteInfo:
+
+UserInviteInfo
+--------------
+
+    **Attributes:**
+
+        | **invite_template**: NotRequired[str]
+        | An ``email_templates`` key to send instead of ``welcome``.
 
 .. _UserInfo:
 
@@ -293,6 +332,7 @@ UserInfo
         | **updated_at**: datetime
         | **options**: object
         | **tags**: list[:ref:`TagsObj`]
+        | **force_password_change**: bool
 
 .. _LoginResponseRunUser:
 

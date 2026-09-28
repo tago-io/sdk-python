@@ -127,6 +127,10 @@ userCreate
 
 Creates a new user in the Run environment.
 
+Set ``generate_password`` to True to let the server generate the password (omit ``password``) and require a new one at first sign-in.
+Set ``send_email`` to True to send the Run's ``welcome`` email, or to an ``email_templates`` key to pick another template.
+With ``generate_password`` or ``send_email`` and no ``active``, the user is created active; ``active: False`` together with ``send_email`` is rejected.
+
 See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
     **Parameters:**
@@ -152,12 +156,23 @@ See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
         })
         print(result)  # {'user': 'user-id-123'}
 
+        # Let the server generate the password and email a set-password link
+        result = resources.run.userCreate({
+            "name": "John Doe",
+            "email": "john@example.com",
+            "timezone": "America/New_York",
+            "generate_password": True,
+            "send_email": True
+        })
+
 
 ========
 userEdit
 ========
 
 Updates information for an existing Run user.
+
+Set ``force_password_change`` to True to require a new password at the next sign-in, and ``logout_sessions`` to True to end the user's active sessions.
 
 See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
 
@@ -166,7 +181,7 @@ See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
         | **userID**: :ref:`GenericID`
         | User identification
 
-        | **data**: dict
+        | **data**: :ref:`UserEditInfo`
         | User data to update
 
     **Returns:**
@@ -181,6 +196,43 @@ See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
         resources = Resources()
         result = resources.run.userEdit("user-id-123", {"name": "Updated Name"})
         print(result)  # TagoIO Run User Successfully Updated
+
+        # Require a new password on next sign-in and end the user's current sessions
+        result = resources.run.userEdit("user-id-123", {"force_password_change": True, "logout_sessions": True})
+
+
+================
+userResendInvite
+================
+
+Resends the set-password link to a Run user whose invite is still pending.
+The invite is pending while the user has never signed in and ``force_password_change`` is True.
+Can be sent at most once per hour per user. Rejected for an inactive user.
+
+See: `TagoRun <https://help.tago.io/portal/en/kb/articles/191-tagorun>`_
+
+    **Parameters:**
+
+        | **userID**: :ref:`GenericID`
+        | User identification
+
+        | *Optional* **data**: :ref:`UserInviteInfo`
+        | Invite options (e.g., invite_template)
+
+    **Returns:**
+
+        | str
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy **Run User** / **Edit** in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.run.userResendInvite("user-id-123")
+        print(result)  # Invite sent
+
+        result = resources.run.userResendInvite("user-id-123", {"invite_template": "custom_invite"})
 
 
 ==========
