@@ -1,5 +1,5 @@
 **TagoTiP Type**
-===================
+================
 
 
 .. _TagoTiPCommand:

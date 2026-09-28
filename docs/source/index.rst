@@ -277,6 +277,7 @@ API Reference
    Resources/index
    Device/index
    Services/index
+   TagoTiP/index
    Utils/index
 
 .. toctree::

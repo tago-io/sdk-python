@@ -5,6 +5,7 @@ from .modules.Device.Device import Device
 from .modules.Resources.AccountDeprecated import AccountDeprecated as Account
 from .modules.Resources.Resources import Resources
 from .modules.Services.Services import Services
+from .modules.TagoTiP.TagoTiP import TagoTiP
 
 
-__all__ = ["Analysis", "Device", "Account", "Resources", "Services"]
+__all__ = ["Analysis", "Device", "Account", "Resources", "Services", "TagoTiP"]

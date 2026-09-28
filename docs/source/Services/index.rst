@@ -197,32 +197,6 @@ Send SMS to phone number
                     "message": "Test",
                 }
             )
-=======
-TagoTiP
-=======
-
-Send a command to a device through TagoTiP
-
-Requires a Service Authorization token in the module token.
-
-    **Parameters:**
-
-        | **command**: :ref:`TagoTiPCommand`
-        | Command object with serial, protocol and body
-
-.. code-block::
-    :caption: **Example:**
-
-            from tagoio_sdk import Services
-
-            services = Services({"token": "your-service-authorization-token"})
-            services.tagotip.cmd(
-                {
-                    "serial": "mqtt1",
-                    "protocol": "mqtt",
-                    "body": "reboot-now",
-                }
-            )
 
 
 .. toctree::
@@ -233,7 +207,6 @@ Requires a Service Authorization token in the module token.
     Notification_Type
     Pdf_Type
     SMS_Type
-    TagoTiP_Type
 
 
 

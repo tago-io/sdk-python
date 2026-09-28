@@ -9,7 +9,6 @@ from tagoio_sdk.modules.Services.MQTT import MQTT
 from tagoio_sdk.modules.Services.Notification import Notification
 from tagoio_sdk.modules.Services.PDF import PDFService
 from tagoio_sdk.modules.Services.SMS import SMS
-from tagoio_sdk.modules.Services.TagoTiP import TagoTiP
 from tagoio_sdk.params import get_params
 
 
@@ -24,4 +23,3 @@ class Services(TagoIOModule):
         self.Notification = Notification(self.params)
         self.Attachment = Attachment(self.params)
         self.PDF = PDFService(self.params)
-        self.tagotip = TagoTiP(self.params)

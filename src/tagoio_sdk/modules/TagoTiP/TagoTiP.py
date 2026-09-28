@@ -28,9 +28,9 @@ class TagoTiP(TagoIOModule):
         :param TagoTiPCommand command: Command object with serial, protocol and body
 
         Example:
-            >>> from tagoio_sdk import Services
-            >>> services = Services({"token": "your-service-authorization-token"})
-            >>> services.tagotip.cmd({
+            >>> from tagoio_sdk import TagoTiP
+            >>> tagotip = TagoTiP({"token": "your-service-authorization-token"})
+            >>> tagotip.cmd({
             ...     "serial": "mqtt1",
             ...     "protocol": "mqtt",
             ...     "body": "reboot-now",
