@@ -97,6 +97,10 @@ def mockUserEdit() -> dict:
     return {"status": True, "result": "TagoIO Run User Successfully Updated"}
 
 
+def mockUserResendInvite() -> dict:
+    return {"status": True, "result": "Invite sent"}
+
+
 def mockUserDelete() -> dict:
     return {"status": True, "result": "Successfully Removed"}
 
@@ -262,6 +266,29 @@ def testRunMethodUserCreate(requests_mock: Mocker) -> None:
     assert result["user"] == "user_id_new"
 
 
+def testRunMethodUserCreateGeneratePassword(requests_mock: Mocker) -> None:
+    """Test userCreate method of Run class with a server-generated password."""
+    mock_response = mockUserCreate()
+    requests_mock.post("https://api.tago.io/run/users", json=mock_response)
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.run.userCreate(
+        {
+            "name": "New User",
+            "email": "newuser@example.com",
+            "timezone": "America/New_York",
+            "generate_password": True,
+            "send_email": "custom_welcome",
+        }
+    )
+
+    assert result["user"] == "user_id_new"
+    body = requests_mock.last_request.json()
+    assert body["generate_password"] is True
+    assert body["send_email"] == "custom_welcome"
+    assert "password" not in body
+
+
 def testRunMethodUserEdit(requests_mock: Mocker) -> None:
     """Test userEdit method of Run class."""
     mock_response = mockUserEdit()
@@ -271,6 +298,32 @@ def testRunMethodUserEdit(requests_mock: Mocker) -> None:
     result = resources.run.userEdit("user_id_1", {"name": "Updated Name"})
 
     assert result == "TagoIO Run User Successfully Updated"
+
+
+def testRunMethodUserResendInvite(requests_mock: Mocker) -> None:
+    """Test userResendInvite method of Run class without a template."""
+    mock_response = mockUserResendInvite()
+    requests_mock.post("https://api.tago.io/run/users/user_id_1/invite", json=mock_response)
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.run.userResendInvite("user_id_1")
+
+    assert result == "Invite sent"
+    assert requests_mock.last_request.method == "POST"
+    assert requests_mock.last_request.path == "/run/users/user_id_1/invite"
+    assert requests_mock.last_request.json() == {}
+
+
+def testRunMethodUserResendInviteWithTemplate(requests_mock: Mocker) -> None:
+    """Test userResendInvite method of Run class with an invite template."""
+    mock_response = mockUserResendInvite()
+    requests_mock.post("https://api.tago.io/run/users/user_id_1/invite", json=mock_response)
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.run.userResendInvite("user_id_1", {"invite_template": "custom_invite"})
+
+    assert result == "Invite sent"
+    assert requests_mock.last_request.json() == {"invite_template": "custom_invite"}
 
 
 def testRunMethodUserDelete(requests_mock: Mocker) -> None:

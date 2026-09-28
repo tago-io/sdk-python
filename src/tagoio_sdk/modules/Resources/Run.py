@@ -1,5 +1,6 @@
 from typing import Dict
 from typing import Optional
+from typing import Union
 
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import Query
@@ -16,6 +17,7 @@ from tagoio_sdk.modules.Resources.Run_Type import RunInfo
 from tagoio_sdk.modules.Resources.Run_Type import RunSAMLEditInfo
 from tagoio_sdk.modules.Resources.Run_Type import RunSAMLInfo
 from tagoio_sdk.modules.Resources.Run_Type import UserCreateInfo
+from tagoio_sdk.modules.Resources.Run_Type import UserEditInfo
 from tagoio_sdk.modules.Resources.Run_Type import UserInfo
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
@@ -167,6 +169,15 @@ class Run(TagoIOModule):
                 "timezone": "America/New_York"
             })
             print(result)  # {'user': 'user-id-123'}
+
+            # Let the server generate the password (omit "password") and email a set-password link
+            result = resources.run.userCreate({
+                "name": "John Doe",
+                "email": "john@example.com",
+                "timezone": "America/New_York",
+                "generate_password": True,
+                "send_email": True
+            })
             ```
         """
         result = self.doRequest(
@@ -179,7 +190,7 @@ class Run(TagoIOModule):
 
         return result
 
-    def userEdit(self, userID: GenericID, data: Dict) -> str:
+    def userEdit(self, userID: GenericID, data: Union[UserEditInfo, Dict]) -> str:
         """
         @description:
             Updates information for an existing Run user.
@@ -193,6 +204,9 @@ class Run(TagoIOModule):
             resources = Resources()
             result = resources.run.userEdit("user-id-123", {"name": "Updated Name"})
             print(result)  # TagoIO Run User Successfully Updated
+
+            # Require a new password on next sign-in and end the user's current sessions
+            result = resources.run.userEdit("user-id-123", {"force_password_change": True, "logout_sessions": True})
             ```
         """
         result = self.doRequest(
@@ -200,6 +214,37 @@ class Run(TagoIOModule):
                 "path": f"/run/users/{userID}",
                 "method": "PUT",
                 "body": data,
+            }
+        )
+
+        return result
+
+    def userResendInvite(self, userID: GenericID, data: Optional[Dict] = None) -> str:
+        """
+        @description:
+            Resends the set-password link to a Run user whose invite is still pending.
+            The invite is pending while the user has never signed in and `force_password_change` is True.
+            Can be sent at most once per hour per user.
+            Pass `{"invite_template": "template-key"}` to pick an `email_templates` key instead of `welcome`.
+
+        @see:
+            https://help.tago.io/portal/en/kb/articles/191-tagorun TagoRun
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Run User** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.run.userResendInvite("user-id-123")
+            print(result)  # Invite sent
+
+            result = resources.run.userResendInvite("user-id-123", {"invite_template": "custom_invite"})
+            ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/run/users/{userID}/invite",
+                "method": "POST",
+                "body": data or {},
             }
         )
 

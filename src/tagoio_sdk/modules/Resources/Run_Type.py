@@ -209,13 +209,42 @@ class RunInfo(TypedDict):
 class UserCreateInfo(TypedDict):
     name: str
     email: str
-    password: str
+    password: Optional[str]
+    """
+    Omit when `generate_password` is True.
+    """
     timezone: str
     company: Optional[str]
     phone: Optional[str]
     language: Optional[str]
     tags: Optional[list[TagsObj]]
     active: Optional[bool]
+    generate_password: Optional[bool]
+    """
+    Server generates the password and turns on `force_password_change`. Rejected if `password` is also sent.
+    """
+    send_email: Optional[Union[bool, str]]
+    """
+    True sends the welcome email using the Run's `welcome` template.
+    A string picks an `email_templates` key; unknown keys fall back to `welcome`, then to a built-in default.
+    """
+
+
+class UserEditInfo(TypedDict, total=False):
+    name: str
+    email: str
+    password: str
+    timezone: str
+    company: str
+    phone: str
+    language: str
+    tags: list[TagsObj]
+    active: bool
+    force_password_change: bool
+    logout_sessions: bool
+    """
+    Deletes the user's active sessions.
+    """
 
 
 class UserInfo(TypedDict):
@@ -236,6 +265,7 @@ class UserInfo(TypedDict):
     updated_at: datetime
     options: object
     tags: list[TagsObj]
+    force_password_change: bool
 
 
 class LoginResponse(TypedDict):
