@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Dict
 from typing import Literal
+from typing import NotRequired
 from typing import Optional
 from typing import TypedDict
 from typing import Union
@@ -209,7 +210,7 @@ class RunInfo(TypedDict):
 class UserCreateInfo(TypedDict):
     name: str
     email: str
-    password: Optional[str]
+    password: NotRequired[str]
     """
     Omit when `generate_password` is True.
     """
@@ -219,27 +220,31 @@ class UserCreateInfo(TypedDict):
     language: Optional[str]
     tags: Optional[list[TagsObj]]
     active: Optional[bool]
-    generate_password: Optional[bool]
+    generate_password: NotRequired[bool]
     """
     Server generates the password and turns on `force_password_change`. Rejected if `password` is also sent.
     """
-    send_email: Optional[Union[bool, str]]
+    send_email: NotRequired[Union[bool, str]]
     """
     True sends the welcome email using the Run's `welcome` template.
     A string picks an `email_templates` key; unknown keys fall back to `welcome`, then to a built-in default.
+    With `generate_password` or `send_email` and no `active`, the user is created active.
+    `active: False` together with `send_email` is rejected.
     """
 
 
 class UserEditInfo(TypedDict, total=False):
     name: str
-    email: str
     password: str
     timezone: str
-    company: str
-    phone: str
+    company: Optional[str]
+    phone: Optional[str]
     language: str
-    tags: list[TagsObj]
+    newsletter: Optional[bool]
     active: bool
+    options: Optional[Dict]
+    tags: list[TagsObj]
+    custom_preferences: Optional[Dict]
     force_password_change: bool
     logout_sessions: bool
     """
@@ -266,6 +271,13 @@ class UserInfo(TypedDict):
     options: object
     tags: list[TagsObj]
     force_password_change: bool
+
+
+class UserInviteInfo(TypedDict):
+    invite_template: NotRequired[str]
+    """
+    An `email_templates` key to send instead of `welcome`.
+    """
 
 
 class LoginResponse(TypedDict):

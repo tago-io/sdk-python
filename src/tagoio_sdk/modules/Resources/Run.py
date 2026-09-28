@@ -19,6 +19,7 @@ from tagoio_sdk.modules.Resources.Run_Type import RunSAMLInfo
 from tagoio_sdk.modules.Resources.Run_Type import UserCreateInfo
 from tagoio_sdk.modules.Resources.Run_Type import UserEditInfo
 from tagoio_sdk.modules.Resources.Run_Type import UserInfo
+from tagoio_sdk.modules.Resources.Run_Type import UserInviteInfo
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
@@ -154,6 +155,8 @@ class Run(TagoIOModule):
         """
         @description:
             Creates a new user in the Run environment.
+            With `generate_password` or `send_email` and no `active`, the user is created active;
+            `active: False` together with `send_email` is rejected.
 
         @see:
             https://help.tago.io/portal/en/kb/articles/191-tagorun TagoRun
@@ -219,12 +222,14 @@ class Run(TagoIOModule):
 
         return result
 
-    def userResendInvite(self, userID: GenericID, data: Optional[Dict] = None) -> str:
+    def userResendInvite(
+        self, userID: GenericID, data: Optional[UserInviteInfo] = None
+    ) -> str:
         """
         @description:
             Resends the set-password link to a Run user whose invite is still pending.
             The invite is pending while the user has never signed in and `force_password_change` is True.
-            Can be sent at most once per hour per user.
+            Can be sent at most once per hour per user. Rejected for an inactive user.
             Pass `{"invite_template": "template-key"}` to pick an `email_templates` key instead of `welcome`.
 
         @see:
