@@ -1,5 +1,6 @@
 import os
 
+from datetime import datetime
 from typing import Any
 from typing import Dict
 
@@ -421,6 +422,62 @@ def testGetChunk(requests_mock: Mocker) -> None:
 
     assert isinstance(result, list)
     assert result[0]["amount"] == 1000
+
+
+def testStatistics(requests_mock: Mocker) -> None:
+    """Test statistics method of Devices class."""
+    device_id = "device-id-123"
+    requests_mock.get(
+        f"https://api.tago.io/device/{device_id}/statistics",
+        json={
+            "status": True,
+            "result": [
+                {
+                    "time": "2026-09-01T00:00:00.000Z",
+                    "device_input": 1250,
+                    "device_output": 8730,
+                },
+                {"time": "2026-09-02T00:00:00.000Z", "device_input": 2480},
+            ],
+        },
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.devices.statistics(
+        device_id,
+        {
+            "periodicity": "day",
+            "start_date": "2026-09-01",
+            "end_date": "2026-09-30",
+            "timezone": "America/Sao_Paulo",
+        },
+    )
+
+    assert requests_mock.last_request.qs == {
+        "periodicity": ["day"],
+        "start_date": ["2026-09-01"],
+        "end_date": ["2026-09-30"],
+        "timezone": ["america/sao_paulo"],
+    }
+    assert result[0]["time"] == datetime(2026, 9, 1)
+    assert result[0]["device_input"] == 1250
+    assert result[0]["device_output"] == 8730
+    assert "device_output" not in result[1]
+
+
+def testStatisticsWithoutQuery(requests_mock: Mocker) -> None:
+    """Test statistics method of Devices class without query params."""
+    device_id = "device-id-123"
+    requests_mock.get(
+        f"https://api.tago.io/device/{device_id}/statistics",
+        json={"status": True, "result": []},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.devices.statistics(device_id)
+
+    assert requests_mock.last_request.qs == {}
+    assert result == []
 
 
 def testDeleteChunk(requests_mock: Mocker) -> None:

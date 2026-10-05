@@ -22,6 +22,8 @@ from tagoio_sdk.modules.Resources.Device_Type import DeviceEditInfo
 from tagoio_sdk.modules.Resources.Device_Type import DeviceEmptyParams
 from tagoio_sdk.modules.Resources.Device_Type import DeviceListItem
 from tagoio_sdk.modules.Resources.Device_Type import DeviceQuery
+from tagoio_sdk.modules.Resources.Device_Type import DeviceStatistic
+from tagoio_sdk.modules.Resources.Device_Type import DeviceStatisticsQuery
 from tagoio_sdk.modules.Resources.Device_Type import DeviceTokenDataList
 from tagoio_sdk.modules.Resources.Device_Type import ListDeviceTokenQuery
 from tagoio_sdk.modules.Resources.Device_Type import TokenData
@@ -609,6 +611,43 @@ class Devices(TagoIOModule):
                 "method": "GET",
             }
         )
+        return result
+
+    def statistics(
+        self, deviceID: GenericID, queryParams: Optional[DeviceStatisticsQuery] = None
+    ) -> List[DeviceStatistic]:
+        """
+        @description:
+            Retrieves the data input and output counters of a device over time.
+            Requires the Control Tower add-on. Counters are month-to-date totals that reset at the start of each
+            calendar month (UTC). When the range includes the current time, the first item holds the live counters.
+
+        @see:
+            https://docs.tago.io/docs/api/device-statistics Device Statistics
+            https://docs.tago.io/docs/tagoio/addons/control-tower Control Tower
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            statistics = resources.devices.statistics("device-id-123", {
+                "periodicity": "day",
+                "start_date": "2026-09-01",
+                "end_date": "2026-09-30",
+            })
+            print(statistics)  # [{'time': datetime.datetime(2026, 9, 1, 0, 0), 'device_input': 1250, 'device_output': 8730}, ...]
+            ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/device/{deviceID}/statistics",
+                "method": "GET",
+                "params": queryParams or {},
+            }
+        )
+
+        result = dateParserList(result, ["time"])
+
         return result
 
     def getChunk(self, deviceID: GenericID) -> List[DeviceChunkData]:

@@ -601,6 +601,45 @@ Sends data to a device. Accepts a single data object or an array of data objects
         print(result)  # Successfully Inserted
 
 
+==========
+statistics
+==========
+
+Retrieves the data input and output counters of a device over time.
+Requires the Control Tower add-on. Counters are month-to-date totals that reset at the start of each calendar month (UTC).
+When the range includes the current time, the first item holds the live counters.
+
+    **See:**
+
+        https://docs.tago.io/docs/api/device-statistics Device Statistics
+
+        https://docs.tago.io/docs/tagoio/addons/control-tower Control Tower
+
+    **Parameters:**
+
+        | **deviceID**: :ref:`GenericID`
+        | Device ID
+
+        | *Optional* **queryParams**: :ref:`DeviceStatisticsQuery`
+        | Periodicity, date range, and timezone
+
+    **Returns:**
+
+        | list[:ref:`DeviceStatistic`]
+
+.. code-block::
+    :caption: **Example:**
+
+        # If receive an error "Authorization Denied", check policy **Device** / **Access** in Access Management.
+        resources = Resources()
+        statistics = resources.devices.statistics("device-id-123", {
+            "periodicity": "day",
+            "start_date": "2026-09-01",
+            "end_date": "2026-09-30",
+        })
+        print(statistics)  # [{'time': datetime.datetime(2026, 9, 1, 0, 0), 'device_input': 1250, 'device_output': 8730}, ...]
+
+
 ===========
 tokenCreate
 ===========
