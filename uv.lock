@@ -421,7 +421,7 @@ wheels = [
 
 [[package]]
 name = "tagoio-sdk"
-version = "5.1.7"
+version = "5.1.8"
 source = { editable = "." }
 dependencies = [
     { name = "python-dateutil" },
