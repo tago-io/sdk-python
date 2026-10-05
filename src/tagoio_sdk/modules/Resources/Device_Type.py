@@ -649,3 +649,41 @@ class DeviceDataRestore(TypedDict):
     """
     File path in TagoIO Files to restore data from (CSV format).
     """
+
+
+class DeviceStatisticsQuery(TypedDict, total=False):
+    periodicity: Literal["hour", "day", "month"]
+    """
+    Interval between items (default: "hour"). Also sets the default range and the longest range allowed:
+    1 month for "hour", 3 months for "day", and 12 months for "month".
+    """
+    start_date: Union[str, datetime]
+    """
+    Start of the range. Send it together with end_date. If either one is missing, the default range
+    for periodicity is used: the last 24 hours for "hour", the last 3 months for "day",
+    and the last 12 months for "month".
+    """
+    end_date: Union[str, datetime]
+    """
+    End of the range. Must not be before start_date.
+    """
+    timezone: str
+    """
+    IANA timezone used to read start_date and end_date as local times (default: "UTC").
+    Send the dates as strings without a UTC offset when you set it.
+    """
+
+
+class DeviceStatistic(TypedDict, total=False):
+    time: datetime
+    """
+    When the counters were recorded.
+    """
+    device_input: Union[int, float]
+    """
+    Data records added to the device since the start of the month. Missing when there was no input this month.
+    """
+    device_output: Union[int, float]
+    """
+    Data records returned by the device since the start of the month. Missing when there was no output this month.
+    """
