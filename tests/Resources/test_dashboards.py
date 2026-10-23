@@ -1,7 +1,12 @@
 import os
 
+import pytest
+import requests
+import urllib3
+
 from requests_mock.mocker import Mocker
 
+from tagoio_sdk.infrastructure.api_request import TagoIORequestError
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
 from tagoio_sdk.modules.Resources.Resources import Resources
 
@@ -656,3 +661,34 @@ def testDashboardsMethodEditAIFields(requests_mock: Mocker) -> None:
 
     assert result == "Successfully Updated"
     assert requests_mock.last_request.json() == body
+
+
+def testDashboardsMethodGenerateServerErrorNotRetried(requests_mock: Mocker, monkeypatch) -> None:
+    """Test generate makes a single attempt when the server answers 5xx."""
+    monkeypatch.setattr("time.sleep", lambda _: None)
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        status_code=500,
+        json={"status": False, "message": "Sorry, Internal Error"},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    with pytest.raises(TagoIORequestError):
+        resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a map"})
+
+    assert requests_mock.call_count == 1
+
+
+def testDashboardsMethodGenerateNetworkErrorNotRetried(requests_mock: Mocker, monkeypatch) -> None:
+    """Test generate makes a single attempt on a network error."""
+    monkeypatch.setattr("time.sleep", lambda _: None)
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        exc=requests.exceptions.ConnectionError(urllib3.exceptions.MaxRetryError(None, "/", "connection refused")),
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    with pytest.raises(TagoIORequestError):
+        resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a map"})
+
+    assert requests_mock.call_count == 1

@@ -350,7 +350,8 @@ class Dashboards(TagoIOModule):
             dashboard's own setup. With `run_user`, it changes that run user's individual dashboard,
             which requires `per_user` on the AI dashboard. A generation takes 15 to 60 seconds.
             The server answers 429 when the profile already runs 3 generations or the dashboard
-            is already generating.
+            is already generating. The request is not retried, because each generation is billed
+            and saves a new dashboard version; on an error, the caller decides whether to call again.
 
         @see:
             https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
@@ -375,6 +376,7 @@ class Dashboards(TagoIOModule):
                 "method": "POST",
                 "body": params,
                 "timeout": GENERATE_REQUEST_TIMEOUT,
+                "attempts": 1,
             }
         )
 

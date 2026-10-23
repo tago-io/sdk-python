@@ -300,7 +300,7 @@ See: `Dashboard Overview <https://docs.tago.io/docs/tagoio/dashboards/>`_
 generate
 ========
 
-Builds or edits an AI dashboard from a prompt. Without ``run_user``, it changes the dashboard's own setup. With ``run_user``, it changes that run user's individual dashboard, which requires ``per_user`` on the AI dashboard. A generation takes 15 to 60 seconds, so this call waits up to 180 seconds. The server answers 429 when the profile already runs 3 generations or the dashboard is already generating.
+Builds or edits an AI dashboard from a prompt. Without ``run_user``, it changes the dashboard's own setup. With ``run_user``, it changes that run user's individual dashboard, which requires ``per_user`` on the AI dashboard. A generation takes 15 to 60 seconds, so this call waits up to 180 seconds. The server answers 429 when the profile already runs 3 generations or the dashboard is already generating. The request is not retried, because each generation is billed and saves a new dashboard version; on an error, the caller decides whether to call again.
 
 See: `Dashboard Overview <https://docs.tago.io/docs/tagoio/dashboards/>`_
 
