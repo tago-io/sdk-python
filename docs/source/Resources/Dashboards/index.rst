@@ -296,6 +296,74 @@ See: `Dashboard Overview <https://docs.tago.io/docs/tagoio/dashboards/>`_
         print(analyses)  # [{'id': 'analysis-id-123', 'name': 'Analysis #1'}, ...]
 
 
+========
+generate
+========
+
+Builds or edits an AI dashboard from a prompt. Without ``run_user``, it changes the dashboard's own setup. With ``run_user``, it changes that run user's individual dashboard, which requires ``per_user`` on the AI dashboard. A generation takes 15 to 60 seconds, so this call waits up to 180 seconds. The server answers 429 when the profile already runs 3 generations or the dashboard is already generating. The request is not retried, because each generation is billed and saves a new dashboard version; on an error, the caller decides whether to call again.
+
+See: `Dashboard Overview <https://docs.tago.io/docs/tagoio/dashboards/>`_
+
+    **Parameters:**
+
+        | **dashboardID**: :ref:`GenericID`
+        | AI dashboard identifier
+
+        | **params**: :ref:`GenerateParams`
+        | Prompt, optional conversation history, and optional run user ID
+
+    **Returns:**
+
+        | :ref:`GenerateResponse`
+        | The dashboard ID
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy "Dashboard" / "Edit" in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.dashboards.generate("dashboard-id-123", {
+            "prompt": "Add a chart with the temperature of the last 24 hours",
+            "history": [
+                {"role": "user", "content": "Show the current humidity"},
+                {"role": "assistant", "content": "Added a humidity display."},
+            ],
+        })
+        print(result)  # {'id': 'dashboard-id-123'}
+
+
+============
+listRunUsers
+============
+
+Lists the run users of an AI dashboard with ``per_user`` on, and whether each one already has an individual dashboard. Returns 404 when the dashboard is not an AI dashboard with ``per_user`` on.
+
+See: `Dashboard Overview <https://docs.tago.io/docs/tagoio/dashboards/>`_
+
+    **Parameters:**
+
+        | **dashboardID**: :ref:`GenericID`
+        | AI dashboard identifier
+
+        | *Optional* **queryObj**: :ref:`RunUsersQuery`
+        | Search and pagination. ``search`` matches name or email; ``page`` starts at 1; ``amount`` defaults to 1000, the maximum.
+
+    **Returns:**
+
+        | list[:ref:`DashboardRunUser`]
+        | Run users with their individual dashboard status
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy "Dashboard" / "Access" in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        users = resources.dashboards.listRunUsers("dashboard-id-123", {"search": "john"})
+        print(users)  # [{'id': 'user-id-123', 'name': 'John', 'email': 'john@example.com', 'has_dashboard': True}]
+
+
 =============================
 runWidgetHeaderButtonAnalysis
 =============================

@@ -21,6 +21,8 @@ class RequestParams(TypedDict):
     body: Optional[any]
     params: Optional[any]
     headers: Optional[any]
+    timeout: Optional[float]
+    attempts: Optional[int]
 
 
 class TagoIORequestError(Exception):
@@ -87,13 +89,16 @@ def apiRequest(requestParams: RequestParams) -> dict[str, any]:
                 url=url,
                 data=dataBody,
                 params=requestParams.get("params"),
-                timeout=config.tagoSDKconfig["requestTimeout"],
+                timeout=requestParams.get("timeout")
+                or config.tagoSDKconfig["requestTimeout"],
             )
         )
 
     result = None
     resulterror = None
-    for _ in range(config.tagoSDKconfig["requestAttempts"]):
+    for _ in range(
+        requestParams.get("attempts") or config.tagoSDKconfig["requestAttempts"]
+    ):
         try:
             resultBack = request()
             if resultBack.get("error") is not None:

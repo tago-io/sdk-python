@@ -1,7 +1,12 @@
 import os
 
+import pytest
+import requests
+import urllib3
+
 from requests_mock.mocker import Mocker
 
+from tagoio_sdk.infrastructure.api_request import TagoIORequestError
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
 from tagoio_sdk.modules.Resources.Resources import Resources
 
@@ -562,3 +567,128 @@ def testWidgetsMethodTokenGenerate(requests_mock: Mocker) -> None:
 
     # Check if result has expected properties
     assert result["widget_token"] == "widget_token_123"
+
+
+def testDashboardsMethodGenerate(requests_mock: Mocker) -> None:
+    """Test generate method for the dashboard's own setup with history."""
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        json={"status": True, "result": {"id": "dashboard_id_1"}},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    history = [
+        {"role": "user", "content": "Show the current humidity"},
+        {"role": "assistant", "content": "Added a humidity display."},
+    ]
+    result = resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a temperature chart", "history": history})
+
+    assert result == {"id": "dashboard_id_1"}
+    assert requests_mock.last_request.method == "POST"
+    assert requests_mock.last_request.json() == {
+        "prompt": "Add a temperature chart",
+        "history": history,
+    }
+    assert requests_mock.last_request.timeout == 180
+
+
+def testDashboardsMethodGenerateRunUser(requests_mock: Mocker) -> None:
+    """Test generate method for a run user's individual dashboard."""
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        json={"status": True, "result": {"id": "dashboard_id_1"}},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a map", "run_user": "run_user_id_1"})
+
+    assert result == {"id": "dashboard_id_1"}
+    assert requests_mock.last_request.json() == {
+        "prompt": "Add a map",
+        "run_user": "run_user_id_1",
+    }
+
+
+def testDashboardsMethodListRunUsers(requests_mock: Mocker) -> None:
+    """Test listRunUsers method sends search and pagination params."""
+    rows = [
+        {
+            "id": "run_user_id_1",
+            "name": "John",
+            "email": "john@example.com",
+            "has_dashboard": True,
+        }
+    ]
+    requests_mock.get(
+        "https://api.tago.io/dashboard/dashboard_id_1/run-users",
+        json={"status": True, "result": rows},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.dashboards.listRunUsers("dashboard_id_1", {"search": "john", "page": 2, "amount": 50})
+
+    assert result == rows
+    assert requests_mock.last_request.qs == {
+        "search": ["john"],
+        "page": ["2"],
+        "amount": ["50"],
+    }
+
+
+def testDashboardsMethodListRunUsersDefaults(requests_mock: Mocker) -> None:
+    """Test listRunUsers method default pagination."""
+    requests_mock.get(
+        "https://api.tago.io/dashboard/dashboard_id_1/run-users",
+        json={"status": True, "result": []},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    resources.dashboards.listRunUsers("dashboard_id_1")
+
+    assert requests_mock.last_request.qs == {"page": ["1"], "amount": ["1000"]}
+
+
+def testDashboardsMethodEditAIFields(requests_mock: Mocker) -> None:
+    """Test edit method passes per_user and ai_instructions through."""
+    requests_mock.put(
+        "https://api.tago.io/dashboard/dashboard_id_1",
+        json={"status": True, "result": "Successfully Updated"},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    body = {"per_user": True, "ai_instructions": "Use Celsius for temperatures"}
+    result = resources.dashboards.edit("dashboard_id_1", body)
+
+    assert result == "Successfully Updated"
+    assert requests_mock.last_request.json() == body
+
+
+def testDashboardsMethodGenerateServerErrorNotRetried(requests_mock: Mocker, monkeypatch) -> None:
+    """Test generate makes a single attempt when the server answers 5xx."""
+    monkeypatch.setattr("time.sleep", lambda _: None)
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        status_code=500,
+        json={"status": False, "message": "Sorry, Internal Error"},
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    with pytest.raises(TagoIORequestError):
+        resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a map"})
+
+    assert requests_mock.call_count == 1
+
+
+def testDashboardsMethodGenerateNetworkErrorNotRetried(requests_mock: Mocker, monkeypatch) -> None:
+    """Test generate makes a single attempt on a network error."""
+    monkeypatch.setattr("time.sleep", lambda _: None)
+    requests_mock.post(
+        "https://api.tago.io/dashboard/dashboard_id_1/generate",
+        exc=requests.exceptions.ConnectionError(urllib3.exceptions.MaxRetryError(None, "/", "connection refused")),
+    )
+
+    resources = Resources({"token": "your_token_value"})
+    with pytest.raises(TagoIORequestError):
+        resources.dashboards.generate("dashboard_id_1", {"prompt": "Add a map"})
+
+    assert requests_mock.call_count == 1
