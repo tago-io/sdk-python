@@ -21,6 +21,7 @@ class RequestParams(TypedDict):
     body: Optional[any]
     params: Optional[any]
     headers: Optional[any]
+    timeout: Optional[float]
 
 
 class TagoIORequestError(Exception):
@@ -87,7 +88,8 @@ def apiRequest(requestParams: RequestParams) -> dict[str, any]:
                 url=url,
                 data=dataBody,
                 params=requestParams.get("params"),
-                timeout=config.tagoSDKconfig["requestTimeout"],
+                timeout=requestParams.get("timeout")
+                or config.tagoSDKconfig["requestTimeout"],
             )
         )
 

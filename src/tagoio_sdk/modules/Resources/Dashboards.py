@@ -12,10 +12,18 @@ from tagoio_sdk.modules.Resources.Dashboard_Widgets import Widgets
 from tagoio_sdk.modules.Resources.Dashboards_Type import AnalysisRelated
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardCreateInfo
 from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardInfo
+from tagoio_sdk.modules.Resources.Dashboards_Type import DashboardRunUser
 from tagoio_sdk.modules.Resources.Dashboards_Type import DevicesRelated
+from tagoio_sdk.modules.Resources.Dashboards_Type import GenerateParams
+from tagoio_sdk.modules.Resources.Dashboards_Type import GenerateResponse
 from tagoio_sdk.modules.Resources.Dashboards_Type import PublicKeyResponse
+from tagoio_sdk.modules.Resources.Dashboards_Type import RunUsersQuery
 from tagoio_sdk.modules.Utils.dateParser import dateParser
 from tagoio_sdk.modules.Utils.dateParser import dateParserList
+
+
+# ? AI generation takes 15 to 60 seconds, longer than the default request timeout.
+GENERATE_REQUEST_TIMEOUT = 180  # seconds
 
 
 class Dashboards(TagoIOModule):
@@ -330,6 +338,78 @@ class Dashboards(TagoIOModule):
                 "path": f"/analysis/{analysisID}/run/{dashboardID}/{widgetID}",
                 "method": "POST",
                 "body": {"scope": scope},
+            }
+        )
+
+        return result
+
+    def generate(self, dashboardID: GenericID, params: GenerateParams) -> GenerateResponse:
+        """
+        @description:
+            Builds or edits an AI dashboard from a prompt. Without `run_user`, it changes the
+            dashboard's own setup. With `run_user`, it changes that run user's individual dashboard,
+            which requires `per_user` on the AI dashboard. A generation takes 15 to 60 seconds.
+            The server answers 429 when the profile already runs 3 generations or the dashboard
+            is already generating.
+
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Edit** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.dashboards.generate("dashboard-id-123", {
+                "prompt": "Add a chart with the temperature of the last 24 hours",
+                "history": [
+                    {"role": "user", "content": "Show the current humidity"},
+                    {"role": "assistant", "content": "Added a humidity display."},
+                ],
+            })
+            print(result)  # {'id': 'dashboard-id-123'}
+            ```
+        """
+        result = self.doRequest(
+            {
+                "path": f"/dashboard/{dashboardID}/generate",
+                "method": "POST",
+                "body": params,
+                "timeout": GENERATE_REQUEST_TIMEOUT,
+            }
+        )
+
+        return result
+
+    def listRunUsers(self, dashboardID: GenericID, queryObj: Optional[RunUsersQuery] = None) -> List[DashboardRunUser]:
+        """
+        @description:
+            Lists the run users of an AI dashboard with `per_user` on, and whether each one
+            already has an individual dashboard. `search` matches name or email. Returns 404
+            when the dashboard is not an AI dashboard with `per_user` on.
+
+        @see:
+            https://docs.tago.io/docs/tagoio/dashboards/ Dashboard Overview
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Dashboard** / **Access** in Access Management.
+            ```python
+            resources = Resources()
+            users = resources.dashboards.listRunUsers("dashboard-id-123", {"search": "john", "page": 1, "amount": 100})
+            print(users)  # [{'id': 'user-id-123', 'name': 'John', 'email': 'john@example.com', 'has_dashboard': True}]
+            ```
+        """
+        if queryObj is None:
+            queryObj = {}
+
+        result = self.doRequest(
+            {
+                "path": f"/dashboard/{dashboardID}/run-users",
+                "method": "GET",
+                "params": {
+                    "search": queryObj.get("search"),
+                    "page": queryObj.get("page") or 1,
+                    "amount": queryObj.get("amount") or 1000,
+                },
             }
         )
 

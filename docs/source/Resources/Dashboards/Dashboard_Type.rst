@@ -51,6 +51,15 @@ DashboardCreateInfo
         | **visible**: bool
         | Dashboard visibility status
 
+        | *Optional* **type**: "dashboard" or "blueprint" or "ai" or "custom"
+        | Dashboard type (default: "dashboard")
+
+        | *Optional* **per_user**: bool
+        | Gives each run user an individual dashboard. Only valid on "ai" dashboards
+
+        | *Optional* **ai_instructions**: Optional[str]
+        | Rules for the AI generator, up to 10,000 characters
+
 
 .. _icon:
 
@@ -198,8 +207,14 @@ DashboardInfo
         | **background**: any
         | Background configuration
 
-        | **type**: str
+        | **type**: "dashboard" or "blueprint" or "ai" or "custom"
         | Dashboard type
+
+        | **per_user**: bool
+        | Whether each run user gets an individual dashboard. Only valid on "ai" dashboards
+
+        | **ai_instructions**: Optional[str]
+        | Rules for the AI generator, up to 10,000 characters
 
         | **blueprint_device_behavior**: "more_than_one" or "always"
         | Blueprint device behavior mode
@@ -527,3 +542,85 @@ widgetOverwriteOptions
     **Type:**
 
         | Literal["start_date", "end_date", "timezone"]
+
+.. _GenerateHistoryEntry:
+
+GenerateHistoryEntry
+--------------------
+
+    One earlier turn of the generation conversation.
+
+    **Attributes:**
+
+        | **role**: "user" or "assistant"
+        | Who sent the message
+
+        | **content**: str
+        | Message text
+
+
+.. _GenerateParams:
+
+GenerateParams
+--------------
+
+    Body for an AI dashboard generation.
+
+    **Attributes:**
+
+        | **prompt**: str
+        | What to build or change
+
+        | *Optional* **history**: list[:ref:`GenerateHistoryEntry`]
+        | Earlier turns of the conversation
+
+        | *Optional* **run_user**: :ref:`GenericID`
+        | Run user whose individual dashboard to build or edit. Requires ``per_user``
+
+
+.. _GenerateResponse:
+
+GenerateResponse
+----------------
+
+    **Attributes:**
+
+        | **id**: :ref:`GenericID`
+        | Dashboard identifier
+
+
+.. _RunUsersQuery:
+
+RunUsersQuery
+-------------
+
+    **Attributes:**
+
+        | *Optional* **search**: str
+        | Matches name or email
+
+        | *Optional* **page**: int
+        | Page number, starting at 1
+
+        | *Optional* **amount**: int
+        | Rows per page, default and maximum 1000
+
+
+.. _DashboardRunUser:
+
+DashboardRunUser
+----------------
+
+    **Attributes:**
+
+        | **id**: :ref:`GenericID`
+        | Run user identifier
+
+        | **name**: Optional[str]
+        | Run user name
+
+        | **email**: Optional[str]
+        | Run user email
+
+        | **has_dashboard**: bool
+        | Whether the run user already has an individual dashboard

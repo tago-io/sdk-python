@@ -20,11 +20,17 @@ class Arrangement(TypedDict):
     tab: Optional[str]
 
 
+DashboardType = Literal["dashboard", "blueprint", "ai", "custom"]
+
+
 class DashboardCreateInfo(TypedDict):
     label: str
     arrangement: list[Arrangement]
     tags: list[TagsObj]
     visible: bool
+    type: Optional[DashboardType]
+    per_user: Optional[bool]
+    ai_instructions: Optional[str]
 
 
 class icon(TypedDict):
@@ -72,7 +78,9 @@ class DashboardInfo(TypedDict):
     tabs: list
     icon: icon
     background: any
-    type: str
+    type: DashboardType
+    per_user: bool
+    ai_instructions: Optional[str]
     blueprint_device_behavior: Literal["more_than_one", "always"]
     blueprint_selector_behavior: Literal["open", "closed", "always_open", "always_closed"]
     blueprint_devices: BlueprintDeviceConfig
@@ -174,6 +182,34 @@ class GetDataModel(TypedDict):
     blueprint_devices: Optional[list[BlueprintDeviceOrigin]]
     page: Optional[Union[int, float]]
     amount: Optional[Union[int, float]]
+
+
+class GenerateHistoryEntry(TypedDict):
+    role: Literal["user", "assistant"]
+    content: str
+
+
+class GenerateParams(TypedDict, total=False):
+    prompt: str
+    history: list[GenerateHistoryEntry]
+    run_user: GenericID
+
+
+class GenerateResponse(TypedDict):
+    id: GenericID
+
+
+class RunUsersQuery(TypedDict, total=False):
+    search: str
+    page: int
+    amount: int
+
+
+class DashboardRunUser(TypedDict):
+    id: GenericID
+    name: Optional[str]
+    email: Optional[str]
+    has_dashboard: bool
 
 
 class PublicKeyResponse(TypedDict):
