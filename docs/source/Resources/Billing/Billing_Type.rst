@@ -6,7 +6,10 @@
 BillingPlan
 ------------
 
-    **BillingPlan** = "free" or "starter" or "scale"
+    **BillingPlan** = "free" or "pro" or "max" or "starter" or "scale"
+
+    "starter" and "scale" are the former ids of "pro" and "max". The API still accepts them, and TagoDeploy
+    instances may still return them.
 
 .. _BillingAddOn:
 
