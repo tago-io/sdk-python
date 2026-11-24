@@ -6,7 +6,8 @@ from typing import Union
 from tagoio_sdk.common.Common_Type import GenericID
 
 
-BillingPlan = Literal["free", "starter", "scale"]
+# Accounts not yet migrated, and TagoDeploy instances, still return the former ids "starter" (Pro) and "scale" (Max).
+BillingPlan = Literal["free", "lite", "pro", "max", "starter", "scale"]
 
 BillingAddOn = Literal["mobile", "custom_dns"]
 
