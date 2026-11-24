@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SQL Type &#8212; TagoIO SDK for Python</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="https://assets.tago.io/tagoio/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Device" href="../../Device/index.html" />
+    <link rel="prev" title="SQL" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sql-type">
+<h1><strong>SQL Type</strong><a class="headerlink" href="#sql-type" title="Link to this heading">¶</a></h1>
+<section id="sqlparam">
+<span id="id1"></span><h2>SQLParam<a class="headerlink" href="#sqlparam" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">key: str</div>
+<div class="line">Positional parameter placeholder, such as <code class="docutils literal notranslate"><span class="pre">$1</span></code>.</div>
+</div>
+<div class="line-block">
+<div class="line">value: str</div>
+<div class="line">Value bound to the placeholder.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlcreateinfo">
+<span id="id2"></span><h2>SQLCreateInfo<a class="headerlink" href="#sqlcreateinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Name of the query. Required on create and replace.</div>
+</div>
+<div class="line-block">
+<div class="line">query: str</div>
+<div class="line">TagoSQL query text. Required on create and replace.</div>
+</div>
+<div class="line-block">
+<div class="line">description: Optional[str]</div>
+<div class="line">Human-readable description of the query.</div>
+</div>
+<div class="line-block">
+<div class="line">params: Optional[List[<a class="reference internal" href="#sqlparam"><span class="std std-ref">SQLParam</span></a>]]</div>
+<div class="line">Default positional parameters.</div>
+</div>
+<div class="line-block">
+<div class="line">cache_enabled: Optional[bool]</div>
+<div class="line">Whether execution results are cached.</div>
+</div>
+<div class="line-block">
+<div class="line">cache_ttl_seconds: Optional[int]</div>
+<div class="line">Cache time-to-live in seconds.</div>
+</div>
+<div class="line-block">
+<div class="line">rate_limit_rpm: Optional[int]</div>
+<div class="line">Execution rate limit in requests per minute.</div>
+</div>
+<div class="line-block">
+<div class="line">active: Optional[bool]</div>
+<div class="line">Whether the query is active.</div>
+</div>
+<div class="line-block">
+<div class="line">tags: Optional[List[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line">List of tags associated with the query.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlinfo">
+<span id="id3"></span><h2>SQLInfo<a class="headerlink" href="#sqlinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Unique identifier for the query.</div>
+</div>
+<div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Name of the query.</div>
+</div>
+<div class="line-block">
+<div class="line">description: Optional[str]</div>
+<div class="line">Human-readable description of the query.</div>
+</div>
+<div class="line-block">
+<div class="line">query: str</div>
+<div class="line">TagoSQL query text.</div>
+</div>
+<div class="line-block">
+<div class="line">params: Optional[List[<a class="reference internal" href="#sqlparam"><span class="std std-ref">SQLParam</span></a>]]</div>
+<div class="line">Default positional parameters.</div>
+</div>
+<div class="line-block">
+<div class="line">cache_enabled: Optional[bool]</div>
+<div class="line">Whether execution results are cached.</div>
+</div>
+<div class="line-block">
+<div class="line">cache_ttl_seconds: Optional[int]</div>
+<div class="line">Cache time-to-live in seconds.</div>
+</div>
+<div class="line-block">
+<div class="line">rate_limit_rpm: Optional[int]</div>
+<div class="line">Execution rate limit in requests per minute.</div>
+</div>
+<div class="line-block">
+<div class="line">active: Optional[bool]</div>
+<div class="line">Whether the query is active.</div>
+</div>
+<div class="line-block">
+<div class="line">tags: Optional[List[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line">List of tags associated with the query.</div>
+</div>
+<div class="line-block">
+<div class="line">version: int</div>
+<div class="line">Current stored version number.</div>
+</div>
+<div class="line-block">
+<div class="line">cache_version: int</div>
+<div class="line">Cache generation counter, bumped when cached results are invalidated.</div>
+</div>
+<div class="line-block">
+<div class="line">versions: Dict[str, Any]</div>
+<div class="line">Mapping of version number to stored snapshot metadata.</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: datetime</div>
+<div class="line">Date and time when the query was created.</div>
+</div>
+<div class="line-block">
+<div class="line">updated_at: datetime</div>
+<div class="line">Date and time when the query was last updated.</div>
+</div>
+<div class="line-block">
+<div class="line">session_context: bool</div>
+<div class="line">Read-only. True when the query text uses session functions. Never accepted as input.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlfilter">
+<span id="id4"></span><h2>SQLFilter<a class="headerlink" href="#sqlfilter" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Name to filter queries by.</div>
+</div>
+<div class="line-block">
+<div class="line">active: bool</div>
+<div class="line">Active state to filter queries by.</div>
+</div>
+<div class="line-block">
+<div class="line">tags: Optional[List[<a class="reference internal" href="../../common/Common_Type.html#tagsobj"><span class="std std-ref">TagsObj</span></a>]]</div>
+<div class="line">Tags to filter queries by.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlquery-query">
+<span id="sqlquery"></span><h2>SQLQuery(<a class="reference internal" href="../../common/Common_Type.html#query"><span class="std std-ref">Query</span></a>)<a class="headerlink" href="#sqlquery-query" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">fields: Optional[List[Literal[“id”, “name”, “description”, “query”, “params”, “cache_enabled”, “cache_ttl_seconds”, “rate_limit_rpm”, “active”, “tags”, “version”, “created_at”, “updated_at”]]]</div>
+<div class="line">List of fields to include in the query results.</div>
+</div>
+<div class="line-block">
+<div class="line">filter: Optional[<a class="reference internal" href="#sqlfilter"><span class="std std-ref">SQLFilter</span></a>]</div>
+<div class="line">Filter criteria for the query.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlexecuteobj">
+<span id="id5"></span><h2>SQLExecuteObj<a class="headerlink" href="#sqlexecuteobj" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">params: Optional[List[<a class="reference internal" href="#sqlparam"><span class="std std-ref">SQLParam</span></a>]]</div>
+<div class="line">Positional parameters overriding the saved defaults per key.</div>
+</div>
+<div class="line-block">
+<div class="line">test: Optional[bool]</div>
+<div class="line">When True, skips the result cache entirely.</div>
+</div>
+<div class="line-block">
+<div class="line">after_device: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Device ID used to resolve session context for the execution.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlcolumn">
+<span id="id6"></span><h2>SQLColumn<a class="headerlink" href="#sqlcolumn" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Column name.</div>
+</div>
+<div class="line-block">
+<div class="line">type: Literal[“string”, “number”, “timestamp”, “boolean”, “json”]</div>
+<div class="line">Column data type.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlexecuteresult">
+<span id="id7"></span><h2>SQLExecuteResult<a class="headerlink" href="#sqlexecuteresult" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">columns: List[<a class="reference internal" href="#sqlcolumn"><span class="std std-ref">SQLColumn</span></a>]</div>
+<div class="line">Result columns with their types.</div>
+</div>
+<div class="line-block">
+<div class="line">rows: List[dict]</div>
+<div class="line">Result rows keyed by column name.</div>
+</div>
+<div class="line-block">
+<div class="line">row_count: int</div>
+<div class="line">Number of rows returned.</div>
+</div>
+<div class="line-block">
+<div class="line">execution_ms: int</div>
+<div class="line">Server-side execution time in milliseconds.</div>
+</div>
+<div class="line-block">
+<div class="line">served_from_cache: bool</div>
+<div class="line">True when the result was served from the cache.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlversioninfo">
+<span id="id8"></span><h2>SQLVersionInfo<a class="headerlink" href="#sqlversioninfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">query: str</div>
+<div class="line">Query text stored in this version.</div>
+</div>
+<div class="line-block">
+<div class="line">params: List[<a class="reference internal" href="#sqlparam"><span class="std std-ref">SQLParam</span></a>]</div>
+<div class="line">Parameters stored in this version.</div>
+</div>
+<div class="line-block">
+<div class="line">created_at: Optional[datetime]</div>
+<div class="line">Date and time when this version was stored.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqltableinfo">
+<span id="id9"></span><h2>SQLTableInfo<a class="headerlink" href="#sqltableinfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">function: str</div>
+<div class="line">Virtual table family function name.</div>
+</div>
+<div class="line-block">
+<div class="line">label: str</div>
+<div class="line">Human-readable label.</div>
+</div>
+<div class="line-block">
+<div class="line">tag_form: Optional[str]</div>
+<div class="line">Tag form used to resolve the table.</div>
+</div>
+<div class="line-block">
+<div class="line">columns: List[<a class="reference internal" href="#sqlcolumn"><span class="std std-ref">SQLColumn</span></a>]</div>
+<div class="line">Typed columns exposed by the table.</div>
+</div>
+<div class="line-block">
+<div class="line">dynamic: Optional[bool]</div>
+<div class="line">Whether the table columns are resolved dynamically.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlresourceitem">
+<span id="id10"></span><h2>SQLResourceItem<a class="headerlink" href="#sqlresourceitem" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">id: <a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a></div>
+<div class="line">Resource identifier.</div>
+</div>
+<div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Resource name.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqlfunctioninfo">
+<span id="id11"></span><h2>SQLFunctionInfo<a class="headerlink" href="#sqlfunctioninfo" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">name: str</div>
+<div class="line">Function name.</div>
+</div>
+<div class="line-block">
+<div class="line">kind: Literal[“aggregate”, “session”]</div>
+<div class="line">Function category.</div>
+</div>
+<div class="line-block">
+<div class="line">args: List[str]</div>
+<div class="line">Argument names.</div>
+</div>
+<div class="line-block">
+<div class="line">description: str</div>
+<div class="line">Human-readable description.</div>
+</div>
+<div class="line-block">
+<div class="line">example: Optional[str]</div>
+<div class="line">Present only on session functions; carries the COALESCE authoring idiom.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqltablesresources">
+<span id="id12"></span><h2>SQLTablesResources<a class="headerlink" href="#sqltablesresources" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">devices: List[<a class="reference internal" href="#sqlresourceitem"><span class="std std-ref">SQLResourceItem</span></a>]</div>
+<div class="line">Profile devices available to queries.</div>
+</div>
+<div class="line-block">
+<div class="line">entities: List[<a class="reference internal" href="#sqlresourceitem"><span class="std std-ref">SQLResourceItem</span></a>]</div>
+<div class="line">Profile entities available to queries.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqltablesresult">
+<span id="id13"></span><h2>SQLTablesResult<a class="headerlink" href="#sqltablesresult" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">tables: List[<a class="reference internal" href="#sqltableinfo"><span class="std std-ref">SQLTableInfo</span></a>]</div>
+<div class="line">Virtual table families with their typed columns.</div>
+</div>
+<div class="line-block">
+<div class="line">resources: <a class="reference internal" href="#sqltablesresources"><span class="std std-ref">SQLTablesResources</span></a></div>
+<div class="line">Profile devices and entities.</div>
+</div>
+<div class="line-block">
+<div class="line">functions: List[<a class="reference internal" href="#sqlfunctioninfo"><span class="std std-ref">SQLFunctionInfo</span></a>]</div>
+<div class="line">Aggregate and session functions available to queries.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="sqltablesquery">
+<span id="id14"></span><h2>SQLTablesQuery<a class="headerlink" href="#sqltablesquery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Attributes:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">filter: Optional[str]</div>
+<div class="line">Substring filter applied to the catalog.</div>
+</div>
+<div class="line-block">
+<div class="line">amount: Optional[int]</div>
+<div class="line">Number of items per page.</div>
+</div>
+<div class="line-block">
+<div class="line">page: Optional[int]</div>
+<div class="line">Page number.</div>
+</div>
+<div class="line-block">
+<div class="line">entity_id: Optional[<a class="reference internal" href="../../common/Common_Type.html#genericid"><span class="std std-ref">GenericID</span></a>]</div>
+<div class="line">Entity ID used to resolve one entity’s columns.</div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="https://assets.tago.io/tagoio/sdk.png" alt="Logo of "/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html"></a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><strong>Resources</strong></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Device/index.html"><strong>Device</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Services/index.html"><strong>Services</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Utils/index.html"><strong>Utils</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Type Definitions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html">GenericID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#base64">Base64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#generictoken">GenericToken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#expiretimeoption">ExpireTimeOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#permissionoption">PermissionOption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#conditionals">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#runtypeoptions">RunTypeOptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokencreateresponse">TokenCreateResponse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tagsobj">TagsObj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#file">File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#fixedpositionvalue">FixedPositionValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#sentvalue">SentValue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#metadata">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationgeojson">LocationGeoJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#locationlatlng">LocationLatLng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#data">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendatalist">TokenDataList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#tokendata">TokenData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/Common_Type.html#query">Query</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html"><strong>Resources</strong></a><ul>
+  <li><a href="index.html"><strong>SQL</strong></a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>SQL</strong></a></li>
+      <li>Next: <a href="../../Device/index.html" title="next chapter"><strong>Device</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Tago LLC.
+      
+      |
+      <a href="../../_sources/Resources/SQL/SQL_Type.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
