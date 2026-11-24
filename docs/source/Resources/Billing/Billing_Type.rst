@@ -6,7 +6,7 @@
 BillingPlan
 ------------
 
-    **BillingPlan** = "free" or "starter" or "scale"
+    **BillingPlan** = "free" or "lite" or "pro" or "max" or "starter" or "scale"
 
 .. _BillingAddOn:
 
