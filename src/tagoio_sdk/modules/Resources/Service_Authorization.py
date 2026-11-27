@@ -1,10 +1,14 @@
 from typing import List
 from typing import Optional
 
-from tagoio_sdk.common.Common_Type import TokenData
-from tagoio_sdk.common.Common_Type import TokenDataList
 from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Resources.Service_Authorization_Types import GenericToken
+from tagoio_sdk.modules.Resources.Service_Authorization_Types import (
+    ServiceAuthorizationCreateInfo,
+)
+from tagoio_sdk.modules.Resources.Service_Authorization_Types import (
+    ServiceAuthorizationListItem,
+)
 from tagoio_sdk.modules.Resources.Service_Authorization_Types import (
     ServiceAuthorizationQuery,
 )
@@ -13,7 +17,7 @@ from tagoio_sdk.modules.Utils.dateParser import dateParserList
 
 
 class ServiceAuthorization(TagoIOModule):
-    def tokenList(self, query: Optional[ServiceAuthorizationQuery] = None) -> List[TokenDataList]:
+    def tokenList(self, query: Optional[ServiceAuthorizationQuery] = None) -> List[ServiceAuthorizationListItem]:
         """
         @description:
             Retrieves a paginated list of all service authorization tokens with filtering and sorting options.
@@ -31,6 +35,9 @@ class ServiceAuthorization(TagoIOModule):
                 "amount": 20
             })
             print(result)  # [ { 'name': 'API Service Token', 'token': 'token-xyz-123' } ]
+
+            # Only the authorizations bound to an Analysis for its MQTT Endpoint
+            bound = resources.serviceAuthorization.tokenList({"filter": {"analysis": "analysis-id-123"}})
             ```
         """
         query = query or {}
@@ -57,7 +64,7 @@ class ServiceAuthorization(TagoIOModule):
 
         return result
 
-    def tokenCreate(self, tokenParams: TokenData) -> TokenCreateResponse:
+    def tokenCreate(self, tokenParams: ServiceAuthorizationCreateInfo) -> TokenCreateResponse:
         """
         @description:
             Generates and retrieves a new service authorization token with specified permissions.
@@ -74,6 +81,12 @@ class ServiceAuthorization(TagoIOModule):
                 "verification_code": "additional parameter"
             })
             print(result)  # { 'token': 'token-xyz-123', 'name': 'Service Token', ... }
+
+            # A credential for the MQTT Endpoint of a Luau Analysis; the binding cannot change later
+            mqtt_credential = resources.serviceAuthorization.tokenCreate({
+                "name": "Sensors MQTT",
+                "analysis": "analysis-id-123"
+            })
             ```
         """
         result = self.doRequest(

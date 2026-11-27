@@ -118,3 +118,43 @@ def testServiceAuthorizationMethodTokenEdit(requests_mock: Mocker) -> None:
 
     # Check if result has expected message
     assert result == "Authorization Code Successfully Updated"
+
+
+def testServiceAuthorizationMethodTokenListByAnalysis(requests_mock: Mocker) -> None:
+    """Test tokenList filtered by the Analysis an authorization is bound to."""
+    mock_response = {
+        "status": True,
+        "result": [
+            {
+                "token": "token_id_3",
+                "name": "Sensors MQTT",
+                "analysis": "analysis_id_1",
+                "created_at": "2026-11-20T15:17:35.759Z",
+            }
+        ],
+    }
+    requests_mock.get("https://api.tago.io/serviceauth", json=mock_response)
+
+    resources = Resources({"token": "your_token_value"})
+    result = resources.serviceAuthorization.tokenList(
+        {"fields": ["name", "token", "analysis"], "filter": {"analysis": "analysis_id_1"}}
+    )
+
+    assert result[0]["analysis"] == "analysis_id_1"
+    assert requests_mock.last_request.qs["filter[analysis]"] == ["analysis_id_1"]
+
+
+def testServiceAuthorizationMethodTokenCreateWithAnalysis(requests_mock: Mocker) -> None:
+    """Test tokenCreate sends the Analysis to bind the authorization to."""
+    mock_response = {
+        "status": True,
+        "result": {"token": "new_token_id", "name": "Sensors MQTT", "profile": "profile_id_123"},
+    }
+    requests_mock.post("https://api.tago.io/serviceauth", json=mock_response)
+
+    resources = Resources({"token": "your_token_value"})
+    token_data = {"name": "Sensors MQTT", "analysis": "analysis_id_1"}
+    result = resources.serviceAuthorization.tokenCreate(token_data)
+
+    assert result["token"] == "new_token_id"
+    assert requests_mock.last_request.json() == token_data

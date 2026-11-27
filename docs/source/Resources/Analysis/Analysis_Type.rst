@@ -44,6 +44,9 @@ AnalysisCreateInfo
 
         | tags: Optional[List[:ref:`TagsObj`]]
 
+        | mqtt: Optional[:ref:`AnalysisMqttChanges`]
+        | MQTT Endpoint settings. Luau Analyses only; other runtimes answer 400.
+
 
 
 .. _AnalysisInfo:
@@ -66,6 +69,124 @@ AnalysisInfo(:ref:`AnalysisCreateInfo`)
         | locked_at: Any
 
         | console: Optional[List[str]]
+
+        | mqtt: Optional[:ref:`AnalysisMqtt`]
+        | MQTT Endpoint state. Returned by info, not by list.
+
+
+.. _AnalysisMqttEvents:
+
+AnalysisMqttEvents
+------------------
+
+    Session events of the MQTT Endpoint that also run the code; a PUBLISH always runs it.
+    info returns all three keys; create and edit accept any subset.
+
+    **Attributes:**
+
+        | connect: bool
+        | Run the code when a device connects. Default False.
+
+        | subscribe: bool
+        | Run the code once per filter when a device subscribes. Default False.
+
+        | unsubscribe: bool
+        | Run the code once per filter when a device unsubscribes. Default False.
+
+
+.. _AnalysisMqttPorts:
+
+AnalysisMqttPorts
+-----------------
+
+    Ports devices use to reach the MQTT Endpoint.
+
+    **Attributes:**
+
+        | plain: int
+        | Port without TLS.
+
+        | secure: int
+        | Port with TLS.
+
+
+.. _AnalysisMqttChanges:
+
+AnalysisMqttChanges
+-------------------
+
+    MQTT Endpoint settings on create and edit. Edit merges them into the stored settings.
+
+    **Attributes:**
+
+        | active: Optional[bool]
+        | Turns the MQTT Endpoint on or off. Luau Analyses only.
+
+        | events: Optional[:ref:`AnalysisMqttEvents`]
+        | Session events to turn on or off.
+
+
+.. _AnalysisMqtt:
+
+AnalysisMqtt(:ref:`AnalysisMqttChanges`)
+----------------------------------------
+
+    MQTT Endpoint state of an Analysis, as info returns it.
+
+    **Attributes:**
+
+        | host: Optional[str]
+        | Read only. Host devices connect to; present only when the instance configures one.
+
+        | ports: Optional[:ref:`AnalysisMqttPorts`]
+        | Read only. Ports devices connect to; present only with host.
+
+
+.. _AnalysisMqttOutcome:
+
+AnalysisMqttOutcome
+-------------------
+
+    How an MQTT Endpoint test run ended.
+
+    **Type:**
+
+        | Literal["ran", "failed", "refused", "rate_limited", "too_large"]
+
+
+.. _AnalysisMqttTry:
+
+AnalysisMqttTry
+---------------
+
+    Message for an MQTT Endpoint test run.
+
+    **Attributes:**
+
+        | topic: str
+        | Topic name, without +, #, or NUL.
+
+        | payload: str
+        | Payload the code receives, as a string.
+
+        | qos: Optional[0 or 1 or 2]
+        | QoS of the message. Default 1.
+
+
+.. _AnalysisMqttTryResult:
+
+AnalysisMqttTryResult
+---------------------
+
+    Result of an MQTT Endpoint test run.
+
+    **Attributes:**
+
+        | outcome: :ref:`AnalysisMqttOutcome`
+        | How the run ended.
+
+        | duration_ms: int
+        | Time the run took to answer, admission wait included, in milliseconds.
 
 
 .. _AnalysisQuery:

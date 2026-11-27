@@ -12,6 +12,8 @@ from tagoio_sdk.common.tagoio_module import TagoIOModule
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisCreateInfo
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisInfo
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisListItem
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisMqttTry
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisMqttTryResult
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisQuery
 from tagoio_sdk.modules.Resources.Analysis_Types import ScriptFile
 from tagoio_sdk.modules.Resources.Analysis_Types import SnippetRuntime
@@ -121,6 +123,9 @@ class Analyses(TagoIOModule):
                 "active": False
             })
             print(result)  # Successfully Updated
+
+            # Turn on the MQTT Endpoint of a Luau Analysis (a partial "mqtt" is merged into the stored one)
+            resources.analyses.edit("analysis-id-123", {"mqtt": {"active": True, "events": {"connect": True}}})
             ```
 
         :param GenericID analysisID: Analysis identification
@@ -220,6 +225,43 @@ class Analyses(TagoIOModule):
                 "path": f"/analysis/{analysisID}/run",
                 "method": "POST",
                 "body": {"scope": scopeObj},
+            }
+        )
+        return result
+
+    def tryMqtt(self, analysisID: GenericID, message: AnalysisMqttTry) -> AnalysisMqttTryResult:
+        """
+        @description:
+            Runs the MQTT Endpoint of a Luau Analysis once for a test message, as a device publish would.
+            The MQTT Endpoint must be on and the Analysis active. Mqtt.publish calls from the run reach
+            connected devices. Each call counts against the MQTT Endpoint run limit. The MQTT Endpoint
+            needs a paid plan.
+
+        @see:
+            https://docs.tago.io/docs/tagoio/analysis/ Analysis
+
+        @example:
+            If receive an error "Authorization Denied", check policy **Analysis** / **Run Analysis** in Access Management.
+            ```python
+            resources = Resources()
+            result = resources.analyses.tryMqtt("analysis-id-123", {
+                "topic": "sensors/42/temperature",
+                "payload": '{"value": 21.5}',
+                "qos": 1
+            })
+            print(result)  # {'outcome': 'ran', 'duration_ms': 42}
+            ```
+
+        :param GenericID analysisID: Analysis identification
+        :param AnalysisMqttTry message: Topic, payload, and optional QoS (default 1) of the test message
+        :return: Outcome of the run and its duration in milliseconds
+        :rtype: AnalysisMqttTryResult
+        """
+        result = self.doRequest(
+            {
+                "path": f"/analysis/{analysisID}/mqtt/try",
+                "method": "POST",
+                "body": message,
             }
         )
         return result
