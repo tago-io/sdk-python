@@ -29,7 +29,7 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
 
     **Returns:**
 
-        | list[:ref:`TokenDataList`]
+        | list[:ref:`ServiceAuthorizationListItem`]
 
     .. code-block:: python
 
@@ -44,6 +44,9 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
         })
         print(result)  # [ { 'name': 'API Service Token', 'token': 'token-xyz-123' } ]
 
+        # Only the authorizations bound to an Analysis for its MQTT Endpoint
+        bound = resources.serviceAuthorization.tokenList({"filter": {"analysis": "analysis-id-123"}})
+
 
 ============
 tokenCreate
@@ -55,7 +58,7 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
 
     **Parameters:**
 
-        | **tokenParams**: :ref:`TokenCreateResponseAuthorization`
+        | **tokenParams**: :ref:`ServiceAuthorizationCreateInfo`
         | Parameters for the new token
 
     **Returns:**
@@ -73,6 +76,12 @@ See: `Authorization <https://help.tago.io/portal/en/kb/articles/218-authorizatio
             "verification_code": "additional parameter"
         })
         print(result)  # { 'token': 'token-xyz-123', 'name': 'Service Token', ... }
+
+        # A credential for the MQTT Endpoint of a Luau Analysis; the binding cannot change later
+        mqtt_credential = resources.serviceAuthorization.tokenCreate({
+            "name": "Sensors MQTT",
+            "analysis": "analysis-id-123"
+        })
 
 
 ============

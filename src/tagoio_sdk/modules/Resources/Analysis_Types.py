@@ -3,6 +3,7 @@ from typing import Any
 from typing import Dict
 from typing import List
 from typing import Literal
+from typing import NotRequired
 from typing import Optional
 from typing import TypedDict
 from typing import Union
@@ -21,6 +22,77 @@ class ScriptFile(TypedDict):
     language: RunTypeOptions
 
 
+class AnalysisMqttEvents(TypedDict, total=False):
+    """
+    Session events of the MQTT Endpoint that also run the code; a PUBLISH always runs it.
+    Each event is opt-in and off by default. info returns all three keys; create and edit
+    accept any subset.
+    """
+
+    connect: bool
+    """Run the code when a device connects. Off by default."""
+    subscribe: bool
+    """Run the code once per filter when a device subscribes. Off by default."""
+    unsubscribe: bool
+    """Run the code once per filter when a device unsubscribes. Off by default."""
+
+
+class AnalysisMqttPorts(TypedDict):
+    """Ports devices use to reach the MQTT Endpoint."""
+
+    plain: int
+    """Port without TLS."""
+    secure: int
+    """Port with TLS."""
+
+
+class AnalysisMqttChanges(TypedDict, total=False):
+    """
+    MQTT Endpoint settings on create and edit. Edit merges them into the stored settings.
+    Turning the MQTT Endpoint or an event on needs a paid plan (Lite, Pro, or Max; TagoDeploy
+    instances are not gated). On a Free account the request is refused with "The MQTT Endpoint
+    needs a paid plan. Upgrade to use it."; turning things off is always allowed.
+    """
+
+    active: bool
+    """Turns the MQTT Endpoint on or off. Luau Analyses only. Off by default."""
+    events: AnalysisMqttEvents
+    """Session events to turn on or off."""
+
+
+class AnalysisMqtt(AnalysisMqttChanges, total=False):
+    """MQTT Endpoint state of an Analysis, as info returns it."""
+
+    host: str
+    """Read only. Host devices connect to; present only when the instance configures one."""
+    ports: AnalysisMqttPorts
+    """Read only. Ports devices connect to; present only with host."""
+
+
+AnalysisMqttOutcome = Literal["ran", "failed", "refused", "rate_limited", "too_large"]
+"""How an MQTT Endpoint test run ended."""
+
+
+class AnalysisMqttTry(TypedDict, total=False):
+    """Message for an MQTT Endpoint test run."""
+
+    topic: str
+    """Required. Topic name, without +, #, or NUL."""
+    payload: str
+    """Required. Payload the code receives, as a string."""
+    qos: Literal[0, 1, 2]
+    """QoS of the message. Default 1."""
+
+
+class AnalysisMqttTryResult(TypedDict):
+    """Result of an MQTT Endpoint test run."""
+
+    outcome: AnalysisMqttOutcome
+    """How the run ended."""
+    duration_ms: int
+    """Time the run took to answer, admission wait included, in milliseconds."""
+
+
 class AnalysisCreateInfo(TypedDict, total=False):
     name: str
     description: Optional[str]
@@ -32,6 +104,8 @@ class AnalysisCreateInfo(TypedDict, total=False):
     profile: Optional[GenericID]
     variables: Optional[List[Dict[str, Union[str, int, bool]]]]
     tags: Optional[List[TagsObj]]
+    mqtt: Optional[AnalysisMqttChanges]
+    """MQTT Endpoint settings. Luau Analyses only; other runtimes answer 400."""
 
 
 class AnalysisInfo(AnalysisCreateInfo):
@@ -42,6 +116,11 @@ class AnalysisInfo(AnalysisCreateInfo):
     updated_at: datetime
     locked_at: Any
     console: Optional[List[str]]
+    mqtt: NotRequired[AnalysisMqtt]
+    """
+    MQTT Endpoint state. Returned by info, not by list. Absent on servers without the MQTT
+    Endpoint, such as older TagoDeploy instances.
+    """
 
 
 class AnalysisQuery(Query):

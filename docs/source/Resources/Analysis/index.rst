@@ -110,6 +110,9 @@ See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
         })
         print(result)  # Successfully Updated
 
+        # Turn on the MQTT Endpoint of a Luau Analysis (a partial "mqtt" is merged into the stored one)
+        resources.analyses.edit("analysis-id-123", {"mqtt": {"active": True, "events": {"connect": True}}})
+
 
 =======
 delete
@@ -193,6 +196,44 @@ See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
         resources = Resources()
         result = resources.analyses.run("analysis-id-123", {"environment": "production"})
         print(result["analysis_token"])  # analysis-token-123
+
+
+=======
+tryMqtt
+=======
+
+Runs the MQTT Endpoint of a Luau Analysis once for a test message, as a device publish would.
+The MQTT Endpoint must be on and the Analysis active. ``Mqtt.publish`` calls from the run reach
+connected devices. Each call counts against the MQTT Endpoint run limit.
+The MQTT Endpoint needs a paid plan (Lite, Pro, or Max; TagoDeploy instances are not gated);
+on a Free account the call is refused with "The MQTT Endpoint needs a paid plan. Upgrade to use it."
+
+See: `Analysis <https://docs.tago.io/docs/tagoio/analysis/>`_
+
+    **Parameters:**
+
+        | **analysisID**: str
+        | Analysis identification
+
+        | **message**: :ref:`AnalysisMqttTry`
+        | Topic, payload, and optional QoS (default 1) of the test message
+
+    **Returns:**
+
+        | :ref:`AnalysisMqttTryResult`
+
+    .. code-block:: python
+
+        # If receive an error "Authorization Denied", check policy "Analysis" / "Run Analysis" in Access Management.
+        from tagoio_sdk import Resources
+
+        resources = Resources()
+        result = resources.analyses.tryMqtt("analysis-id-123", {
+            "topic": "sensors/42/temperature",
+            "payload": '{"value": 21.5}',
+            "qos": 1
+        })
+        print(result)  # {'outcome': 'ran', 'duration_ms': 42}
 
 
 =============

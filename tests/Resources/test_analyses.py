@@ -1,10 +1,17 @@
 import os
 
+from typing import get_args
+
+import pytest
+
 from requests_mock.mocker import Mocker
 
+from tagoio_sdk.common.Common_Type import RunTypeOptions
+from tagoio_sdk.infrastructure.api_request import TagoIORequestError
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisCreateInfo
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisInfo
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisListItem
+from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisMqttTry
 from tagoio_sdk.modules.Resources.Analysis_Types import ScriptFile
 from tagoio_sdk.modules.Resources.Resources import Resources
 
@@ -292,3 +299,128 @@ def testAnalysesMethodGetSnippetFileError(requests_mock: Mocker) -> None:
         raise AssertionError("Expected RuntimeError to be raised")
     except RuntimeError as e:
         assert "Failed to fetch snippet file" in str(e)
+
+
+def testAnalysesMethodInfoMqtt(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    mqtt = {
+        "active": True,
+        "events": {"connect": True, "subscribe": False, "unsubscribe": False},
+        "host": "mqtt.endpoint.example.com",
+        "ports": {"plain": 1883, "secure": 8883},
+    }
+    mock = mockAnalysisInfo()
+    mock["result"]["mqtt"] = mqtt
+    requests_mock.get("https://api.tago.io/analysis/analysis_id", json=mock)
+
+    resources = Resources()
+    response = resources.analysis.info("analysis_id")
+
+    assert response["mqtt"] == mqtt
+
+
+def testAnalysesMethodEditMqtt(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    requests_mock.put(
+        "https://api.tago.io/analysis/analysis_id",
+        json={"status": True, "result": "Successfully Updated"},
+    )
+
+    resources = Resources()
+    response = resources.analysis.edit("analysis_id", {"mqtt": {"events": {"subscribe": True}}})
+
+    assert response == "Successfully Updated"
+    assert requests_mock.last_request.json() == {"mqtt": {"events": {"subscribe": True}}}
+
+
+def testAnalysesMethodTryMqtt(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    requests_mock.post(
+        "https://api.tago.io/analysis/analysis_id/mqtt/try",
+        json={"status": True, "result": {"outcome": "ran", "duration_ms": 42}},
+    )
+
+    resources = Resources()
+    message = AnalysisMqttTry(topic="sensors/42/temperature", payload='{"value": 21.5}', qos=0)
+    response = resources.analysis.tryMqtt("analysis_id", message)
+
+    assert response == {"outcome": "ran", "duration_ms": 42}
+    assert requests_mock.last_request.method == "POST"
+    assert requests_mock.last_request.json() == {
+        "topic": "sensors/42/temperature",
+        "payload": '{"value": 21.5}',
+        "qos": 0,
+    }
+
+
+def testAnalysesMethodTryMqttRefused(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    requests_mock.post(
+        "https://api.tago.io/analysis/analysis_id/mqtt/try",
+        status_code=400,
+        json={"status": False, "message": "MQTT is off for this Analysis"},
+    )
+
+    resources = Resources()
+
+    with pytest.raises(TagoIORequestError, match="MQTT is off for this Analysis"):
+        resources.analysis.tryMqtt("analysis_id", {"topic": "sensors/42", "payload": "on"})
+
+
+def testRunTypeOptionsIncludesLuau() -> None:
+    assert "luau-rt2026" in get_args(RunTypeOptions)
+
+
+def testAnalysesMethodCreateLuauWithMqtt(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    requests_mock.post("https://api.tago.io/analysis", json=mockCreateAnalysis())
+
+    analysis_data = AnalysisCreateInfo(
+        name="Sensors MQTT", runtime="luau-rt2026", mqtt={"active": True}
+    )
+    resources = Resources()
+    response = resources.analysis.create(analysis_data)
+
+    assert response == mockCreateAnalysis()["result"]
+    assert requests_mock.last_request.json() == {
+        "name": "Sensors MQTT",
+        "runtime": "luau-rt2026",
+        "mqtt": {"active": True},
+    }
+
+
+def testAnalysesMethodInfoWithoutMqtt(requests_mock: Mocker) -> None:
+    """A server without the MQTT Endpoint returns no mqtt field."""
+    requests_mock.get(
+        "https://api.tago.io/analysis/analysis_id", json=mockAnalysisInfo()
+    )
+
+    resources = Resources()
+    response = resources.analysis.info("analysis_id")
+
+    assert "mqtt" not in response
+
+
+def testAnalysesMethodTryMqttPaidPlan(requests_mock: Mocker) -> None:
+    """A Free account is refused with the paid plan message."""
+    paid_plan = "The MQTT Endpoint needs a paid plan. Upgrade to use it."
+    requests_mock.post(
+        "https://api.tago.io/analysis/analysis_id/mqtt/try",
+        status_code=400,
+        json={"status": False, "message": paid_plan},
+    )
+
+    resources = Resources()
+
+    with pytest.raises(TagoIORequestError, match="needs a paid plan"):
+        resources.analysis.tryMqtt("analysis_id", {"topic": "sensors/42", "payload": "on"})

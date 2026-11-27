@@ -5,10 +5,22 @@ from typing import TypedDict
 
 from tagoio_sdk.common.Common_Type import GenericID
 from tagoio_sdk.common.Common_Type import Query
+from tagoio_sdk.common.Common_Type import TokenData
+from tagoio_sdk.common.Common_Type import TokenDataList
 
 
 GenericToken = str
 """Token used on TagoIO, string with 34 characters"""
+
+
+class ServiceAuthorizationCreateInfo(TokenData, total=False):
+    analysis: Optional[GenericID]
+    """
+    [Optional] Luau Analysis whose MQTT Endpoint this authorization connects devices to.
+    Set at creation only; it cannot change later. Needs a paid plan (Lite, Pro, or Max;
+    TagoDeploy instances are not gated); on a Free account the request is refused with
+    "The MQTT Endpoint needs a paid plan. Upgrade to use it."
+    """
 
 
 class TokenCreateResponse(TypedDict):
@@ -19,11 +31,20 @@ class TokenCreateResponse(TypedDict):
     """[Optional] Verification code to validate middleware requests."""
 
 
-class ServiceAuthorizationFilter(TypedDict):
+class ServiceAuthorizationListItem(TokenDataList, total=False):
+    analysis: Optional[GenericID]
+    """Luau Analysis the authorization is bound to for the MQTT Endpoint, or None."""
+
+
+class ServiceAuthorizationFilter(TypedDict, total=False):
     name: str
     token: GenericToken
+    analysis: GenericID
+    """Only the authorizations bound to this Analysis."""
 
 
 class ServiceAuthorizationQuery(Query):
-    fields: Optional[List[Literal["name", "token", "verification_code", "created_at"]]]
+    fields: Optional[
+        List[Literal["name", "token", "verification_code", "created_at", "analysis"]]
+    ]
     filter: Optional[ServiceAuthorizationFilter]
