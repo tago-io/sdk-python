@@ -397,3 +397,30 @@ def testAnalysesMethodCreateLuauWithMqtt(requests_mock: Mocker) -> None:
         "runtime": "luau-rt2026",
         "mqtt": {"active": True},
     }
+
+
+def testAnalysesMethodInfoWithoutMqtt(requests_mock: Mocker) -> None:
+    """A server without the MQTT Endpoint returns no mqtt field."""
+    requests_mock.get(
+        "https://api.tago.io/analysis/analysis_id", json=mockAnalysisInfo()
+    )
+
+    resources = Resources()
+    response = resources.analysis.info("analysis_id")
+
+    assert "mqtt" not in response
+
+
+def testAnalysesMethodTryMqttPaidPlan(requests_mock: Mocker) -> None:
+    """A Free account is refused with the paid plan message."""
+    paid_plan = "The MQTT Endpoint needs a paid plan. Upgrade to use it."
+    requests_mock.post(
+        "https://api.tago.io/analysis/analysis_id/mqtt/try",
+        status_code=400,
+        json={"status": False, "message": paid_plan},
+    )
+
+    resources = Resources()
+
+    with pytest.raises(TagoIORequestError, match="needs a paid plan"):
+        resources.analysis.tryMqtt("analysis_id", {"topic": "sensors/42", "payload": "on"})

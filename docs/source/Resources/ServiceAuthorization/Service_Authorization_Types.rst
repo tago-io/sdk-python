@@ -19,7 +19,7 @@ ServiceAuthorizationCreateInfo(:ref:`CommonTokenData`)
     **Attributes:**
 
         | analysis: Optional[:ref:`GenericID`]
-        | [Optional] Luau Analysis whose MQTT Endpoint this authorization connects devices to. Set at creation only; it cannot change later.
+        | [Optional] Luau Analysis whose MQTT Endpoint this authorization connects devices to. Set at creation only; it cannot change later. Needs a paid plan (Lite, Pro, or Max; TagoDeploy instances are not gated); on a Free account the request is refused with "The MQTT Endpoint needs a paid plan. Upgrade to use it."
 
 
 .. _TokenCreateResponseAuthorization:

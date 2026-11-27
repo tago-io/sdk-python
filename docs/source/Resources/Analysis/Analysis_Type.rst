@@ -70,8 +70,8 @@ AnalysisInfo(:ref:`AnalysisCreateInfo`)
 
         | console: Optional[List[str]]
 
-        | mqtt: Optional[:ref:`AnalysisMqtt`]
-        | MQTT Endpoint state. Returned by info, not by list.
+        | mqtt: NotRequired[:ref:`AnalysisMqtt`]
+        | MQTT Endpoint state. Returned by info, not by list. Absent on servers without the MQTT Endpoint, such as older TagoDeploy instances.
 
 
 .. _AnalysisMqttEvents:
@@ -80,18 +80,18 @@ AnalysisMqttEvents
 ------------------
 
     Session events of the MQTT Endpoint that also run the code; a PUBLISH always runs it.
-    info returns all three keys; create and edit accept any subset.
+    Each event is opt-in and off by default. info returns all three keys; create and edit accept any subset.
 
     **Attributes:**
 
         | connect: bool
-        | Run the code when a device connects. Default False.
+        | Run the code when a device connects. Off by default.
 
         | subscribe: bool
-        | Run the code once per filter when a device subscribes. Default False.
+        | Run the code once per filter when a device subscribes. Off by default.
 
         | unsubscribe: bool
-        | Run the code once per filter when a device unsubscribes. Default False.
+        | Run the code once per filter when a device unsubscribes. Off by default.
 
 
 .. _AnalysisMqttPorts:
@@ -116,11 +116,14 @@ AnalysisMqttChanges
 -------------------
 
     MQTT Endpoint settings on create and edit. Edit merges them into the stored settings.
+    Turning the MQTT Endpoint or an event on needs a paid plan (Lite, Pro, or Max; TagoDeploy instances are not gated).
+    On a Free account the request is refused with "The MQTT Endpoint needs a paid plan. Upgrade to use it.";
+    turning things off is always allowed.
 
     **Attributes:**
 
         | active: Optional[bool]
-        | Turns the MQTT Endpoint on or off. Luau Analyses only.
+        | Turns the MQTT Endpoint on or off. Luau Analyses only. Off by default.
 
         | events: Optional[:ref:`AnalysisMqttEvents`]
         | Session events to turn on or off.
