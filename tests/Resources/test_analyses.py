@@ -1,9 +1,12 @@
 import os
 
+from typing import get_args
+
 import pytest
 
 from requests_mock.mocker import Mocker
 
+from tagoio_sdk.common.Common_Type import RunTypeOptions
 from tagoio_sdk.infrastructure.api_request import TagoIORequestError
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisCreateInfo
 from tagoio_sdk.modules.Resources.Analysis_Types import AnalysisInfo
@@ -370,3 +373,27 @@ def testAnalysesMethodTryMqttRefused(requests_mock: Mocker) -> None:
 
     with pytest.raises(TagoIORequestError, match="MQTT is off for this Analysis"):
         resources.analysis.tryMqtt("analysis_id", {"topic": "sensors/42", "payload": "on"})
+
+
+def testRunTypeOptionsIncludesLuau() -> None:
+    assert "luau-rt2026" in get_args(RunTypeOptions)
+
+
+def testAnalysesMethodCreateLuauWithMqtt(requests_mock: Mocker) -> None:
+    """
+    :param requests_mock are a plugin of pytest to mock the requests.
+    """
+    requests_mock.post("https://api.tago.io/analysis", json=mockCreateAnalysis())
+
+    analysis_data = AnalysisCreateInfo(
+        name="Sensors MQTT", runtime="luau-rt2026", mqtt={"active": True}
+    )
+    resources = Resources()
+    response = resources.analysis.create(analysis_data)
+
+    assert response == mockCreateAnalysis()["result"]
+    assert requests_mock.last_request.json() == {
+        "name": "Sensors MQTT",
+        "runtime": "luau-rt2026",
+        "mqtt": {"active": True},
+    }

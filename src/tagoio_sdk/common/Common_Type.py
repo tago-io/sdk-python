@@ -20,7 +20,15 @@ PermissionOption = Literal["write", "read", "full", "deny"]
 
 Conditionals = Literal["<", ">", "=", "!", "><", "*"]
 
-RunTypeOptions = Literal["node-legacy", "python-legacy", "node-rt2025", "python-rt2025", "deno-rt2025"]
+RunTypeOptions = Literal[
+    "node-legacy",
+    "python-legacy",
+    "node-rt2025",
+    "python-rt2025",
+    "deno-rt2025",
+    "luau-rt2026",
+]
+"""Analysis runtimes. luau-rt2026 is the Luau Sandbox runtime; it runs on TagoIO only."""
 
 
 class TokenCreateResponse(TypedDict):
